@@ -1,0 +1,26 @@
+@use 'variables' as *;
+@use 'reset';
+@use 'navbar';
+@use './view_home.scss';
+@use './wn_hook.scss';
+
+.root {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - 84px); // (100% - ALTO DEL NAVBAR)
+    text-align: center;
+    &__title {
+        width: 50%;
+        font-size: 9rem;
+        margin: auto;
+    }
+    &:nth-child(1) {
+        width: 100%;
+    }
+}
+.title-copy {
+    font-size: 2rem;
+    font-weight: 300;
+}

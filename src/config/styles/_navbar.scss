@@ -1,0 +1,131 @@
+@use 'variables' as *;
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 60px;
+
+    &__logobx {
+        margin: 12px;
+        width: 56px;
+    }
+
+    &__versionbx {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $p-color;
+        font-size: 1.6rem;
+        width: 100px;
+        height: -webkit-fill-available;
+        color: $w-color;
+
+        span {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: center;
+        border-radius: 12px;
+        width: 50%;
+        padding: 0 25px;
+        margin: 12px auto;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        -ms-border-radius: 12px;
+        -o-border-radius: 12px;
+
+        ul {
+            display: flex;
+            gap: 3rem;
+            font-size: 1.8rem;
+
+            li {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background: $p-color;
+                    transition: .2s ease-in;
+                    -webkit-transition: .2s ease-in;
+                    -moz-transition: .2s ease-in;
+                    -ms-transition: .2s ease-in;
+                    -o-transition: .2s ease-in;
+                }
+
+                &:hover::before {
+                    height: 60px;
+                }
+
+                &:hover .route {
+                    color: $w-color;
+                }
+
+                .route {
+                    position: relative;
+                    font-weight: 600;
+                    top: 0;
+                    left: 0;
+                    display: flex;
+                    align-items: center;
+                    height: 60px;
+                    padding: 0 20px;
+                    z-index: 10;
+
+                }
+            }
+        }
+    }
+}
+
+
+.bxpop {
+    .pop-btns-link {
+        background: $p-color;
+        color: $w-color;
+        font-size: 1.8rem;
+        margin: 4px auto;
+        padding: 4px 14px;
+        border-radius: 12px;
+        opacity: 0.8;
+        transition: 0.5s ease-in-out;
+        &:hover {
+            opacity: 1;
+            background: $p3-color;
+            box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    }
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $p-color;
+        border-radius: 16px;
+        height: 24px;
+        margin: 12px auto;
+        input {
+            font-size: 1.6rem;
+            border: none;
+            outline: none;
+            width: 90%;
+        }
+
+        i {
+            color: $p-color;
+        }
+    }
+}
