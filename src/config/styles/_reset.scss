@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    background-image: url('../assets/img/index/background.jpg');
+    background-image: url('../assets/img/index/background.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -36,6 +36,7 @@ body {
     -webkit-font-smoothing: antialiased;
     /* opcional */
     -moz-osx-font-smoothing: grayscale;
+
     /* opcional Background */
     &::-webkit-scrollbar {
         display: none;
@@ -131,20 +132,20 @@ textarea,
 select,
 button,
 label {
-        hyphens: none;
-        font-family: inherit;
-        font-size: inherit;
-        background-color: transparent;
-        color: inherit;
-        border: none;
-        display: block;
-        // -webkit-appearance: none;
-        // -moz-appearance: none;
-        // appearance: none;
-        
-        -webkit-hyphens: none;
-        -moz-hyphens: none;
-        -ms-hyphens: none;
+    hyphens: none;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    display: block;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    // appearance: none;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
 }
 
 /* Reseteamos las tablas */

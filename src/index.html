@@ -1,37 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans&display=swap" rel="stylesheet">
-        <!-- Ubuntu -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
-        <!-- Comfortaa -->
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600&family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans&display=swap"
+        rel="stylesheet">
+    <!-- Ubuntu -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <!-- Comfortaa -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600&family=Open+Sans&display=swap"
+        rel="stylesheet">
     <!---->
-    <link rel="icon" type="image/jpg" href="./config/assets/img/index/favicon.png"/>
+    <link rel="icon" type="image/jpg" href="./config/assets/img/index/favicon.png" />
     <title>Web Training</title>
 </head>
+
 <body>
     <header class="header">
-        <figure class="header__logobx">
-            <img src="./config/assets/img/index/favicon.png" alt="logo">
-        </figure>
-        <nav class="header__nav">
-            <ul>
-                <li><a class="route" href="#/"><i class="fa-solid fa-house"></i>&nbsp;Inicio</a></li>
-                <li><button class="route" type="button" name="pop_checklist"><i class="fa-solid fa-list-check"></i>&nbsp;Check List</button></li>
+        <div class="header__plane">
+            <figure>
+                <img class="animate__animated animate__zoomIn" src="./config/assets/img/index/logo3.svg"
+                    alt="imagen del banco BBVA">
+            </figure>
+        </div>
+        <nav class="header__nav" id="nav">
+            <ul class="header__lists">
+                <li class="header__list header__list--click"><a href="${this.main}/index.html">Inicio<i
+                            class="fa-solid fa-house"></i></a></li>
+                <li class="header__listdropdown header__list--click"><a class="header__listdropdown__a"
+                        href="#">CheckList<i class="fa-solid fa-check-to-slot"></i></a>
+                    <ul class="header__listdropdown__sublist animate__animated animate__fadeIn">
+                        <a class="header__listdropdown__a__2" href="${this.back}/checks/checksApp.html">CRÉDITO</a>
+                        <a class="header__listdropdown__a__2" href="${this.back}/checks/checksProcesos.html">TARJETA DE
+                            CRÉDITO</a>
+                        <a class="header__listdropdown__a__2"
+                            href="${this.back}/checks/checksProcesos.html">REDIFERIDOS</a>
+                        <a class="header__listdropdown__a__2" href="${this.back}/checks/checksProcesos.html">COMPRA DE
+                            CARTERA</a>
+                        <ul class="header__listdropdown__sublist__2 animate__animated animate__fadeIn">
+                            <input class="header__listdropdown__sublist__searcher" id="busqueda"
+                                placeholder="Buscar por nombre" autocapitalize="off" autocomplete="off">
+                        </ul>
+
+                    </ul>
+                    <form class="header__listdropdown__checklists" id="srcDatos">
+
+                        <a class="header__srcContainer" data-nombre="Ingreso APP"
+                            href="${this.same}/src/pages/checks/ingresoApp.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Ingreso APP</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Cambio de clave"
+                            href="${this.same}/src/pages/checks/cambioClave.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Cambio de clave</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Menú cuentas"
+                            href="${this.same}/src/pages/checks/menuCuentas.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Menú cuentas</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Menú Tarjeta de crédito"
+                            href="${this.same}/src/pages/checks/menuTarjetaCredito.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Menú Tarjeta de crédito</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Menú créditos"
+                            href="${this.same}/src/pages/checks/menuCreditos.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Menú créditos</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Menú adelanto de nómina"
+                            href="${this.same}/src/pages/checks/menuAdelantoNomina.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Menú adelanto de nómina</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Menú contratar"
+                            href="${this.same}/src/pages/checks/menuContratar.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Menú contratar</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Menú lateral"
+                            href="${this.same}/src/pages/checks/menuLateral.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Menú lateral</h2>
+                        </a>
+
+                        <a class="header__srcContainer" data-nombre="Menú fondo de inversión"
+                            href="${this.same}/src/pages/checks/menuFondoInversion.html">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                            <h2>Menú fondo de inversión</h2>
+                        </a>
+
+                    </form>
+                </li>
+
+                <li class="header__listdropdown header__list--click"><a class="header__listdropdown__a"
+                        href="#">Procesador De Direcciones<i class="fa-solid fa-circle-exclamation"></i></a>
+                </li>
+                <li class="header__list__ver">Versión 1.0.0<i class="fa-solid fa-code-branch"></i></li>
             </ul>
         </nav>
-        <div class="header__versionbx">
-            <p>V. 1.0.0</p>
-        </div>
     </header>
+
     <main id="root" class="root">
     </main>
 </body>
+
 </html>
