@@ -9,11 +9,11 @@ import '@styles/_navbar.scss'
 import readXlsxFile from 'read-excel-file'
 
 /** ESTANDARS */
-import {router} from '@router/index.routes.js' //*
-import {navListPop} from '@javascript/funcionales/alertas.js'
+import { router } from '@router/index.routes.js' //*
+import { navListPop } from '@javascript/funcionales/alertas.js'
 
 router(window.location.hash) //*
-window.addEventListener('hashchange', ()=> {
+window.addEventListener('hashchange', () => {
     router(window.location.hash)
 })
 
@@ -29,17 +29,17 @@ export const leerExcel = async (archivoExcel) => {
     const arrObjetos = dataRows.map((row) => {
         const objeto = {};
         row.forEach((value, index) => {
-          const title = columnTitles[index];
-          objeto[title] = value;
+            const title = columnTitles[index];
+            objeto[title] = value;
         });
         return objeto;
-      });
+    });
 }
 
 // video para base de datos local
-    // https://www.youtube.com/watch?v=KJnupY2HPCg&t=670s&ab_channel=MakeAppswithDanny
+// https://www.youtube.com/watch?v=KJnupY2HPCg&t=670s&ab_channel=MakeAppswithDanny
 // Libreria de base de datos local
-    // https://github.com/dannyconnell/localbase
+// https://github.com/dannyconnell/localbase
 
 //** END LEER ARCHIVOS EXCEL */
 

@@ -1,0 +1,35 @@
+<section class="main-container">
+
+    <div class="container">
+        <h1>Ingreso de Dirección</h1>
+        <form>
+            <label for="calle">Calle:</label>
+            <select id="calle" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Avenida">Avenida</option>
+                <option value="Autopista">Autopista</option>
+                <option value="Calle Principal">Calle Principal</option>
+            </select>
+            <span class="help-text">(Ejemplos: Avenida, Autopista, Calle Principal)</span>
+
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" required autocomplete="off">
+
+            <label for="restante">Restante:</label>
+            <input type="text" id="restante" required autocomplete="off">
+
+            <label for="departamento">Departamento:</label>
+            <input type="text" id="departamento" required autocomplete="off">
+
+            <div id="botones">
+                <button type="button" id="button2">Mostrar Dirección</button>
+                <button type="button" id="copiarDireccion">Copiar Dirección</button>
+                <button type="reset" id="resetButton">Reiniciar</button>
+            </div>
+        </form>
+
+        <div id="direccionMostrada"></div>
+
+    </div>
+
+</section>

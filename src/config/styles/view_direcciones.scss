@@ -1,0 +1,116 @@
+@use 'variables' as *;
+
+.main-container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        width: 530px;
+        margin: 0 auto;
+        background-color: $w-color;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+
+        h1 {
+            color: $g3-color;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: $p-color;
+        }
+
+        form {
+            label {
+                display: block;
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+
+            .error {
+                border: 1px solid red;
+            }
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: $p-color;
+        }
+
+        .help-text {
+            font-size: 80%;
+            color: $t-color;
+        }
+
+        button {
+            background-color: $p-color;
+            color: #fff;
+            border: none;
+            width: 250px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: $s-color;
+        }
+
+        #direccionMostrada {
+            margin-top: 20px;
+            font-size: 20px;
+            color: $g3-color;
+        }
+
+        #botones {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #resetButton {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            width: 170px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #resetButton:hover {
+            background-color: #c82333;
+        }
+
+
+    }
+}

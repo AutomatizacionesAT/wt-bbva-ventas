@@ -1,11 +1,11 @@
-import {views} from "@controllers/controller.js";
+import { views } from "@controllers/controller.js";
 
 
 let root = document.getElementById("root");
 
 const router = async (route) => {
     root.innerHTML = "";
-    const goRoute =vista=> root.appendChild(vista)
+    const goRoute = vista => root.appendChild(vista)
     switch (route) {
         case "": {
             return goRoute(views.home());
@@ -24,7 +24,10 @@ const router = async (route) => {
         }
         case "#/localbase": {
             return goRoute(views.excel());
-        }   
+        }
+        case "#/direcciones": {
+            return goRoute(views.direcciones());
+        }
         default: {
             return root.appendChild(views.notFound());
         }
