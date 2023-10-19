@@ -1,6 +1,9 @@
 import Swal from 'sweetalert2'
 
 import navListCheckList from '@views/alerts/navListCheckList.html'
+import navListCheckListTarjeta from '@views/alerts/navChecklistTarjeta.html'
+import navListCheckListRediferidos from '@views/alerts/navChecklistRediferidos.html'
+import navListCheckListCartera from '@views/alerts/navChecklistCartera.html'
 import popShowImgCheck from '@views/alerts/popShowImgCheck.html'
 
 // LAS FUNCIONES QUE EJECUTAN LA ALERTA DEBEN INICIAR CON "pop" seguido del
@@ -9,21 +12,25 @@ import popShowImgCheck from '@views/alerts/popShowImgCheck.html'
 
 export const popError = (error) => {
   Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Algo va mal!',
-      footer: `<a href="">${error ? error : 'Error'}</a>`,
-      heightAuto: false,
-    })
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Algo va mal!',
+    footer: `<a href="">${error ? error : 'Error'}</a>`,
+    heightAuto: false,
+  })
 }
 
 export const navListPop = (listOpen) => {
-  
+  console.log(listOpen)
   const lists = {
-    "checklist" : true,
+    "checklist-Credito": navListCheckList,
+    "checklist-Tarjeta": navListCheckListTarjeta,
+    "checklist-Rediferidos": navListCheckListRediferidos,
+    "checklist-Cartera": navListCheckListCartera,
     "notas": true,
     "calculadoras": true
   }
+  console.log(lists[listOpen])
   if (lists[listOpen]) {
     Swal.fire({
       showCancelButton: true,
@@ -31,23 +38,14 @@ export const navListPop = (listOpen) => {
       cancelButtonText: 'Cancelar',
       cancelButtonColor: '#ef3829',
       title: listOpen.toUpperCase(),
-      html: navListCheckList,
+      html: lists[listOpen],
       heightAuto: false,
     })
     let btnsLista = Swal.getHtmlContainer().querySelectorAll('a')
     btnsLista.forEach(element => {
-      element.addEventListener('click',()=>{Swal.close()})
+      element.addEventListener('click', () => { Swal.close() })
     });
   }
-}
-
-export const popShowImageCheks = () => {
-  Swal.fire({
-    html : popShowImgCheck,
-    width: '80%',
-    confirmButtonText: 'Cerrar',
-    heightAuto: false,
-  })
 }
 
 export const popShowCheckNota = (nota) => {

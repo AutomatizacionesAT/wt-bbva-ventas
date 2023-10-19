@@ -58,7 +58,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [{
         from: __dirname + "/src/config" + "/assets/img/DATABASES", //deja por separado las imagenes de las bases de datos
-        to: "imagenes" 
+        to: "imagenes"
       }]
     }),
     new MiniCssExtractPlugin({  // extrae el css del javascript para empaquetarlo como archivo aparte

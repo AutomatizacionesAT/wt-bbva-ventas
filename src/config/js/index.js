@@ -49,6 +49,7 @@ navItems.forEach((linkItem) => {
     linkItem.addEventListener("click", () => {
         if (linkItem.name.includes('pop')) {
             const lista = linkItem.name.split('_')[1]
+            console.log(lista)
             navListPop(lista)
         }
     })
