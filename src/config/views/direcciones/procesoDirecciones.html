@@ -1,25 +1,107 @@
 <section class="main-container">
-
     <div class="container">
         <h1>Ingreso de Dirección</h1>
         <form>
             <label for="calle">Calle:</label>
-            <select id="calle" required>
+            <select id="calle">
                 <option value="">Selecciona una opción</option>
-                <option value="Avenida">Avenida</option>
-                <option value="Autopista">Autopista</option>
-                <option value="Calle Principal">Calle Principal</option>
+                <option class="hola" value="CALLE">CALLE</option>
+                <option value="CARRERA">CARRERA</option>
+                <option value="DIAGONAL">DIAGONAL</option>
+                <option value="AVENIDA">AVENIDA</option>
+                <option value="TRANSVERSAL">TRANSVERSAL</option>
             </select>
-            <span class="help-text">(Ejemplos: Avenida, Autopista, Calle Principal)</span>
 
             <label for="numero">Número:</label>
             <input type="text" id="numero" required autocomplete="off">
 
-            <label for="restante">Restante:</label>
+            <label for="restante">Complemento:</label>
             <input type="text" id="restante" required autocomplete="off">
 
+            <label for="ciudades">Ciudad:</label>
+            <input list="ciudadesList" id="ciudades" required autocomplete="off">
+
+            <datalist id="ciudadesList">
+                <option value="BOGOTÁ">
+                <option value="MEDELLÍN">
+                <option value="CALI">
+                <option value="BARRANQUILLA">
+                <option value="CARTAGENA">
+                <option value="SANTA MARTA">
+                <option value="BUCARAMANGA">
+                <option value="PEREIRA">
+                <option value="MANIZALES">
+                <option value="IBAGUÉ">
+                <option value="CÚCUTA">
+                <option value="VILLAVICENCIO">
+                <option value="PASTO">
+                <option value="NEIVA">
+                <option value="POPAYÁN">
+                <option value="MONTERÍA">
+                <option value="RIOHACHA">
+                <option value="TUNJA">
+                <option value="ARMENIA">
+                <option value="QUIBDÓ">
+                <option value="FLORENCIA">
+                <option value="YOPAL">
+                <option value="VALLEDUPAR">
+                <option value="MOCOA">
+                <option value="SAN ANDRÉS">
+                <option value="PUERTO CARREÑO">
+                <option value="INÍRIDA">
+                <option value="MITÚ">
+                <option value="PUERTO ORDAZ">
+                <option value="LETICIA">
+                <option value="GUAVIARE">
+                <option value="SINCELEJO">
+                <option value="RIOHACHA">
+                <option value="ARAUCA">
+                <option value="TOLUCA">
+                <option value="BARRANCABERMEJA">
+                <option value="SOLEDAD">
+                <option value="PASTO">
+                <option value="SAN JOSE DEL GUAVIARE">
+                    <!-- Agrega más ciudades aquí -->
+            </datalist>
+
+
             <label for="departamento">Departamento:</label>
-            <input type="text" id="departamento" required autocomplete="off">
+            <input list="departamentosList" id="departamentoSelect" required autocomplete="off">
+            <datalist id="departamentosList">
+                <option value="AMAZONAS">
+                <option value="ANTIOQUIA">
+                <option value="ARAUCA">
+                <option value="ATLÁNTICO">
+                <option value="BOLÍVAR">
+                <option value="BOYACÁ">
+                <option value="CALDAS">
+                <option value="CAQUETÁ">
+                <option value="CASANARE">
+                <option value="CAUCA">
+                <option value="CESAR">
+                <option value="CHOCÓ">
+                <option value="CÓRDOBA">
+                <option value="CUNDINAMARCA">
+                <option value="GUAINÍA">
+                <option value="GUAVIARE">
+                <option value="HUILA">
+                <option value="LA GUAJIRA">
+                <option value="MAGDALENA">
+                <option value="META">
+                <option value="NARIÑO">
+                <option value="NORTE DE SANTANDER">
+                <option value="PUTUMAYO">
+                <option value="QUINDÍO">
+                <option value="RISARALDA">
+                <option value="SAN ANDRÉS Y PROVIDENCIA">
+                <option value="SANTANDER">
+                <option value="SUCRE">
+                <option value="TOLIMA">
+                <option value="VALLE DEL CAUCA">
+                <option value="VAUPÉS">
+                <option value="VICHADA">
+            </datalist>
+
 
             <div id="botones">
                 <button type="button" id="button2">Mostrar Dirección</button>
@@ -29,7 +111,5 @@
         </form>
 
         <div id="direccionMostrada"></div>
-
     </div>
-
 </section>

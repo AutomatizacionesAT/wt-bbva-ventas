@@ -220,18 +220,34 @@ export default () => {
   // abrir <i> _imagenes
   imagenesTag.forEach(tagI => {
     tagI.addEventListener('click', () => {
-      console.log(imgChecklist.ch1_01)
       Swal.fire({
-
-        html: `<figure>
-              <img id="imgPopCheck" src="${imgChecklist[tagI.getAttribute("name")]}" alt="imagen">
-          </figure>`,
-        width: '80%',
+        html: `
+          <div style="width: 80%; height: 80vh; display: flex; justify-content: center; align-items: center;">
+            <img id="imgPopCheck" class="image" src="${imgChecklist[tagI.getAttribute("name")]}" alt="imagen" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          </div>`,
         confirmButtonText: 'Cerrar',
-      })
+        customClass: {
+          popup: 'custom-popup'
+        }
+      });
+    });
+  });
 
-    })
-  })
+
+  // imagenesTag.forEach(tagI => {
+  //   tagI.addEventListener('click', () => {
+
+  //     Swal.fire({
+  //       html: `<figure>
+  //             <img id="imgPopCheck" src="${imgChecklist[tagI.getAttribute('name')]}" alt="imagen">
+  //         </figure>`,
+  //       width: '80%',
+  //       confirmButtonText: 'Cerrar',
+  //     })
+
+  //   })
+  // })
+
   // almacenar datos para nota yla muestra segun sea necesarios
   btnGetNota.addEventListener('click', () => {
     Nota = []

@@ -1,54 +1,115 @@
-import nt_Principal from '@views/direcciones/procesoDirecciones.html'
-import '@styles/view_direcciones.scss'
+import nt_Principal from '@views/direcciones/procesoDirecciones.html';
+import '@styles/view_direcciones.scss';
 
 export default () => {
-    // Crear un elemento div
     const subdocument = document.createElement('div');
-
-    // Asignar un valor a subdocument.innerHTML. Asumo que 'nt_Principal' es una variable definida previamente.
     subdocument.innerHTML = nt_Principal;
 
-    // Obtener una referencia al botón con el id 'button2'
     const button2 = subdocument.querySelector('#button2');
     const resetButton = subdocument.querySelector('#resetButton');
+    const ciudadesInput = subdocument.querySelector('#ciudades');
+    const departamentoSelect = subdocument.querySelector('#departamentoSelect');
+
+    // Definir un mapeo de ciudades a departamentos
+    const ciudadesDepartamentos = {
+        'BOGOTÁ': 'BOGOTÁ',
+        'MEDELLÍN': 'ANTIOQUIA',
+        'CALI': 'VALLE DEL CAUCA',
+        'BARRANQUILLA': 'ATLÁNTICO',
+        'CARTAGENA': 'BOLÍVAR',
+        'SANTA MARTA': 'MAGDALENA',
+        'VILLAVICENCIO': 'META',
+        'MANIZALES': 'CALDAS',
+        'PEREIRA': 'RISARALDA',
+        'IBAGUÉ': 'TOLIMA',
+        'BUCARAMANGA': 'SANTANDER',
+        'CÚCUTA': 'NORTE DE SANTANDER',
+        'POPAYÁN': 'CAUCA',
+        'NEIVA': 'HUILA',
+        'PASTO': 'NARIÑO',
+        'TUNJA': 'BOYACÁ',
+        'ARMENIA': 'QUINDÍO',
+        'SINCELEJO': 'SUCRE',
+        'MONTERÍA': 'CÓRDOBA',
+        'VALLEDUPAR': 'CESAR',
+        'RIOHACHA': 'LA GUAJIRA',
+        'QUIBDÓ': 'CHOCÓ',
+        'FLORENCIA': 'CAQUETÁ',
+        'YOPAL': 'CASANARE',
+        'PUERTO CARREÑO': 'VICHADA',
+        'MOCOA': 'PUTUMAYO',
+        'SAN JOSÉ DEL GUAVIARE': 'GUAVIARE',
+        'MITÚ': 'VAUPÉS',
+        'INÍRIDA': 'GUAINÍA',
+    };
+
+
+    // Puedes seguir añadiendo más ciudades y departamentos según tus necesidades.
+
+
+    // Agregar el evento 'input' al campo de ciudad para el autocompletado
+    ciudadesInput.addEventListener('input', () => {
+        const ciudadIngresada = ciudadesInput.value;
+
+        // Verificar si la ciudad ingresada está en el mapeo
+        if (ciudadIngresada in ciudadesDepartamentos) {
+            const departamentoCorrespondiente = ciudadesDepartamentos[ciudadIngresada];
+            departamentoSelect.value = departamentoCorrespondiente;
+        } else {
+            departamentoSelect.value = '';
+        }
+    });
+
+    // Función para validar entrada de caracteres no permitidos
+    function validarEntrada(e) {
+        const tecla = e.key;
+        // Lista de caracteres no permitidos
+        const caracteresNoPermitidos = ["-", "*", ".", "/", ":", "_", ","];
+        if (caracteresNoPermitidos.includes(tecla)) {
+            e.preventDefault(); // Prevenir la entrada del carácter
+        }
+    }
+
+    // Agregar eventos de teclado a los campos de número y restante
+    subdocument.querySelector('#numero').addEventListener('keydown', validarEntrada);
+    subdocument.querySelector('#restante').addEventListener('keydown', validarEntrada);
+
     // Definir la función para mostrar la dirección
     function mostrarDireccion() {
         const calle = subdocument.querySelector('#calle').value;
-        const numero = subdocument.querySelector('#numero').value;
+        const numeroInput = subdocument.querySelector('#numero');
         const restante = subdocument.querySelector('#restante').value;
-        const departamento = subdocument.querySelector('#departamento').value;
-
+        const ciudadesInput = subdocument.querySelector('#ciudades').value;
+        const departamento = subdocument.querySelector('#departamentoSelect').value;
 
         // Verificar si algún campo está vacío
-        if (calle === '' || numero === '' || restante === '' || departamento === '') {
-
+        if (calle === '' || numeroInput.value === '' || ciudadesInput === '' || departamento === '') {
             // Resaltar los campos vacíos en rojo
             if (calle === '') {
                 subdocument.querySelector('#calle').classList.add('error');
             } else {
                 subdocument.querySelector('#calle').classList.remove('error');
             }
-            if (numero === '') {
+            if (numeroInput.value === '') {
                 subdocument.querySelector('#numero').classList.add('error');
             } else {
                 subdocument.querySelector('#numero').classList.remove('error');
             }
-            if (restante === '') {
-                subdocument.querySelector('#restante').classList.add('error');
+            if (ciudadesInput === '') {
+                subdocument.querySelector('#ciudades').classList.add('error');
             } else {
-                subdocument.querySelector('#restante').classList.remove('error');
+                subdocument.querySelector('#ciudades').classList.remove('error');
             }
             if (departamento === '') {
-                subdocument.querySelector('#departamento').classList.add('error');
+                subdocument.querySelector('#departamentoSelect').classList.add('error');
             } else {
-                subdocument.querySelector('#departamento').classList.remove('error');
+                subdocument.querySelector('#departamentoSelect').classList.remove('error');
             }
             return;
         }
 
-
         // Si todos los campos están completos, muestra la dirección
-        const direccionCompleta = `${calle} - ${numero} - ${restante} - ${departamento}`;
+        const direccionCompleta = `${calle} ${numeroInput.value} ${restante} ${ciudadesInput} ${departamento}`;
 
         // Mostrar la dirección en un elemento div
         const direccionMostrada = subdocument.querySelector('#direccionMostrada');
@@ -58,29 +119,30 @@ export default () => {
         direccionMostrada.style.color = '#028484'; // Cambia 'blue' al color que desees
     }
 
+    // Agregar un controlador de eventos para permitir solo números en el campo "numero"
+    const numeroInput = subdocument.querySelector('#numero');
+    numeroInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^0-9\s]/g, ''); // Reemplaza caracteres no numéricos ni espacios con una cadena vacía
+    });
+
+
     // Agregar un evento click al botón
-    button2.addEventListener("click", mostrarDireccion);
+    button2.addEventListener('click', mostrarDireccion);
 
 
     resetButton.addEventListener("click", function () {
-        // Reiniciar el formulario
         const form = subdocument.querySelector('form');
         form.reset();
 
-        // Borrar la dirección mostrada
         subdocument.querySelector('#calle').classList.remove('error');
-
         subdocument.querySelector('#numero').classList.remove('error');
-
         subdocument.querySelector('#restante').classList.remove('error');
-
-        subdocument.querySelector('#departamento').classList.remove('error');
+        subdocument.querySelector('#departamentoSelect').classList.remove('error');
+        subdocument.querySelector('#ciudades').classList.remove('error');
 
         const direccionMostrada = subdocument.querySelector('#direccionMostrada');
         direccionMostrada.textContent = '';
     });
-
-
 
     // Función para copiar la dirección al portapapeles
     subdocument.querySelector('#copiarDireccion').addEventListener('click', function () {
@@ -97,7 +159,5 @@ export default () => {
         document.body.removeChild(textarea);
     });
 
-    // Devolver el subdocument para su posterior uso
     return subdocument;
-
-}
+};

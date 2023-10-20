@@ -135,6 +135,7 @@ import ch9_10 from '@imagenes/checklist/ch9_10.png';
 import ch9_11 from '@imagenes/checklist/ch9_11.png';
 import ch9_12 from '@imagenes/checklist/ch9_12.png';
 import ch9_13 from '@imagenes/checklist/ch9_13.png';
+import ch10_01 from '@imagenes/checklist/ch10_01.png';
 
 
 const imgChecklist = {
@@ -268,6 +269,7 @@ const imgChecklist = {
     ch9_11,
     ch9_12,
     ch9_13,
+    ch10_01,
 
 }
 

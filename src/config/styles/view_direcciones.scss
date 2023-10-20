@@ -34,7 +34,21 @@
             .error {
                 border: 1px solid red;
             }
+
+            #calle {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+
+                .hola {
+                    border: 3px solid red;
+                }
+
+            }
+
         }
+
 
         .container:hover {
             transform: scale(1.05);
@@ -110,7 +124,5 @@
         #resetButton:hover {
             background-color: #c82333;
         }
-
-
     }
 }
