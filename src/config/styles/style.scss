@@ -9,7 +9,7 @@
     justify-content: center;
     overflow: hidden;
     width: 100%;
-    height: calc(100% - 84px); // (100% - ALTO DEL NAVBAR)
+    height: calc(100vh - 84px); // (100% - ALTO DEL NAVBAR)
     text-align: center;
 
     &__title {

@@ -60,24 +60,10 @@ export default () => {
         }
     });
 
-    // Función para validar entrada de caracteres no permitidos
-    function validarEntrada(e) {
-        const tecla = e.key;
-        // Lista de caracteres no permitidos
-        const caracteresNoPermitidos = ["-", "*", ".", "/", ":", "_", ","];
-        if (caracteresNoPermitidos.includes(tecla)) {
-            e.preventDefault(); // Prevenir la entrada del carácter
-        }
-    }
-
-    // Agregar eventos de teclado a los campos de número y restante
-    subdocument.querySelector('#numero').addEventListener('keydown', validarEntrada);
-    subdocument.querySelector('#restante').addEventListener('keydown', validarEntrada);
-
     // Definir la función para mostrar la dirección
     function mostrarDireccion() {
         const calle = subdocument.querySelector('#calle').value;
-        const numeroInput = subdocument.querySelector('#numero');
+        const numeroInput = subdocument.querySelector('#numero').value;
         const restante = subdocument.querySelector('#restante').value;
         const ciudadesInput = subdocument.querySelector('#ciudades').value;
         const departamento = subdocument.querySelector('#departamentoSelect').value;
@@ -108,24 +94,42 @@ export default () => {
             return;
         }
 
-        // Si todos los campos están completos, muestra la dirección
-        const direccionCompleta = `${calle} ${numeroInput.value} ${restante} ${ciudadesInput} ${departamento}`;
+
+        // Definir una expresión regular para buscar y reemplazar los caracteres no deseados
+        const caracteresNoDeseados = /[.\-,:_/*"#$%&]/g;
+
+        // Eliminar los caracteres no deseados de numero y restante
+        const numeroLimpio = numeroInput.replace(caracteresNoDeseados, '');
+        const restanteLimpio = restante.replace(caracteresNoDeseados, '');
+
+        // Construir la dirección completa
+        const direccionCompleta = `${calle} ${reemplazarAbreviaciones(numeroLimpio)} ${reemplazarAbreviaciones(restanteLimpio)} ${reemplazarAbreviaciones(ciudadesInput)} ${reemplazarAbreviaciones(departamento)}`;
+
+        function reemplazarAbreviaciones(texto) {
+            texto = texto.replace(/\bMZ\b/gi, 'MANZANA');
+            texto = texto.replace(/\bMZA\b/gi, 'MANZANA');
+            texto = texto.replace(/\bVIS\b/gi, 'BIS');
+            texto = texto.replace(/\bNTO\b/gi, 'NORTE');
+            texto = texto.replace(/\bNT\b/gi, 'NORTE');
+            texto = texto.replace(/\bNTR\b/gi, 'NORTE');
+            texto = texto.replace(/\bCNJO\b/gi, 'CONJUNTO');
+            texto = texto.replace(/\bCNJ\b/gi, 'CONJUNTO');
+            return texto;
+        }
+
+
+        // Convertir la dirección completa a mayúsculas
+        const direccionEnMayusculas = direccionCompleta.toUpperCase();
 
         // Mostrar la dirección en un elemento div
-        const direccionMostrada = subdocument.querySelector('#direccionMostrada');
-        direccionMostrada.textContent = `Dirección: ${direccionCompleta}`;
+        const direccionMostrada = document.querySelector('#direccionMostrada');
+        direccionMostrada.textContent = `Dirección: ${direccionEnMayusculas}`;
 
         // Cambiar el color del texto
         direccionMostrada.style.color = '#028484'; // Cambia 'blue' al color que desees
+
+
     }
-
-    // Agregar un controlador de eventos para permitir solo números en el campo "numero"
-    const numeroInput = subdocument.querySelector('#numero');
-    numeroInput.addEventListener('input', function () {
-        this.value = this.value.replace(/[^0-9\s]/g, ''); // Reemplaza caracteres no numéricos ni espacios con una cadena vacía
-    });
-
-
     // Agregar un evento click al botón
     button2.addEventListener('click', mostrarDireccion);
 
