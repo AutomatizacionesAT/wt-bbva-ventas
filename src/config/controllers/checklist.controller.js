@@ -13,6 +13,14 @@ import Checklist_b from '@views/checklist/CREDITO/checklist_b.html'
 import Checklist_c from '@views/checklist/CREDITO/checklist_c.html'
 import Checklist_d from '@views/checklist/CREDITO/checklist_d.html'
 import Checklist_e from '@views/checklist/CREDITO/checklist_e.html'
+import Checklist_f from '@views/checklist/TARJETACREDITO/checklist_f.html'
+import Checklist_g from '@views/checklist/TARJETACREDITO/checklist_g.html'
+import Checklist_h from '@views/checklist/REDIFERIDOS/checklist_h.html'
+import Checklist_i from '@views/checklist/REDIFERIDOS/checklist_i.html'
+import Checklist_j from '@views/checklist/REDIFERIDOS/checklist_j.html'
+import Checklist_k from '@views/checklist/REDIFERIDOS/checklist_k.html'
+import Checklist_l from '@views/checklist/REDIFERIDOS/checklist_l.html'
+import Checklist_m from '@views/checklist/CARTERA/checklist_m.html'
 
 import imgChecklist from '@javascript/img.js'
 
@@ -39,8 +47,33 @@ export default () => {
       case '#/checklist_e': {
         return Checklist_e
       }
+      case '#/checklist_f': {
+        return Checklist_f
+      }
+      case '#/checklist_g': {
+        return Checklist_g
+      }
+      case '#/checklist_h': {
+        return Checklist_h
+      }
+      case '#/checklist_i': {
+        return Checklist_i
+      }
+      case '#/checklist_j': {
+        return Checklist_j
+      }
+      case '#/checklist_k': {
+        return Checklist_k
+      }
+      case '#/checklist_l': {
+        return Checklist_l
+      }
+      case '#/checklist_m': {
+        return Checklist_m
+      }
     }
   }
+
 
   subdocument.innerHTML += Hook + checkListActive(hash)
 

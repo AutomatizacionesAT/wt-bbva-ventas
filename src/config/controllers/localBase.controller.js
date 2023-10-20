@@ -13,7 +13,7 @@ export default () => {
     //     console.log(content)
     //     const [headerRow, ...dataRows] = content;
     //     const columnTitles = headerRow.map((title) => title.trim());
-    
+
     //     const arrObjetos = dataRows.map((row) => {
     //         const objeto = {};
     //         row.forEach((value, index) => {
