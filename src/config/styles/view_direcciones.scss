@@ -17,11 +17,9 @@
     }
 
     .main-container {
-        width: 100vw;
-        height: 95vh;
+        width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
 
         &::-webkit-scrollbar {
             width: 10px;
@@ -38,7 +36,7 @@
 
         .container {
             width: 560px;
-            height: auto;
+            height: 660px;
             display: flex;
             flex-direction: column;
             justify-content: center;

@@ -3,6 +3,7 @@ import '@styles/view_direcciones.scss';
 
 export default () => {
     const subdocument = document.createElement('div');
+    subdocument.className = 'hook'
     subdocument.innerHTML = nt_Principal;
 
     const button2 = subdocument.querySelector('#button2');
