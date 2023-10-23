@@ -10,7 +10,7 @@
     font-size: 1.6rem;
     font-weight: 400;
     width: 80%;
-    max-width: 1080px;
+    max-width: 1300px;
     height: 500px;
     margin: 0 auto;
     // background-color: $w-color;
@@ -19,6 +19,7 @@
     border: 3px groove $p-color;
     border-radius: 16px;
     transition: 0.5s ease;
+
 
     &.active {
       width: 95%;

@@ -5,10 +5,12 @@
     width: 50%;
     margin: auto;
 }
+
 .button {
     background: yellow;
     margin: 4px;
     font-size: 2rem;
+
     &.active {
         background: red;
     }

@@ -1,7 +1,7 @@
-<section class="main-container">
-    <div class="container">
-        <h1>Ingreso de Dirección</h1>
-        <form>
+<div class="container">
+    <h1 class="titleD">Ingreso de Dirección</h1>
+    <form>
+        <div class="inputs">
             <label for="calle">Calle:</label>
             <select id="calle">
                 <option value="">Selecciona una opción</option>
@@ -101,15 +101,15 @@
                 <option value="VAUPÉS">
                 <option value="VICHADA">
             </datalist>
+        </div>
 
+        <div id="botones" class="botonesD">
+            <button class="buttons" type="button" id="button2">Mostrar Dirección</button>
+            <button class="buttons" type="button" id="copiarDireccion">Copiar Dirección</button>
+            <button class="buttons resetButtonD" type="reset" id="resetButton">Reiniciar</button>
+        </div>
 
-            <div id="botones">
-                <button type="button" id="button2">Mostrar Dirección</button>
-                <button type="button" id="copiarDireccion">Copiar Dirección</button>
-            </div>
-            <button type="reset" id="resetButton">Reiniciar</button>
-        </form>
+        <div id="direccionMostrada" class="direccionMostradaD"></div>
+    </form>
 
-        <div id="direccionMostrada"></div>
-    </div>
-</section>
+</div>

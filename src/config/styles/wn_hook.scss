@@ -22,9 +22,11 @@
         gap: 4px;
         margin: 4px 8px;
         opacity: 0.3;
+
         &:hover {
-            opacity: 1; 
+            opacity: 1;
         }
+
         &--btn {
             display: flex;
             justify-content: center;
@@ -33,12 +35,14 @@
             background: $s-color;
             border-radius: 50%;
             color: $b-color;
+
             &:hover {
                 cursor: pointer;
                 transform: scale(1.1);
             }
         }
     }
+
     &.active {
         display: flex;
         justify-content: center;
