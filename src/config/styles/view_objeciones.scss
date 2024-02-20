@@ -1,0 +1,114 @@
+@use 'variables' as *;
+
+.view-container-manual {
+  width: 100%;
+  height: 100%;
+  font-size: 1.4rem;
+  overflow-y: auto;
+  & .title {
+    font-size: 6rem;
+    margin: 2.4rem;
+  }
+  details {
+    width: 90%;
+    border: 1px solid #fff;
+    transition: .7s ease all;
+    -webkit-transition: .7s ease all;
+    -moz-transition: .7s ease all;
+    -ms-transition: .7s ease all;
+    -o-transition: .7s ease all;
+    &[open]{
+      border: 1px solid $p-color;
+      background: #fff;
+      & , summary {
+        color: $p-color;
+      }
+    }
+    & summary {
+      color: #fff;
+      font-size: 4rem;
+      margin: 8px;
+    }
+  }
+
+  & .boxObjeciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  & .detailObjecion {
+    display: flex;
+    background: $p-color;
+
+    & .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+
+  .card {
+    width: 400px;
+    height: 300px;
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.999s;
+  }
+
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .card-front {
+    background-color: $p-color;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border: 10px solid $p-color;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 2rem;
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background-color: $s-color;
+    color: #fff;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    border: 10px solid $s-color;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 1.6rem;
+    transform: rotateY(180deg);
+    & h3 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+  }
+
+}

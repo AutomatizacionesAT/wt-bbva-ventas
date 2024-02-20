@@ -58,6 +58,9 @@ const router = async (route) => {
         case "#/direcciones": {
             return goRoute(views.direcciones());
         }
+        case "#/objeciones": {
+            return goRoute(views.Objeciones());
+        }
         default: {
             return root.appendChild(views.notFound());
         }

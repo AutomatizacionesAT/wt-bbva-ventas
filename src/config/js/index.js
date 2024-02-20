@@ -6,7 +6,7 @@ import '@javascript/librerias/fontAwesome/css/regular.css'
 import 'animate.css';
 import '@styles/style.scss'
 import '@styles/_navbar.scss'
-import readXlsxFile from 'read-excel-file'
+import Swal from 'sweetalert2';
 
 /** ESTANDARS */
 import { router } from '@router/index.routes.js' //*
@@ -20,21 +20,21 @@ window.addEventListener('hashchange', () => {
 // export let iDDB = new Localbase('db_telefonica')
 
 //** LEER ARCHIVOS EXCEL */
-export const leerExcel = async (archivoExcel) => {
-    const content = await readXlsxFile(archivoExcel.files[0])
+// export const leerExcel = async (archivoExcel) => {
+//     const content = await readXlsxFile(archivoExcel.files[0])
 
-    const [headerRow, ...dataRows] = content;
-    const columnTitles = headerRow.map((title) => title.trim());
+//     const [headerRow, ...dataRows] = content;
+//     const columnTitles = headerRow.map((title) => title.trim());
 
-    const arrObjetos = dataRows.map((row) => {
-        const objeto = {};
-        row.forEach((value, index) => {
-            const title = columnTitles[index];
-            objeto[title] = value;
-        });
-        return objeto;
-    });
-}
+//     const arrObjetos = dataRows.map((row) => {
+//         const objeto = {};
+//         row.forEach((value, index) => {
+//             const title = columnTitles[index];
+//             objeto[title] = value;
+//         });
+//         return objeto;
+//     });
+// }
 
 // video para base de datos local
 // https://www.youtube.com/watch?v=KJnupY2HPCg&t=670s&ab_channel=MakeAppswithDanny
@@ -57,3 +57,52 @@ navItems.forEach((linkItem) => {
 /** END NAVBAR */
 
 
+const sessionRecAPI = () => {
+    const sendForm = document.getElementById('sendForm')
+    if (sessionStorage.length == 0 || sessionStorage.session == 'false') {
+        sendForm.parentNode.classList.remove('hide')
+    }
+    sendForm.addEventListener('submit', (e)=>{
+        e.preventDefault()
+        
+        const data = {
+            usuario: e.target.elements[0].value,
+            campana: e.target.elements[1].value,
+            modulo: e.target.elements[2].value,
+            observaciones: e.target.elements[3].value
+        }
+        e.target.parentNode.remove()
+        Swal.fire({
+            icon: "info",
+            title:"Enviando",
+            didOpen: ()=>{
+                Swal.showLoading()
+            },
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });
+        fetch("http://172.16.1.80:5000/api/main/insUpdTransaccion",{
+            method: "POST",
+            headers: { "Content-Type" : "application/json"},
+            body: JSON.stringify(data)
+        }).then(response=>response.json())
+        .then((result)=>{
+            sessionStorage.setItem("session", true);
+            Swal.fire({
+                icon:"success",
+                title:"Datos Enviados correctamente.",
+                allowOutsideClick: true
+            });
+        }).catch((error)=>{
+            sessionStorage.setItem("session", false);
+            Swal.fire({
+                icon:"error",
+                title:"Ocurrió un error durante el consumo del API",
+                text: error,
+                allowOutsideClick: true
+            });
+        });
+    })
+}
+
+// sessionRecAPI()

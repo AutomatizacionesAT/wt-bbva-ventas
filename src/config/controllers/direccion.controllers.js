@@ -134,7 +134,6 @@ export default () => {
     // Agregar un evento click al botón
     button2.addEventListener('click', mostrarDireccion);
 
-
     resetButton.addEventListener("click", function () {
         const form = subdocument.querySelector('form');
         form.reset();
