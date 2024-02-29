@@ -1,21 +1,21 @@
 /** ESTILOS */
-import '@javascript/librerias/fontAwesome/css/fontawesome.css'
-import '@javascript/librerias/fontAwesome/css/brands.css'
-import '@javascript/librerias/fontAwesome/css/solid.css'
-import '@javascript/librerias/fontAwesome/css/regular.css'
-import 'animate.css';
-import '@styles/style.scss'
-import '@styles/_navbar.scss'
-import Swal from 'sweetalert2';
+import "@javascript/librerias/fontAwesome/css/fontawesome.css";
+import "@javascript/librerias/fontAwesome/css/brands.css";
+import "@javascript/librerias/fontAwesome/css/solid.css";
+import "@javascript/librerias/fontAwesome/css/regular.css";
+import "animate.css";
+import "@styles/style.scss";
+import "@styles/_navbar.scss";
+import Swal from "sweetalert2";
 
 /** ESTANDARS */
-import { router } from '@router/index.routes.js' //*
-import { navListPop } from '@javascript/funcionales/alertas.js'
+import { router } from "@router/index.routes.js"; //*
+import { navListPop } from "@javascript/funcionales/alertas.js";
 
-router(window.location.hash) //*
-window.addEventListener('hashchange', () => {
-    router(window.location.hash)
-})
+router(window.location.hash); //*
+window.addEventListener("hashchange", () => {
+  router(window.location.hash);
+});
 
 // export let iDDB = new Localbase('db_telefonica')
 
@@ -44,65 +44,69 @@ window.addEventListener('hashchange', () => {
 //** END LEER ARCHIVOS EXCEL */
 
 /** NAVBAR */
-const navItems = document.querySelectorAll('.route')
+const navItems = document.querySelectorAll(".route");
 navItems.forEach((linkItem) => {
-    linkItem.addEventListener("click", () => {
-        if (linkItem.name.includes('pop')) {
-            const lista = linkItem.name.split('_')[1]
-            console.log(lista)
-            navListPop(lista)
-        }
-    })
-})
+  linkItem.addEventListener("click", () => {
+    if (linkItem.name.includes("pop")) {
+      const lista = linkItem.name.split("_")[1];
+      console.log(lista);
+      navListPop(lista);
+    }
+  });
+});
 /** END NAVBAR */
 
-
 const sessionRecAPI = () => {
-    const sendForm = document.getElementById('sendForm')
-    if (sessionStorage.length == 0 || sessionStorage.session == 'false') {
-        sendForm.parentNode.classList.remove('hide')
-    }
-    sendForm.addEventListener('submit', (e)=>{
-        e.preventDefault()
-        
-        const data = {
-            usuario: e.target.elements[0].value,
-            campana: e.target.elements[1].value,
-            modulo: e.target.elements[2].value,
-            observaciones: e.target.elements[3].value
-        }
-        e.target.parentNode.remove()
-        Swal.fire({
-            icon: "info",
-            title:"Enviando",
-            didOpen: ()=>{
-                Swal.showLoading()
-            },
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-        });
-        fetch("http://172.16.1.80:5000/api/main/insUpdTransaccion",{
-            method: "POST",
-            headers: { "Content-Type" : "application/json"},
-            body: JSON.stringify(data)
-        }).then(response=>response.json())
-        .then((result)=>{
-            sessionStorage.setItem("session", true);
-            Swal.fire({
-                icon:"success",
-                title:"Datos Enviados correctamente.",
-                allowOutsideClick: true
-            });
-        }).catch((error)=>{
-            sessionStorage.setItem("session", false);
-            Swal.fire({
-                icon:"error",
-                title:"Ocurrió un error durante el consumo del API",
-                text: error,
-                allowOutsideClick: true
-            });
-        });
-    })
-}
+  const sendForm = document.getElementById("sendForm");
+  if (sessionStorage.length == 0 || sessionStorage.session == "false") {
+    sendForm.parentNode.classList.remove("hide");
+  }
+  sendForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-// sessionRecAPI()
+    const data = {
+      usuario: e.target.elements[0].value,
+      campana: e.target.elements[1].value,
+      modulo: e.target.elements[2].value,
+      observaciones: e.target.elements[3].value,
+    };
+    e.target.parentNode.remove();
+    Swal.fire({
+      icon: "info",
+      title: "Enviando",
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+    });
+    fetch(
+      "https://colbogweb20:9086/Webservices_Simulador_pre/api/main/insUpdTransaccion",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        sessionStorage.setItem("session", true);
+        Swal.fire({
+          icon: "success",
+          title: "Datos Enviados correctamente.",
+          allowOutsideClick: true,
+        });
+      })
+      .catch((error) => {
+        sessionStorage.setItem("session", false);
+        Swal.fire({
+          icon: "error",
+          title: "Ocurrió un error durante el consumo del API",
+          text: error,
+          allowOutsideClick: true,
+        });
+      });
+  });
+};
+
+sessionRecAPI();
