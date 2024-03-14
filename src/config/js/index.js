@@ -81,7 +81,7 @@ const sessionRecAPI = () => {
       allowEscapeKey: false,
     });
     fetch(
-      "https://colbogweb20:9086/Webservices_Simulador_pre/api/main/insUpdTransaccion",
+      "http://colbogweb20:8081/Webservices_Simulador/api/main/insUpdTransaccion",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
