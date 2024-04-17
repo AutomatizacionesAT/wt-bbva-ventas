@@ -58,11 +58,18 @@ navItems.forEach((linkItem) => {
 
 const sessionRecAPI = () => {
   const sendForm = document.getElementById("sendForm");
-  if (sessionStorage.length == 0 || sessionStorage.session == "false") {
-    sendForm.parentNode.classList.remove("hide");
+  if (sessionStorage?.session == "true") {
+    sendForm.parentNode.parentNode.classList.add("hide");
+  } else {
+    sendForm.parentNode.parentNode.classList.remove("hide");
   }
   sendForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    const idCedula = document.getElementById("cedula");
+    if (idCedula.value.length < 5) {
+      alert("Por favor, ingresa al menos 5 caracteres.");
+      return;
+    }
 
     const data = {
       usuario: e.target.elements[0].value,
@@ -70,10 +77,12 @@ const sessionRecAPI = () => {
       modulo: e.target.elements[2].value,
       observaciones: e.target.elements[3].value,
     };
-    e.target.parentNode.remove();
+
+    e.target.parentNode.parentNode.remove();
     Swal.fire({
       icon: "info",
       title: "Enviando",
+      heightAuto: false,
       didOpen: () => {
         Swal.showLoading();
       },
@@ -92,6 +101,7 @@ const sessionRecAPI = () => {
       .then((result) => {
         sessionStorage.setItem("session", true);
         Swal.fire({
+          heightAuto: false,
           icon: "success",
           title: "Datos Enviados correctamente.",
           allowOutsideClick: true,
@@ -102,6 +112,7 @@ const sessionRecAPI = () => {
         Swal.fire({
           icon: "error",
           title: "Ocurrió un error durante el consumo del API",
+          heightAuto: false,
           text: error,
           allowOutsideClick: true,
         });
