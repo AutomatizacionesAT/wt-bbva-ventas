@@ -40,11 +40,15 @@
 
 		span:nth-child(2) {
 			font-size: 7vw;
-			color: $p-color;
+			color: light-dark($w-color, $w-color);
 			animation-delay: 1s;
 			/* Retraso para iniciar la animación */
 			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 			/* Agregar sombra para destacar el texto */
+			background-color: light-dark($p2-color, $p2-color);
+			padding: 0.5rem 2rem;
+			border-radius: 0.8rem;
+			letter-spacing: 10px;
 		}
 	}
 }
