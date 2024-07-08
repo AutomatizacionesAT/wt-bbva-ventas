@@ -1,0 +1,50 @@
+@use 'variables' as *;
+
+.app {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.welcome {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		height: 100vh;
+
+		span {
+			font-weight: bold;
+			display: inline-block;
+			opacity: 0;
+			/* Inicialmente el texto no es visible */
+			animation: fadeInLetter 1s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			/* Aplica la animación fadeInLetter */
+		}
+
+		@keyframes fadeInLetter {
+			to {
+				opacity: 1;
+			}
+		}
+
+		span:nth-child(1) {
+			font-size: 5.7vw;
+			color: light-dark($b-color, $w-color);
+			animation-delay: 0.5s;
+			/* Retraso para iniciar la animación */
+		}
+
+		span:nth-child(2) {
+			font-size: 7vw;
+			color: $p-color;
+			animation-delay: 1s;
+			/* Retraso para iniciar la animación */
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+			/* Agregar sombra para destacar el texto */
+		}
+	}
+}
