@@ -13,6 +13,7 @@ import IconCatalog from '../../icons/IconCatalog'
 import IconTimeLine from '../../icons/IconTimeLine'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import IconCreditCard from '../../icons/IconCreditCard'
 
 export default function LinkRoute({ link, pos, scroll }) {
 	const [top, setTop] = useState(136)
@@ -31,6 +32,7 @@ export default function LinkRoute({ link, pos, scroll }) {
 		info: <IconInfo />,
 		catalogue: <IconCatalog />,
 		timeLine: <IconTimeLine />,
+		creditCard: <IconCreditCard />,
 	})
 	const handleMaouseEnter = () => {
 		if (scroll > 0) {

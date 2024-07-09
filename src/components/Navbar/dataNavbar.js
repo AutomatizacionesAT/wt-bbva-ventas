@@ -6,8 +6,8 @@ const projectNavbar = [
 	},
 	{
 		title: 'Tarjetas De Crédito',
-		route: '/checklist',
-		icon: 'note',
+		route: '/tarjetasCredito',
+		icon: 'creditCard',
 	},
 	{
 		title: 'Manual De Objeciones',

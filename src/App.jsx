@@ -7,6 +7,7 @@ import Bienvenida from './components/Bienvenida/Bienvenida'
 import Corrector from './components/Corrector/Corrector'
 import GlobalContext, { GlobalProvider } from './context/GlobalContext'
 import { useContext } from 'react'
+import TarjetasCredito from './components/TarjetasCredito/TarjetasCredito'
 
 const App = () => {
 	const { scheme } = useContext(GlobalContext)
@@ -23,6 +24,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Bienvenida />} />
 				<Route path="/corrector" element={<Corrector />} />
+				<Route path="/tarjetasCredito" element={<TarjetasCredito />} />
 			</Routes>
 		</div>
 	)
