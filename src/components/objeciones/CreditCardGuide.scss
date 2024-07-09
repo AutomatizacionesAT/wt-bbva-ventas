@@ -1,0 +1,54 @@
+.guide-container {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.objections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.objection-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.objection-card.active {
+    border-color: #007bff;
+    background-color: #e6f7ff;
+}
+
+.objection-card h2 {
+    margin: 0;
+}
+
+.manejos-container {
+    margin-top: 10px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.buttons-container button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.buttons-container button.active {
+    background-color: #0056b3;
+}
+
+.buttons-container button:hover {
+    background-color: #0056b3;
+}

@@ -11,7 +11,7 @@ const projectNavbar = [
 	},
 	{
 		title: 'Manual De Objeciones',
-		route: '/tipificador',
+		route: '/objeciones',
 		icon: 'tipify',
 	},
 ]

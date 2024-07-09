@@ -1,0 +1,208 @@
+
+import React, { useState } from 'react';
+import './CreditCardGuide.scss';
+
+const data = {
+    tarjetaCredito: {
+        product: "Tarjeta de crédito",
+        recommendation: "Estos guiones están diseñados para enfocarse en los beneficios específicos de la tarjeta de crédito del BBVA y para guiar la conversación hacia una consideración más profunda por parte del cliente. Ajusta el tono y los detalles según la situación y el estilo de venta que te funcione mejor.",
+        objections: [
+            {
+                title: "No necesito el producto",
+                manejos: [
+                    "Entiendo su desinterés Sr/Sra XXXX, sin embargo tenga en cuenta que este producto es un respaldo que el banco le quiere entregar y ya está totalmente aprobado, no necesitamos ningún documento, solo que me confirme la dirección donde desea recibir…",
+                    "Entiendo completamente. Muchos de nuestros clientes inicialmente sienten lo mismo. Sin embargo, déjeme mostrarle cómo nuestra tarjeta de crédito del BBVA puede realmente beneficiarlo/a. ¿Sabía usted que 'Entregar dos beneficios y una ventaja' acompaña de cierre?",
+                    "Entiendo Sr/Sra XXXX tenga que en cuenta que al ser cliente del BBVA, también tendrá acceso a nuestras herramientas digitales avanzadas que facilitan la administración de sus finanzas personales. Podría ser una gran ventaja adicional para usted. ¿No cree?",
+                    "Entiendo completamente. Cada persona tiene necesidades financieras diferentes. ¿Puedo preguntarle qué es lo que más valora en una tarjeta de crédito?",
+                    "Comprendo, Sr/Sra XXXX que piense eso, hay que tener en cuenta que el banco no solamente quiere entregarle una tarjeta sino ayudarle a ir desarrollando un historial crediticio bastante favorable para usted y su familia, podría saber ¿qué es lo que más hace usted con las tarjetas de crédito?"
+                ]
+            },
+            {
+                title: "No quiero deudas",
+                manejos: [
+                    "Entiendo completamente. Muchas personas tienen esa preocupación. Sin embargo, usar una tarjeta de crédito de manera responsable puede ayudarle a gestionar mejor su flujo de efectivo y construir un historial crediticio sólido, lo cual es crucial para futuras inversiones como préstamos para automóviles o hipotecas, ¿Comprende?",
+                    "Entiendo su preocupación. Pero recuerde que nuestra tarjeta de crédito del BBVA viene con protección contra fraudes robusta y seguro de compras, lo que significa que estará más seguro/a que con el efectivo o una tarjeta débito regular. ¿Sabe cuáles son los seguros que tenemos?",
+                    "Es comprensible querer evitar deudas. Sin embargo, con nuestra tarjeta de crédito del BBVA, puede ganar puntos de recompensa en cada compra, que pueden ser canjeados por viajes, compras y más. Es una manera inteligente de obtener beneficios adicionales sin incurrir en deudas si se paga a tiempo. ¿Ha tenido tarjetas con otros bancos?",
+                    "Entiendo su preocupación por las deudas. Con nuestra tarjeta de crédito del BBVA, puede establecer límites de gasto mensuales y recibir alertas instantáneas sobre sus transacciones. Esto le permite mantener un control estricto sobre sus finanzas personales, asegurando que solo gaste lo que puede pagar cómodamente. ¿Conoce la aplicación del banco?",
+                    "Comprendo su preocupación. Muchos de nuestros clientes valoran la educación financiera que ofrecemos junto con nuestra tarjeta de crédito del BBVA. Le proporcionaremos herramientas y recursos para ayudarle a administrar su crédito de manera efectiva, evitando problemas financieros a largo plazo. ¿Ha tenido tarjetas con otros bancos?"
+                ]
+            },
+            {
+                title: "Mala experiencia con el banco",
+                manejos: [
+                    "Lamentamos escuchar eso, al igual en BBVA nos esforzamos por proporcionar un servicio al cliente excepcional y transparente. Permítame mostrarle cómo podemos hacer que su experiencia sea diferente…",
+                    "Entiendo completamente. La confianza es fundamental cuando se trata de elegir un banco. En BBVA, nos enorgullece nuestra transparencia y dedicación al servicio al cliente. Estamos aquí para cambiar su percepción y asegurarnos de que se sienta valorado/a y apoyado/a en cada paso del camino. Dese la oportunidad de conocer nuevamente nuestros productos, ¿le parece?",
+                    "Lamento escuchar sobre su experiencia previa. En BBVA, nos tomamos en serio los comentarios de nuestros clientes y constantemente trabajamos para mejorar nuestros servicios. ¿Hay algo específico que le gustaría ver diferente con nosotros?",
+                    "Es comprensible querer evitar problemas pasados. Permítame asegurarle que en BBVA nos esforzamos por ofrecer soluciones que se adapten a sus necesidades individuales. ¿Qué aspecto específico de su experiencia pasada le gustaría que mejoremos?",
+                    "Lamento escuchar eso. En BBVA, estamos constantemente innovando para hacer que la banca sea más simple y accesible. Nuestra tarjeta de crédito del BBVA viene con una aplicación móvil intuitiva y herramientas que facilitan la gestión de sus finanzas personales desde cualquier lugar. ¿Le parece si iniciamos con una tarjeta de XXX valor?"
+                ]
+            },
+            {
+                title: "No me interesa",
+                manejos: [
+                    "Entiendo. Es importante tomar decisiones financieras que se alineen con sus necesidades actuales. Permítame mostrarle cómo nuestra tarjeta de crédito del BBVA podría realmente adaptarse a su estilo de vida y beneficiarlo/a de formas que quizás no haya considerado...",
+                    "Entiendo que pueda sentirse así. Permítame compartir rápidamente algunos beneficios clave de nuestra tarjeta de crédito del BBVA que han sido valorados por nuestros clientes actuales. 'Menciona dos beneficios y ventajas de la tarjeta'",
+                    "Entiendo su perspectiva. Sin embargo, hemos lanzado una oferta especial por tiempo limitado para nuevos clientes que podría ser de interés para usted. ¿Le gustaría saber más sobre cómo podría aprovechar esta oportunidad exclusiva?",
+                    "Entiendo que cada persona tiene necesidades financieras únicas. ¿Podría compartir conmigo qué es lo más importante para usted en una tarjeta de crédito?",
+                    "Entiendo que pueda no estar completamente seguro/a en este momento. Permítame ofrecerle más información sobre cómo nuestra tarjeta de crédito del BBVA puede ayudarlo/a a administrar sus finanzas de manera más efectiva y obtener beneficios adicionales en el proceso. ¿Le gustaría explorar más sobre esto?"
+                ]
+            }
+        ]
+    },
+    amparada: {
+        product: "Tarjeta Amparada",
+        recommendation: "Estas respuestas están diseñadas para abordar la objeción sobre compartir el cupo de crédito al destacar los mecanismos de control, seguridad y flexibilidad que ofrece la Tarjeta Amparada del BBVA. Adaptar el enfoque según las preocupaciones específicas del cliente puede ayudar a superar esta objeción.",
+        objections: [
+            {
+                title: "No la necesito - No me interesa",
+                manejos: [
+                    "Entiendo que pueda sentir que no necesita la Tarjeta Amparada en este momento. Sin embargo, tener una Tarjeta Amparada puede ser extremadamente útil en diversas situaciones. Por ejemplo, podría amparar a un familiar o amigo que necesita acceso a crédito de manera temporal o en una emergencia. ¿Ha pensado en cómo podría ayudar a sus seres queridos con este tipo de apoyo?",
+                    "Entiendo su punto de vista. Sin embargo, la Tarjeta Amparada puede proporcionar tranquilidad al saber que sus seres queridos tienen acceso a crédito en caso de una emergencia, sin necesidad de compartir su tarjeta principal. Es una forma segura de amparar a alguien sin comprometer sus propios recursos directamente",
+                    "Comprendo que no vea una necesidad inmediata. Sin embargo, la Tarjeta Amparada puede ser una excelente herramienta para enseñar responsabilidad financiera a un hijo adolescente o un familiar joven. Les permite aprender a manejar el crédito bajo su supervisión y con límites controlados.",
+                    "Entiendo que pueda no ver la necesidad en este momento. Sin embargo, la Tarjeta Amparada le ofrece la conveniencia de amparar a alguien sin tener que compartir su tarjeta principal. Puede controlar los límites de gasto y recibir notificaciones de uso, manteniendo siempre el control total."
+                ]
+            },
+            {
+                title: "No tengo a quién amparar",
+                manejos: [
+                    "Entiendo que no tenga a nadie a quien amparar en este momento. ¿Ha considerado utilizar la Tarjeta Amparada para otros fines, como asignarla a un empleado de confianza para gastos de negocios o emergencias?",
+                    "Entiendo que no tenga a nadie a quien amparar en este momento. Sin embargo, las circunstancias pueden cambiar y tener una Tarjeta Amparada lista puede ser útil en el futuro. Por ejemplo, podría necesitarla para un familiar, un amigo cercano, o incluso para su propio uso en casos específicos.",
+                    "Entiendo. Aunque no tenga a nadie en mente ahora, la Tarjeta Amparada le ofrece flexibilidad y preparación para cualquier eventualidad. Tenerla disponible significa que puede reaccionar rápidamente si surge la necesidad de ayudar a alguien cercano.",
+                    "Entiendo su postura. Sin embargo, considere situaciones específicas donde una Tarjeta Amparada podría ser útil: para un hijo que está estudiando en otra ciudad, un familiar que viaja frecuentemente, o incluso para dividir gastos familiares de manera más organizada."
+                ]
+            },
+            {
+                title: "No quiero compartir mi cupo",
+                manejos: [
+                    "Entiendo su preocupación. Con la Tarjeta Amparada del BBVA, usted mantiene el control total sobre el límite de gasto asignado a la tarjeta amparada. Puede establecer un límite específico que se ajuste a lo que usted se sienta cómodo/a compartiendo, sin comprometer su propio cupo.",
+                    "Entiendo su preocupación. Sin embargo, con la Tarjeta Amparada, usted puede monitorear todas las transacciones en tiempo real y recibir notificaciones instantáneas sobre cualquier uso. Esto le proporciona una capa adicional de seguridad y control sobre su cupo de crédito.",
+                    "Entiendo su preocupación por compartir el cupo. Con la Tarjeta Amparada, puede personalizar los límites de gasto de manera flexible. Por ejemplo, puede establecer límites bajos que no afecten significativamente su cupo total, manteniendo siempre el control.",
+                    "Comprendo que no quiera compartir su cupo. Sin embargo, con la Tarjeta Amparada del BBVA, usted tiene la capacidad de establecer y ajustar los límites de gasto en cualquier momento, asegurando que solo se utilice el crédito que usted está dispuesto/a a compartir."
+                ]
+            }
+        ]
+    },
+    consumo: {
+        "product": "Crédito de consumo o libre inversión",
+        "recommendation": "Estas respuestas están diseñadas para abordar la objeción destacando la preparación, flexibilidad y beneficios a largo plazo del crédito de consumo o libre inversión del BBVA. Adaptar el enfoque según las preocupaciones y el estilo de vida del cliente puede ayudar a superar esta objeción.",
+        "objections": [
+            {
+                "title": "No me interesa - No lo necesito en este momento",
+                "manejos": [
+                    "Entiendo que no le interese en este momento. ¿Puedo preguntarle si hay algún proyecto o plan futuro en el que esté pensando, como mejorar su hogar, financiar una educación o consolidar deudas?",
+                    "Entiendo que no le interese ahora. Sin embargo, nuestros créditos de consumo y libre inversión están diseñados para ofrecer flexibilidad y beneficios que pueden adaptarse a sus necesidades financieras, sea cual sea su plan. ¿Ha considerado cómo podría mejorar su calidad de vida con un crédito accesible y con tasas competitivas?",
+                    "Entiendo que no le interese en este momento. Sin embargo, muchos de nuestros clientes han encontrado que un crédito de consumo les ha permitido alcanzar metas importantes, como financiar estudios, iniciar un negocio o hacer renovaciones en su hogar. ¿Ha considerado cómo podría beneficiarle en algún aspecto de su vida?"
+                ]
+            },
+            {
+                "title": "No tengo en qué usar en el momento",
+                "manejos": [
+                    "Entiendo que no tenga un uso específico en mente ahora mismo. La belleza de un crédito de consumo es su flexibilidad; puede utilizarlo para una amplia variedad de propósitos cuando surja la necesidad, como mejoras en el hogar, viajes, educación o incluso consolidación de deudas.",
+                    "Comprendo que no tenga un uso inmediato para el crédito. Muchas veces, las mejores oportunidades o necesidades surgen de manera inesperada. Tener acceso a un crédito de consumo puede proporcionarle una ventaja competitiva cuando se presente una oportunidad o necesidad importante.",
+                    "Entiendo que no tenga un uso inmediato para el crédito. A veces, la mayor ventaja de tener un crédito de consumo es la tranquilidad de saber que tiene acceso a fondos cuando lo necesite. Esto puede aliviar el estrés en situaciones imprevistas y permitirle manejar sus finanzas con mayor confianza."
+                ]
+            },
+            {
+                "title": "La tasa está muy alta",
+                "manejos": [
+                    "Entiendo que la tasa pueda parecer alta. Sin embargo, con nuestro crédito de consumo, no solo obtiene fondos inmediatos, sino también beneficios adicionales como plazos flexibles de pago y opciones de refinanciamiento. Estas características pueden ayudar a aliviar la carga financiera a largo plazo.",
+                    "Es comprensible que considere la tasa alta. Sin embargo, le invito a comparar nuestras tasas con las de otras instituciones financieras. Verá que estamos comprometidos a ofrecer condiciones competitivas que se ajusten a sus necesidades.",
+                    "Entiendo su preocupación por la tasa. Sin embargo, con nuestro crédito de consumo, no solo obtiene los fondos que necesita, sino también acceso a servicios adicionales como seguros de vida opcionales, que pueden ofrecerle seguridad adicional en caso de eventos imprevistos."
+                ]
+            }
+        ]
+    },
+    cartera: {
+        "product": "Compra de cartera",
+        "recommendation": "Estos argumentos pueden adaptarse y ampliarse según las objeciones específicas que encuentres en el proceso de ventas. Es importante también escuchar activamente las preocupaciones del cliente y adaptar tu respuesta para abordar sus necesidades particulares.",
+        "objections": [
+            {
+                "title": "No tengo deudas en otra entidad",
+                "manejos": [
+                    "Entiendo que en este momento no tiene deudas con otras entidades, lo cual es una excelente situación financiera. Sin embargo, permítame destacar que nuestro servicio no se limita solo a la consolidación de deudas. También ofrecemos beneficios adicionales como una tarjeta amparada que puede entregar a un familiar o cercano que tal vez sí tenga deudas o inclusive, para que pueda disfrutar de todos los servicios que usted tiene (Mencionar características y beneficios de la tarjeta del cliente). Estas son opciones que pueden beneficiarlo aún más, incluso si no tiene deudas actualmente.",
+                    "Es fantástico que no tenga deuda con otras entidades en este momento. Aprovechemos esta oportunidad para explorar opciones de planificación financiera que puedan optimizar su situación actual. Podemos discutir estrategias para fortalecer su historial crediticio, maximizar sus beneficios financieros y asegurarnos de que esté preparado para futuras oportunidades financieras. ¿Le gustaría explorar cómo podemos ayudarlo a alcanzar sus metas financieras a largo plazo?",
+                    "Entiendo que actualmente no tiene deuda con otras entidades, lo cual es una buena posición financiera. Sin embargo, nuestra oferta de compra de cartera está diseñada para ayudar a quienes enfrentan el desafío de gestionar múltiples deudas. En caso de que en el futuro considere consolidar deudas o enfrentar cambios en su situación financiera, estaríamos aquí para asistirlo. Por el momento, me gustaría hablarle de un servicio totalmente gratuito que veo que no ha podido utilizar, ¿conoce qué es una tarjeta amparada?"
+                ]
+            },
+            {
+                "title": "No me interesa",
+                "manejos": [
+                    "Entiendo completamente tus motivos y respeto tu decisión. Si es posible, ¿podrías compartir un poco más sobre lo que te preocupa o no te interesa? Quizás haya algún malentendido que podamos aclarar juntos. Además, si no te interesa esta oferta específica, ¿te gustaría explorar otras soluciones que puedan ser más adecuadas para tus necesidades actuales?",
+                    "Entiendo que en este momento la oferta no te parezca interesante. Sin embargo, me gustaría destacar que nuestros servicios están diseñados para ofrecer beneficios significativos como [menciona tasa del interés, plazos, asistencias nacionales o internacionales, salas VIP, etc.]. ¿Podrías considerar cómo estos beneficios podrían contribuir a tus metas financieras o necesidades actuales? Estoy aquí para ayudarte a encontrar la mejor solución para ti.",
+                    "Aprecio tu franqueza y respeto tu decisión. Nuestro objetivo es asegurarnos de ofrecer soluciones que sean verdaderamente útiles para ti. Con esta compra de cartera lo que queremos hacer es que libere su cupo al 100% en la otra entidad y a cambio pagar con nosotros a una tasa mucho más económica. ¿Cuánto valor quisiera simular?"
+                ]
+            },
+            {
+                "title": "La tasa está alta",
+                "manejos": [
+                    "Entiendo tu preocupación por la tasa. En BBVA nos esforzamos por ofrecer tasas competitivas y ventajosas en la compra de cartera. De hecho, nuestras tasas suelen ser más bajas que las de otros bancos para asegurar que nuestros clientes obtengan el mejor beneficio financiero posible. ¿Te gustaría discutir más detalles sobre cómo nuestra tasa puede ser beneficiosa para ti en comparación con tus opciones actuales?",
+                    "Aunque entiendo que la tasa es un factor importante, también es importante considerar los beneficios adicionales que ofrecemos, como [Asistencias nacionales, internacionales, seguros en tus compras, entradas a salas VIP, descuentos y más]. Estos beneficios pueden contribuir significativamente a mejorar tu experiencia financiera en general, incluso si la tasa es un poco más alta en comparación con otras opciones.",
+                    "Aprecio tus comentarios sobre la tasa. En BBVA estamos comprometidos con la transparencia y la satisfacción del cliente. Me gustaría revisar tu situación específica para asegurarnos de que estamos ofreciendo la mejor solución posible para ti. Podemos explorar opciones como ajustes en plazos, montos o estructura de pagos que podrían optimizar aún más tu acuerdo. ¿Te gustaría discutir cómo podemos personalizar esta oferta para satisfacer mejor tus necesidades?"
+                ]
+            },
+            {
+                "title": "Ya voy a terminar de pagar - Me faltan poquitas cuotas",
+                "manejos": [
+                    "Entiendo que estás cerca de terminar de pagar en tu banco actual, lo cual es una excelente noticia. ¿Sabías que en BBVA ofrecemos beneficios adicionales al consolidar tus deudas antes de que termines de pagar en otro banco? Podríamos ayudarte a simplificar tu situación financiera y ofrecerte una transición suave hacia una sola deuda con nosotros. Además, podrías beneficiarte de nuestras tasas competitivas y servicios adicionales que podrían hacer tu experiencia aún mejor. ¿Te gustaría explorar cómo podríamos facilitar esta transición para ti?",
+                    "Es genial escuchar que estás cerca de liquidar tus deudas actuales. Considera esto como una oportunidad para planificar tu futuro financiero de manera más efectiva. Al consolidar tus deudas con BBVA, no solo simplificarías tu gestión financiera al tener una sola cuota mensual, sino que también podrías beneficiarte de nuestras condiciones favorables y opciones flexibles de pago. Estoy aquí para ayudarte a explorar cómo podemos optimizar tu situación financiera actual y prepararte mejor para futuras oportunidades.",
+                    "Entiendo que estás cerca de completar tus pagos en el otro banco. Sería útil revisar juntos tu situación financiera actual y ver cómo podríamos optimizar tus finanzas a medida que completes este proceso. Además de simplificar tu deuda con nosotros, podríamos discutir opciones como mejorar tu historial crediticio o explorar otros servicios financieros que podrían beneficiarte a largo plazo. ¿Te gustaría reservar un momento para discutir cómo podemos trabajar juntos para asegurarnos de que estás obteniendo el máximo beneficio de tu situación financiera actual?"
+                ]
+            }
+        ]
+    }
+};
+
+const CreditCardGuide = () => {
+    const [selectedProduct, setSelectedProduct] = useState('tarjetaCredito');
+    const [currentObjection, setCurrentObjection] = useState(null);
+    const [currentManejoIndex, setCurrentManejoIndex] = useState(0);
+
+    const handleObjectionClick = (index) => {
+        setCurrentObjection(index);
+        setCurrentManejoIndex(0);
+    };
+
+    const handleManejoChange = (index) => {
+        setCurrentManejoIndex(index);
+    };
+
+    const productData = data[selectedProduct];
+
+    return (
+        <div className="guide-container">
+            <div className="button-container">
+                <button onClick={() => setSelectedProduct('tarjetaCredito')}>Tarjeta de crédito</button>
+                <button onClick={() => setSelectedProduct('amparada')}>Amparada</button>
+                <button onClick={() => setSelectedProduct('consumo')}>Crédito de consumo o libre inversión</button>
+                <button onClick={() => setSelectedProduct('cartera')}>Compra De Cartea</button>
+            </div>
+            <h1>{productData.product}</h1>
+            <p>{productData.recommendation}</p>
+            <div className="objections-container">
+                {productData.objections.map((objection, index) => (
+                    <div key={index} className={`objection-card ${currentObjection === index ? 'active' : ''}`}>
+                        <h2 onClick={() => handleObjectionClick(index)}>{objection.title}</h2>
+                        {currentObjection === index && (
+                            <div className="manejos-container">
+                                <p>{objection.manejos[currentManejoIndex]}</p>
+                                <div className="buttons-container">
+                                    {objection.manejos.map((_, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => handleManejoChange(i)}
+                                            className={currentManejoIndex === i ? 'active' : ''}
+                                        >
+                                            Manejo {i + 1}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default CreditCardGuide;

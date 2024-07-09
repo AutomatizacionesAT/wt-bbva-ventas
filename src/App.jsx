@@ -5,6 +5,7 @@ import imgBackgroundD from './assets/images/index/back2.jpg'
 import Navbar from './components/Navbar/Navbar'
 import Bienvenida from './components/Bienvenida/Bienvenida'
 import Corrector from './components/Corrector/Corrector'
+import Objeciones from './components/objeciones/objeciones'
 import GlobalContext, { GlobalProvider } from './context/GlobalContext'
 import { useContext } from 'react'
 
@@ -23,6 +24,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Bienvenida />} />
 				<Route path="/corrector" element={<Corrector />} />
+				<Route path="/objeciones" element={<Objeciones />} />
 			</Routes>
 		</div>
 	)
