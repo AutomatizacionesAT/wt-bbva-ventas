@@ -8,15 +8,15 @@
 	height: 100vh;
 	width: 280px;
 	margin: auto;
-	background: light-dark($p2-color, $b-color);
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	background: light-dark($w-color, $b-color);
+	box-shadow: 0 4px 30px rgba(17, 0, 255, 0.4);
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(20, 0, 107, 0.3);
 	font-size: $paragraph;
 	z-index: 10;
-	border-top-right-radius: 3rem;
-	border-bottom-right-radius: 3rem;
+	border-top-right-radius: 2rem;
+	border-bottom-right-radius: 2rem;
 
 	&.false {
 		width: 50px;
@@ -41,7 +41,7 @@
 
 		&--name {
 			font-size: 1.8rem;
-			color: light-dark($w-color, $w-color);
+			color: light-dark($p-color, $w-color);
 			font-weight: 400;
 			text-align: center;
 			width: 75%;
@@ -56,8 +56,8 @@
 	}
 
 	&__links {
-		color: light-dark($b-color, $w-color);
-		background: light-dark($w-color, $b-color);
+		color: light-dark($w-color, $w-color);
+		background: light-dark($s-color, $b-color);
 		overflow: auto;
 		flex-grow: 1;
 		margin: 0 4px 12px 4px;
@@ -68,7 +68,7 @@
 
 		& svg {
 			& path {
-				fill: url('#gr-light');
+				fill: url('#gr-white');
 			}
 		}
 
@@ -221,10 +221,12 @@
 	&__versionbx {
 		line-height: 50px;
 		height: 50px;
-		width: 90%;
+		width: 100%;
+		border-bottom-right-radius: 2rem;
 		left: 5%;
-		margin: auto;
+		// margin: auto;
 		text-align: center;
+		background: $s-color;
 		border-top: 1px solid rgba(255, 255, 255, 0.3);
 		color: light-dark($w-color, $w-color);
 		font-size: 1.4rem;
@@ -260,6 +262,11 @@
 			background-color: transparent;
 			cursor: pointer;
 
+			// transition: all 0.5s ease-in-out;
+			// -webkit-transition: all 0.5s ease-in-out;
+			// -moz-transition: all 0.5s ease-in-out;
+			// -ms-transition: all 0.5s ease-in-out;
+			// -o-transition: all 0.5s ease-in-out;
 			&::placeholder {
 				color: transparent;
 			}
@@ -273,10 +280,10 @@
 		.input:not(:placeholder-shown) {
 			/* From https://css.glass */
 			background: $w-color;
-			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 4px 30px rgba(0, 15, 99, 0.1);
 			backdrop-filter: blur(5px);
 			-webkit-backdrop-filter: blur(5px);
-			border: 1px solid rgba(255, 255, 255, 0.3);
+			border: 1px solid rgba(48, 0, 104, 0.3);
 			width: 220px;
 			cursor: none;
 			padding: 18px 16px 18px 55px;
@@ -292,8 +299,8 @@
 			width: 4rem;
 			padding: 0.8rem;
 			z-index: -1;
-			fill: $g-color;
-			border: 4px solid rgba(255, 255, 255, 0.3);
+			fill: $p-color;
+			border: 4px solid rgba(30, 0, 85, 0.3);
 			border-radius: 50%;
 			overflow: visible;
 		}
