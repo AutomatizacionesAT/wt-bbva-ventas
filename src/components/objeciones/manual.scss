@@ -59,7 +59,7 @@
                 }
 
                 button {
-                    width: 60%;
+                    width: 65%;
                     height: 50px;
                     background: linear-gradient(to bottom right, light-dark($s-color, $p-color), mix($p-color, $w-color, 20%));
                     border-style: none;
@@ -76,7 +76,10 @@
                     box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
                     border-radius: 0.5rem;
                     margin: 0 auto;
-
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 button span {
@@ -221,12 +224,15 @@
                 height: auto;
                 width: 50%;
                 text-align: center;
-                background-color: light-dark($s-color, $p2-color);
-                color: light-dark($w-color, $w-color);
+                background-color: light-dark($w-color, $b-color);
+                color: light-dark($b-color, $w-color);
                 border-radius: 10px;
-                border-bottom: 4px solid light-dark($g2-color, $p-color);
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border: 3px solid light-dark($s-color, $p-color);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.1);
                 transition: transform 0.2s, box-shadow 0.2s;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 &.shake {
                     animation: shake 1s ease-in-out;

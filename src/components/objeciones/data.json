@@ -1,6 +1,7 @@
 {
     "tarjetaCredito": {
-        "product": "Tarjeta de crédito",
+        "product": "Tarjeta de crédito ",
+        "icon": "faCreditCard",
         "recommendation": [
             "Estos guiones están diseñados para enfocarse en los beneficios específicos de la tarjeta de crédito del BBVA y para guiar la conversación hacia una consideración más profunda por parte del cliente. Ajusta el tono y los detalles según la situación y el estilo de venta que te funcione mejor.",
             "Recuerda siempre preguntar al cliente el motivo en especial del porqué no está intereasado"
@@ -84,7 +85,7 @@
         ]
     },
     "consumo": {
-        "product": "Crédito de consumo o libre inversión",
+        "product": "Consumo",
         "recommendation": [
             "Estas respuestas están diseñadas para abordar la objeción destacando la preparación, flexibilidad y beneficios a largo plazo del crédito de consumo o libre inversión del BBVA. Adaptar el enfoque según las preocupaciones y el estilo de vida del cliente puede ayudar a superar esta objeción."
         ],
