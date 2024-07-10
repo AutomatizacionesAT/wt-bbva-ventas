@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './manual.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCreditCard, faUser, faCar, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons'; // Importa los iconos específicos de Font Awesome
 import data from './data.json';
 
 const Objeciones = () => {
@@ -59,7 +61,11 @@ const Objeciones = () => {
                             className={`guide__button ${selectedProduct === 'tarjetaCredito' ? 'active' : ''}`}
                             onClick={() => handleProductChange('tarjetaCredito')}
                         >
-                            Tarjeta de crédito
+                            <div>
+                                <FontAwesomeIcon icon={faCreditCard} />
+                            </div>
+                            <p>  Tarjeta de crédito</p>
+
                             <span></span>
                             <span></span>
                             <span></span>
@@ -72,7 +78,11 @@ const Objeciones = () => {
                             className={`guide__button ${selectedProduct === 'amparada' ? 'active' : ''}`}
                             onClick={() => handleProductChange('amparada')}
                         >
-                            Amparada
+                            <div>
+                                <FontAwesomeIcon icon={faUser} />
+                            </div>
+                            <p>  Amparada</p>
+
                             <span></span>
                             <span></span>
                             <span></span>
@@ -85,7 +95,11 @@ const Objeciones = () => {
                             className={`guide__button ${selectedProduct === 'consumo' ? 'active' : ''}`}
                             onClick={() => handleProductChange('consumo')}
                         >
-                            Crédito de consumo o libre inversión
+                            <div>
+                                <FontAwesomeIcon icon={faCar} />
+                            </div>
+                            <p>  Consumo</p>
+
                             <span></span>
                             <span></span>
                             <span></span>
@@ -98,7 +112,11 @@ const Objeciones = () => {
                             className={`guide__button ${selectedProduct === 'cartera' ? 'active' : ''}`}
                             onClick={() => handleProductChange('cartera')}
                         >
-                            Compra De Cartera
+                            <div>
+                                <FontAwesomeIcon icon={faMoneyBillWave} />
+                            </div>
+                            <p>  Compra De Cartera</p>
+
                             <span></span>
                             <span></span>
                             <span></span>
@@ -107,7 +125,8 @@ const Objeciones = () => {
                     </div>
                 </div>
                 <fieldset className='fieldset'>
-                    <legend className='legend'> {productData.product}</legend>
+                    <legend className='legend'> {productData.product}
+                    </legend>
                     <div className="guide__recommendation">
                         {productData.recommendation.map((text, index) => (
                             <p key={index}>{text}</p>
@@ -137,8 +156,6 @@ const Objeciones = () => {
                         ))}
                     </div>
                 </fieldset>
-
-
             </div>
         </div>
     );
