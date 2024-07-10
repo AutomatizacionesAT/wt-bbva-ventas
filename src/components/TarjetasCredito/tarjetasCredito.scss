@@ -7,24 +7,29 @@
 	overflow-y: auto;
 	width: 100%;
 	height: 100vh;
+
 	&__box {
 		width: 100%;
 		margin: 1rem auto;
 	}
+
 	&__header {
 		width: 90%;
 		margin: auto;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
 		&--title {
 			font-size: 4rem;
 		}
+
 		&--img {
 			width: 80px;
 			filter: drop-shadow(1px 1px 1px $w-color);
 			-webkit-filter: drop-shadow(1px 1px 1px $w-color);
 		}
+
 		&--link {
 			background: $p-color;
 			border-radius: 50%;
@@ -33,6 +38,7 @@
 			-ms-border-radius: 50%;
 			-o-border-radius: 50%;
 		}
+
 		& a {
 			background: $p-color;
 			border-radius: 50%;
@@ -42,6 +48,7 @@
 			-o-border-radius: 50%;
 		}
 	}
+
 	&__body {
 		width: 80%;
 		padding: 2rem 4rem;
@@ -51,6 +58,7 @@
 		align-items: center;
 		flex-wrap: wrap;
 		gap: 1rem;
+
 		.card,
 		.card__chip {
 			overflow: hidden;
@@ -67,11 +75,9 @@
 
 		.card {
 			animation-name: rotate_500;
-			background-image: radial-gradient(
-					circle at 100% 0%,
+			background-image: radial-gradient(circle at 100% 0%,
 					hsla(0, 0%, 100%, 0.08) 29.5%,
-					hsla(0, 0%, 100%, 0) 30%
-				),
+					hsla(0, 0%, 100%, 0) 30%),
 				radial-gradient(circle at 100% 0%, hsla(0, 0%, 100%, 0.08) 39.5%, hsla(0, 0%, 100%, 0) 40%),
 				radial-gradient(circle at 100% 0%, hsla(0, 0%, 100%, 0.08) 49.5%, hsla(0, 0%, 100%, 0) 50%);
 			border-radius: 0.5em;
@@ -81,63 +87,63 @@
 			width: 36.3em;
 			height: 20.8em;
 			transform: translate3d(0, 0, 0);
+
 			&.Standar {
 				background-color: $p-color;
 			}
+
 			&.Gold {
 				background-color: #d8b209;
 
 				& .card__digit-group {
-					background: linear-gradient(
-						hsl(0, 0%, 100%),
-						hsl(0, 0%, 100%) 15% 55%,
-						hsl(0, 0%, 92%) 70%
-					);
+					background: linear-gradient(hsl(0, 0%, 100%),
+							hsl(0, 0%, 100%) 15% 55%,
+							hsl(0, 0%, 92%) 70%);
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
 					font-family: 'Courier Prime', monospace;
 					filter: drop-shadow(0 0.05rem hsla(0, 0%, 0%, 0.3));
 				}
+
 				& .card__exp-date {
-					background: linear-gradient(
-						hsl(0, 0%, 100%),
-						hsl(0, 0%, 100%) 15% 55%,
-						hsl(0, 0%, 100%) 70%
-					);
+					background: linear-gradient(hsl(0, 0%, 100%),
+							hsl(0, 0%, 100%) 15% 55%,
+							hsl(0, 0%, 100%) 70%);
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
 					font-family: 'Courier Prime', monospace;
 					filter: drop-shadow(0 0.05rem hsla(0, 0%, 0%, 0.3));
 				}
 			}
+
 			&.Platinum {
 				background-color: $g2-color;
+
 				& .card__digit-group {
-					background: linear-gradient(
-						hsl(0, 0%, 100%),
-						hsl(0, 0%, 100%) 15% 55%,
-						hsl(0, 0%, 92%) 70%
-					);
+					background: linear-gradient(hsl(0, 0%, 100%),
+							hsl(0, 0%, 100%) 15% 55%,
+							hsl(0, 0%, 92%) 70%);
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
 					font-family: 'Courier Prime', monospace;
 					filter: drop-shadow(0 0.05rem hsla(0, 0%, 0%, 0.3));
 				}
+
 				& .card__exp-date {
-					background: linear-gradient(
-						hsl(0, 0%, 100%),
-						hsl(0, 0%, 100%) 15% 55%,
-						hsl(0, 0%, 100%) 70%
-					);
+					background: linear-gradient(hsl(0, 0%, 100%),
+							hsl(0, 0%, 100%) 15% 55%,
+							hsl(0, 0%, 100%) 70%);
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
 					font-family: 'Courier Prime', monospace;
 					filter: drop-shadow(0 0.05rem hsla(0, 0%, 0%, 0.3));
 				}
 			}
+
 			&.Black {
 				background-color: $b-color;
 			}
+
 			&.Infinite {
 				background-color: $b-color;
 			}
@@ -192,12 +198,10 @@
 		}
 
 		.card__chip-texture {
-			background-image: linear-gradient(
-				-80deg,
-				hsla(0, 0%, 100%, 0),
-				hsla(0, 0%, 100%, 0.6) 48% 52%,
-				hsla(0, 0%, 100%, 0)
-			);
+			background-image: linear-gradient(-80deg,
+					hsla(0, 0%, 100%, 0),
+					hsla(0, 0%, 100%, 0.6) 48% 52%,
+					hsla(0, 0%, 100%, 0));
 		}
 
 		.card__type {
@@ -298,11 +302,9 @@
 
 		.card__texture {
 			animation-name: texture;
-			background-image: linear-gradient(
-				-80deg,
-				hsla(0, 0%, 100%, 0.3) 25%,
-				hsla(0, 0%, 100%, 0) 45%
-			);
+			background-image: linear-gradient(-80deg,
+					hsla(0, 0%, 100%, 0.3) 25%,
+					hsla(0, 0%, 100%, 0) 45%);
 		}
 
 		/* Dark theme */
@@ -315,6 +317,7 @@
 
 		/* Animation */
 		@keyframes rotate_500 {
+
 			from,
 			to {
 				animation-timing-function: ease-in;
@@ -340,6 +343,7 @@
 		}
 
 		@keyframes texture {
+
 			from,
 			to {
 				transform: translate3d(0, 0, 0);
@@ -350,6 +354,7 @@
 			}
 		}
 	}
+
 	&__footer {
 		display: flex;
 		justify-content: center;
@@ -375,11 +380,9 @@
 
 		.card {
 			animation-name: rotate_500;
-			background-image: radial-gradient(
-					circle at 100% 0%,
+			background-image: radial-gradient(circle at 100% 0%,
 					hsla(0, 0%, 100%, 0.08) 29.5%,
-					hsla(0, 0%, 100%, 0) 30%
-				),
+					hsla(0, 0%, 100%, 0) 30%),
 				radial-gradient(circle at 100% 0%, hsla(0, 0%, 100%, 0.08) 39.5%, hsla(0, 0%, 100%, 0) 40%),
 				radial-gradient(circle at 100% 0%, hsla(0, 0%, 100%, 0.08) 49.5%, hsla(0, 0%, 100%, 0) 50%);
 			border-radius: 0.5em;
@@ -389,17 +392,21 @@
 			width: 36.3em;
 			height: 20.8em;
 			transform: translate3d(0, 0, 0);
+
 			&.Visa {
 				background-color: $s-color;
 			}
+
 			&.Mastercard {
 				background-color: $s-color;
+
 				.card__vendor {
 					right: 1.375rem;
 					bottom: 1.375rem;
 					width: 5.55rem;
 					height: 3.5rem;
 				}
+
 				.card__vendor:before,
 				.card__vendor:after {
 					border-radius: 50%;
@@ -409,6 +416,7 @@
 					width: 4rem;
 					height: 4rem;
 				}
+
 				.tarjetasCredito__footer .card__vendor-sr {
 					/* clip: rect(1px, 1px, 1px, 1px); */
 					/* overflow: hidden; */
@@ -470,12 +478,10 @@
 		}
 
 		.card__chip-texture {
-			background-image: linear-gradient(
-				-80deg,
-				hsla(0, 0%, 100%, 0),
-				hsla(0, 0%, 100%, 0.6) 48% 52%,
-				hsla(0, 0%, 100%, 0)
-			);
+			background-image: linear-gradient(-80deg,
+					hsla(0, 0%, 100%, 0),
+					hsla(0, 0%, 100%, 0.6) 48% 52%,
+					hsla(0, 0%, 100%, 0));
 		}
 
 		.card__type {
@@ -544,6 +550,7 @@
 			width: 4.55rem;
 			height: 3.5rem;
 		}
+
 		.card__pro {
 			position: absolute;
 			right: 1.375rem;
@@ -551,6 +558,7 @@
 			width: 6.55rem;
 			height: 5.5rem;
 		}
+
 		.card__vendor:before,
 		.card__vendor:after {
 			border-radius: 50%;
@@ -582,11 +590,9 @@
 
 		.card__texture {
 			animation-name: texture;
-			background-image: linear-gradient(
-				-80deg,
-				hsla(0, 0%, 100%, 0.3) 25%,
-				hsla(0, 0%, 100%, 0) 45%
-			);
+			background-image: linear-gradient(-80deg,
+					hsla(0, 0%, 100%, 0.3) 25%,
+					hsla(0, 0%, 100%, 0) 45%);
 		}
 
 		/* Dark theme */
@@ -599,6 +605,7 @@
 
 		/* Animation */
 		@keyframes rotate_500 {
+
 			from,
 			to {
 				animation-timing-function: ease-in;
@@ -624,6 +631,7 @@
 		}
 
 		@keyframes texture {
+
 			from,
 			to {
 				transform: translate3d(0, 0, 0);
@@ -633,10 +641,11 @@
 				transform: translate3d(-50%, 0, 0);
 			}
 		}
+
 		border-radius: 12px;
 		-webkit-border-radius: 12px;
 		-moz-border-radius: 12px;
 		-ms-border-radius: 12px;
 		-o-border-radius: 12px;
-}
+	}
 }

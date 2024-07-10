@@ -10,7 +10,7 @@ const projectNavbar = [
 		icon: 'creditCard',
 	},
 	{
-		title: 'Manual De Objeciones',
+		title: 'Producto',
 		route: '/objeciones',
 		icon: 'tipify',
 	},
