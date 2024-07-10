@@ -21,12 +21,15 @@ const TarjetasCredito = () => {
 						</figure>
 					</Link>
 				</div>
+
 				<div className="tarjetasCredito__body">
-					<TemplateCard cardName="Standar" />
-					<TemplateCard cardName="Gold" />
-					<TemplateCard cardName="Platinum" />
-					<TemplateCard cardName="Black" />
-					<TemplateCard cardName="Infinite" />
+					<div className="tarjetasCredito__subbody">
+						<TemplateCard cardName="Standar" />
+						<TemplateCard cardName="Gold" />
+						<TemplateCard cardName="Platinum" />
+						<TemplateCard cardName="Black" />
+						<TemplateCard cardName="Infinite" />
+					</div>
 				</div>
 				<div className="tarjetasCredito__footer">
 					<TemplateCard cardName="Visa" />
