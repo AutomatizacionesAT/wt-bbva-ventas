@@ -1,10 +1,25 @@
-import './tarjetasCredito.scss'
-import imgNino from '../../assets/images/creditCards/nino.png'
-import imgAsis from '../../assets/images/creditCards/assicard.png'
-import { Link } from 'react-router-dom'
-import TemplateCard from './Cards/TemplateCard'
+// TarjetasCredito.jsx
+import React, { useState } from 'react';
+import imgNino from '../../assets/images/creditCards/nino.png';
+import imgAsis from '../../assets/images/creditCards/assicard.png';
+import { Link } from 'react-router-dom';
+import TemplateCard from './Cards/TemplateCard';
+import Modal from './Modal/Modal';
+import './TarjetasCredito.scss';
 
 const TarjetasCredito = () => {
+	const [modalOpen, setModalOpen] = useState(false);
+	const [cardType, setCardType] = useState(null);
+
+	const openModal = (type) => {
+		setCardType(type);
+		setModalOpen(true);
+	};
+
+	const closeModal = () => {
+		setModalOpen(false);
+	};
+
 	return (
 		<section className="tarjetasCredito">
 			<article className="tarjetasCredito__box">
@@ -32,12 +47,14 @@ const TarjetasCredito = () => {
 					</div>
 				</div>
 				<div className="tarjetasCredito__footer">
-					<TemplateCard cardName="Visa" />
+					<TemplateCard cardName="Visa" onClick={() => openModal('Visa')} />
 					<TemplateCard cardName="Mastercard" />
 				</div>
 			</article>
-		</section>
-	)
-}
 
-export default TarjetasCredito
+			{modalOpen && <Modal isOpen={modalOpen} onClose={closeModal} cardType={cardType} />}
+		</section>
+	);
+};
+
+export default TarjetasCredito;

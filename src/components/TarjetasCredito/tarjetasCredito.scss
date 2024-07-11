@@ -25,6 +25,7 @@
 
 		&--title {
 			font-size: 4rem;
+			color: light-dark($b-color, $w-color);
 		}
 
 		&--img {
@@ -415,6 +416,7 @@
 		}
 
 		.card {
+			cursor: pointer;
 			animation-name: rotate_500;
 			background-image: radial-gradient(circle at 100% 0%,
 					hsla(0, 0%, 100%, 0.08) 29.5%,

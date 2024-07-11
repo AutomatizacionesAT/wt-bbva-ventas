@@ -1,0 +1,105 @@
+[
+    {
+        "cardType": "Visa",
+        "cards": [
+            {
+                "title": "Protección De Precios",
+                "paragraph": "Reembolsa la diferencia en precio de compras realizadas con Visa.",
+                "image": "card1.png"
+            },
+            {
+                "title": "Protección De Compras",
+                "paragraph": "Reembolso por robo y/o daño accidental de compras hechas con Visa.",
+                "image": "card2.png"
+            },
+            {
+                "title": "Garantía Extendida",
+                "paragraph": "Extiende la garantía de tus compras hechas con Visa enter 3 meses a 3 años.",
+                "image": "card2.png"
+            },
+            {
+                "title": "Auto Rental Insurance",
+                "paragraph": "Cobertura por daños al vehículo alquilado causados por colisión contra otro objeto, volcamiento, robo, incendio accidental y daño físico por causas climáticas.",
+                "image": "card4.png"
+            },
+            {
+                "title": "Servicios de emergencia medica internacional",
+                "paragraph": "Servicios de emergencia medica que incluyen gastos medicos de emergencia medica como consecuencia de accidentes, emergencias o gastos de tratamientos, convalecencia, repatriación de restos, transporte, alojamiento, entre otros.",
+                "image": "card6.png"
+            },
+            {
+                "title": "Visa Médico Online",
+                "paragraph": "Servicio disponible 24/7 por incidentes con acceso a red mundial de doctores.",
+                "image": "card6.png"
+            },
+            {
+                "title": "Perdida De Equipaje",
+                "paragraph": "Indemnizacion por el bolero hasta el limite establecido por tarjeta independientemente del numero de equipaje registrado.",
+                "image": "card2.png"
+            },
+            {
+                "title": "Demora Equipaje",
+                "paragraph": "Cubrimiento si el equipaje no llega a su lugar de destino para el que se emitió.",
+                "image": "card2.png"
+            },
+            {
+                "title": "Cancelación De Viaje",
+                "paragraph": "Se reembolsará hasta el limite cubeirto por los gastos de viaje y alojamiento que no sean recuperables.",
+                "image": "card2.png"
+            },
+            {
+                "title": "Demora De Viaje",
+                "paragraph": "Se cubre hasta el limite cubeirto si el viaje se retrasa mas de cuatro horas.",
+                "image": "card2.png"
+            }
+        ]
+    },
+    {
+        "cardType": "Mastercard",
+        "cards": [
+            {
+                "title": "Card Gigante Mastercard",
+                "images": [
+                    "https://via.placeholder.com/400x300",
+                    "https://via.placeholder.com/400x300",
+                    "https://via.placeholder.com/400x300",
+                    "https://via.placeholder.com/400x300"
+                ],
+                "animations": [
+                    "bounceIn",
+                    "fadeIn"
+                ]
+            },
+            {
+                "title": "Card Sencilla Mastercard 1",
+                "paragraph": "Descripción de la card sencilla Mastercard 1.",
+                "image": "https://via.placeholder.com/200x150"
+            },
+            {
+                "title": "Card Sencilla Mastercard 2",
+                "paragraph": "Descripción de la card sencilla Mastercard 2.",
+                "image": "https://via.placeholder.com/200x150"
+            },
+            {
+                "title": "Card Sencilla Mastercard 3",
+                "paragraph": "Descripción de la card sencilla Mastercard 3.",
+                "image": "https://via.placeholder.com/200x150"
+            },
+            {
+                "title": "Card Sencilla Mastercard 4",
+                "paragraph": "Descripción de la card sencilla Mastercard 4.",
+                "image": "https://via.placeholder.com/200x150"
+            },
+            {
+                "title": "Card Sencilla Mastercard 5",
+                "paragraph": "Descripción de la card sencilla Mastercard 5.",
+                "image": "https://via.placeholder.com/200x150"
+            },
+            {
+                "title": "Card Sencilla Mastercard 6",
+                "paragraph": "Descripción de la card sencilla Mastercard 6.",
+                "image": "https://via.placeholder.com/200x150"
+            }
+        ]
+    }
+]
