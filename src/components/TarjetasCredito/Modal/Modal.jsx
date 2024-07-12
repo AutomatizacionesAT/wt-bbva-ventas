@@ -11,6 +11,17 @@ import card1 from '../../../assets/images/creditCards/card1.png';
 import card2 from '../../../assets/images/creditCards/card2.png';
 import card4 from '../../../assets/images/creditCards/card4.png';
 import card6 from '../../../assets/images/creditCards/card6.png';
+import cardM1 from '../../../assets/images/creditCards/cardM1.png';
+import cardM2 from '../../../assets/images/creditCards/cardM2.png';
+import cardM3 from '../../../assets/images/creditCards/cardM3.png';
+import cardM4 from '../../../assets/images/creditCards/cardM4.png';
+import cardM5 from '../../../assets/images/creditCards/cardM5.png';
+import cardM6 from '../../../assets/images/creditCards/cardM6.png';
+import cardM7 from '../../../assets/images/creditCards/cardM7.png';
+import cardM8 from '../../../assets/images/creditCards/cardM8.png';
+import cardM9 from '../../../assets/images/creditCards/cardM9.png';
+import cardM10 from '../../../assets/images/creditCards/cardM10.png';
+import cardM11 from '../../../assets/images/creditCards/cardM11.png';
 import './Modal.scss';
 
 const getImagePath = (image) => {
@@ -37,6 +48,28 @@ const getImagePath = (image) => {
             return card4;
         case 'card6.png':
             return card6;
+        case 'cardM1.png':
+            return cardM1;
+        case 'cardM2.png':
+            return cardM2;
+        case 'cardM3.png':
+            return cardM3;
+        case 'cardM4.png':
+            return cardM4;
+        case 'cardM5.png':
+            return cardM5;
+        case 'cardM6.png':
+            return cardM6;
+        case 'cardM7.png':
+            return cardM7;
+        case 'cardM8.png':
+            return cardM8;
+        case 'cardM9.png':
+            return cardM9;
+        case 'cardM10.png':
+            return cardM10;
+        case 'cardM11.png':
+            return cardM11;
         default:
             return '';
     }
@@ -49,27 +82,48 @@ const Modal = ({ isOpen, onClose, cardType }) => {
         <div className={`modal ${isOpen ? 'active' : ''}`}>
             <div className="modal-content">
                 <span className="close-modal" onClick={onClose}>&times;</span>
-                <div className='beneficios'>
-                    <h3>SUSCRIPCIONES A PLATAFORMAS</h3>
-                    <div className='slider-container'>
-                        <div className='slider-images'>
-                            <img src={disneyImage} alt="Disney" />
-                            <img src={startImage} alt="Start" />
-                            <img src={skyImage} alt="Sky" />
-                            <img src={withuImage} alt="Withu" />
-                            <img src={blooImage} alt="Bloo" />
-                            <img src={rappiImage} alt="Rappi" />
-                            <img src={gigImage} alt="Gig" />
-                            <img src={disneyImage} alt="Disney" />
-                            <img src={startImage} alt="Start" />
-                            <img src={skyImage} alt="Sky" />
-                            <img src={withuImage} alt="Withu" />
-                            <img src={blooImage} alt="Bloo" />
-                            <img src={rappiImage} alt="Rappi" />
-                            <img src={gigImage} alt="Gig" />
+                {cardType === 'Visa' && (
+                    <div className='beneficios'>
+                        <h3>SUSCRIPCIONES A PLATAFORMAS</h3>
+                        <div className='slider-container'>
+                            <div className='slider-images'>
+                                <img src={disneyImage} alt="Disney" />
+                                <img src={startImage} alt="Start" />
+                                <img src={skyImage} alt="Sky" />
+                                <img src={withuImage} alt="Withu" />
+                                <img src={blooImage} alt="Bloo" />
+                                <img src={rappiImage} alt="Rappi" />
+                                <img src={gigImage} alt="Gig" />
+                                <img src={disneyImage} alt="Disney" />
+                                <img src={startImage} alt="Start" />
+                                <img src={skyImage} alt="Sky" />
+                                <img src={withuImage} alt="Withu" />
+                                <img src={blooImage} alt="Bloo" />
+                                <img src={rappiImage} alt="Rappi" />
+                                <img src={gigImage} alt="Gig" />
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
+                {cardType === 'Mastercard' && (
+                    <div className='beneficios2'>
+                        <h3>SUSCRIPCIONES PARA TODOS LOS DÍAS</h3>
+                        <div className='slider-container'>
+                            <div className='slider-images'>
+                                <img src={cardM6} alt="Card M6" />
+                                <img src={cardM7} alt="Card M7" />
+                                <img src={cardM8} alt="Card M8" />
+                                <img src={cardM9} alt="Card M9" />
+                                <img src={cardM10} alt="Card M10" />
+                                <img src={cardM6} alt="Card M6" />
+                                <img src={cardM7} alt="Card M7" />
+                                <img src={cardM8} alt="Card M8" />
+                                <img src={cardM9} alt="Card M9" />
+                                <img src={cardM10} alt="Card M10" />
+                            </div>
+                        </div>
+                    </div>
+                )}
                 <div className='container-cards'>
                     {filteredCards.map((card, index) => (
                         <div key={index} className="card">

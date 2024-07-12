@@ -58,47 +58,69 @@
         "cardType": "Mastercard",
         "cards": [
             {
-                "title": "Card Gigante Mastercard",
-                "images": [
-                    "https://via.placeholder.com/400x300",
-                    "https://via.placeholder.com/400x300",
-                    "https://via.placeholder.com/400x300",
-                    "https://via.placeholder.com/400x300"
-                ],
-                "animations": [
-                    "bounceIn",
-                    "fadeIn"
-                ]
+                "title": "MasterCard Airport Experience",
+                "paragraph": "Acceso a más de 1.100 salas VIP alrededor del mundo",
+                "image": "cardM1.png"
             },
             {
-                "title": "Card Sencilla Mastercard 1",
-                "paragraph": "Descripción de la card sencilla Mastercard 1.",
-                "image": "https://via.placeholder.com/200x150"
+                "title": "Protección Precios E-commerce",
+                "paragraph": "Reembolsa la diferencia en precio de compras realizadas con Mastercard. Hasta 60 días en almacenes o 7 días online y hasta USD$2.000.",
+                "image": "cardM2.png"
             },
             {
-                "title": "Card Sencilla Mastercard 2",
-                "paragraph": "Descripción de la card sencilla Mastercard 2.",
-                "image": "https://via.placeholder.com/200x150"
+                "title": "Master assist",
+                "paragraph": "Programa médico integral para viajes ante emergencia",
+                "image": "cardM3.png"
             },
             {
-                "title": "Card Sencilla Mastercard 3",
-                "paragraph": "Descripción de la card sencilla Mastercard 3.",
-                "image": "https://via.placeholder.com/200x150"
+                "title": "Priceless.com",
+                "paragraph": "Plataforma con +2.500 experiencias alrededor del mundo, gratuitas y pagas, disponibles",
+                "image": "cardM4.png"
             },
             {
-                "title": "Card Sencilla Mastercard 4",
-                "paragraph": "Descripción de la card sencilla Mastercard 4.",
-                "image": "https://via.placeholder.com/200x150"
+                "title": "Protección de Equipaje",
+                "paragraph": "Asistencia para localizar equipaje perdido. Hasta USD$3.000 por pérdida y USD$600 por retraso",
+                "image": "cardM1.png"
             },
             {
-                "title": "Card Sencilla Mastercard 5",
-                "paragraph": "Descripción de la card sencilla Mastercard 5.",
-                "image": "https://via.placeholder.com/200x150"
+                "title": "Master Rental",
+                "paragraph": "Cobertura por daños al vehículo alquilado causados por colisión contra otro objeto, volcamiento, robo, incendio accidental y daño físico por causas climática. Hasta USD$75.000 de 31 a 60 días consecutivos de cobertura de acuerdo al producto",
+                "image": "cardM11.png"
             },
             {
-                "title": "Card Sencilla Mastercard 6",
-                "paragraph": "Descripción de la card sencilla Mastercard 6.",
-                "image": "https://via.placeholder.com/200x150"
+                "title": "Inconveniencia en Viajes",
+                "paragraph": "Cobertura por viajes retrasados o cancelados. Hasta USD$3.000 por cancelación y USD$200 por retraso.",
+                "image": "cardM11.png"
+            },
+            {
+                "title": "Concierge Mastercard",
+                "paragraph": "Asistente personal y de viajes que te ayuda a organizar cada detalle.",
+                "image": "cardM11.png"
+            },
+            {
+                "title": "Mastercard Travel Rewards",
+                "paragraph": "Ofertas internacionales que otorga descuentos por compras con Mastercard.",
+                "image": "cardM11.png"
+            },
+            {
+                "title": "Protección en Cajero Automático",
+                "paragraph": "Asegura el dinero en efectivo si sufres un asalto en un cajero automático y también proporciona cobertura en caso de muert. Hasta USD$3.000 por año y USD$10,000 por muerte. Aplica para avances y retiros en efectivo hechos con tarjetas Mastercard en cualquier cajero automático",
+                "image": "cardM1.png"
+            },
+            {
+                "title": "Protección de compras",
+                "paragraph": "Reembolso por robo y/o daño accidental de compras hechas con Mastercar. Cobertura desde 45 hasta 60 días. Desde 100 hasta 1.000 USD por compra de acuerdo al producto.",
+                "image": "cardM4.png"
+            },
+            {
+                "title": "Garantía extendida",
+                "paragraph": "Extiende la garantía el doble o hasta por un año adicional al periodo de garantía que tienen tus compra. (Un año más si la compra tiene más de un año de garantía, el doble de garantía si la compra tiene menos de un año de garantía)",
+                "image": "cardM5.png"
+            },
+            {
+                "title": "Beneficios para todos los días",
+                "paragraph": "Beneficios exclusivos en comercios aliados pagando con Mastercard",
+                "image": "cardM4.png"
             }
         ]
     }

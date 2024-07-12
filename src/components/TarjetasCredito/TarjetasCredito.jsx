@@ -2,14 +2,28 @@
 import React, { useState } from 'react';
 import imgNino from '../../assets/images/creditCards/nino.png';
 import imgAsis from '../../assets/images/creditCards/assicard.png';
+import imgStandar from '../../assets/images/creditCards/Imagen1.png';
+import imgGold from '../../assets/images/creditCards/Imagen2.png';
+import imgPlatinum from '../../assets/images/creditCards/Imagen3.png';
+import imgBlack from '../../assets/images/creditCards/Imagen4.png';
+import imgInfinite from '../../assets/images/creditCards/Imagen5.png';
 import { Link } from 'react-router-dom';
 import TemplateCard from './Cards/TemplateCard';
 import Modal from './Modal/Modal';
-import './TarjetasCredito.scss';
+import './tarjetasCredito.scss';
 
 const TarjetasCredito = () => {
 	const [modalOpen, setModalOpen] = useState(false);
 	const [cardType, setCardType] = useState(null);
+	const [selectedCard, setSelectedCard] = useState(null);
+
+	const handleCardClick = (cardName) => {
+		setSelectedCard(cardName);
+	};
+
+	const handleClose = () => {
+		setSelectedCard(null);
+	};
 
 	const openModal = (type) => {
 		setCardType(type);
@@ -39,16 +53,29 @@ const TarjetasCredito = () => {
 
 				<div className="tarjetasCredito__body">
 					<div className="tarjetasCredito__subbody">
-						<TemplateCard cardName="Standar" />
-						<TemplateCard cardName="Gold" />
-						<TemplateCard cardName="Platinum" />
-						<TemplateCard cardName="Black" />
-						<TemplateCard cardName="Infinite" />
+						<TemplateCard cardName="Standar" onClick={() => handleCardClick("Standar")} />
+						<TemplateCard cardName="Gold" onClick={() => handleCardClick("Gold")} />
+						<TemplateCard cardName="Platinum" onClick={() => handleCardClick("Platinum")} />
+						<TemplateCard cardName="Black" onClick={() => handleCardClick("Black")} />
+						<TemplateCard cardName="Infinite" onClick={() => handleCardClick("Infinite")} />
 					</div>
+					{selectedCard && (
+						<div className="detalleTarjeta">
+							<div className='detalleTarjeta__inside'>
+								<button className="closeButton" onClick={handleClose}>Cerrar</button>
+								{selectedCard === "Standar" && <img src={imgStandar} alt="Standard Card" />}
+								{selectedCard === "Gold" && <img src={imgGold} alt="Gold Card" />}
+								{selectedCard === "Platinum" && <img src={imgPlatinum} alt="Platinum Card" />}
+								{selectedCard === "Black" && <img src={imgBlack} alt="Black Card" />}
+								{selectedCard === "Infinite" && <img src={imgInfinite} alt="Infinite Card" />}
+							</div>
+						</div>
+					)}
 				</div>
+
 				<div className="tarjetasCredito__footer">
 					<TemplateCard cardName="Visa" onClick={() => openModal('Visa')} />
-					<TemplateCard cardName="Mastercard" />
+					<TemplateCard cardName="Mastercard" onClick={() => openModal('Mastercard')} />
 				</div>
 			</article>
 
