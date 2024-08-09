@@ -19,6 +19,7 @@ import { NoteApp } from './components/NoteApp/NoteApp.jsx'
 import IconsTest from './components/WebTraining/IconsTest.jsx'
 import IconArrowUp from './icons/IconArrowUp.jsx'
 import HorNav from './components/Navbar/HorNav.jsx'
+import { TarjetasCredito } from './components/TarjetasCredito/TarjetasCredito.jsx'
 
 import { Objecion } from './components/Objeciones/Objecion.jsx'
 
@@ -63,6 +64,7 @@ const App = () => {
 					<Route path="/amparada/manualobjeciones" element={<Objecion NBD="OBJEAM"/>} />
 					<Route path="/consumo/manualobjeciones" element={<Objecion NBD="OBJECON"/>} />
 					<Route path='/compracartera/manualobjeciones' element={<Objecion NBD='OBJECOMCAR'/>} />
+					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
 				</Routes>
 			</section>
 		</div>

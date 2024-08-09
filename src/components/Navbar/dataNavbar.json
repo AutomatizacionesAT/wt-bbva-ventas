@@ -50,7 +50,18 @@
 			"route": "/compracartera/manualobjeciones",
 			"icon": "tipify",
 			"segments": ["Compra Cartera"]
+		},
+		{
+			"title": "Beneficios de Tarjetas",
+			"route": "/beneficiosdetarjeta",
+			"icon": "IconCreditCard",
+			"segments": ["Tarjeta de Crédito"]
+		},
+		{
+			"title": "Beneficios de Tarjetas",
+			"route": "/beneficiosdetarjeta",
+			"icon": "IconCreditCard",
+			"segments": ["Amparada"]
 		}
-		
 	]
 }
