@@ -1,0 +1,170 @@
+@use '../../styles/variables' as *;
+
+
+.objeciones {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: light-dark(rgba($p3-color, 0.3), rgba($p2-color, 0));
+    &__title {
+        margin: 8px 0;
+        border-bottom: 2px groove $w-color;
+        color: $w-color;
+        text-shadow: 2px 2px 2px black;
+        font-weight: 700;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    &__body {
+        width: 100%;
+        height: 80%;
+        margin: 16px;
+        padding: 16px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: light-dark(rgba($p3-color, 0.4), rgba($s-color, 0.4));
+        box-shadow: 2px 2px 6px white;
+        border-radius: 10px;
+        border: 2px groove $w-color;
+        &-title {
+           position: absolute;
+           top: -40px;
+           left: 25px;
+           background-color: light-dark($s2-color, $p2-color);
+           color: $w-color;
+           padding: 0.5rem;
+           font-size: 2.5rem;
+           font-weight: 700;
+           border-radius: 8px;
+           box-shadow: 2px 2px 6px #242424;
+        }
+        &-recomendaciones {
+            margin: 0 0 8px 0;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            border-bottom: 2px groove light-dark($w-color, $p3-color);
+            &-item {
+                margin: 0 0 8px 0;
+                max-width: 45%;
+                min-width: 500px;
+                padding: 12px 16px;
+                background-color: light-dark($p2-color, $g3-color);
+                border: 4px groove light-dark($s2-color, $p2-color);
+                border-radius: 8px;
+                color: light-dark($w-color, $p3-color);
+                font-size: 1.6rem;
+                font-weight: 800;
+                text-wrap: balance;
+                box-shadow: 2px 2px 6px light-dark($w-color, $p3-color);
+            }
+        }
+        &-objecion {
+            width: 60%;
+            padding: 16px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: light-dark($p3-color, $p2-color) light-dark($w-color, $w-color);
+            scrollbar-gutter: stable;
+            border-radius: 10px;
+            box-shadow: inset 1px 1px 4px white;
+            &-item {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &-button {
+                    width: 300px;
+                    margin: 8px 0;
+                    padding: 8px 16px;
+                    background-color: light-dark($s3-color, $p2-color);
+                    color: $w-color;
+                    font-size: 1.4rem;
+                    font-weight: 800;
+                    border-radius: 8px;
+                    box-shadow: 2px 2px 6px light-dark($w-color, $p3-color);
+                    cursor: pointer;
+                    
+                    &:hover {
+                        background-color: light-dark($s2-color, $s2-color);
+                    }
+                }
+                &-content {
+                    width: 100%;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+                    background-color: light-dark($g3-color, $g3-color);
+                    box-shadow: 2px 2px 6px light-dark($w-color, $p3-color);
+                    border: 4px groove light-dark($s2-color, $p2-color);
+                    border-radius: 8px;
+                    color: light-dark($p3-color, $p3-color);
+                    font-size: 1.4rem;
+                    font-weight: 800;
+                    text-wrap: balance;
+                    & > p {
+                        padding: 8px 32px;
+                        margin: 0 0 16px 0;
+                        font-size: 1.6rem;
+                        border-bottom: 2px groove light-dark($p3-color, $p3-color);
+                        text-align: justify;
+                        text-justify: inter-word;
+                        
+                    }
+                    & > span {
+                        margin: 16px;
+                        padding: 8px;
+                        font-size: 1.9rem;
+                        font-weight: 900;
+                        align-self: center;
+                        color: light-dark($w-color, $p3-color);
+                        text-wrap: balance;
+                        text-align: center;
+                        box-shadow: 2px 2px 6px light-dark($p3-color, $p3-color);
+                        border-radius: 7px;
+                        background-color: light-dark($p3-color, $w-color);
+                    }
+                    & > div {
+                        margin: 8px 0;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: 12px;
+                        & > button {
+                            padding: 8px 16px;
+                            background-color: light-dark($s3-color, $p2-color);
+                            color: $w-color;
+                            font-size: 1.4rem;
+                            font-weight: 800;
+                            border-radius: 8px;
+                            box-shadow: 2px 2px 6px light-dark($p2-color, $p3-color);
+                            cursor: pointer;
+                            &.active-manejo {
+                                background-color: #007bff; // Un azul brillante, por ejemplo
+                                color: white;
+                            }
+                            &:hover {
+                                background-color: light-dark($s2-color, $s2-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

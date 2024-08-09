@@ -1,0 +1,59 @@
+[
+    {
+        "Producto": "Crédito de consumo o libre inversión",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción destacando la preparación, flexibilidad y beneficios a largo plazo del crédito de consumo o libre inversión del BBVA. Adaptar el enfoque según las preocupaciones y el estilo de vida del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "No me interesa - No lo necesito en este momento",
+        "Manejos": [
+            {
+                "texto": "Permítame preguntarle, si en este momento a sus cuenta llegaran xxxxx pesos. ¿En que le gustaria usarlos?",
+                "nota": null
+            },
+            {
+                "texto": "Le comento que nuestros créditos de consumo y libre inversión están diseñados para ofrecer flexibilidad y beneficios que pueden adaptarse a sus necesidades financieras, sea cual sea su plan. Sr./Sra. XXXXXX, ¿cuál ha sido ese proyecto que no ha podido cumplir por falta de presupuesto?",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo su posición, Sr./Sra. XXXXX. Sin embargo, muchos de nuestros clientes han encontrado que un crédito de consumo les ha permitido alcanzar metas importantes, como financiar estudios, iniciar un negocio o hacer renovaciones en su hogar. ¿Ha considerado cómo podría beneficiarle en algún aspecto de su vida?",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Crédito de consumo o libre inversión",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción destacando la preparación, flexibilidad y beneficios a largo plazo del crédito de consumo o libre inversión del BBVA. Adaptar el enfoque según las preocupaciones y el estilo de vida del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "No tengo en qué usar en el momento",
+        "Manejos": [
+            {
+                "texto": "El beneficio principal de un crédito de consumo es su flexibilidad; puede utilizarlo para una amplia variedad de propósitos, como mejoras en el hogar, viajes, educación o incluso consolidación de deudas. Sr./Sra. XXXXX, ¿cuál ha sido ese proyecto que no ha podido cumplir hasta el momento por falta de presupuesto?",
+                "nota": null
+            },
+            {
+                "texto": "Precisamente por eso lo llamamos hoy, para mostrarle la variedad de usos que tiene este gran beneficio. La mayoría necesidades y hasta oportunidades surgen de manera inesperada. Tener acceso a un crédito de consumo puede proporcionarle una ventaja competitiva cuando se presente una necesidad importante. Sr./Sra. XXXXX, si en este momento tuviera en su cuenta $$$$ millones, ¿qué haría con ese dinero?",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo su posición, Sr./Sra. XXXXX. Sin embargo, permítame preguntarle: ¿qué proyectos personales o profesionales tiene planeados a largo plazo? Perfecto, Sr./Sra. XXXX. Tenga presente que este crédito le permitirá comenzar con ese proyecto en este momento. Permítanos trabajar juntos para ajustar el monto del crédito o el plazo de pago. ¿Cuánto dinero requiere para este proyecto?",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Crédito de consumo o libre inversión",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción destacando la preparación, flexibilidad y beneficios a largo plazo del crédito de consumo o libre inversión del BBVA. Adaptar el enfoque según las preocupaciones y el estilo de vida del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "La tasa está muy alta",
+        "Manejos": [
+            {
+                "texto": "Entiendo su preocupación, pero pensemos en los resultados a largo plazo. Con este crédito, podrá financiar proyectos importantes o cubrir necesidades urgentes. A largo plazo, esto puede mejorar su estabilidad financiera y darle la tranquilidad que necesita. Estoy aquí para ayudarle a planificar una estrategia que le permita maximizar los beneficios y minimizar los costos. Permítame hacerle una simulación para que podamos aterrizar ese proyecto con números reales. ¿Cuánto dinero necesita para cumplir ese proyecto?",
+                "nota": null
+            },
+            {
+                "texto": "Es comprensible que considere la tasa alta. Sin embargo, si compara nuestras tasas con las de otras instituciones financieras, verá que estamos comprometidos a ofrecer condiciones competitivas que se ajusten a sus necesidades. Lo importante en este caso es encontrar una cuota que se acomode a su flujo de caja, para que pueda cancelar el crédito de forma tranquila y sin presionar su presupuesto. ¿Podría decirme qué cuota le resulta fácil de pagar para calcular el monto máximo que le podemos prestar con esta tasa?",
+                "nota": null
+            },
+            {
+                "texto": "Recuerde que con nuestro crédito de consumo, no solo obtiene los fondos que necesita de forma ágil y segura, sino que también está considerando el costo-beneficio que esto representa para usted, ya que le brinda la posibilidad de comenzar de forma inmediata el proyecto que tiene en mente. Cuénteme, en este caso, ¿para qué va a utilizar ese dinero?",
+                "nota": null
+            }
+        ]
+    }
+]

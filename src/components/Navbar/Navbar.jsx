@@ -14,6 +14,10 @@ import { useNavigate } from 'react-router-dom'
 import IconNotes from '../../icons/IconNotes'
 import MyNote from '../MyNote/MyNote'
 
+import { driver } from 'driver.js'
+import 'driver.js/dist/driver.css'
+import IconGuide from '../../icons/IconGuide'
+
 export default function Navbar() {
 	const navigate = useNavigate()
 	const [openNav, setOpenNav] = useState(false)
@@ -22,7 +26,7 @@ export default function Navbar() {
 	const [windowDB, setWindowDB] = useState(false)
 	const [myNote, setMyNote] = useState(false)
 	const scrollContainerRef = useRef(null)
-	const { readExcelFile, templatesDDBB, setScheme } = useContext(GlobalContext)
+	const { readExcelFile, templatesDDBB, setScheme, showApp } = useContext(GlobalContext)
 
 	const openCloseNavBar = () => {
 		if (openNav) return setOpenNav(!openNav)
@@ -57,6 +61,75 @@ export default function Navbar() {
 			default:
 		}
 	}
+	const startDrive = () => {
+		const driverObj = driver({
+			showProgress: true,
+			showButtons: ['next', 'previous', 'close'],
+			popoverClass: 'driverjs-theme',
+			steps: [
+				{
+					element: '.sidebar',
+					popover: {
+						title: 'Barra de navegación',
+						description:
+							'En la barra de navegación encontrarás todos los tipos de procesos que gestionan en la operación, adicional del buscador, cambio de tema, corrector, entre otros.',
+					},
+				},
+				{
+					element: '#searcher',
+					popover: {
+						title: 'Buscador',
+						description:
+							'Al dar click se abrirá el buscador de la web training para traer o filtrar el dato que necesites por medio de una palabra clave.',
+					},
+				},
+				{
+					element: '.sidebar__links',
+					popover: {
+						title: 'Procesos',
+						description:
+							'En este apartado encontrarás todos los desarrollos de procesos identificados hasta la fecha, en ellos pueden haber: checklist, gestores de notas, tipificadores, versus, matrices, consultas de documentación entre otras.',
+					},
+				},
+				{
+					element: '.sidebar__sets',
+					popover: {
+						title: 'Configuraciones',
+						description:
+							'En este segundo menú podráz encontrar diferentes configuraciones de la web training y otros apartados como, corrector ortográfico, cambio de tema, carga de bases de datos y la guia de uso de la web y desarrollos.',
+					},
+				},
+				{
+					element: '#sideVersion',
+					popover: {
+						title: 'Versionado',
+						description:
+							'En el ultimo apartado de la barra de navegacion encontrarás la versión actual en la que se encuentra la web training, debes confirmar con tu formador en que versión se encuentra actualmente la web training para evitar procesos desactualizados.',
+					},
+				},
+			],
+		})
+		driverObj.drive()
+		// driverObj.highlight({
+		// 	element: '#sideVersion',
+		// 	popover: {
+		// 		title: 'Title',
+		// 		description: 'Description',
+		// 	},
+		// })
+	}
+	const handleDragOver = event => {
+		event.preventDefault() // Necesario para permitir el evento de soltar
+	}
+
+	const handleDrop = event => {
+		event.preventDefault()
+		const files = event.dataTransfer.files // Accede a los archivos arrastrados
+		if (files && files.length) {
+			const fileEvent = { target: { files } } // Simula el evento onChange del input
+			readExcelFile(fileEvent)
+		}
+	}
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -70,25 +143,13 @@ export default function Navbar() {
 				setWindowDB(false)
 			}
 		})
+
 		return () => {
 			if (scrollContainerRef.current) {
 				scrollContainerRef.current.removeEventListener('scroll', handleScroll)
 			}
 		}
 	}, [])
-
-	const handleDragOver = (event) => {
-		event.preventDefault(); // Necesario para permitir el evento de soltar
-	};
-
-	const handleDrop = (event) => {
-		event.preventDefault();
-		const files = event.dataTransfer.files; // Accede a los archivos arrastrados
-		if (files && files.length) {
-			const fileEvent = { target: { files } }; // Simula el evento onChange del input
-			readExcelFile(fileEvent);
-		}
-	};
 
 	return (
 		<header className={'sidebar ' + openNav}>
@@ -129,9 +190,9 @@ export default function Navbar() {
 
 			{/* {version} */}
 			<div className="sidebar__sets">
-				{/* <button className="sidebar__sets--btn" name="upload" onClick={setsClick}>
+				<button className="sidebar__sets--btn" name="upload" onClick={setsClick}>
 					<IconUpload />
-				</button> */}
+				</button>
 				<button
 					className="sidebar__sets--btn"
 					name="spellcheck"
@@ -143,25 +204,31 @@ export default function Navbar() {
 				<button className="sidebar__sets--btn" name="theme" onClick={setsClick}>
 					<IconTheme />
 				</button>
-				{/* <button
+				<button
 					className="sidebar__sets--btn"
-					name="theme"
+					name="note"
 					onClick={() => {
-						setMyNote(true)
+						showApp()
 					}}>
 					<IconNotes />
-				</button> */}
+				</button>
+				<button className="sidebar__sets--btn" name="theme" onClick={startDrive}>
+					<IconGuide />
+				</button>
 			</div>
 			<div className="sidebar__versionbx" id="sideVersion">
-				v2.1.0
+				v1.0.0
 			</div>
-			{/* {windowDB &&
+			{windowDB &&
 				createPortal(
 					<section className="templates-xls">
 						<div className="templates-xls--left">
 							<form className="file-upload-form">
 								<label htmlFor="file" className="file-upload-label">
-									<div className="file-upload-design" onDragOver={handleDragOver} onDrop={handleDrop}>
+									<div
+										className="file-upload-design"
+										onDragOver={handleDragOver}
+										onDrop={handleDrop}>
 										<svg viewBox="0 0 640 512" height="1em">
 											<path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path>
 										</svg>
@@ -175,11 +242,13 @@ export default function Navbar() {
 						</div>
 						<div className="templates-xls--right">
 							<span>Plantillas</span>
-							{console.log(templatesDDBB.length)}
 							{templatesDDBB.length > 0 ? (
 								templatesDDBB.map((template, i) => {
 									return (
-										<a className="container-btn-file" href={`noTocar/plantillas/${template}.xlsx`} key={i}>
+										<a
+											className="container-btn-file"
+											href={`noTocar/plantillas/${template}.xlsx`}
+											key={i}>
 											<svg
 												fill="#fff"
 												xmlns="http://www.w3.org/2000/svg"
@@ -219,7 +288,7 @@ export default function Navbar() {
 					</section>,
 					document.getElementById('portal')
 				)}
-			{myNote && createPortal(<MyNote />, document.body)} */}
+			{myNote && createPortal(<MyNote />, document.body)}
 		</header>
 	)
 }

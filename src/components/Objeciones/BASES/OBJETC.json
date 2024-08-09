@@ -1,0 +1,106 @@
+[
+    {
+        "Producto": "Tarjeta de crédito",
+        "Recomendación": "Estos guiones están diseñados para enfocarse en los beneficios específicos de la tarjeta de crédito del BBVA y para guiar la conversación hacia una consideración más profunda por parte del cliente. Ajusta el tono y los detalles según la situación y el estilo de venta que mejor te funcione.",
+        "Objeciones": "No me interesa",
+        "Manejos": [
+            {
+                "texto": "Entiendo. Es importante tomar decisiones financieras que se alineen con sus necesidades actuales. Permítame mostrarle cómo nuestra tarjeta de crédito podría realmente adaptarse a su estilo de vida y beneficiarle de formas que quizás no haya considerado.",
+                "nota": "Sondear, Brindar beneficios"
+            },
+            {
+                "texto": "Permítame compartir rápidamente algunos beneficios clave de nuestra tarjeta de crédito xxxxx que han sido valorados de manera positiva por los clientes preferenciales como usted.",
+                "nota": "Brindar beneficios"
+            },
+            {
+                "texto": "Entiendo su perspectiva. Sin embargo, hemos lanzado una oferta especial por tiempo limitado para nuevos clientes, le aseguro que son de interés para usted. Y lo mejor podemos activarlo en línea.",
+                "nota": "Sondear, Brindar beneficios"
+            },
+            {
+                "texto": "Entiendo que cada persona tiene necesidades financieras únicas. ¿Podría compartir conmigo qué es lo más importante para usted en una tarjeta de crédito?",
+                "nota": null
+            },
+            {
+                "texto": "Permítame ofrecerle más información sobre cómo nuestra tarjeta de crédito BBVA puede ayudarle a administrar sus finanzas de manera más efectiva y obtener beneficios adicionales en el proceso. No tomaremos mucho tiempo y el ahorro es significativo.",
+                "nota": "Sondear, Brindar beneficios"
+            }
+        ]
+    },
+    {
+        "Producto": "Tarjeta de crédito",
+        "Recomendación": "Siempre es útil preguntar al cliente el motivo específico por el cual no está interesado para poder abordar sus preocupaciones de manera más precisa y ajustar tu enfoque de venta en consecuencia",
+        "Objeciones": "No quiero deudas",
+        "Manejos": [
+            {
+                "texto": "Nuestra tarjeta no es una deuda, por el contrario; facilitamos sus pagos y aumentamos los beneficios por las compras que realice. Es una forma de ahorrar con su compras cotidianas.",
+                "nota": "Indicar beneficios de descuentos y ahorro"
+            },
+            {
+                "texto": "Perfecto, señor/a xxxx. Esta tarjeta es ideal para usted, ya que está exonerada al 100% de cuota de manejo, lo que significa que no tendrá costos adicionales solo por tenerla. Además, si utiliza la tarjeta con responsabilidad, podrá obtener grandes descuentos en nuestros establecimientos aliados, como Jumbo, Metro, Tiendas Ara, entre otros, ahorrando dinero en las compras cotidianas. Dése la oportunidad de conocer estos beneficios. ¿Le parece bien si le hacemos entrega de la tarjeta en la dirección XXXX?",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo su preocupación. Sin embargo, tenga en cuenta que con la protección de compras de hasta XXXX dólares, tiene la tranquilidad de que, si ocurre algún problema con sus compras como hurto o daño accidental, no tendrá que cubrir esos gastos inesperados con su propio dinero. Incluso, la tarjeta está exonerada de cuotas de manejo y ofrece otras ventajas sin costos adicionales. ¿Le gustaría proceder con la solicitud para disfrutar de estos beneficios?",
+                "nota": null
+            },
+            {
+                "texto": "Comprendo que prefiera evitar deudas. Ahora, imagine cómo sería si, en lugar de asumir el costo de una compra importante en caso de daño o hurto, pudiera estar cubierto hasta 1,000 dólares. Por experiencia, esta protección le ayudaría a manejar mejor sus gastos y evitar imprevistos financieros. ¿Iniciamos con un cupo de xxx o prefiere otro monto?",
+                "nota": null
+            },
+            {
+                "texto": "Nuestra tarjeta no es una deuda, por el contrario; facilitamos sus pagos y aumentamos los beneficios por las compras que realice. Es una forma de ahorrar con su compras cotidianas.",
+                "nota": "Indicar beneficios de descuentos y ahorro"
+            }
+        ]
+    },
+    {
+        "Producto": "Tarjeta de crédito",
+        "Recomendación": "Estos guiones están diseñados para enfocarse en los beneficios específicos de la tarjeta de crédito del BBVA y para guiar la conversación hacia una consideración más profunda por parte del cliente. Ajusta el tono y los detalles según la situación y el estilo de venta que mejor te funcione.",
+        "Objeciones": "Mala experiencia con el banco",
+        "Manejos": [
+            {
+                "texto": "Me disculpo por esa mala experiencia. Sin embargo, estamos mejorando para usted con su nueva tarjeta no debe pagar cuota de manejo y todas las compras que realice con ella estarán protegidas por hasta XXX dólares. Queremos que viva la mejor experiencia con nuestro banco y disfrute de sus beneficios. ¿Prefiere que le enviemos la tarjeta a su casa o a su lugar de trabajo?",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo completamente. La confianza es fundamental a la hora de elegir su banco. Estamos aquí para cambiar su percepción y asegurarnos de que viva la mejor experiencia. Por eso le brindamos asesoría personalizada y una tarjeta con beneficios únicos para usted. Hagamos la activación en línea y empiece a disfrutar de sus beneficios ¿De acuerdo?",
+                "nota": null
+            },
+            {
+                "texto": "Comprendo su preocupación. Ahora, ¿cómo se sentiría si todas las compras que realizara estuvieran protegidas en caso de hurto o daño accidental? Esto podría ofrecerle mayor tranquilidad y una mejor experiencia, ¿verdad? Permítanos cambiar la perspectiva que tiene del banco y superar sus expectativas. ¿Le parece bien si enviamos la tarjeta a la dirección XXXXXXX?",
+                "nota": null
+            },
+            {
+                "texto": "Es comprensible querer evitar problemas pasados. Sin embargo, Sr./Sra. XXXX, permítame preguntarle: ¿en algún momento ha cometido un error que no le hayan permitido corregir? Permítanos cambiar la imagen que tiene actualmente del banco. ¿Le parece bien si comenzamos con un cupo mínimo de XXXX?",
+                "nota": null
+            },
+            {
+                "texto": "Lamento escuchar eso. En BBVA, ponemos a su disposición nuestra banca en línea, la aplicación BBVA móvil y nuestras lineas de atención, facilitando la gestión de sus productos desde cualquier lugar y en tiempo real. Permítame asesorarla para que active el beneficio de su tarjeta xxxx desde su banca móvil",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Tarjeta de crédito",
+        "Recomendación": "Siempre es útil preguntar al cliente el motivo específico por el cual no está interesado para poder abordar sus preocupaciones de manera más precisa y ajustar tu enfoque de venta en consecuencia",
+        "Objeciones": "No necesito el producto",
+        "Manejos": [
+            {
+                "texto": "Permíteme explicarle algunos beneficios que podrían cambiar su perspectiva. ¿alguna vez ha comprado algo y luego lo ha visto más barato en otro lugar? Con nuestra protección de precios, podrá recuperar la diferencia hasta XXX dólares. Un beneficio exclusivo para usted! ¿El cupo de xxx estaría bien?",
+                "nota": null
+            },
+            {
+                "texto": "Sr xxxx nuestra tarjeta no solo significa tener un método de pago, sino también contar con un respaldo integral en diversas situaciones como nuestras asistencias de viajes, beneficios en suscripciones a plataformas de streaming y garantia extendida. Lo mejor es que no tiene que pagar cuota de manejo. ¿Le parece bien si empezamos con un cupo de XXXX o prefiere uno mayor?",
+                "nota": null
+            },
+            {
+                "texto": "Sr xxx. Permítame comentarle que con su tarjeta puede ahorrar hasta el 50% en establecimientos aliados. ¿Cuánto es el promedio que invierte en su mercado mensual? En jumbo y metro podra ahorrar hasta el xx %. ¿Todos necesitamos ahorrar verdad? https://www.bbva.com.co/personas/productos/tarjetas/beneficios.html",
+                "nota": null
+            },
+            {
+                "texto": "Sr xxx, ¿Recuerda la última vez que un electrodoméstico se descompuso justo después de que venció la garantía? Con nuestra tarjeta, obtiene una garantía extendida hasta XXXX dólares, lo que significa que puede estar tranquilo sabiendo que sus compras estarán protegidas por más tiempo. ¿Le parece bien si enviamos la tarjeta a la dirección XXXX?",
+                "nota": null
+            }
+        ]
+    }
+]

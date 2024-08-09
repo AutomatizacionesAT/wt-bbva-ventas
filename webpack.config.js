@@ -45,8 +45,19 @@ module.exports = {
 				loader: 'html-loader',
 			},
 			{
-				test: /\.(png|jpg|jpeg|gif|svg)$/i,
+				test: /\.(png|jpg|jpeg|gif|svg|webp)$/i,
 				type: 'asset/resource', // *
+			},
+			{
+				test: /\.(webp)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[path][name].[ext]',
+						},
+					},
+				],
 			},
 		],
 	},
@@ -54,7 +65,6 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		new HTMLWebpackPlugin({
 			template: path.join(__dirname, '/public/index.html'),
-			favicon: './public/favicon.png',
 			filename: 'Web Training.html', //solo en produccion
 		}),
 		new MiniCssExtractPlugin({

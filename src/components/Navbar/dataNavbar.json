@@ -1,0 +1,56 @@
+{
+	"SEGMENTS": [
+		{
+			"segment": "Tarjeta de Crédito",
+			"icon": "IconCreditCard"
+		},
+		{
+			"segment": "Amparada",
+			"icon": "IconCovered"
+		},
+		{
+			"segment": "Consumo",
+			"icon": "IconCookieBite"
+		},
+		{
+			"segment": "Compra Cartera",
+			"icon": "IconWallet"
+		},
+		{
+			"segment": "Rediferido",
+			"icon": "IconPersonShelter"
+		}
+	],
+	"NAVBAR": [
+		{
+			"title": "Inicio",
+			"route": "/",
+			"icon": "home"
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/tarjetacredito/manualobjeciones",
+			"icon": "tipify",
+			"segments": ["Tarjeta de Crédito"]
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/amparada/manualobjeciones",
+			"icon": "tipify",
+			"segments": ["Amparada"]
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/consumo/manualobjeciones",
+			"icon": "tipify",
+			"segments": ["Consumo"]
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/compracartera/manualobjeciones",
+			"icon": "tipify",
+			"segments": ["Compra Cartera"]
+		}
+		
+	]
+}

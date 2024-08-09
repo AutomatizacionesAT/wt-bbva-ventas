@@ -10,6 +10,10 @@ export default function IconHome() {
 					<stop offset="0%" style={{ stopColor: 'rgb(157,78,221)', stopOpacity: 1 }} />
 					<stop offset="100%" style={{ stopColor: 'rgb(187,154,199)', stopOpacity: 1 }} />
 				</linearGradient>
+				<linearGradient id="gr-black" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" style={{ stopColor: 'rgb(0,0,0)', stopOpacity: 1 }} />
+					<stop offset="100%" style={{ stopColor: 'rgb(0,0,0)', stopOpacity: 1 }} />
+				</linearGradient>
 				<linearGradient id="gr-white" x1="0%" y1="0%" x2="100%" y2="100%">
 					<stop offset="0%" style={{ stopColor: 'rgb(255,255,255)', stopOpacity: 1 }} />
 					<stop offset="100%" style={{ stopColor: 'rgb(255,255,255)', stopOpacity: 1 }} />

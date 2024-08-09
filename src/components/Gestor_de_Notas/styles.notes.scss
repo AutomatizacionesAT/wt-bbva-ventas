@@ -16,6 +16,11 @@
 		border-radius: 10px;
 		outline: none;
 		color: #0d0c22;
+		transition: 0.3s ease;
+		-webkit-transition: 0.3s ease;
+		-moz-transition: 0.3s ease;
+		-ms-transition: 0.3s ease;
+		-o-transition: 0.3s ease;
 		&::placeholder {
 			color: gray; /* Cambia este color al que prefieras */
 			opacity: 1; /* Necesario para algunos navegadores para que el color se vea correctamente */
@@ -33,11 +38,7 @@
 			background-color: #ffffff;
 			box-shadow: 0 0 0 5px rgba(63, 140, 255, 0.3);
 		}
-		transition: 0.3s ease;
-		-webkit-transition: 0.3s ease;
-		-moz-transition: 0.3s ease;
-		-ms-transition: 0.3s ease;
-		-o-transition: 0.3s ease;
+		
 	}
 	&__error {
 		position: absolute;
@@ -45,6 +46,11 @@
 		width: 100%;
 		text-align: center;
 		background: #ff6767;
+		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
 		& span {
 			width: 100%;
 			line-height: 1.6rem;
@@ -54,11 +60,7 @@
 			border-top-left-radius: 0.4rem;
 			border-top-right-radius: 0.4rem;
 		}
-		transform: translateY(-50%);
-		-webkit-transform: translateY(-50%);
-		-moz-transform: translateY(-50%);
-		-ms-transform: translateY(-50%);
-		-o-transform: translateY(-50%);
+		
 	}
 	& svg {
 		position: absolute;
