@@ -168,6 +168,14 @@
 					"route": "/tarjetacredito/minicheckD"
 				}
 			]
+		},
+		{
+			"title": "Cuotas de Manejo",
+			"route": "/cuotasmanejo",
+			"icon": "IconDollarTicked",
+			"segments": [
+				"Tarjeta de Crédito"
+			]
 		}
 	]
 }

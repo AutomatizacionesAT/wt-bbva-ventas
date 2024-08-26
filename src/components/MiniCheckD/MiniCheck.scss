@@ -6,13 +6,13 @@
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    background-color: light-dark(rgba($p3-color, 0.3), rgba($p2-color, 0));
+    background-color: light-dark(rgba($p2-color, 0), rgba($p3-color, 0.3));
 
     &__title {
         grid-column: 1/4;
         width: 100%;
         font-size: 4rem;
-        color: light-dark($p2-color, $w-color);
+        color: light-dark($w-color, $p2-color);
         text-align: center;
         letter-spacing: 4px;
         margin-bottom: 2rem;
@@ -34,11 +34,11 @@
         h2 {
             font-size: 4rem;
             text-transform: uppercase;
-            color: light-dark($w-color, $p2-color); // Manejando el color de texto
+            color: light-dark($p2-color, $w-color); // Manejando el color de texto
             font-weight: bold;
 
             span {
-                color: light-dark($w-color, $p-color); // Manejando el color de texto del span
+                color: light-dark($p-color, $w-color); // Manejando el color de texto del span
             }
         }
     }
@@ -73,8 +73,8 @@
     }
 
     .step-indicator {
-        background-color: light-dark($s2-color, $p2-color); // Manejando el color del indicador
-        color: light-dark($p2-color, $s2-color); // Manejando el color del texto
+        background-color: light-dark($p2-color, $s2-color); // Manejando el color del indicador
+        color: light-dark($s2-color, $p2-color); // Manejando el color del texto
         border-radius: 50%;
         width: 30px;
         height: 30px;
@@ -89,12 +89,12 @@
 
         p {
             font-size: 3rem;
-            color: light-dark($p2-color, $s2-color); // Manejando el color del texto
+            color: light-dark($s2-color, $p2-color); // Manejando el color del texto
             text-align: center;
             height: 180px;
             width: 100%;
-            background-color: light-dark($p2-color, $w-color);
-            color: light-dark($w-color, $p-color);
+            background-color: light-dark($w-color, $p2-color);
+            color: light-dark($p-color, $w-color);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -111,8 +111,8 @@
     }
 
     .stepper-controls button {
-        background-color: light-dark($s2-color, $p2-color); // Manejando el color del botón
-        color: light-dark($p2-color, $s2-color); // Manejando el color del texto
+        background-color: light-dark($p2-color, $s2-color); // Manejando el color del botón
+        color: light-dark($s2-color, $p2-color); // Manejando el color del texto
         border: none;
         border-radius: 50%;
         width: 50px;
@@ -127,11 +127,11 @@
     }
 
     .stepper-controls button:disabled {
-        background-color: light-dark(#ccc, #333); // Manejando el color del botón deshabilitado
+        background-color: light-dark(#333, #ccc); // Manejando el color del botón deshabilitado
     }
 
     .stepper-controls button:not(:disabled):hover {
-        background-color: light-dark(darken($s2-color, 10%), darken($p2-color, 10%)); // Manejando el color del hover
+        background-color: light-dark(darken($p2-color, 10%), darken($s2-color, 10%)); // Manejando el color del hover
     }
 
     .stepper-indicators {
@@ -144,21 +144,21 @@
     .stepper-indicators .indicator {
         width: 20px;
         height: 20px;
-        background-color: light-dark($p2-color, $s2-color); // Manejando el color del indicador
+        background-color: light-dark($s2-color, $p2-color); // Manejando el color del indicador
         border-radius: 50%;
         cursor: pointer;
         transition: background-color 0.3s;
     }
 
     .stepper-indicators .indicator.active {
-        background-color: light-dark($s2-color, $p2-color); // Color para el indicador activo
+        background-color: light-dark($p2-color, $s2-color); // Color para el indicador activo
     }
 
     .stepper-indicators .indicator.completed {
-        background-color: light-dark($s2-color, lighten($s2-color, 20%)); // Verde o color más claro para pasos completados
+        background-color: light-dark(lighten($s2-color, 20%), $s2-color); // Verde o color más claro para pasos completados
     }
 
     .stepper-indicators .indicator.pending {
-        background-color: light-dark($p2-color, $s2-color); // Color para pasos pendientes
+        background-color: light-dark($s2-color, $p2-color); // Color para pasos pendientes
     }
 }

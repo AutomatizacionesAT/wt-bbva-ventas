@@ -103,14 +103,14 @@ function NoteApp() {
 	//busca el el local storage  la base notas y las guarda en la variable y si no simpremente guarda un array vacio en esa variable
 	// este useEffect es solo cuando se de f5  y acceder al local ya que carga una sola vez despues de renderizar todo
 	// tambien sirve para validar si se deja abierto o cerrado el componente
-	// useEffect(() => {
-	// 	const savedNotes = JSON.parse(localStorage.getItem('notes')) || []
-	// 	setNotes(savedNotes)
+	useEffect(() => {
+		const savedNotes = JSON.parse(localStorage.getItem('notes')) || []
+		setNotes(savedNotes)
 
-	// 	const showNotes = JSON.parse(localStorage.getItem('showNote')) || false
-	// 	// setIsVisible(showNotes)
-	// 	localStorage.setItem('showNote', JSON.stringify(showNotes))
-	// }, [])
+		const showNotes = JSON.parse(localStorage.getItem('showNote')) || false
+		// setIsVisible(showNotes)
+		localStorage.setItem('showNote', JSON.stringify(showNotes))
+	}, [])
 
 	return (
 		<div className="noteApp-container show animate__animated animate__fadeInRight">

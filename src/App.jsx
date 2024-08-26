@@ -15,12 +15,13 @@ import HorNav from './components/Navbar/HorNav.jsx'
 import { TarjetasCredito } from './components/TarjetasCredito/TarjetasCredito.jsx'
 
 import { Objecion } from './components/Objeciones/Objecion.jsx'
+import { CuotasManejo } from './components/CuotasManejo/CuotasManejo.jsx'
 
 const App = () => {
 	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
 	const style = {
 		app: {
-			backgroundImage: `url(${scheme === 'dark' ? imgBackground : imgBackgroundD})`,
+			backgroundImage: `url(${scheme === 'light' ? imgBackground : imgBackgroundD})`,
 			colorScheme: scheme,
 		},
 		body: {
@@ -52,6 +53,7 @@ const App = () => {
 					<Route path="/consumo/manualobjeciones" element={<Objecion NBD="OBJECON" />} />
 					<Route path='/compracartera/manualobjeciones' element={<Objecion NBD='OBJECOMCAR' />} />
 					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
+					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
 				</Routes>
 			</section>
 		</div>

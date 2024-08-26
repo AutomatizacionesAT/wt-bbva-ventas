@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: light-dark(rgba($p3-color, 0.3), rgba($p2-color, 0));
+    background-color: light-dark(rgba($p2-color, 0), rgba($p3-color, 0.3));
 
     &__title {
         margin: 4px 0;
@@ -28,7 +28,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: light-dark(rgba($p3-color, 0.4), rgba($s-color, 0.4));
+        background-color: light-dark(rgba($s-color, 0.4), rgba($p3-color, 0.4));
         box-shadow: 2px 2px 6px white;
         border-radius: 10px;
         border: 2px groove $w-color;
@@ -37,7 +37,7 @@
             position: absolute;
             top: -40px;
             left: 25px;
-            background-color: light-dark($s2-color, $p2-color);
+            background-color: light-dark($p2-color, $s2-color);
             color: $w-color;
             padding: 0.5rem;
             font-size: 2.5rem;
@@ -53,20 +53,20 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 8px;
-            border-bottom: 2px groove light-dark($w-color, $p3-color);
+            border-bottom: 2px groove light-dark($p3-color, $w-color);
 
             &-item {
                 margin: 0 0 8px 0;
                 max-width: 48%;
                 min-width: 500px;
                 padding: 8px 12px;
-                background-color: light-dark($p2-color, $g3-color);
-                border: 4px groove light-dark($s2-color, $p2-color);
+                background-color: light-dark($g3-color, $p2-color);
+                border: 4px groove light-dark($p2-color, $s2-color);
                 border-radius: 8px;
-                color: light-dark($w-color, $p3-color);
+                color: light-dark($p3-color, $w-color);
                 font-size: 1.3rem;
                 text-wrap: balance;
-                box-shadow: 2px 2px 6px light-dark($w-color, $p3-color);
+                box-shadow: 2px 2px 6px light-dark($p3-color, $w-color);
             }
         }
 
@@ -80,7 +80,7 @@
             gap: 4px;
             overflow-y: auto;
             scrollbar-width: thin;
-            scrollbar-color: light-dark($p3-color, $p2-color) light-dark($w-color, $w-color);
+            scrollbar-color: light-dark($p2-color, $p3-color) light-dark($w-color, $w-color);
             scrollbar-gutter: stable;
             border-radius: 10px;
             box-shadow: inset 1px 1px 4px white;
@@ -95,12 +95,12 @@
                     width: 300px;
                     margin: 8px 0;
                     padding: 8px 16px;
-                    background-color: light-dark($s3-color, $p2-color);
+                    background-color: light-dark($p2-color, $s3-color);
                     color: $w-color;
                     font-size: 1.4rem;
                     font-weight: 800;
                     border-radius: 8px;
-                    box-shadow: 2px 2px 6px light-dark($w-color, $p3-color);
+                    box-shadow: 2px 2px 6px light-dark($p3-color, $w-color);
                     cursor: pointer;
 
                     &:hover {
@@ -116,8 +116,8 @@
                     align-items: center;
                     gap: 8px;
                     background-color: light-dark($g3-color, $g3-color);
-                    box-shadow: 2px 2px 6px light-dark($w-color, $p3-color);
-                    border: 4px groove light-dark($s2-color, $p2-color);
+                    box-shadow: 2px 2px 6px light-dark($p3-color, $w-color);
+                    border: 4px groove light-dark($p2-color, $s2-color);
                     border-radius: 8px;
                     color: light-dark($p3-color, $p3-color);
                     font-size: 1.4rem;
@@ -140,12 +140,12 @@
                         font-size: 1.4rem;
                         font-weight: 900;
                         align-self: center;
-                        color: light-dark($w-color, $p3-color);
+                        color: light-dark($p3-color, $w-color);
                         text-wrap: balance;
                         text-align: center;
                         box-shadow: 2px 2px 6px light-dark($p3-color, $p3-color);
                         border-radius: 7px;
-                        background-color: light-dark($p3-color, $w-color);
+                        background-color: light-dark($w-color, $p3-color);
                     }
 
                     &>div {
@@ -157,12 +157,12 @@
 
                         &>button {
                             padding: 8px 16px;
-                            background-color: light-dark($s3-color, $p2-color);
+                            background-color: light-dark($p2-color, $s3-color);
                             color: $w-color;
                             font-size: 1.4rem;
                             font-weight: 800;
                             border-radius: 8px;
-                            box-shadow: 2px 2px 6px light-dark($p2-color, $p3-color);
+                            box-shadow: 2px 2px 6px light-dark($p3-color, $p2-color);
                             cursor: pointer;
 
                             &.active-manejo {

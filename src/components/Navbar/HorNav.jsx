@@ -23,6 +23,7 @@ import { IconCovered } from '../../icons/IconCovered'
 import { IconCookieBite } from '../../icons/IconCookieBite'
 import { IconWallet } from '../../icons/IconWallet'
 import { IconPersonShelter } from '../../icons/IconPersonShelter'
+import { IconDollarTicked } from '../../icons/IconDollarTicked'
 
 import realIconCheck from '../../assets/images/index/realIconCheck.png'
 import IconNotes from '../../icons/IconNotes'
@@ -32,7 +33,7 @@ import IconUpload from '../../icons/IconUpload'
 import InconSpell from '../../icons/InconSpell'
 import IconGuide from '../../icons/IconGuide'
 import { createPortal } from 'react-dom'
-
+import dropImg from '../../assets/images/index/DropDownBoard.png'
 const HorNav = () => {
 	const navigate = useNavigate()
 	const scrollContainerRef = useRef(null)
@@ -60,6 +61,8 @@ const HorNav = () => {
 		IconCookieBite: <IconCookieBite />,
 		IconWallet: <IconWallet />,
 		IconPersonShelter: <IconPersonShelter />,
+		IconDollarTicked: <IconDollarTicked />,
+
 	})
 	const { readExcelFile, templatesDDBB, setScheme, showApp } = useContext(GlobalContext)
 	const search = valueSearch => {
@@ -215,7 +218,9 @@ const HorNav = () => {
 												<ul
 													ref={dropDownRef}
 													className={'hornav-dropdown animate__animated'}
-													name={link.title}>
+													name={link.title}
+													style={{backgroundImage: `url(${dropImg})`}}
+												>
 													<li className="hornav-dropdown__li li-menu">
 														{/* <figure>
 															<img src={iconReal[link.icon]} alt="checklist" />
