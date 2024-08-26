@@ -54,9 +54,9 @@ export const Objecion = ({ NBD }) => {
                         </div>
                     ))}
                 </div>
-                <div className='objeciones__body-objecion' style={scheme === 'light' ? { backgroundImage: `url(${img2})` } : { backgroundImage: `url(${img1})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed'}}>
+                <div className='objeciones__body-objecion' style={scheme === 'light' ? { backgroundImage: `url(${img2})` } : { backgroundImage: `url(${img1})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
                     {data.map((ele, ind) => (
-                        <section 
+                        <section
                             className='objeciones__body-objecion-item' key={ind}
                             style={{ transition: 'all 0.3s ease' }}
                         >
@@ -65,7 +65,7 @@ export const Objecion = ({ NBD }) => {
                             </button>
                             <div className='objeciones__body-objecion-item-content' style={{
                                 opacity: activeObjectionIndex === ind ? 1 : 0,
-                                maxHeight: activeObjectionIndex === ind ? '1000px' : '0px', 
+                                maxHeight: activeObjectionIndex === ind ? '1000px' : '0px',
                                 padding: activeObjectionIndex === ind ? '16px' : '0px',
                                 overflow: 'hidden',
                                 transition: 'opacity 0.3s, max-height 0.3s ease'

@@ -14,10 +14,10 @@ export default function Bienvenida() {
 			<section className="welcome__content">
 				<span>Bienvenido a </span>
 				<span>
-					Web Training <strong>Formacion</strong>
+					Web Training <strong>BBVA</strong>
 				</span>
 				<p>
-					Desarrollo de aplicativos web para la mejora de las gestiones diarias de la producción.
+					VENTAS.
 				</p>
 			</section>
 		</div>

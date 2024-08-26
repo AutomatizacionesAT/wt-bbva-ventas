@@ -166,9 +166,9 @@ const HorNav = () => {
 							</li>
 						))}
 						<li className="settings">
-							<button className="settings__btn" name="upload" onClick={setsClick}>
+							{/* <button className="settings__btn" name="upload" onClick={setsClick}>
 								<IconUpload />
-							</button>
+							</button> */}
 							<button
 								className="settings__btn"
 								name="spellcheck"
@@ -274,7 +274,7 @@ const HorNav = () => {
 						<img src={imgLogo} alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">V.2.1.1</span>
+					<span className="hornav__logos--version">v.2.2.1</span>
 				</div>
 			</nav>
 			{windowDB &&

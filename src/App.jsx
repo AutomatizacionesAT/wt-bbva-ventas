@@ -1,23 +1,16 @@
 import '@styles/app.scss'
 import { Routes, Route } from 'react-router-dom'
-
 import imgBackground from './assets/images/index/backgroundLight.jpg'
 import imgBackgroundD from './assets/images/index/background.jpg'
 import imgApp from './assets/images/index/backApp.jpg'
-
-import Navbar from './components/Navbar/Navbar'
 import Bienvenida from './components/Bienvenida/Bienvenida'
 import Corrector from './components/Corrector/Corrector'
+import MiniCheck from './components/MiniCheck/MiniCheck.jsx'
+import MiniCheckD from './components/MiniCheckD/MiniCheckD.jsx'
+import MiniCheckT from './components/MiniCheckT/MiniCheckT.jsx'
 import GlobalContext, { GlobalProvider } from './context/GlobalContext'
-import CheckListBase from './components/Checklist/CheckListBase'
-import Testeos from './components/Test/Testeos'
-import Notas from './components/Gestor_de_Notas/Notas'
 import { useContext, useEffect } from 'react'
-import TimeLine from './components/TimeLine/TimeLine'
-import Tipificador from './components/Tipificador/Tipificador'
 import { NoteApp } from './components/NoteApp/NoteApp.jsx'
-import IconsTest from './components/WebTraining/IconsTest.jsx'
-import IconArrowUp from './icons/IconArrowUp.jsx'
 import HorNav from './components/Navbar/HorNav.jsx'
 import { TarjetasCredito } from './components/TarjetasCredito/TarjetasCredito.jsx'
 
@@ -50,20 +43,14 @@ const App = () => {
 			<section className="app__body" style={style.body}>
 				<Routes>
 					<Route path="/" element={<Bienvenida />} />
-					<Route path="/checklist" element={<CheckListBase checklist="ejemploA" />} />
-					<Route path="/checklist/ejemploA" element={<CheckListBase checklist="ejemploA" />} />
-					<Route path="/checklist/ejemploB" element={<CheckListBase checklist="ejemploB" />} />
-					<Route path="/checklist/ejemploC" element={<CheckListBase checklist="ejemploC" />} />
-					<Route path="/tipificador" element={<Tipificador />} />
-					<Route path="/calculadoras/estandar" element={<Tipificador />} />
-					<Route path="/timeline" element={<TimeLine />} />
 					<Route path="/corrector" element={<Corrector />} />
-					<Route path="/testeos" element={<Testeos />} />
-					<Route path="/iconTest" element={<IconsTest />} />
-					<Route path="/tarjetacredito/manualobjeciones" element={<Objecion NBD="OBJETC"/>} />
-					<Route path="/amparada/manualobjeciones" element={<Objecion NBD="OBJEAM"/>} />
-					<Route path="/consumo/manualobjeciones" element={<Objecion NBD="OBJECON"/>} />
-					<Route path='/compracartera/manualobjeciones' element={<Objecion NBD='OBJECOMCAR'/>} />
+					<Route path="/tarjetacredito/manualobjeciones" element={<Objecion NBD="OBJETC" />} />
+					<Route path="/tarjetacredito/minicheck" element={<MiniCheck NBD="OBJETC" />} />
+					<Route path="/tarjetacredito/minicheckD" element={<MiniCheckD NBD="OBJETC" />} />
+					<Route path="/tarjetacredito/minicheckT" element={<MiniCheckT NBD="OBJETC" />} />
+					<Route path="/amparada/manualobjeciones" element={<Objecion NBD="OBJEAM" />} />
+					<Route path="/consumo/manualobjeciones" element={<Objecion NBD="OBJECON" />} />
+					<Route path='/compracartera/manualobjeciones' element={<Objecion NBD='OBJECOMCAR' />} />
 					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
 				</Routes>
 			</section>

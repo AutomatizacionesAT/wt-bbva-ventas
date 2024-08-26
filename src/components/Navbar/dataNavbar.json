@@ -31,37 +31,143 @@
 			"title": "Manual de Objeciones",
 			"route": "/tarjetacredito/manualobjeciones",
 			"icon": "tipify",
-			"segments": ["Tarjeta de Crédito"]
+			"segments": [
+				"Tarjeta de Crédito"
+			]
+		},
+		{
+			"title": "Beneficios de Tarjetas",
+			"route": "/beneficiosdetarjeta",
+			"icon": "IconCreditCard",
+			"segments": [
+				"Tarjeta de Crédito"
+			]
+		},
+		{
+			"title": "Mini Checklist",
+			"route": "/tarjetacredito/minicheck",
+			"icon": "tipify",
+			"segments": [
+				"Tarjeta de Crédito"
+			],
+			"dropDown": [
+				{
+					"title": "ACTIVACIÓN TOKEN_LISTA",
+					"route": "/tarjetacredito/minicheck"
+				},
+				{
+					"title": "CAMBIO DE DIRECCIÓN",
+					"route": "/tarjetacredito/minicheckD"
+				},
+				{
+					"title": "ACEPTACIÓN TDC PREAPROPADO",
+					"route": "/tarjetacredito/minicheckT"
+				}
+			]
 		},
 		{
 			"title": "Manual de Objeciones",
 			"route": "/amparada/manualobjeciones",
 			"icon": "tipify",
-			"segments": ["Amparada"]
+			"segments": [
+				"Amparada"
+			]
 		},
 		{
 			"title": "Manual de Objeciones",
 			"route": "/consumo/manualobjeciones",
 			"icon": "tipify",
-			"segments": ["Consumo"]
+			"segments": [
+				"Consumo"
+			]
+		},
+		{
+			"title": "Mini Checklist",
+			"route": "/tarjetacredito/minicheck",
+			"icon": "tipify",
+			"segments": [
+				"Consumo"
+			],
+			"dropDown": [
+				{
+					"title": "ACTIVACIÓN TOKEN_LISTA",
+					"route": "/tarjetacredito/minicheck"
+				},
+				{
+					"title": "CAMBIO DE DIRECCIÓN",
+					"route": "/tarjetacredito/minicheckD"
+				}
+			]
 		},
 		{
 			"title": "Manual de Objeciones",
 			"route": "/compracartera/manualobjeciones",
 			"icon": "tipify",
-			"segments": ["Compra Cartera"]
+			"segments": [
+				"Compra Cartera"
+			]
+		},
+		{
+			"title": "Mini Checklist",
+			"route": "/tarjetacredito/minicheck",
+			"icon": "tipify",
+			"segments": [
+				"Compra Cartera"
+			],
+			"dropDown": [
+				{
+					"title": "ACTIVACIÓN TOKEN_LISTA",
+					"route": "/tarjetacredito/minicheck"
+				},
+				{
+					"title": "CAMBIO DE DIRECCIÓN",
+					"route": "/tarjetacredito/minicheckD"
+				}
+			]
 		},
 		{
 			"title": "Beneficios de Tarjetas",
 			"route": "/beneficiosdetarjeta",
 			"icon": "IconCreditCard",
-			"segments": ["Tarjeta de Crédito"]
+			"segments": [
+				"Amparada"
+			]
 		},
 		{
-			"title": "Beneficios de Tarjetas",
-			"route": "/beneficiosdetarjeta",
-			"icon": "IconCreditCard",
-			"segments": ["Amparada"]
+			"title": "Mini Checklist",
+			"route": "/tarjetacredito/minicheck",
+			"icon": "tipify",
+			"segments": [
+				"Amparada"
+			],
+			"dropDown": [
+				{
+					"title": "ACTIVACIÓN TOKEN_LISTA",
+					"route": "/tarjetacredito/minicheck"
+				},
+				{
+					"title": "CAMBIO DE DIRECCIÓN",
+					"route": "/tarjetacredito/minicheckD"
+				}
+			]
+		},
+		{
+			"title": "Mini Checklist",
+			"route": "/tarjetacredito/minicheck",
+			"icon": "tipify",
+			"segments": [
+				"Rediferido"
+			],
+			"dropDown": [
+				{
+					"title": "ACTIVACIÓN TOKEN_LISTA",
+					"route": "/tarjetacredito/minicheck"
+				},
+				{
+					"title": "CAMBIO DE DIRECCIÓN",
+					"route": "/tarjetacredito/minicheckD"
+				}
+			]
 		}
 	]
 }

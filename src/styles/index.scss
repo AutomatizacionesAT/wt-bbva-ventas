@@ -12,16 +12,19 @@
 	-ms-transition: all 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out;
 }
+
 #root {
 	overflow: hidden;
 	color-scheme: light dark;
 }
+
 #portal {
 	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 100;
 }
+
 /* Se establece 1rem como 10px*/
 html {
 	font-size: 62.5%;
@@ -50,6 +53,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	/* opcional */
 	-moz-osx-font-smoothing: grayscale;
+
 	/* opcional Background */
 	&::-webkit-scrollbar {
 		display: none;
