@@ -5,9 +5,10 @@ import imgBackgroundD from './assets/images/index/background.jpg'
 import imgApp from './assets/images/index/backApp.jpg'
 import Bienvenida from './components/Bienvenida/Bienvenida'
 import Corrector from './components/Corrector/Corrector'
-import MiniCheck from './components/MiniCheck/MiniCheck.jsx'
-import MiniCheckD from './components/MiniCheckD/MiniCheckD.jsx'
-import MiniCheckT from './components/MiniCheckT/MiniCheckT.jsx'
+import CambioDireccion from './components/MiniChecklist/CambioDireccion/CambioDireccion.jsx'
+import ActivacionToken from './components/MiniChecklist/ActivacionToken/ActivacionToken.jsx'
+import AceptacionPreApro from './components/MiniChecklist/AceptacionPreApro/AceptacionPreApro.jsx'
+import ActivacionTD from './components/MiniChecklist/ActivacionTD/ActivacionTD.jsx'
 import GlobalContext, { GlobalProvider } from './context/GlobalContext'
 import { useContext, useEffect } from 'react'
 import { NoteApp } from './components/NoteApp/NoteApp.jsx'
@@ -46,12 +47,13 @@ const App = () => {
 					<Route path="/" element={<Bienvenida />} />
 					<Route path="/corrector" element={<Corrector />} />
 					<Route path="/tarjetacredito/manualobjeciones" element={<Objecion NBD="OBJETC" />} />
-					<Route path="/tarjetacredito/minicheck" element={<MiniCheck NBD="OBJETC" />} />
-					<Route path="/tarjetacredito/minicheckD" element={<MiniCheckD NBD="OBJETC" />} />
-					<Route path="/tarjetacredito/minicheckT" element={<MiniCheckT NBD="OBJETC" />} />
-					<Route path="/amparada/manualobjeciones" element={<Objecion NBD="OBJEAM" />} />
 					<Route path="/consumo/manualobjeciones" element={<Objecion NBD="OBJECON" />} />
+					<Route path="/amparada/manualobjeciones" element={<Objecion NBD="OBJEAM" />} />
 					<Route path='/compracartera/manualobjeciones' element={<Objecion NBD='OBJECOMCAR' />} />
+					<Route path="/minichecklist/cambiodireccion" element={<CambioDireccion />} />
+					<Route path="/minichecklist/activaciontoken" element={<ActivacionToken />} />
+					<Route path="/minichecklist/aceptacionpreaprobado" element={<AceptacionPreApro />} />
+					<Route path="/minichecklist/activaciontarjetacredito" element={<ActivacionTD />} />
 					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
 					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
 				</Routes>

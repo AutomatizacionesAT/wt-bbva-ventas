@@ -1,40 +1,40 @@
 import React, { useState } from 'react';
-import './MiniCheck.scss';
-import image1 from '../../assets/images/checklist/mch1.png';
-import image2 from '../../assets/images/checklist/mch2.png';
-import image3 from '../../assets/images/checklist/mch3.png';
-import image4 from '../../assets/images/checklist/mch4.png';
-import image5 from '../../assets/images/checklist/mch5.png';
-import image6 from '../../assets/images/checklist/mch6.png';
-import image7 from '../../assets/images/checklist/mch7.png';
-import image8 from '../../assets/images/checklist/mch8.png';
-import image9 from '../../assets/images/checklist/mch9.png';
-import image10 from '../../assets/images/checklist/mch10.png';
-import image11 from '../../assets/images/checklist/mch11.png';
+import '../MiniCheck.scss';
+import image1 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch1.png';
+import image2 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch2.png';
+import image3 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch3.png';
+import image4 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch4.png';
+import image5 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch5.png';
+import image6 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch6.png';
+import image7 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch7.png';
+import image8 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch8.png';
+import image9 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch9.png';
+import image10 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch10.png';
+import image11 from '@images/checklist/MINICHECKLIST/ACTIVACIONTOKEN/mch11.png';
 
 const steps = [
     {
-        title: "Ingresa al menú principal y da click en 'Seguridad y Privacidad'",
+        title: "Ingresa al menú principal y da click en &bold'Seguridad y Privacidad'&bold",
         imageUrl: image1,
         indicator: "1"
     },
     {
-        title: "Selecciona 'Accesos y Firmas'",
+        title: "Selecciona &bold'Accesos y Firmas'&bold",
         imageUrl: image2,
         indicator: "2"
     },
     {
-        title: "Desliza en 'Token Digital'",
+        title: "Desliza en &bold'Token Digital'&bold",
         imageUrl: image3,
         indicator: "3"
     },
     {
-        title: "Elige la opción 'Verificación en dos pasos'",
+        title: "Elige la opción &bold'Verificación en dos pasos'&bold",
         imageUrl: image4,
         indicator: "4"
     },
     {
-        title: "Selecciona 'Iniciar Confirmación'",
+        title: "Selecciona &bold'Iniciar Confirmación'&bold",
         imageUrl: image5,
         indicator: "5"
     },
@@ -89,13 +89,21 @@ const ActivacionToken = () => {
         setCurrentStep(index);
     };
 
+    const formatText = (text) => {
+        const parts = text.split(/&bold(.*?)&bold/); // Dividir el texto en partes según el patrón
+        return parts.map((part, index) => {
+          // Aplicar negrita a las partes que estaban entre &bold
+          return index % 2 === 1 ? <strong key={index}>{part}</strong> : part;
+        });
+    };
+
     return (
         <div className="stepper-container">
             <h1 className='stepper-container__title'>ACTIVACIÓN TOKEN</h1>
             <div className='left'>
                 <h2>Paso <span>{currentStep + 1}</span> </h2>
                 <div className="stepper">
-                    <p>{steps[currentStep].title}</p>
+                <p>{formatText(steps[currentStep].title)}</p>
                 </div>
                 <div className="stepper-controls">
                     <button onClick={handlePrevious} disabled={currentStep === 0}>&lt;</button>

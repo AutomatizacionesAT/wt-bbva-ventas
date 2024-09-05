@@ -1,58 +1,53 @@
 import React, { useState } from 'react';
-import './MiniCheck.scss';
-import image1 from '../../assets/images/checklist/mch12.png';
-import image2 from '../../assets/images/checklist/mch13.png';
-import image3 from '../../assets/images/checklist/mch14.png';
-import image4 from '../../assets/images/checklist/mch15.png';
-import image5 from '../../assets/images/checklist/mch16.png';
-import image6 from '../../assets/images/checklist/mch17.png';
-import image7 from '../../assets/images/checklist/mch18.png';
-import image8 from '../../assets/images/checklist/mch19.png';
+import '../MiniCheck.scss';
+import image1 from '@images/checklist/MINICHECKLIST/ACTIVACIONTD/im1.png';
+import image2 from '@images/checklist/MINICHECKLIST/ACTIVACIONTD/im2.png';
+import image3 from '@images/checklist/MINICHECKLIST/ACTIVACIONTD/im3.png';
+import image4 from '@images/checklist/MINICHECKLIST/ACTIVACIONTD/im4.png';
+import image5 from '@images/checklist/MINICHECKLIST/ACTIVACIONTD/im5.png';
+import image6 from '@images/checklist/MINICHECKLIST/ACTIVACIONTD/im6.png';
+import image7 from '@images/checklist/MINICHECKLIST/ACTIVACIONTD/im7.png';
+
 
 const steps = [
     {
-        title: "Ingresa al menú principal ubicado en la parte superior derecha",
+        title: "Una vez hayas ingresado a la app de BBVA Movil, selecciona tu nueva tarjeta de crédito",
         imageUrl: image1,
         indicator: "1"
     },
     {
-        title: "Da clic en la opción “Perfil”",
+        title: "Tan pronto des clic, te aparecerá el siguiente mensajes, da click en &bold“Activar”&bold.",
         imageUrl: image2,
         indicator: "2"
     },
     {
-        title: "Ingresa en “Direcciones”",
+        title: "Confirma tu número telefónico y da click en &bold“si, mi número es correcto”&bold",
         imageUrl: image3,
         indicator: "3"
     },
     {
-        title: "Desliza el botón “mostrar datos” ",
+        title: "Ingresa el código de verificación enviado a tu celular",
         imageUrl: image4,
         indicator: "4"
     },
     {
-        title: "Da clic en “Editar” ",
+        title: "Ingresa los 16 dígitos de la tarjeta que vas a activar",
         imageUrl: image5,
         indicator: "5"
     },
     {
-        title: "Ingresa la nueva dirección, recuerda cambiar la ciudad y departamento",
+        title: "Ingresa la fecha de vencimiento de la tarjeta",
         imageUrl: image6,
         indicator: "6"
     },
     {
-        title: "Haz check en el recuadro “esta es mi dirección de correspondencia” ",
+        title: "7.	Te aparecerá una mensaje de confirmación da click en &bold“Entendido”&bold",
         imageUrl: image7,
         indicator: "7"
     },
-    {
-        title: "Da clic en “guardar”",
-        imageUrl: image8,
-        indicator: "8"
-    }
 ];
 
-const ActivacionToken = () => {
+const ActivacionTD = () => {
     const [currentStep, setCurrentStep] = useState(0);
 
     const handleNext = () => {
@@ -71,13 +66,21 @@ const ActivacionToken = () => {
         setCurrentStep(index);
     };
 
+    const formatText = (text) => {
+        const parts = text.split(/&bold(.*?)&bold/); // Dividir el texto en partes según el patrón
+        return parts.map((part, index) => {
+          // Aplicar negrita a las partes que estaban entre &bold
+          return index % 2 === 1 ? <strong key={index}>{part}</strong> : part;
+        });
+    };
+
     return (
         <div className="stepper-container">
-            <h1 className='stepper-container__title'>CAMBIO DE DIRECCIÓN </h1>
+            <h1 className='stepper-container__title'>ACTIVACIÓN TARJETA DE CRÉDITO</h1>
             <div className='left'>
                 <h2>Paso <span>{currentStep + 1}</span> </h2>
                 <div className="stepper">
-                    <p>{steps[currentStep].title}</p>
+                <p>{formatText(steps[currentStep].title)}</p>
                 </div>
                 <div className="stepper-controls">
                     <button onClick={handlePrevious} disabled={currentStep === 0}>&lt;</button>
@@ -105,4 +108,4 @@ const ActivacionToken = () => {
     );
 };
 
-export default ActivacionToken;
+export default ActivacionTD;

@@ -32,6 +32,7 @@ import GlobalContext from '../../context/GlobalContext'
 import IconUpload from '../../icons/IconUpload'
 import InconSpell from '../../icons/InconSpell'
 import IconGuide from '../../icons/IconGuide'
+import { IconArrowLeftRight } from '../../icons/IconArrowLeftRight'
 import { createPortal } from 'react-dom'
 import dropImg from '../../assets/images/index/DropDownBoard.png'
 const HorNav = () => {
@@ -62,6 +63,7 @@ const HorNav = () => {
 		IconWallet: <IconWallet />,
 		IconPersonShelter: <IconPersonShelter />,
 		IconDollarTicked: <IconDollarTicked />,
+		IconArrowLeftRight: <IconArrowLeftRight />,
 
 	})
 	const { readExcelFile, templatesDDBB, setScheme, showApp } = useContext(GlobalContext)
