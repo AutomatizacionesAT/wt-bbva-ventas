@@ -43,6 +43,7 @@ const HorNav = () => {
 	const [windowDB, setWindowDB] = useState(false)
 	const [hidden, setHidden] = useState(true)
 	const [navSegment, SetNavSegment] = useState(DATANAV.SEGMENTS[0].segment)
+	const [activeLink, setActiveLink] = useState('Inicio');
 	const [selectIcon, setSelectIcon] = useState({
 		home: <IconHome />,
 		question: <IconCircleQuestion />,
@@ -66,7 +67,8 @@ const HorNav = () => {
 		IconArrowLeftRight: <IconArrowLeftRight />,
 
 	})
-	const { readExcelFile, templatesDDBB, setScheme, showApp } = useContext(GlobalContext)
+	const { readExcelFile, templatesDDBB, setScheme, showApp, admin, setAdmin } =
+		useContext(GlobalContext)
 	const search = valueSearch => {
 		const lowerCase = valueSearch.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 		const allCards = document.querySelectorAll('.dato-buscado')
@@ -91,10 +93,16 @@ const HorNav = () => {
 			scrollContainerRef.current.scrollLeft += event.deltaY
 		}
 	}
-
-	const activeDropDown = (drop, button) => {
-		const $dropDown = button.nextElementSibling
-		const $liItems = [...button.parentNode.parentNode.children]
+	const handleLinkClick = linkTitle => {
+		setActiveLink(linkTitle)
+	}
+	const activeDropDown = button => {
+		const $dropDown =
+			button.type === 'button' ? button.nextElementSibling : button.parentNode.parentNode
+		const $liItems =
+			button.type === 'button'
+				? [...button.parentNode.parentNode.children]
+				: [...button.parentNode.parentNode.parentNode.parentNode.children]
 
 		if ($dropDown && $dropDown.classList.contains('active')) {
 			$dropDown.classList.remove('animate__fadeInDown')
@@ -125,7 +133,6 @@ const HorNav = () => {
 		setDropDown(!dropDown)
 	}
 	const setsClick = e => {
-		console.log('holis')
 		switch (e.target.name) {
 			case 'theme':
 				setScheme(prev => (prev === 'light' ? 'dark' : 'light'))
@@ -148,6 +155,63 @@ const HorNav = () => {
 			readExcelFile(fileEvent)
 		}
 	}
+	const startDrive = () => {
+		const driverObj = driver({
+			showProgress: true,
+			showButtons: ['next', 'previous', 'close'],
+			popoverClass: 'driverjs-theme',
+			steps: [
+				{
+					element: '.hornav',
+					popover: {
+						title: 'Barra de navegación',
+						description:
+							'En la barra de navegación encontrarás todos los tipos de procesos que gestionan en la operación, adicional del buscador, cambio de tema, corrector, entre otros.',
+					},
+				},
+				{
+					element: '.hornav__links--search',
+					popover: {
+						title: 'Buscador',
+						description:
+							'Al dar click se abrirá el buscador de la web training para traer o filtrar el dato que necesites por medio de una palabra clave.',
+					},
+				},
+				{
+					element: '.hornav__links',
+					popover: {
+						title: 'Procesos',
+						description:
+							'En este apartado encontrarás todos los desarrollos de procesos identificados hasta la fecha, en ellos pueden haber: checklist, gestores de notas, tipificadores, versus, matrices, consultas de documentación entre otras.',
+					},
+				},
+				{
+					element: '.settings',
+					popover: {
+						title: 'Configuraciones',
+						description:
+							'En este segundo menú podráz encontrar diferentes configuraciones de la web training y otros apartados como, corrector ortográfico, cambio de tema, carga de bases de datos y la guia de uso de la web y desarrollos.',
+					},
+				},
+				{
+					element: '.hornav__logos',
+					popover: {
+						title: 'Versionado',
+						description:
+							'En el ultimo apartado de la barra de navegacion encontrarás la versión actual en la que se encuentra la web training, debes confirmar con tu formador en que versión se encuentra actualmente la web training para evitar procesos desactualizados.',
+					},
+				},
+			],
+		})
+		driverObj.drive()
+		// driverObj.highlight({
+		// 	element: '#sideVersion',
+		// 	popover: {
+		// 		title: 'Title',
+		// 		description: 'Description',
+		// 	},
+		// })
+	}
 	useEffect(() => {
 		document.body.addEventListener('keydown', e => {
 			if (e.key == 'Escape') {
@@ -160,20 +224,44 @@ const HorNav = () => {
 			{DATANAV.SEGMENTS && (
 				<nav className="hornav__segments">
 					<ul>
-						{DATANAV.SEGMENTS.map((segment, i) => (
-							<li
-								onClick={() => SetNavSegment(segment.segment)}
-								key={i}
-								className={
-									'hornav__segments--li' + (segment.segment === navSegment ? ' active' : '')
-								}>
-								{selectIcon[segment.icon]} {segment.segment}
-							</li>
-						))}
+						{DATANAV.SEGMENTS.map((segment, i) => {
+							if (segment.segment === 'ADMIN') {
+								return (
+									<li
+										onClick={() => {
+											SetNavSegment(segment.segment)
+											navigate('/' + segment.segment.toLowerCase())
+											setAdmin(!admin)
+										}}
+										key={i}
+										className={
+											'hornav__segments--li admin__segment' +
+											(segment.segment === navSegment ? ' active' : '')
+										}>
+										{selectIcon[segment.icon]}
+										{admin ? 'Cerrar Admin' : segment.segment}
+									</li>
+								)
+							} else {
+								return (
+									<li
+										onClick={() => {
+											SetNavSegment(segment.segment)
+											navigate('/' + segment.segment.toLowerCase())
+										}}
+										key={i}
+										className={
+											'hornav__segments--li' + (segment.segment === navSegment ? ' active' : '')
+										}>
+										{selectIcon[segment.icon]} {segment.segment}
+									</li>
+								)
+							}
+						})}
 						<li className="settings">
-							{/* <button className="settings__btn" name="upload" onClick={setsClick}>
+							<button className="settings__btn" name="upload" onClick={setsClick}>
 								<IconUpload />
-							</button> */}
+							</button>
 							<button
 								className="settings__btn"
 								name="spellcheck"
@@ -193,7 +281,7 @@ const HorNav = () => {
 								}}>
 								<IconNotes />
 							</button>
-							<button className="settings__btn" name="theme">
+							<button className="settings__btn" name="theme" onClick={() => startDrive()}>
 								<IconGuide />
 							</button>
 						</li>
@@ -205,59 +293,68 @@ const HorNav = () => {
 					<div className="hornav__links--boxul">
 						<ul ref={scrollContainerRef} onWheel={handleScroll}>
 							{DATANAV.NAVBAR.map((link, i) => {
-								if (link.segments == undefined || link.segments.includes(navSegment)) {
-									if (link.dropDown) {
-										return (
-											<li key={i} className={'hornav__links--li'}>
-												<button
+								const isAdmin = navSegment === 'ADMIN'
+								const hasSegment = link.segments && link.segments.includes(navSegment)
+								const shouldRenderLink = isAdmin ? hasSegment : !link.segments || hasSegment
+
+								if (!shouldRenderLink) return null
+
+								const renderDropDown = () => (
+									<ul
+										ref={dropDownRef}
+										className="hornav-dropdown animate__animated"
+										name={link.title}
+										style={{backgroundImage: `url(${dropImg})`}}
+										>
+										<li className="hornav-dropdown__li li-menu">
+											<div className="title-container">
+												<a href="#" className="buttonul type--C">
+													<span className="buttonul__text">{link.title}</span>
+													<div className="buttonul__drow1"></div>
+													<div className="buttonul__drow2"></div>
+												</a>
+											</div>
+										</li>
+										<li className="hornav-dropdown__li li-submenu">
+											{link.dropDown.map((linkk, l) => (
+												<Link
+													to={linkk.route}
+													key={l}
 													onClick={e => {
-														activeDropDown(link.title, e.target)
+														activeDropDown(e.target)
 													}}>
-													{selectIcon[link.icon]}
-													{link.title}
-													<IconArrowDown />
-												</button>
-												<ul
-													ref={dropDownRef}
-													className={'hornav-dropdown animate__animated'}
-													name={link.title}
-													style={{backgroundImage: `url(${dropImg})`}}
-												>
-													<li className="hornav-dropdown__li li-menu">
-														{/* <figure>
-															<img src={iconReal[link.icon]} alt="checklist" />
-														</figure> */}
-														{/* <span>{link.title}</span> */}
-														<div className="title-container">
-															<a href="#" className="buttonul type--C">
-																<span className="buttonul__text">{link.title}</span>
-																<div className="buttonul__drow1"></div>
-																<div className="buttonul__drow2"></div>
-															</a>
-														</div>
-													</li>
-													<li className="hornav-dropdown__li li-submenu">
-														{link.dropDown.map((linkk, l) => {
-															return (
-																<Link to={linkk.route} key={l} onClick={() => setDropDown(false)}>
-																	{selectIcon[linkk.icon]} {linkk.title}
-																</Link>
-															)
-														})}
-													</li>
-												</ul>
-											</li>
-										)
-									} else {
-										return (
-											<li key={i} className="hornav__links--li">
-												<Link to={link.route}>
-													{selectIcon[link.icon]} {link.title}
+													{selectIcon[linkk.icon]} {linkk.title}
 												</Link>
-											</li>
-										)
-									}
-								}
+											))}
+										</li>
+									</ul>
+								)
+
+								const renderLink = () => (
+									<li
+										key={i}
+										className={'hornav__links--li ' + (activeLink === link.title ? ' active' : '')}>
+										{link.dropDown ? (
+											<>
+												<button
+													type="button"
+													onClick={e => {
+														activeDropDown(e.target)
+														handleLinkClick(link.title)
+													}}>
+													{selectIcon[link.icon]} {link.title} <IconArrowDown />
+												</button>
+												{renderDropDown()}
+											</>
+										) : (
+											<Link to={link.route} onClick={() => handleLinkClick(link.title)}>
+												{selectIcon[link.icon]} {link.title}
+											</Link>
+										)}
+									</li>
+								)
+
+								return renderLink()
 							})}
 						</ul>
 					</div>
@@ -281,7 +378,7 @@ const HorNav = () => {
 						<img src={imgLogo} alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">v.2.2.1</span>
+					<span className="hornav__logos--version">V.2.2.2</span>
 				</div>
 			</nav>
 			{windowDB &&

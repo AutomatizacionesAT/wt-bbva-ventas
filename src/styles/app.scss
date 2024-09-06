@@ -42,26 +42,27 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
-
 		& span {
 			display: block;
 			font-size: 6rem;
 			color: $p-color;
-
 			& strong {
 				font-size: 8rem;
-				color: $p2-color;
+				color: $s2-color;
 			}
-
 			&:nth-child(2) {
 				margin-bottom: 2rem;
 			}
 		}
 
 		& p {
-			font-size: 6rem;
+			padding: 8px 12px;
+			font-size: 3rem;
 			text-wrap: balance;
-			color: $s-color;
+			color: $w-color;
+			background-color: $s2-color;
+			border-radius: 5px;
+			box-shadow: 2px 2px 2px #cccccc;
 		}
 
 		&__content {
@@ -72,6 +73,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			padding-left: 2rem;
 		}
 	}
 

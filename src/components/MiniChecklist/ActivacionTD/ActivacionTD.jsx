@@ -41,7 +41,7 @@ const steps = [
         indicator: "6"
     },
     {
-        title: "7.	Te aparecerá una mensaje de confirmación da click en &bold“Entendido”&bold",
+        title: "Te aparecerá una mensaje de confirmación da click en &bold“Entendido”&bold",
         imageUrl: image7,
         indicator: "7"
     },

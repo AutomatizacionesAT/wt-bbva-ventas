@@ -52,7 +52,7 @@
 			]
 		},
 		{
-			"title": "MiniCheckList",
+			"title": "Activacion Digital",
 			"route": "/minichecklist",
 			"icon": "IconArrowLeftRight",
 			"segments": ["Amparada", "Consumo", "Compra Cartera", "Rediferido"],
@@ -64,17 +64,21 @@
 				{
 					"title": "Activación Token",
 					"route": "minichecklist/activaciontoken"
+				},
+				{
+					"title": "Aceptación Consumo",
+					"route": "minichecklist/aceptacionconsumo"
 				}
 			]
 		},
 		{
-			"title": "MiniCheckList",
+			"title": "Activacion Digital",
 			"route": "/minichecklist",
 			"icon": "IconArrowLeftRight",
 			"segments": ["Tarjeta de Crédito"],
 			"dropDown": [
 				{
-					"title": "ACEPTACION TD PREAPROBADO",
+					"title": "Aceptación TD Preaprobado",
 					"route": "minichecklist/aceptacionpreaprobado"
 				},
 				{
@@ -88,6 +92,10 @@
 				{
 					"title": "Activación Token",
 					"route": "minichecklist/activaciontoken"
+				},
+				{
+					"title": "Aceptación Consumo",
+					"route": "minichecklist/aceptacionconsumo"
 				}
 			]
 		},
@@ -116,7 +124,7 @@
 			]
 		},
 		{
-			"title": "Cuotas de Manejo",
+			"title": "Comparativo Cuotas de Manejo",
 			"route": "/cuotasmanejo",
 			"icon": "IconDollarTicked",
 			"segments": [
