@@ -72,6 +72,17 @@
 			]
 		},
 		{
+			"title": "Simulador Cartera y Rediferido",
+			"route": "/carteraYrediferido",
+			"icon": "calc",
+			"segments": [
+				"Tarjeta de Crédito",
+				"Consumo",
+				"Compra Cartera",
+				"Rediferido"
+			]	
+		},
+		{
 			"title": "Activacion Digital",
 			"route": "/minichecklist",
 			"icon": "IconArrowLeftRight",

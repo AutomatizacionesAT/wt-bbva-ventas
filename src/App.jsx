@@ -19,6 +19,7 @@ import { TarjetasCredito } from './components/TarjetasCredito/TarjetasCredito.js
 
 import { Objecion } from './components/Objeciones/Objecion.jsx'
 import { CuotasManejo } from './components/CuotasManejo/CuotasManejo.jsx'
+import { CarteraYRediferido } from './components/Calculadoras/CarteraYRediferido/CarteraYRediferido.jsx'
 
 const App = () => {
 	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
@@ -64,6 +65,7 @@ const App = () => {
 					<Route path="/minichecklist/aceptacionconsumo" element={<AceptacionCreditoConsumo />} />
 					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
 					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
+					<Route path="/carteraYrediferido" element={<CarteraYRediferido />} />
 				</Routes>
 			</section>
 		</div>

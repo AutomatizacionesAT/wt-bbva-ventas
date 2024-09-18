@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './styles/CuotasManejo.scss';
 import DB from './BASES/CuotasManejo.json';
+import img from '@images/cuotasmanejo/cuotasImagen.jpg'
 
 export const CuotasManejo = () => {
     const [selectedEntidad, setSelectedEntidad] = useState(DB[0]);
@@ -24,7 +25,8 @@ export const CuotasManejo = () => {
             <div className="CuotasManejo__title">
                 <h2>Cuotas de Manejo</h2>
             </div>
-            <div className="CuotasManejo__container">
+            <div className="CuotasManejo__container" >
+                <div className='CuotasManejo__imgBack' style={{backgroundImage: `url(${img})`}}></div>
                 <div className='CuotasManejo__input'>
                     <input
                         list="entidades"

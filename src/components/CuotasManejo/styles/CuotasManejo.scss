@@ -4,6 +4,7 @@
     width: 100%;
     height: 100%;
     padding: 16px;
+    position: relative;
     display: grid;
     grid-template-rows: 1fr 10fr;
     align-items: center;
@@ -20,9 +21,19 @@
         text-align: center;
     }
 
+    &__imgBack {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 103%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.2;
+    }
+
     &__container {
-        width: 38vw;
-        height: 68%;
+        width: 30vw;
+        height: 88%;
         padding: 16px;
         justify-self: start;
         position: relative;
@@ -31,12 +42,14 @@
                     ". a a a a a . " 9fr
                     "b b b b b b b " 4fr
                     ". c c c c c . " 9fr
-                    ". . f f f . d " 4fr / 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                    ". . f f f . . " 4fr
+                    ". . d d d . . " 4fr / 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         gap: 16px;
-        background-color: light-dark(rgba($s2-color, 0.7), rgba($p3-color, 0.7));
+        background-color: light-dark(rgba($s2-color, 0.4), rgba($p3-color, 0.4));
         border-radius: 10px;
         border: 2px groove $w-color;
         box-shadow: 2px 2px 6px light-dark(#2424249c, $w-color);
+        z-index: 5;
         overflow-y: auto;
         scrollbar-width: thin;
         scrollbar-color: $p-color #e2e2e2;
