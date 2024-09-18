@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { addMonths, lastDayOfMonth, format, differenceInCalendarDays } from 'date-fns';
 
 import './styles/CarteraYRediferido.scss';
+import { ca } from 'date-fns/locale';
 
 export const CarteraYRediferido = () => {
     //obejeto en donde cargan los datos del fomulario, cargo la fecha actual por defecto
@@ -84,8 +85,19 @@ export const CarteraYRediferido = () => {
 
     const handleCalculate = (e) => {
         e? e.preventDefault() : '';
-        const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas));
-        const diasDiferencia = calcularDiferenciaDias(fechas);
+
+
+        const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas)); //mostrar
+        const diasDiferencia = calcularDiferenciaDias(fechas); //mostrar
+
+        const periodoALiquidar = calcularPeriodoALiquidar(Number(datos.cuotas)); //jersson esto puede servir para enumeras en la tabal al momento de mostrar en el portal
+        const baseDiasAno = calcularBaseDias(fechas, Number(datos.cuotas)); 
+        const diasFaltantes = calcularDiasFaltantes(diasDiferencia, datos.cuotas)
+        const tasaDeInteresIpt = calcularTasaDeInteresIpt(datos.tasa, diasDiferencia, baseDiasAno, Number(datos.cuotas))
+        const relacion = calcularRelacion(diasFaltantes, diasDiferencia, Number(datos.cuotas)) 
+
+
+        //datos para mostrar en el portal
         setDatos(prevState => ({
             ...prevState, 
             fechasCuotas: fechas,
@@ -93,6 +105,8 @@ export const CarteraYRediferido = () => {
         }));
     };
 
+
+    /////funciones para los datos que se mostraran
     //calcula fechas segun las cuotas diferidas
     const calcularFechasCuotas = (fechaBase, numCuotas) => {
         const numeroCuotasFormatted = fechaBase.toString().replace(/-/g, '/');
@@ -116,7 +130,110 @@ export const CarteraYRediferido = () => {
             return differenceInCalendarDays(new Date(fecha), new Date(fechas[index - 1]));
         });
     };
-      
+
+
+
+    ////funciones para los datos nesesarios para los datos que si se van a mostrar
+
+    //esta funcion retorna 0 1 2 3 4 5 etc ... segun las cuotas
+    const calcularPeriodoALiquidar = (num) => {
+        let contador = [];
+        for (let i = 0; i <= num ; i++) {
+            
+            contador.push(i);
+        }
+        return contador
+    }
+     
+    
+    // calcula si el año en donde se calcula la fecha es bisiesto y de ser asi retorna 366 dias o 365 si no lo es
+    const calcularBaseDias = (fechas, base) => {
+        
+        let arraydias = [];
+
+        const fechaActualConBarras = fechas.map((ele, ind) => {
+            return ele.replace(/-/g, "/");
+        })
+
+
+        const fechaObjetos = fechaActualConBarras.map((elem, indx) => {
+
+            return new Date(elem);
+
+        }) 
+
+        for (let i = 0; i <= base; i++) {
+            let esBisiesto = (fechaObjetos[i].getFullYear() % 4 === 0 && (fechaObjetos[i].getFullYear() % 100 !== 0 || fechaObjetos[i].getFullYear() % 400 === 0));
+            let diasAno = esBisiesto ? 366 : 365;
+            arraydias.push(diasAno);
+        }
+
+        return arraydias;
+
+    }
+
+
+    //toma dias total del credito y le va restando dias segun fecha de pago creo
+    const calcularDiasFaltantes = (arraDias, contador) => {
+
+        let diasFaltantes = [];
+        
+        const sumarDias = arraDias.reduce((a, b) => a + b, 0);
+        let acomulador = sumarDias;
+
+
+        for (let i = 0; i <= contador; i++) {
+            if(i === 0){
+                diasFaltantes.push(0);
+            } else if(i === 1) {
+                diasFaltantes.push(acomulador);
+            } else {
+                acomulador = acomulador - arraDias[i - 1];
+                diasFaltantes.push(acomulador);
+            }
+
+            
+        }
+
+        return diasFaltantes
+    }
+
+
+    //sacar tasa de interes IPT jersson pendiente para el valor sin tantos 0 o con este esta bien
+    const calcularTasaDeInteresIpt = (porcentajetasa, diasperiodo, basediasanio, contador) => {
+        const porcentajeFormated = Number(porcentajetasa.replace(',', '.'));
+        
+        let ipt = [];
+        for (let i = 0; i <= contador; i++) {
+            if(i === 0) {
+                ipt.push(0);
+            } else {
+                
+                ipt.push( Number(Math.pow((1 + porcentajeFormated / 100), (diasperiodo[i] / basediasanio[i])) - 1))
+            }
+            
+        }
+        // console.log(ipt)
+        return ipt;
+    }
+
+    //funcion para Relación días Faltante a dias Liquidados
+    const calcularRelacion = (diasrestados, diferenciadias, contador) => {
+        let relacion = [];
+        for (let i = 0; i <= contador; i++) {
+            if (i === 0) {
+                relacion.push(0);
+            } else if (diferenciadias[i] === 0) {
+                relacion.push(0);
+            } else {
+                relacion.push(diasrestados[i] / diferenciadias[i])
+            }
+            
+        }
+        console.log(relacion)
+        return relacion
+    }
+        
 
     return (
         <section className="carterarediferido">
