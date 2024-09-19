@@ -98,6 +98,9 @@ export const CarteraYRediferido = () => {
         const periodosFaltantes = calcularPeriodosFaltantes(periodoALiquidar, Number(datos.cuotas))
         const factor = calcularFactor(tasaDeInteresIpt, datos.tasa, periodosFaltantes, relacion, Number(datos.cuotas))
 
+
+        const calculos = calcularCalculos(Number(datos.cuotas), datos.monto, factor, tasaDeInteresIpt, Number(datos.gracia), periodoALiquidar, datos.tipo);
+
         //datos para mostrar en el portal
         setDatos(prevState => ({
             ...prevState, 
@@ -252,6 +255,7 @@ export const CarteraYRediferido = () => {
 
     //calcular factor 
     const calcularFactor = (tasaipt, tasa, periodosf, rela, contador) => {
+
         let factor = [];
         for (let i = 0; i <= contador; i++) {
             if (i === 0) {
@@ -260,11 +264,167 @@ export const CarteraYRediferido = () => {
                 factor.push(0);
             } else if (tasa === 0) {
                 factor.push(periodosf[i]);
+            } else {
+
+                factor.push((1 - Math.pow(1 + tasaipt[i], -rela[i])) /  tasaipt[i]);
             }
-            // falta calcular el resto
+
+
         }
-        console.log(factor)
+
         return factor
+    }
+
+    //en esta parte retornamos un objetos con valiors calculos al mismo tiempo porque no hay de otra
+    const calcularCalculos = (contador, monto, fact, ipt, gracia, perili, tipo) => {
+        console.log(contador, monto, fact, ipt, gracia, perili, tipo)
+
+        let montoNum = Number(monto);
+
+        let interesPendiente = tipo == 'Facturación' && contador > 2 ? (Number(monto)*ipt[1]) : 0;
+
+
+        let valorCuota = [];
+        let valorInteresPeriodo = [];
+        let abonoCapital = [];
+        let cuotasss = [];
+        let saldoInicial = [];
+        let saldoFinal = [];
+        let cuotasDos = [];
+        let pagoMinimo = [];
+
+        for (let i = 0; i <= contador; i++) {
+            if (i === 0) {
+
+                valorCuota.push(0);
+                valorInteresPeriodo.push(0);
+                abonoCapital.push(0);
+                cuotasss.push(0);
+                saldoInicial.push(montoNum);
+                saldoFinal.push(montoNum);
+                cuotasDos.push(0);
+                pagoMinimo.push(0);
+
+            } else if (i === 1) {
+
+                if (fact[i] === 0) {
+                    valorCuota.push(0);
+                } else {
+                    valorCuota.push(montoNum / fact[i])
+                }
+
+                if (ipt[i] === 0) {
+                    valorInteresPeriodo.push(0);
+                } else {
+                    valorInteresPeriodo.push(montoNum * ipt[i])
+                }
+
+                abonoCapital.push( valorCuota[i] - valorInteresPeriodo[i])
+
+                if (gracia === 1 && perili[1] === 1) {
+                    cuotasss.push(-(abonoCapital[i]));
+                    cuotasDos.push(0);
+                } else if (gracia === 2 && perili[1] === 1) {
+                    cuotasss.push(0);
+                    cuotasDos.push(-(valorInteresPeriodo[1]));
+                } else {
+                    cuotasss.push(0);
+                    cuotasDos.push(0);
+                }
+
+                let valorTotalCuotas = cuotasss[1] + cuotasDos[1];
+                console.log(cuotasss[1], cuotasDos[1])
+                pagoMinimo.push( valorTotalCuotas +  valorCuota[1]);
+
+
+                saldoInicial.push(montoNum);
+                saldoFinal.push(saldoInicial[i] - abonoCapital[i] - cuotasss[i]);
+                montoNum = montoNum - abonoCapital[i] - cuotasss[i];
+
+            } else if (i === 2) {
+
+                if (fact[i] === 0) {
+                    valorCuota.push(0);
+                } else {
+                    valorCuota.push(montoNum / fact[i])
+                }
+
+                if (ipt[i] === 0) {
+                    valorInteresPeriodo.push(0);
+                } else {
+                    valorInteresPeriodo.push((montoNum * ipt[i]) + interesPendiente)
+                }
+
+                abonoCapital.push( valorCuota[i] - valorInteresPeriodo[i])
+
+                if (gracia === 1 && perili[2] === 1) {
+                    cuotasss.push(-(abonoCapital[i]));
+                    cuotasDos.push(0);
+                } else if (gracia === 2 && perili[1] === 1) {
+                    cuotasss.push(0);
+                    cuotasDos.push(valorInteresPeriodo[1]);
+                } else {
+                    
+                    cuotasss.push(0);
+                    cuotasDos.push(0);
+                }
+
+                let valorTotalCuotas = cuotasss[2] + cuotasDos[2];
+                
+                pagoMinimo.push( valorTotalCuotas +  valorCuota[2]);
+
+                saldoInicial.push(montoNum);
+                saldoFinal.push(saldoInicial[i] - abonoCapital[i] - cuotasss[i]);
+                montoNum = montoNum - abonoCapital[i] - cuotasss[i];
+                
+            } else {
+
+                if (fact[i] === 0) {
+                    valorCuota.push(0);
+                } else {
+                    
+                    valorCuota.push(montoNum / fact[i])
+                }
+
+                if (ipt[i] === 0) {
+                    valorInteresPeriodo.push(0);
+                } else {
+                    valorInteresPeriodo.push(montoNum * ipt[i])
+                }
+
+                abonoCapital.push( valorCuota[i] - valorInteresPeriodo[i])
+
+                if (gracia === 1 && perili[i] === 1) {
+                    cuotasss.push(-(abonoCapital[i]));
+                    cuotasDos.push(0);
+                } else if (gracia === 2 && perili[1] === 1) {
+                    cuotasss.push(0);
+                    cuotasDos.push(0);
+                } else {
+                    
+                    cuotasss.push(0);
+                    cuotasDos.push(0);
+                }
+
+                let valorTotalCuotas = 0;
+                
+                pagoMinimo.push( valorTotalCuotas +  valorCuota[i]);
+
+                saldoInicial.push(montoNum);
+                saldoFinal.push((saldoInicial[i] - abonoCapital[i] - cuotasss[i])< 0 ? 0 : saldoInicial[i] - abonoCapital[i] - cuotasss[i]);
+                montoNum = montoNum - abonoCapital[i] - cuotasss[i];
+
+                
+            }
+        }
+        console.log(`valor cuota ${valorCuota}`)
+        console.log(`valor interes  periodo${valorInteresPeriodo}`)
+        console.log(`abono capital ${abonoCapital}`)
+        console.log(`cuotas ${cuotasss}`)
+        console.log(`cuotas dos ${cuotasDos}`)
+        console.log(`saldo Inicial ${saldoInicial}`)
+        console.log(`saldo final ${saldoFinal}`)
+        console.log(`pago minimo ${pagoMinimo}`)
     }
 
     return (
@@ -343,6 +503,7 @@ export const CarteraYRediferido = () => {
                             <option value="">Seleccione...</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
+                            <option value="2">2</option>
                         </select>
                         <label>Periodo de Gracia:</label>
                     </div>
