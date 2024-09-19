@@ -201,10 +201,18 @@
             justify-content: space-evenly;
             align-items: center;
             cursor: pointer;
+            padding: 4px 8px;
+              border-bottom: 2px groove light-dark($b-color, $w-color);
+              box-shadow:  1px 1px 1px light-dark(#79797983, #cccccc);
+              border-radius: 5px;
+              font-size: 1.6rem;
             & span {
                 
-                font-size: 1.4rem;
-                border-bottom: 1px solid light-dark($b-color, $w-color);
+              color: light-dark($b-color, $w-color);
+              padding: 4px 8px;
+              border-bottom: 2px groove light-dark($b-color, $w-color);
+
+              font-size: 1.6rem;
             }
             & p {
                 color: light-dark($b-color, $w-color);
@@ -229,6 +237,115 @@
         }
 
     }
+
+    &__modal {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center; 
+      gap: 32px;
+    }
+
+    &__buttonclose {
+        width: 40px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: white;
+        font-size: 2rem;
+        &:hover {
+            color: $p-color;
+            transform: scale(1.1);
+        }
+    }
+
+    &__table {
+        width: 80%;
+        max-height: 80%;      
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        border-radius: 15px;
+        box-shadow: inset 4px 4px 8px rgba(102, 102, 102, 0.808),  4px 4px 6px rgba(209, 209, 209, 0.416);
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: $b-color $w-color;
+        scrollbar-gutter: stable;
+        background-color: light-dark($w-color, $b-color);
+        & table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            & thead {
+
+                background-color: $b-color;
+                color: white;
+                & th {
+                    width: 50px;
+                    padding: 8px;
+                    vertical-align: middle;
+                    font-weight: 800;
+                    font-size: 1.4rem;
+                    border-right: 8px groove light-dark($b-color, $w-color);
+                }
+            }
+            & tbody {
+                background-color: light-dark($w-color, $b-color);
+                color: $b-color;
+                & td {
+                    padding: 8px;
+                    vertical-align: middle;
+                    font-weight: 800;
+                    font-size: 1.4rem;
+                    border: 1px groove light-dark($b-color, $b-color);
+                }
+                & tr:nth-child(odd) {
+                    background-color: $g2-color;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $p2-color;
+                    }
+                    &:hover td {
+                        color: white;
+                    }
+                }
+                & tr:nth-child(even) {
+                    background-color: $g3-color;
+                    cursor: pointer;
+                    &:hover {
+                      background-color: $p2-color;
+                    }
+                    &:hover td {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    &__resume {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        background-color: light-dark($w-color, $b-color);
+        box-shadow: inset 4px 4px 8px rgba(102, 102, 102, 0.808),  4px 4px 6px rgba(209, 209, 209, 0.416);
+        border-radius: 15px;
+        & h2 {
+            font-size: 2rem;
+        }
+        & p {
+            font-size: 1.6rem;
+        }
+    }
+
 }
 
 

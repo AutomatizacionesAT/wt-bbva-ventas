@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { addMonths, lastDayOfMonth, format, differenceInCalendarDays } from 'date-fns';
 
 import './styles/CarteraYRediferido.scss';
 import Swal from 'sweetalert2';
-import { ca } from 'date-fns/locale';
+import { ca, tr } from 'date-fns/locale';
 
+import { IconSquareClose } from '../../../icons/IconSquareClose';
 export const CarteraYRediferido = () => {
     //obejeto en donde cargan los datos del fomulario, cargo la fecha actual por defecto
     const [datos, setDatos] = useState({
@@ -12,32 +14,26 @@ export const CarteraYRediferido = () => {
         fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
     });
     console.log(datos)
-    
-    //referencias del boto reset y del boton calcular
-    const calculateButtonRef = useRef(null);
-    const resetButtonRef = useRef(null);
 
-    //useEffect para capturar el evento de teclado hago click para menos renders
+    const [isPortalOpen, setIsPortalOpen] = useState(false);
+
+    const togglePortal = () => setIsPortalOpen(!isPortalOpen);
+
+    const cerrarPortal = (event) => {
+        if (event.target.classList.contains('carterarediferido__modal')) {
+            setIsPortalOpen(false);
+        }
+    };
+
+
     useEffect(() => {
-
-        const handleKeyDown = (event) => {
-            if (event.key === 'Escape') {
-                // event.preventDefault();
-                resetButtonRef.current.click();
-            }
-            if (event.key === 'Enter') {
-                // event.preventDefault();
-                calculateButtonRef.current.click();
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            window.removeEventListener('keydown', (e) => handleKeyDown(e));
-        };
-    }, []);
-
+        const portalElement = document.getElementById('portalGeneral');
+        if (isPortalOpen) {
+            portalElement.classList.add('portalGeneral--enable');
+        } else {
+            portalElement.classList.remove('portalGeneral--enable');
+        }
+    }, [isPortalOpen]);
 
     // sa formato y guarda el valor de los inputs
     const handleInputFormat = (value, formato, dato, datoformated) => {
@@ -126,7 +122,10 @@ export const CarteraYRediferido = () => {
             promedioCuota: calculos.promedioCuota,
             interesTotal: calculos.interesTotal,
             totalConIntereses: calculos.totalConInteres,
+            periodoALiquidar: periodoALiquidar,
         }));
+
+        togglePortal();
     };
 
 
@@ -575,30 +574,94 @@ export const CarteraYRediferido = () => {
 
                     <div className='carterarediferido__button carterarediferido__button--calculate'>
                         <button
-                            ref={calculateButtonRef} 
+
                             type="button"
                             onClick={(e) => handleCalculate(e)}
                         >
                             <span>Calcular</span>
-                            <p>Enter</p>
+  
                         </button>
                     </div>
 
                     <div className='carterarediferido__button carterarediferido__button--reset'>
                         <button
-                            ref={resetButtonRef}
+
                             type="button"
                             onClick={(e) => handleReset(e)}
                         >
                             <span>Reiniciar</span>
-                            <p>ESC</p>
+ 
                         </button>
                     </div>
 
                 </form>
                 
             </div>
+            {isPortalOpen && ReactDOM.createPortal(
+                <div className='carterarediferido__modal' onClick={(e) => cerrarPortal(e)}>
+                    
+                    <button className='carterarediferido__buttonclose' onClick={() => setIsPortalOpen(false)}><IconSquareClose/></button>
+                    <div className='carterarediferido__table'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Fecha de Corte</th>
+                                    <th>Dias del periódo a liquidar</th>
+                                    <th>Saldo Inicial</th>
+                                    <th>Valor Cuota Periodica Total</th>
+                                    <th>Valor abono a Capital</th>
+                                    <th>Valor Intereses del periodo</th>
+                                    <th>Pago Mínimo</th>
+                                    <th>Saldo Final</th>
+                                </tr>
+                            </thead>
+                            
 
+                            <tbody>
+                            {
+                                datos.periodoALiquidar.map((ele, ind) => {
+                                    return (
+                                        <tr key={ind}>
+                                            <td>{ele}</td>
+                                            <td>{datos.fechasCuotas[ele]}</td>
+                                            <td>{datos.diasDiferencia[ele]}</td>
+                                            <td>$ {datos.saldoInicial[ele].toFixed(3)}</td>
+                                            <td>$ {datos.valorCuota[ele].toFixed(3)}</td>
+                                            <td>$ {datos.abonoCapital[ele].toFixed(3)}</td>
+                                            <td>$ {datos.valorInteres[ele].toFixed(3)}</td>
+                                            <td>$ {datos.pagoMinimo[ele].toFixed(3)}</td>
+                                            <td>$ {datos.saldoFinal[ele].toFixed(3)}</td>
+                                            
+                                        </tr>
+                                    )
+                                })
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div className='carterarediferido__resume'>
+                        <div className='carterarediferido__resume-promedio'>
+                            <h2>Promedio cuota</h2>
+                            <p>$ {datos.promedioCuota.toFixed(3)}</p>
+                        </div>
+                        <div className='carterarediferido__resume-interes'>
+                            <h2>Intereses</h2>
+                            <p>$ {datos.interesTotal.toFixed(3)}</p>
+                        </div>
+                        <div className='carterarediferido__resume-total'>
+                            <h2>Total Con Intereses</h2>
+                           
+                            <p>$ {datos.totalConIntereses.toFixed(3)}</p>
+                        </div>
+                    </div>
+                    
+                    
+                   
+                </div>,
+                document.getElementById('portalGeneral')
+            )}
 
         </section>
     );
