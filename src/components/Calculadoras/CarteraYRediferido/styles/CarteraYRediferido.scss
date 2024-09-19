@@ -293,6 +293,13 @@
                     font-weight: 800;
                     font-size: 1.4rem;
                     border-right: 8px groove light-dark($b-color, $w-color);
+                    position: sticky;
+                    top: 0;
+                }
+                & tr {
+                  position: sticky;
+                  top: 0;
+                  background-color: $b-color;
                 }
             }
             & tbody {
