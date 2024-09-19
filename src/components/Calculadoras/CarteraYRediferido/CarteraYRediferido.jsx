@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { addMonths, lastDayOfMonth, format, differenceInCalendarDays } from 'date-fns';
 
 import './styles/CarteraYRediferido.scss';
+import Swal from 'sweetalert2';
 import { ca } from 'date-fns/locale';
 
 export const CarteraYRediferido = () => {
@@ -85,6 +86,15 @@ export const CarteraYRediferido = () => {
 
     const handleCalculate = (e) => {
         e? e.preventDefault() : '';
+        if(!datos.monto || !datos.cuotas || !datos.tasa || !datos.gracia || !datos.tipo) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor completa todos los campos requeridos.',
+                icon: 'error',
+                confirmButtonText: 'Entendido'
+            });
+            return;
+        }
 
 
         const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas)); //mostrar
@@ -101,11 +111,21 @@ export const CarteraYRediferido = () => {
 
         const calculos = calcularCalculos(Number(datos.cuotas), datos.monto, factor, tasaDeInteresIpt, Number(datos.gracia), periodoALiquidar, datos.tipo);
 
+
         //datos para mostrar en el portal
         setDatos(prevState => ({
             ...prevState, 
             fechasCuotas: fechas,
-            diasDiferencia: diasDiferencia
+            diasDiferencia: diasDiferencia,
+            saldoInicial: calculos.saldoInicial,
+            valorCuota: calculos.valorCuota,
+            abonoCapital: calculos.valorAbono,
+            valorInteres: calculos.valorInteresPeriodo,
+            pagoMinimo: calculos.pagoMinimo,
+            saldoFinal: calculos.saldoFinal,
+            promedioCuota: calculos.promedioCuota,
+            interesTotal: calculos.interesTotal,
+            totalConIntereses: calculos.totalConInteres,
         }));
     };
 
@@ -277,7 +297,7 @@ export const CarteraYRediferido = () => {
 
     //en esta parte retornamos un objetos con valiors calculos al mismo tiempo porque no hay de otra
     const calcularCalculos = (contador, monto, fact, ipt, gracia, perili, tipo) => {
-        console.log(contador, monto, fact, ipt, gracia, perili, tipo)
+        // console.log(contador, monto, fact, ipt, gracia, perili, tipo)
 
         let montoNum = Number(monto);
 
@@ -333,7 +353,6 @@ export const CarteraYRediferido = () => {
                 }
 
                 let valorTotalCuotas = cuotasss[1] + cuotasDos[1];
-                console.log(cuotasss[1], cuotasDos[1])
                 pagoMinimo.push( valorTotalCuotas +  valorCuota[1]);
 
 
@@ -417,14 +436,36 @@ export const CarteraYRediferido = () => {
                 
             }
         }
-        console.log(`valor cuota ${valorCuota}`)
-        console.log(`valor interes  periodo${valorInteresPeriodo}`)
-        console.log(`abono capital ${abonoCapital}`)
-        console.log(`cuotas ${cuotasss}`)
-        console.log(`cuotas dos ${cuotasDos}`)
-        console.log(`saldo Inicial ${saldoInicial}`)
-        console.log(`saldo final ${saldoFinal}`)
-        console.log(`pago minimo ${pagoMinimo}`)
+
+
+        let promedioCuota = (pagoMinimo.reduce((a, b) => a + b, 0) / (gracia + contador));
+        let interesTotal = (valorInteresPeriodo.reduce((a, b) => a + b, 0) ); 
+        let totalConInteres = ( pagoMinimo.reduce((a, b) => a + b, 0) )
+
+        // console.log(`valor cuota ${valorCuota}`)
+        // console.log(`valor interes  periodo${valorInteresPeriodo}`)
+        // console.log(`abono capital ${abonoCapital}`)
+        // console.log(`cuotas ${cuotasss}`)
+        // console.log(`cuotas dos ${cuotasDos}`)
+        // console.log(`saldo Inicial ${saldoInicial}`)
+        // console.log(`saldo final ${saldoFinal}`)
+        // console.log(`pago minimo ${pagoMinimo}`)
+        // console.log(`promedio ${promedioCuota}`)
+        // console.log(`interes total ${interesTotal}`)
+        // console.log(`total con interes ${totalConInteres}`)
+
+
+        return {
+            saldoInicial: saldoInicial,
+            valorCuota: valorCuota,
+            valorAbono: abonoCapital,
+            valorInteresPeriodo: valorInteresPeriodo,
+            pagoMinimo: pagoMinimo,
+            saldoFinal: saldoFinal,
+            promedioCuota: promedioCuota,
+            interesTotal: interesTotal,
+            totalConInteres: totalConInteres
+        }
     }
 
     return (
