@@ -95,7 +95,8 @@ export const CarteraYRediferido = () => {
         const diasFaltantes = calcularDiasFaltantes(diasDiferencia, datos.cuotas)
         const tasaDeInteresIpt = calcularTasaDeInteresIpt(datos.tasa, diasDiferencia, baseDiasAno, Number(datos.cuotas))
         const relacion = calcularRelacion(diasFaltantes, diasDiferencia, Number(datos.cuotas)) 
-
+        const periodosFaltantes = calcularPeriodosFaltantes(periodoALiquidar, Number(datos.cuotas))
+        const factor = calcularFactor(tasaDeInteresIpt, datos.tasa, periodosFaltantes, relacion, Number(datos.cuotas))
 
         //datos para mostrar en el portal
         setDatos(prevState => ({
@@ -230,10 +231,41 @@ export const CarteraYRediferido = () => {
             }
             
         }
-        console.log(relacion)
         return relacion
     }
         
+    // devuelve el resultado opuesto de 
+    const calcularPeriodosFaltantes = (periodoALiquidar, contador) => {
+        
+        let periodosFaltantes = [];
+        for (let i = 0; i <= contador; i++) {
+            if (i === 0) {
+                periodosFaltantes.push(0);
+            } else {
+                periodosFaltantes.push(contador - periodoALiquidar[i - 1])
+            }
+            
+        }
+        return periodosFaltantes
+    }
+
+
+    //calcular factor 
+    const calcularFactor = (tasaipt, tasa, periodosf, rela, contador) => {
+        let factor = [];
+        for (let i = 0; i <= contador; i++) {
+            if (i === 0) {
+                factor.push(0);
+            } else if (tasaipt === 0 ) {
+                factor.push(0);
+            } else if (tasa === 0) {
+                factor.push(periodosf[i]);
+            }
+            // falta calcular el resto
+        }
+        console.log(factor)
+        return factor
+    }
 
     return (
         <section className="carterarediferido">
