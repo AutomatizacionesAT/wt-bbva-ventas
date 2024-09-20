@@ -623,15 +623,16 @@ export const CarteraYRediferido = () => {
                                 datos.periodoALiquidar.map((ele, ind) => {
                                     return (
                                         <tr key={ind}>
+                                            
                                             <td>{ele}</td>
                                             <td>{datos.fechasCuotas[ele]}</td>
                                             <td>{datos.diasDiferencia[ele]}</td>
-                                            <td>$ {datos.saldoInicial[ele].toFixed(3)}</td>
-                                            <td>$ {datos.valorCuota[ele].toFixed(3)}</td>
-                                            <td>$ {datos.abonoCapital[ele].toFixed(3)}</td>
-                                            <td>$ {datos.valorInteres[ele].toFixed(3)}</td>
-                                            <td>$ {datos.pagoMinimo[ele].toFixed(3)}</td>
-                                            <td>$ {datos.saldoFinal[ele].toFixed(3)}</td>
+                                            <td>$ {datos.saldoInicial[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                            <td>$ {datos.valorCuota[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                            <td>$ {datos.abonoCapital[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                            <td>$ {datos.valorInteres[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                            <td>$ {datos.pagoMinimo[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                            <td>$ {datos.saldoFinal[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
                                             
                                         </tr>
                                     )
@@ -644,16 +645,16 @@ export const CarteraYRediferido = () => {
                     <div className='carterarediferido__resume'>
                         <div className='carterarediferido__resume-promedio'>
                             <h2>Promedio cuota</h2>
-                            <p>$ {datos.promedioCuota.toFixed(3)}</p>
+                            <p>$ {datos.promedioCuota.toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</p>
                         </div>
                         <div className='carterarediferido__resume-interes'>
                             <h2>Intereses</h2>
-                            <p>$ {datos.interesTotal.toFixed(3)}</p>
+                            <p>$ {datos.interesTotal.toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</p>
                         </div>
                         <div className='carterarediferido__resume-total'>
                             <h2>Total Con Intereses</h2>
                            
-                            <p>$ {datos.totalConIntereses.toFixed(3)}</p>
+                            <p>$ {datos.totalConIntereses.toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</p>
                         </div>
                     </div>
                     
