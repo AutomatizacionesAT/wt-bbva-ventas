@@ -76,8 +76,6 @@
 			"route": "/carteraYrediferido",
 			"icon": "calc",
 			"segments": [
-				"Tarjeta de Crédito",
-				"Consumo",
 				"Compra Cartera",
 				"Rediferido"
 			]	
