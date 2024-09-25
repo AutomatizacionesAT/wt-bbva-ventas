@@ -1,0 +1,76 @@
+[
+    {
+        "Producto": "Amparada",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción sobre compartir el cupo de crédito al destacar los mecanismos de control, seguridad y flexibilidad que ofrece la Tarjeta Amparada del BBVA. Adaptar el enfoque según las preocupaciones específicas del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "No la necesito - No me interesa",
+        "Manejos": [
+            {
+                "texto": "Entiendo su punto de vista, señor/a [Nombre del Cliente]. Sin embargo, imagine cómo estos beneficios pueden proteger y apoyar a un ser querido. Por ejemplo, la protección de compras y la garantía extendida pueden ser extremadamente útiles para asegurar las compras importantes de su ser querido. ¿Quién en su vida podría beneficiarse de esto?",
+                "nota": null
+            },
+            {
+                "texto": "Es comprensible, señor/a [Nombre del Cliente]. Sin embargo, al compartir esta tarjeta, su [nombre del ser querido] podrá acceder a avances en efectivo sin costos adicionales. Es una excelente manera de garantizar que tenga acceso a fondos de manera inmediata en caso de emergencia. Además de su [nombre del ser querido], ¿desea que amparemos a alguien más?",
+                "nota": null
+            },
+            {
+                "texto": "Comprendo que no vea una necesidad inmediata. Sin embargo, compartir estos beneficios puede ser una forma significativa de demostrarle a su [nombre del ser querido] cuánto se preocupa por su bienestar y seguridad financiera, no solo protegiendo las compras que realicen, sino también brindando apoyo económico en caso de cualquier eventualidad. ¿Prefiere que le hagamos llegar la tarjeta amparada a su oficina o a su vivienda?",
+                "nota": null
+            },
+            {
+                "texto": "Comprendo su perspectiva, señor/a [Nombre del Cliente]. Sin embargo, considere los ahorros que podría obtener su familiar o amigo con la protección de precios y compras, la garantía extendida y los descuentos en los establecimientos aliados. Estos beneficios pueden evitar gastos adicionales, proporcionando un ahorro significativo a largo plazo. Además de su [nombre del ser querido], ¿desea que amparemos a alguien más?",
+                "nota": null
+            },
+            {
+                "texto": "Comprendo su posición, señor/a [Nombre del Cliente]. Sin embargo, imagine que su familiar o amigo necesita dinero en efectivo de forma urgente. Con la tarjeta amparada, ellos tendrán la tranquilidad de acceder al cupo que usted les asigne sin preocuparse por cuotas de manejo ni seguros, proporcionando una solución rápida y sin costos adicionales. ¿Prefiere que le hagamos llegar la tarjeta amparada a su oficina o a su vivienda?",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Amparada",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción sobre compartir el cupo de crédito al destacar los mecanismos de control, seguridad y flexibilidad que ofrece la Tarjeta Amparada del BBVA. Adaptar el enfoque según las preocupaciones específicas del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "No tengo a quién amparar",
+        "Manejos": [
+            {
+                "texto": "Todos tenemos una persona importante en nuestras vidas. En mi caso, son mis padres y mis hijos. Si le pregunto quién es la persona más importante en su vida, ¿en quién pensaría?",
+                "nota": null
+            },
+            {
+                "texto": "Comprendo, señor/a [Nombre del Cliente]. Me gustaría saber más sobre su entorno cercano. ¿Tiene algún hijo, sobrino o amigo que esté estudiando o iniciando su vida laboral? La protección y asistencia que ofrece nuestra tarjeta será de gran ayuda para ellos.",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo, señor/a [Nombre del Cliente]. A veces, no pensamos en todas las personas que podrían beneficiarse de este tipo de apoyo. Actualmente ¿tiene alguna persona que dependa económicamente de usted? La tarjeta amparada le ofrece la opción de extender estos beneficios a cualquier persona que considere importante.",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo su postura. Sin embargo, considere situaciones específicas en las que una Tarjeta Amparada podría ser útil: para un hijo que está estudiando en otra ciudad, un familiar que viaja frecuentemente, o incluso para dividir gastos familiares de manera más organizada.",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Amparada",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción sobre compartir el cupo de crédito al destacar los mecanismos de control, seguridad y flexibilidad que ofrece la Tarjeta Amparada del BBVA. Adaptar el enfoque según las preocupaciones específicas del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "No quiero compartir mi cupo",
+        "Manejos": [
+            {
+                "texto": "Es comprensible, señor/a [Nombre del Cliente]. Recuerde que la tarjeta amparada le permite tener control total sobre el uso del cupo, asegurando que los beneficios sean utilizados de manera segura y responsable. Además, es una forma de apoyar a sus seres queridos sin comprometer su propia seguridad financiera. A través de la app, usted tendrá el control total de la tarjeta, ya que podrá activarla y desactivarla en cualquier momento. Podemos comenzar con un cupo mínimo de $400,000 ¿Quién será la persona que vamos a amparar?",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo su preocupación. Sin embargo, con la Tarjeta Amparada, usted puede monitorear todas las transacciones en tiempo real y recibir notificaciones instantáneas sobre cualquier uso. Recuerde que, puede activar y desactivar las tarjetas amparadas desde la app en cualquier momento. Aparte de su [nombre del ser querido], ¿desea que amparemos a alguien más?",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo su preocupación. Sin embargo, con la Tarjeta Amparada, usted puede personalizar los límites de gasto de manera flexible. Por ejemplo, puede establecer límites bajos que no afecten significativamente su cupo total, manteniendo siempre el control sobre el uso de la tarjeta. ¿Podemos empezar con un cupo mínimo de $400,000? ¿Está de acuerdo?",
+                "nota": null
+            },
+            {
+                "texto": "En BBVA todos ganan, las compras realizadas con la tarjeta amparada le ayudará a multiplicar los beneficios y posicionar su perfil financiero con el banco.",
+                "nota": null
+            }
+        ]
+    }
+    
+]

@@ -7,6 +7,11 @@
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	transition: 1s ease-in-out;
+	-webkit-transition: 1s ease-in-out;
+	-moz-transition: 1s ease-in-out;
+	-ms-transition: 1s ease-in-out;
+	-o-transition: 1s ease-in-out;
 	&--settings {
 		position: relative;
 		display: flex;
@@ -29,6 +34,11 @@
 		-moz-border-radius: 0.8rem;
 		-ms-border-radius: 0.8rem;
 		-o-border-radius: 0.8rem;
+		transition: 1s ease-in-out;
+		-webkit-transition: 1s ease-in-out;
+		-moz-transition: 1s ease-in-out;
+		-ms-transition: 1s ease-in-out;
+		-o-transition: 1s ease-in-out;
 		&__list {
 			display: flex;
 			align-items: center;
@@ -36,6 +46,11 @@
 			padding: 1rem;
 			cursor: pointer;
 			color: $w-color;
+			border-radius: 0.8rem;
+			-webkit-border-radius: 0.8rem;
+			-moz-border-radius: 0.8rem;
+			-ms-border-radius: 0.8rem;
+			-o-border-radius: 0.8rem;
 			&:hover {
 				background: rgba(0, 0, 0, 0.1);
 			}
@@ -47,11 +62,7 @@
 				height: 2rem;
 			}
 
-			border-radius: 0.8rem;
-			-webkit-border-radius: 0.8rem;
-			-moz-border-radius: 0.8rem;
-			-ms-border-radius: 0.8rem;
-			-o-border-radius: 0.8rem;
+			
 		}
 		&.true {
 			right: -14rem;
@@ -67,11 +78,7 @@
 				}
 			}
 		}
-		transition: 1s ease-in-out;
-		-webkit-transition: 1s ease-in-out;
-		-moz-transition: 1s ease-in-out;
-		-ms-transition: 1s ease-in-out;
-		-o-transition: 1s ease-in-out;
+		
 	}
 	&.true {
 		width: 100%;
@@ -107,11 +114,7 @@
 			}
 		}
 	}
-	transition: 1s ease-in-out;
-	-webkit-transition: 1s ease-in-out;
-	-moz-transition: 1s ease-in-out;
-	-ms-transition: 1s ease-in-out;
-	-o-transition: 1s ease-in-out;
+	
 }
 .Checklist {
 	position: relative;
@@ -121,7 +124,7 @@
 	flex-direction: column;
 	width: 70%;
 	max-width: 100rem;
-	height: 60rem;
+	height: 90%;
 	background: light-dark($w-color, $b-color);
 	color: light-dark($b-color, $w-color);
 	box-shadow: 0px 0px 0px 24px light-dark(rgba($w-color, 0.6), rgba($b-color, 0.6)),
@@ -311,6 +314,11 @@
 				font-style: italic;
 				cursor: default;
 				padding: 0 0.5rem;
+				border-radius: 0.8rem;
+				-webkit-border-radius: 0.8rem;
+				-moz-border-radius: 0.8rem;
+				-ms-border-radius: 0.8rem;
+				-o-border-radius: 0.8rem;
 				&__tip {
 					position: absolute;
 					top: 2rem;
@@ -324,9 +332,6 @@
 					color: $p-color;
 					background: $w-color;
 					padding: 0.5rem;
-					&:hover {
-						font-size: 1.6rem;
-					}
 					transition: 0.2s all;
 					border-radius: 0.8rem;
 					-webkit-border-radius: 0.8rem;
@@ -337,6 +342,10 @@
 					-moz-transition: 0.2s all;
 					-ms-transition: 0.2s all;
 					-o-transition: 0.2s all;
+					&:hover {
+						font-size: 1.6rem;
+					}
+					
 				}
 				&:hover {
 					& .check-tip__tip {
@@ -357,11 +366,7 @@
 						// }
 					}
 				}
-				border-radius: 0.8rem;
-				-webkit-border-radius: 0.8rem;
-				-moz-border-radius: 0.8rem;
-				-ms-border-radius: 0.8rem;
-				-o-border-radius: 0.8rem;
+				
 			}
 		}
 		& .changeSteep {
@@ -378,6 +383,7 @@
 		}
 	}
 	& .split {
+		width: 100%;
 		display: flex;
 		flex-direction: row;
 	}

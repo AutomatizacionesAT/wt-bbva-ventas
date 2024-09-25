@@ -181,6 +181,11 @@
 			scrollbar-width: thin;
 			scrollbar-color: $p-color $w-color;
 			border: 1px solid light-dark(rgba($p-color, 0.4), rgba($s-color, 0.4));
+			border-radius: 0.8rem;
+			-webkit-border-radius: 0.8rem;
+			-moz-border-radius: 0.8rem;
+			-ms-border-radius: 0.8rem;
+			-o-border-radius: 0.8rem;
 			& p {
 				text-align: start;
 				text-wrap: pretty;
@@ -192,11 +197,7 @@
 				}
 			}
 
-			border-radius: 0.8rem;
-			-webkit-border-radius: 0.8rem;
-			-moz-border-radius: 0.8rem;
-			-ms-border-radius: 0.8rem;
-			-o-border-radius: 0.8rem;
+			
 		}
 
 		.diferent {
@@ -697,7 +698,9 @@
 	transition: all 0.2s;
 	cursor: pointer;
 	padding: 0.6rem 4rem;
-
+	border-bottom-left-radius: 0.8rem;
+	border-bottom-right-radius: 0.8rem;
+	
 	& span {
 		display: block;
 		margin-left: 0.3em;
@@ -740,8 +743,7 @@
 		transform: scale(0.95);
 	}
 
-	border-bottom-left-radius: 0.8rem;
-	border-bottom-right-radius: 0.8rem;
+	
 }
 
 @keyframes fly-1 {

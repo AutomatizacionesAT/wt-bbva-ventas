@@ -1,0 +1,170 @@
+@use '@styles/variables' as *;
+
+.CuotasManejo {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+    align-items: center;
+    justify-content: center;
+    background-color: light-dark(rgba($p2-color, 0), rgba($p3-color, 0.3));
+
+    &__title {
+        margin: 4px 0;
+        border-bottom: 2px groove $w-color;
+        color: $w-color;
+        text-shadow: 2px 2px 2px black;
+        font-weight: 700;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &__imgBack {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 103%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.2;
+    }
+
+    &__container {
+        width: 30vw;
+        height: 88%;
+        padding: 16px;
+        justify-self: start;
+        position: relative;
+        display: grid;
+        grid-template: 
+                    ". a a a a a . " 9fr
+                    "b b b b b b b " 4fr
+                    ". c c c c c . " 9fr
+                    ". . f f f . . " 4fr
+                    ". . d d d . . " 4fr / 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 16px;
+        background-color: light-dark(rgba($s2-color, 0.4), rgba($p3-color, 0.4));
+        border-radius: 10px;
+        border: 2px groove $w-color;
+        box-shadow: 2px 2px 6px light-dark(#2424249c, $w-color);
+        z-index: 5;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: $p-color #e2e2e2;
+        scrollbar-gutter: stable;
+    }
+    &__input {
+        grid-area: a;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        label {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: $w-color;
+            text-shadow: 2px 2px 2px black;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            border: 2px groove $w-color;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            text-align: center;
+            color: black;
+            font-weight: 800;
+            background-color: $w-color;
+            transition: all 0.3s ease-in-out;
+            &:focus {
+                outline: none;
+                border: 2px solid $p3-color;
+                box-shadow: 2px 2px 6px $p3-color;
+                
+            }
+            
+        }
+
+    }
+    &__subtitle {
+        grid-area: b;
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: $w-color;
+        text-shadow: 2px 2px 2px black;
+        border-bottom: 2px groove $w-color;
+        padding-bottom: 8px;
+    }
+    &__cuotas {
+        grid-area: c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        p {
+            width: 150px;
+            padding: 8px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: $w-color;
+            text-shadow: 2px 2px 2px black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: light-dark(rgba($p3-color, 0.7), rgba($s2-color, 0.9));
+            box-shadow: 2px 2px 6px light-dark(#2424249c, $w-color);
+            border-radius: 5px;
+            & strong {
+                font-size: 1.5rem;
+                font-weight: 800;
+                color: $w-color;
+                text-shadow: 2px 2px 2px black;
+            }
+        }
+    }
+    &__nota {
+        grid-area: f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $w-color;
+        text-shadow: 2px 2px 2px black;
+        & strong {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: $w-color;
+            text-shadow: 2px 2px 2px black;
+        }
+    }
+    &__btn {
+        grid-area: d;
+        display: flex;
+        align-items: center; 
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $w-color;
+        border-radius: 8px;
+        border: 2px groove $w-color;
+        box-shadow: 2px 2px 6px light-dark(#2424249c, $w-color);
+        background-color: $p3-color;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 3px 2px 5px 0px rgba(0, 0, 0, 0.678);
+        }
+    }
+}

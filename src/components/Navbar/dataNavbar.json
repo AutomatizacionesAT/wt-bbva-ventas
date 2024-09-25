@@ -1,0 +1,144 @@
+{
+	"SEGMENTS": [
+		{
+			"segment": "Tarjeta de Crédito",
+			"icon": "IconCreditCard"
+		},
+		{
+			"segment": "Amparada",
+			"icon": "IconCovered"
+		},
+		{
+			"segment": "Consumo",
+			"icon": "IconCookieBite"
+		},
+		{
+			"segment": "Compra Cartera",
+			"icon": "IconWallet"
+		},
+		{
+			"segment": "Rediferido",
+			"icon": "IconPersonShelter"
+		}
+	],
+	"NAVBAR": [
+		{
+			"title": "Inicio",
+			"route": "/",
+			"icon": "home"
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/tarjetacredito/manualobjeciones",
+			"icon": "tipify",
+			"segments": [
+				"Tarjeta de Crédito"
+			]
+		},
+		{
+			"title": "Beneficios de Tarjetas",
+			"route": "/beneficiosdetarjeta",
+			"icon": "IconCreditCard",
+			"segments": [
+				"Tarjeta de Crédito"
+			]
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/amparada/manualobjeciones",
+			"icon": "tipify",
+			"segments": [
+				"Amparada"
+			]
+		},
+		{
+			"title": "Activacion Digital",
+			"route": "/minichecklist",
+			"icon": "IconArrowLeftRight",
+			"segments": ["Amparada", "Consumo", "Compra Cartera", "Rediferido"],
+			"dropDown": [
+				{
+					"title": "Cambio de Dirección",
+					"route": "minichecklist/cambiodireccion"
+				},
+				{
+					"title": "Activación Token",
+					"route": "minichecklist/activaciontoken"
+				},
+				{
+					"title": "Aceptación Consumo",
+					"route": "minichecklist/aceptacionconsumo"
+				}
+			]
+		},
+		{
+			"title": "Simulador Cartera y Rediferido",
+			"route": "/carteraYrediferido",
+			"icon": "calc",
+			"segments": [
+				"Compra Cartera",
+				"Rediferido"
+			]	
+		},
+		{
+			"title": "Activacion Digital",
+			"route": "/minichecklist",
+			"icon": "IconArrowLeftRight",
+			"segments": ["Tarjeta de Crédito"],
+			"dropDown": [
+				{
+					"title": "Aceptación TD Preaprobado",
+					"route": "minichecklist/aceptacionpreaprobado"
+				},
+				{
+					"title": "Activación TD",
+					"route": "minichecklist/activaciontarjetacredito"
+				},
+				{
+					"title": "Cambio de Dirección",
+					"route": "minichecklist/cambiodireccion"
+				},
+				{
+					"title": "Activación Token",
+					"route": "minichecklist/activaciontoken"
+				},
+				{
+					"title": "Aceptación Consumo",
+					"route": "minichecklist/aceptacionconsumo"
+				}
+			]
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/consumo/manualobjeciones",
+			"icon": "tipify",
+			"segments": [
+				"Consumo"
+			]
+		},
+		{
+			"title": "Manual de Objeciones",
+			"route": "/compracartera/manualobjeciones",
+			"icon": "tipify",
+			"segments": [
+				"Compra Cartera"
+			]
+		},
+		{
+			"title": "Beneficios de Tarjetas",
+			"route": "/beneficiosdetarjeta",
+			"icon": "IconCreditCard",
+			"segments": [
+				"Amparada"
+			]
+		},
+		{
+			"title": "Comparativo Cuotas de Manejo",
+			"route": "/cuotasmanejo",
+			"icon": "IconDollarTicked",
+			"segments": [
+				"Tarjeta de Crédito"
+			]
+		}
+	]
+}

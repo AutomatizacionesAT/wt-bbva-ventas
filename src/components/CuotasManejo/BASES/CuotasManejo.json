@@ -1,0 +1,181 @@
+[
+    {
+        "ENTIDAD": "SELECCIONE ENTIDAD",
+        "MINIMO": "$ 0",
+        "MAXIMO": "$ 0"
+    },
+    {
+      "ENTIDAD": "Banco de Bogotá S.A.",
+      "MINIMO": "$ 29.900",
+      "MAXIMO": "$ 48.410",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco Popular S.A.",
+      "MINIMO": "$ 12.000",
+      "MAXIMO": "$ 45.500",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco Itaú Colombia S.A.",
+      "MINIMO": "$ 29.967",
+      "MAXIMO": "$ 52.831",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Bancolombia S.A.",
+      "MINIMO": "$ 15.490",
+      "MAXIMO": "$ 109.900",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO GNB SUDAMERIS S.A.",
+      "MINIMO": "$ 17.700",
+      "MAXIMO": "$ 23.100",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco Bilbao Vizcaya Argentaria Colombia S.A.",
+      "MINIMO": "$ 29.600",
+      "MAXIMO": "$ 50.900",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco  de  Occidente S.A.",
+      "MINIMO": "$ 11.099",
+      "MAXIMO": "$ 49.391",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO CAJA SOCIAL S.A.",
+      "MINIMO": "$ 84.600",
+      "MAXIMO": "$ 101.850",
+      "NOTA": "TRIMESTRE ANTICIPADO"
+    },
+    {
+      "ENTIDAD": "Banco Davivienda S.A.",
+      "MINIMO": "$ 11.000",
+      "MAXIMO": "$ 46.000",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "SCOTIABANK COLPATRIA S.A.",
+      "MINIMO": "$ 25.700",
+      "MAXIMO": "$ 115.990",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO AGRARIO DE COLOMBIA S.A.",
+      "MINIMO": "$ 17.500",
+      "MAXIMO": "$ 33.400",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco AV Villas",
+      "MINIMO": "$ 24.350",
+      "MAXIMO": "$ 37.990",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BAN100 o BANCO CREDIFINANCIERA S.A.",
+      "MINIMO": "$ 24.900",
+      "MAXIMO": "$ 24.900",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco de las Microfinanzas -Bancamía S.A.",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco W S.A.",
+      "MINIMO": "$ -",
+      "MAXIMO": "$ -",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco Coomeva S.A.",
+      "MINIMO": "$ 24.310",
+      "MAXIMO": "$ 53.768",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco Finandina S.A.",
+      "MINIMO": "$ 18.400",
+      "MAXIMO": "$ 95.900",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco Falabella S.A.",
+      "MINIMO": "$ 26.990",
+      "MAXIMO": "$ 38.900",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco Pichincha S.A.",
+      "MINIMO": "$ 75.300",
+      "MAXIMO": "$ 154.200",
+      "NOTA": "TRIMESTRE ANTICIPADO"
+    },
+    {
+      "ENTIDAD": "El Banco Cooperativo Coopcentral",
+      "MINIMO": "$ 26.000",
+      "MAXIMO": "$ 50.600",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO SANTANDER DE NEGOCIOS COLOMBIA S. A",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO MUNDO MUJER S.A.",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Mibanco S.A.",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO SERFINANZA S.A.",
+      "MINIMO": "$ 22.320",
+      "MAXIMO": "$ 41.000",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO J.P. MORGAN COLOMBIA S.A.",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Lulo Bank S.A.",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "Banco BTG Pactual Colombia S.A.",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO UNIÓN S.A.",
+      "MINIMO": "$ 26.300",
+      "MAXIMO": "$ 26.300",
+      "NOTA": ""
+    },
+    {
+      "ENTIDAD": "BANCO CONTACTAR S.A.",
+      "MINIMO": "n/a",
+      "MAXIMO": "n/a",
+      "NOTA": ""
+    }
+  ]

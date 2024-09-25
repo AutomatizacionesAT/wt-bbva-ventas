@@ -220,6 +220,11 @@
 	color: black;
 	text-align: center;
 	padding: 2rem 3rem;
+	border-radius: 0.8rem;
+	-webkit-border-radius: 0.8rem;
+	-moz-border-radius: 0.8rem;
+	-ms-border-radius: 0.8rem;
+	-o-border-radius: 0.8rem;
 	&[open] {
 		display: flex;
 	}
@@ -418,9 +423,5 @@
 		}
 	}
 
-	border-radius: 0.8rem;
-	-webkit-border-radius: 0.8rem;
-	-moz-border-radius: 0.8rem;
-	-ms-border-radius: 0.8rem;
-	-o-border-radius: 0.8rem;
+	
 }

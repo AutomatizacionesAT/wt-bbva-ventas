@@ -8,8 +8,8 @@ import IconNote from '../../icons/IconNote'
 import IconCalculator from '../../icons/IconCalculator'
 import IconTextSlash from '../../icons/IconTextSlash'
 import IconTipify from '../../icons/IconTipify'
+
 import { Link } from 'react-router-dom'
-import IconCreditCard from '../../icons/IconCreditCard'
 
 export default function DropDown({ link, pos, scroll }) {
 	const [top, setTop] = useState(136)
@@ -22,7 +22,7 @@ export default function DropDown({ link, pos, scroll }) {
 		note: <IconNote />,
 		tipify: <IconTipify />,
 		calc: <IconCalculator />,
-		creditCard: <IconCreditCard />,
+		IconArrowLeftRight: <IconArrowLeftRight />,
 	})
 	const toggleDropDown = () => {
 		if (dropDownActive) return setDropDownActive(!dropDownActive)
@@ -30,7 +30,7 @@ export default function DropDown({ link, pos, scroll }) {
 	}
 	const handleMaouseEnter = () => {
 		if (scroll > 0) {
-			setTop(136 + pos * 80 - scroll)
+			setTop(136 + pos * 60 - scroll)
 		} else {
 			setTop(136 + pos * 60)
 		}

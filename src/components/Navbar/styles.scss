@@ -1,22 +1,154 @@
 @use '@styles/variables' as *;
 
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
+	height: 60px;
+
+	&__logobx {
+		margin: 12px;
+		width: 56px;
+	}
+
+	&__versionbx {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $p-color;
+		font-size: 1.6rem;
+		width: 100px;
+		height: -webkit-fill-available;
+		color: $w-color;
+
+		span {
+			font-weight: 700;
+			font-size: 1.2rem;
+		}
+	}
+
+	&__nav {
+		display: flex;
+		justify-content: center;
+		border-radius: 12px;
+		width: 50%;
+		padding: 0 25px;
+		margin: 12px auto;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		-ms-border-radius: 12px;
+		-o-border-radius: 12px;
+
+		ul {
+			display: flex;
+			gap: 3rem;
+			font-size: 1.8rem;
+
+			li {
+				position: relative;
+
+				&::before {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 4px;
+					background: $p-color;
+					// transition: all 0.5s ease-in-out;
+					// -webkit-transition: all 0.5s ease-in-out;
+					// -moz-transition: all 0.5s ease-in-out;
+					// -ms-transition: all 0.5s ease-in-out;
+					// -o-transition: all 0.5s ease-in-out;
+				}
+
+				&:hover::before {
+					height: 60px;
+				}
+
+				&:hover .route {
+					color: $w-color;
+				}
+
+				.route {
+					position: relative;
+					font-weight: 600;
+					top: 0;
+					left: 0;
+					display: flex;
+					align-items: center;
+					height: 60px;
+					padding: 0 20px;
+					z-index: 10;
+				}
+			}
+		}
+	}
+}
+
+.bxpop {
+	.pop-btns-link {
+		background: $p-color;
+		color: $w-color;
+		font-size: 1.8rem;
+		margin: 4px auto;
+		padding: 4px 14px;
+		border-radius: 12px;
+		opacity: 0.8;
+
+		&:hover {
+			opacity: 1;
+			background: $p3-color;
+			box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	label {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid $p-color;
+		border-radius: 16px;
+		height: 24px;
+		margin: 12px auto;
+
+		input {
+			font-size: 1.6rem;
+			border: none;
+			outline: none;
+			width: 90%;
+		}
+
+		i {
+			color: $p-color;
+		}
+	}
+}
+
 .sidebar {
 	color-scheme: inherit;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: 98vh;
 	width: 280px;
 	margin: auto;
-	background: light-dark($w-color, $b-color);
-	box-shadow: 0 4px 30px rgba(17, 0, 255, 0.4);
+	margin-left: 1.2rem;
+	background: light-dark(rgba($w-color, 0.4), rgba($b-color, 0.4));
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
-	border: 1px solid rgba(20, 0, 107, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 	font-size: $paragraph;
 	z-index: 10;
-	border-top-right-radius: 2rem;
-	border-bottom-right-radius: 2rem;
+
+	border-radius: 1.6rem;
+	-webkit-border-radius: 1.6rem;
+	-moz-border-radius: 1.6rem;
+	-ms-border-radius: 1.6rem;
+	-o-border-radius: 1.6rem;
 
 	&.false {
 		width: 50px;
@@ -41,7 +173,7 @@
 
 		&--name {
 			font-size: 1.8rem;
-			color: light-dark($p-color, $w-color);
+			color: light-dark($b-color, $w-color);
 			font-weight: 400;
 			text-align: center;
 			width: 75%;
@@ -56,8 +188,8 @@
 	}
 
 	&__links {
-		color: light-dark($w-color, $w-color);
-		background: light-dark($s-color, $b-color);
+		color: light-dark($b-color, $w-color);
+		background: light-dark($w-color, $b-color);
 		overflow: auto;
 		flex-grow: 1;
 		margin: 0 4px 12px 4px;
@@ -68,7 +200,7 @@
 
 		& svg {
 			& path {
-				fill: url('#gr-white');
+				fill: url('#gr-light');
 			}
 		}
 
@@ -201,8 +333,8 @@
 			& svg {
 				user-select: none;
 				pointer-events: none;
-				width: 4.4rem;
-				max-width: 4.4rem;
+				width: 4rem;
+				max-width: 4rem;
 				padding: 12px;
 			}
 
@@ -219,21 +351,17 @@
 	}
 
 	&__versionbx {
+		color: light-dark($b-color, $w-color);
 		line-height: 50px;
 		height: 50px;
-		width: 100%;
-		border-bottom-right-radius: 2rem;
+		width: 90%;
 		left: 5%;
-		// margin: auto;
+		margin: auto;
 		text-align: center;
-		background: $s-color;
 		border-top: 1px solid rgba(255, 255, 255, 0.3);
-		color: light-dark($w-color, $w-color);
-		font-size: 1.4rem;
 
 		span {
 			color: $w-color;
-			color: light-dark($w-color, $w-color);
 		}
 	}
 
@@ -262,6 +390,11 @@
 			background-color: transparent;
 			cursor: pointer;
 
+			// transition: all 0.5s ease-in-out;
+			// -webkit-transition: all 0.5s ease-in-out;
+			// -moz-transition: all 0.5s ease-in-out;
+			// -ms-transition: all 0.5s ease-in-out;
+			// -o-transition: all 0.5s ease-in-out;
 			&::placeholder {
 				color: transparent;
 			}
@@ -275,10 +408,10 @@
 		.input:not(:placeholder-shown) {
 			/* From https://css.glass */
 			background: $w-color;
-			box-shadow: 0 4px 30px rgba(0, 15, 99, 0.1);
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 			backdrop-filter: blur(5px);
 			-webkit-backdrop-filter: blur(5px);
-			border: 1px solid rgba(48, 0, 104, 0.3);
+			border: 1px solid rgba(255, 255, 255, 0.3);
 			width: 220px;
 			cursor: none;
 			padding: 18px 16px 18px 55px;
@@ -294,8 +427,8 @@
 			width: 4rem;
 			padding: 0.8rem;
 			z-index: -1;
-			fill: $p-color;
-			border: 4px solid rgba(30, 0, 85, 0.3);
+			fill: $g-color;
+			border: 4px solid rgba(255, 255, 255, 0.3);
 			border-radius: 50%;
 			overflow: visible;
 		}
@@ -558,4 +691,69 @@
 
 .swal2-popup {
 	font-size: 2rem;
+}
+
+.driver-popover.driverjs-theme {
+	background-color: $p2-color;
+	color: $w-color;
+}
+
+.driver-popover.driverjs-theme .driver-popover-title {
+	font-size: 2rem;
+}
+
+.driver-popover.driverjs-theme .driver-popover-title,
+.driver-popover.driverjs-theme .driver-popover-description,
+.driver-popover.driverjs-theme .driver-popover-progress-text {
+	color: $w-color;
+	margin-right: 1rem;
+}
+
+.driver-popover.driverjs-theme button {
+	flex: 1;
+	text-align: center;
+	background-color: $w-color;
+	color: #000;
+	border: 2px solid $w-color;
+	text-shadow: none;
+	font-size: 14px;
+	padding: 5px 8px;
+	border-radius: 6px;
+}
+
+.driver-popover.driverjs-theme button:hover {
+	background-color: $p-color;
+	color: $w-color;
+}
+
+.driver-popover.driverjs-theme .driver-popover-navigation-btns {
+	justify-content: space-between;
+	gap: 3px;
+}
+
+.driver-popover.driverjs-theme .driver-popover-close-btn {
+	color: #9b9b9b;
+	background: transparent;
+	border: none;
+}
+
+.driver-popover.driverjs-theme .driver-popover-close-btn:hover {
+	color: $w-color;
+	background: transparent;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-left.driver-popover-arrow {
+	border-left-color: $p2-color;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-right.driver-popover-arrow {
+	border-right-color: $p2-color;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-top.driver-popover-arrow {
+	border-top-color: $p2-color;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-bottom.driver-popover-arrow {
+	border-bottom-color: $p2-color;
 }

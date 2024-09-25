@@ -1,0 +1,78 @@
+[
+    {
+        "Producto": "Compra de cartera",
+        "Recomendación": "Estos argumentos pueden adaptarse y ampliarse según las objeciones específicas que encuentres en el proceso de ventas. Es importante también escuchar activamente las preocupaciones del cliente y adaptar tu respuesta para abordar sus necesidades particulares.",
+        "Objeciones": "No tengo deudas en otra entidad",
+        "Manejos": [
+            {
+                "texto": "Felicidades por su excelente situación financiera. Sin embargo, permítame destacar que nuestro servicio no se limita solo a la consolidación de deudas. También ofrecemos beneficios adicionales, como una tarjeta respaldada que puede entregar a un familiar o cercano que tal vez sí tenga deudas, o incluso para que pueda disfrutar de todos los servicios que usted tiene. (Mencionar características y beneficios de la tarjeta del cliente). Cuénteme, ¿con quién le gustaría compartir estos beneficios?",
+                "nota": null
+            },
+            {
+                "texto": "Es fantástico que no tenga deudas con otras entidades en este momento. Aprovechemos esta oportunidad para recordar los beneficios de su tarjeta de crédito [nombrar franquicia y categoría] para que los pueda aprovechar en todo momento, [brindar tres beneficios de alto impacto]. Asimismo, recuerde que estos beneficios los puede compartir con sus familiares o seres queridos a través de una tarjeta amparada. ¿Con qué persona importante en su vida le gustaría compartir estos beneficios?",
+                "nota": null
+            },
+            {
+                "texto": "Excelente, Sr./Sra. XXXX, y permítame felicitarlo/a por su excelente manejo financiero. De igual forma, recuerde que nuestra oferta de compra de cartera está a su disposición en caso de que en el futuro considere consolidar deudas o enfrentar cambios en su situación financiera; estaremos aquí para asistirlo/a. Por el momento, me gustaría recordarle los beneficios de su tarjeta de crédito para que siempre los tenga presentes [brindar tres beneficios de alto impacto] Asimismo, tenga presente que estos beneficios los puede compartir con un familiar o ser querido. Sr./Sra. XXXX, si le preguntara en este momento quiénes son las personas más importantes en su vida, ¿qué respondería?",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Compra de cartera",
+        "Recomendación": "Estos argumentos pueden adaptarse y ampliarse según las objeciones específicas que encuentres en el proceso de ventas. Es importante también escuchar activamente las preocupaciones del cliente y adaptar tu respuesta para abordar sus necesidades particulares.",
+        "Objeciones": "No me interesa",
+        "Manejos": [
+            {
+                "texto": "Entiendo completamente tus motivos y respeto tu decisión. Si es posible, ¿podrías compartir un poco más sobre lo que te preocupa o no te interesa? Quizás haya algún malentendido que podamos aclarar juntos. Además, si no te interesa esta oferta específica, ¿te gustaría explorar otras soluciones que puedan ser más adecuadas para tus necesidades actuales?",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo que en este momento la oferta no te parezca atractiva. Sin embargo, ten en cuenta que esto puede significar un gran ahorro a largo plazo. Me gustaría que hiciéramos una simulación sin ningún tipo de compromiso. Indícame aproximadamente a cuánto ascienden tus deudas en tarjetas de crédito.",
+                "nota": null
+            },
+            {
+                "texto": "Aprecio tu franqueza y respeto tu decisión. Nuestro objetivo es asegurarnos de ofrecer soluciones que sean verdaderamente útiles para ti. Con esta compra de cartera, lo que queremos es que liberes tu cupo al 100% en la otra entidad y, a cambio, pagues con nosotros a una tasa mucho más económica. ¿Cuánto valor te gustaría simular?",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Compra de cartera",
+        "Recomendación": "Estos argumentos pueden adaptarse y ampliarse según las objeciones específicas que encuentres en el proceso de ventas. Es importante también escuchar activamente las preocupaciones del cliente y adaptar tu respuesta para abordar sus necesidades particulares.",
+        "Objeciones": "La tasa está alta",
+        "Manejos": [
+            {
+                "texto": "Entiendo tu preocupación por la tasa. En BBVA nos esforzamos por ofrecer tasas competitivas y ventajosas en la compra de cartera. De hecho, nuestras tasas suelen ser más bajas que las de otros bancos para asegurar que nuestros clientes obtengan el mejor beneficio financiero posible. Permíteme realizarte una simulación para que puedas hacer una comparación y tomar una decisión más informada. Indícame aproximadamente a cuánto ascienden tus deudas en tarjetas de crédito.",
+                "nota": null
+            },
+            {
+                "texto": "Aunque entiendo que la tasa es un factor importante, también es esencial considerar que los créditos suelen tener gastos adicionales asociados, como seguros, cuotas de manejo, asistencias o membresías. Más que la tasa de interés, es importante comparar cuánto pagará en cada cuota y en qué plazo, para considerar el valor real a cancelar al finalizar el crédito. Permíteme realizarte una simulación para que puedas tomar una decisión más informada. Indícame aproximadamente a cuánto ascienden tus deudas en tarjetas de crédito.",
+                "nota": null
+            },
+            {
+                "texto": "Aprecio tus comentarios sobre la tasa. En BBVA estamos comprometidos con la transparencia y la satisfacción del cliente. Me gustaría revisar tu situación específica de crédito para asegurarnos de que te estamos ofreciendo la mejor solución. Indica cuánto estás adeudando con las otras tarjetas de crédito para poder hacer una comparación. [Simular y realizar oferta]",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Compra de cartera",
+        "Recomendación": "Cuando un cliente expresa que está cerca de terminar de pagar sus deudas en otro banco, es fundamental manejar esta objeción con sensibilidad y ofrecer razones convincentes para considerar la transferencia a BBVA. Aquí te doy tres respuestas que podrían ayudarte",
+        "Objeciones": "Ya voy a terminar de pagar - Me faltan porquitas cuotas",
+        "Manejos": [
+            {
+                "texto": "Es genial escuchar que estás cerca de liquidar tus deudas actuales. Considera esto como una oportunidad para planificar tu futuro financiero de manera más efectiva. Al consolidar tus deudas con BBVA, no solo simplificarías tu gestión financiera al tener una sola cuota mensual, sino que también podrías beneficiarte de nuestras condiciones favorables y opciones flexibles de pago. Indícame cuánto debes y cuántas cuotas te hacen falta por pagar. [simular al mismo plazo y a menor tiempo para hacer oferta destacando la posibilidad de cancelar aun más rápido la deuda]",
+                "nota": null
+            },
+            {
+                "texto": "Me alegra bastante que estés cerca de liquidar tu deuda en el otro banco. Sería útil revisar juntos tu situación financiera actual y ver cómo podríamos optimizar tus finanzas. Además de simplificar tu deuda, podríamos discutir opciones para mejorar tu historial crediticio, finalizando esa deuda aún más rápido y pagando menos por ella. ¿Cuánto debes y cuántas cuotas te hacen falta por pagar? [simular al mismo plazo y a menor tiempo para hacer oferta destacando la posibilidad de cancelar aun más rápido la deuda]",
+                "nota": null
+            },
+            {
+                "texto": "Entiendo que estás cerca de terminar de pagar en tu banco actual, lo cual es una excelente noticia. ¿Sabías que en BBVA ofrecemos beneficios adicionales al consolidar tus deudas antes de que termines de pagar en otro banco? Al hacerlo, podrías beneficiarte de nuestras asistencias y servicios exclusivos, como protección de compras, descuentos en comercios y asistencia en viajes. Además, puedes compartir estos beneficios con tus familiares o seres queridos a través de una tarjeta amparada. Si ellos tienen deudas con otras entidades, podrían aprovechar nuestra tasa preferente para compra de cartera. ¿Con quién te gustaría compartir estos beneficios?",
+                "nota": null
+            }
+        ]
+    }
+]

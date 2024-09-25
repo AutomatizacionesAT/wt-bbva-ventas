@@ -1,33 +1,73 @@
 import '@styles/app.scss'
 import { Routes, Route } from 'react-router-dom'
-import imgBackground from './assets/images/index/back1.jpg'
-import imgBackgroundD from './assets/images/index/back2.jpg'
-import Navbar from './components/Navbar/Navbar'
+import imgBackground from './assets/images/index/backgroundLight.jpg'
+import imgBackgroundD from './assets/images/index/background.jpg'
+import imgApp from './assets/images/index/backApp.jpg'
+import dataNavbar from './components/Navbar/dataNavbar.json'
 import Bienvenida from './components/Bienvenida/Bienvenida'
 import Corrector from './components/Corrector/Corrector'
-import Objeciones from './components/Objeciones/Objeciones'
+import CambioDireccion from './components/MiniChecklist/CambioDireccion/CambioDireccion.jsx'
+import ActivacionToken from './components/MiniChecklist/ActivacionToken/ActivacionToken.jsx'
+import AceptacionPreApro from './components/MiniChecklist/AceptacionPreApro/AceptacionPreApro.jsx'
+import ActivacionTD from './components/MiniChecklist/ActivacionTD/ActivacionTD.jsx'
+import AceptacionCreditoConsumo from './components/MiniChecklist/AceptacionCreditoConsumo/AceptacionCreditoConsumo.jsx'
 import GlobalContext, { GlobalProvider } from './context/GlobalContext'
-import { useContext } from 'react'
-import TarjetasCredito from './components/TarjetasCredito/TarjetasCredito'
+import { useContext, useEffect } from 'react'
+import { NoteApp } from './components/NoteApp/NoteApp.jsx'
+import HorNav from './components/Navbar/HorNav.jsx'
+import { TarjetasCredito } from './components/TarjetasCredito/TarjetasCredito.jsx'
+
+import { Objecion } from './components/Objeciones/Objecion.jsx'
+import { CuotasManejo } from './components/CuotasManejo/CuotasManejo.jsx'
+import { CarteraYRediferido } from './components/Calculadoras/CarteraYRediferido/CarteraYRediferido.jsx'
 
 const App = () => {
-	const { scheme } = useContext(GlobalContext)
+	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
 	const style = {
-		backgroundImage: `url(${scheme === 'light' ? imgBackground : imgBackgroundD})`,
-		backgroundSize: '100% 100%',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'center',
-		colorScheme: scheme,
+		app: {
+			backgroundImage: `url(${scheme === 'light' ? imgBackground : imgBackgroundD})`,
+			colorScheme: scheme,
+		},
+		body: {
+			backgroundImage: `url(${imgApp})`,
+			colorScheme: scheme,
+		},
 	}
+	useEffect(() => {
+		document.body.addEventListener('keydown', e => {
+			if (e.key == 'Escape') {
+				showApp(false)
+			}
+		})
+	})
 	return (
-		<div className="app" style={style}>
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<Bienvenida />} />
-				<Route path="/corrector" element={<Corrector />} />
-				<Route path="/objeciones" element={<Objeciones />} />
-				<Route path="/tarjetasCredito" element={<TarjetasCredito />} />
-			</Routes>
+		<div className="app h" style={style.app}>
+			{/* <Navbar /> */}
+			<HorNav />
+			{activeAppNote && <NoteApp />}
+			<section className="app__body" style={style.body}>
+				<Routes>
+					{dataNavbar.SEGMENTS.map((segment, i) => {
+						return <Route key={i} path={'/' + segment.segment} element={<Bienvenida nombre={segment.segment}/>} />
+					})}
+					<Route path="/" element={<Bienvenida  nombre={"no"}/>} />
+
+					<Route path="/" element={<Bienvenida />} />
+					<Route path="/corrector" element={<Corrector />} />
+					<Route path="/tarjetacredito/manualobjeciones" element={<Objecion NBD="OBJETC" />} />
+					<Route path="/consumo/manualobjeciones" element={<Objecion NBD="OBJECON" />} />
+					<Route path="/amparada/manualobjeciones" element={<Objecion NBD="OBJEAM" />} />
+					<Route path='/compracartera/manualobjeciones' element={<Objecion NBD='OBJECOMCAR' />} />
+					<Route path="/minichecklist/cambiodireccion" element={<CambioDireccion />} />
+					<Route path="/minichecklist/activaciontoken" element={<ActivacionToken />} />
+					<Route path="/minichecklist/aceptacionpreaprobado" element={<AceptacionPreApro />} />
+					<Route path="/minichecklist/activaciontarjetacredito" element={<ActivacionTD />} />
+					<Route path="/minichecklist/aceptacionconsumo" element={<AceptacionCreditoConsumo />} />
+					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
+					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
+					<Route path="/carteraYrediferido" element={<CarteraYRediferido />} />
+				</Routes>
+			</section>
 		</div>
 	)
 }

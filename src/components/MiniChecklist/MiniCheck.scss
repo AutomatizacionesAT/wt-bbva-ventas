@@ -1,0 +1,163 @@
+@use '@styles/variables' as *;
+
+.stepper-container {
+    width: 100%;
+    height: 80vh;
+    padding: 16px;
+    display: grid;
+    grid-template: 
+    "a a" 1fr
+    "b c" 8fr / 1fr 1fr
+    ;
+    background-color: light-dark(rgba($p2-color, 0), rgba($p3-color, 0.3));
+    // overflow-y: auto;
+    // padding: 16px 0 0 0;
+    // scrollbar-width: thin;
+    // scrollbar-color: light-dark($p2-color, $p3-color) light-dark($w-color, $w-color);
+    // scrollbar-gutter: stable;
+    &__title {
+        grid-area: a;
+        width: 100%;
+        font-size: 3rem;
+        color: light-dark($w-color, $p2-color);
+        text-align: center;
+        letter-spacing: 4px;
+    }
+
+    .left {
+        grid-area: b;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+
+        h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: light-dark($p2-color, $w-color); // Manejando el color de texto
+            font-weight: bold;
+
+            span {
+                color: light-dark($s-color, $w-color); // Manejando el color de texto del span
+                font-size: 3.1rem;
+                text-shadow: 1px 1px 1px black;
+            }
+        }
+    }
+
+    .rigth {
+        grid-area: c;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+   
+    }
+    .step-image {
+        width: 100%;
+        height: 100%;
+    }
+    .step-image img {
+        height: 65vh;
+        margin: 0 auto;
+        object-fit: contain;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
+    }
+
+    .step-indicator {
+        background-color: light-dark($p2-color, $s2-color); // Manejando el color del indicador
+        color: light-dark($s2-color, $p2-color); // Manejando el color del texto
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    .stepper {
+        width: 100%;
+       
+        & > p {
+            width: 100%;
+            height: 150px;
+            padding: 16px 16px;
+            background-color: light-dark($w-color, $p2-color);
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px rgba(#242424, 0.5);
+            color: light-dark($p-color, $w-color);
+            font-size: 2.5rem;
+            white-space: pre-wrap;
+            align-content: center;
+            overflow-y: auto;
+            scrollbar-color: light-dark($p-color, $w-color) light-dark($w-color, $w-color);
+            scrollbar-width: thin;
+            scrollbar-gutter: stable;
+        }
+    }
+
+    .stepper-controls {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .stepper-controls button {
+        background-color: light-dark($p2-color, $s2-color); // Manejando el color del botón
+        color: light-dark($s2-color, $p2-color); // Manejando el color del texto
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .stepper-controls button:disabled {
+        background-color: light-dark(#333, #ccc); // Manejando el color del botón deshabilitado
+    }
+
+    .stepper-controls button:not(:disabled):hover {
+        background-color: light-dark(darken($p2-color, 10%), darken($s2-color, 10%)); // Manejando el color del hover
+    }
+
+    .stepper-indicators {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .stepper-indicators .indicator {
+        width: 20px;
+        height: 20px;
+        background-color: light-dark($s2-color, $p2-color); // Manejando el color del indicador
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .stepper-indicators .indicator.active {
+        background-color: light-dark($p2-color, $s2-color); // Color para el indicador activo
+    }
+
+    .stepper-indicators .indicator.completed {
+        background-color: light-dark(lighten($s2-color, 20%), $s2-color); // Verde o color más claro para pasos completados
+    }
+
+    .stepper-indicators .indicator.pending {
+        background-color: light-dark($s2-color, $p2-color); // Color para pasos pendientes
+    }
+}
