@@ -43,13 +43,20 @@ const App = () => {
 				showApp(false)
 			}
 		})
-		if (sessionStorage.getItem('session') != 'true') {
-			const sessionRec = document.querySelector('.sessionRec')
-			sessionRec.style.backgroundImage = `url(${imgCtrlAccesss})`
-			sessionRec.style.backgroundSize = 'cover'
-			sessionRec.style.backgroundRepeat = 'no-repeat'
-			sessionRec.style.backgroundPosition = 'center'
+		const sessionRec = document.querySelector('.sessionRec')
+		if(sessionRec){
+
+			if (sessionStorage.getItem('session') != 'true') {
+			
+				sessionRec.style.backgroundImage = `url(${imgCtrlAccesss})`
+				sessionRec.style.backgroundSize = 'cover'
+				sessionRec.style.backgroundRepeat = 'no-repeat'
+				sessionRec.style.backgroundPosition = 'center'
+				
+			}
+
 		}
+		
 	})
 	return (
 		<div className="app h" style={style.app}>
