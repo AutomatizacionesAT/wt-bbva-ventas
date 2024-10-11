@@ -1,8 +1,11 @@
 import '@styles/app.scss'
 import { Routes, Route } from 'react-router-dom'
+
 import imgBackground from './assets/images/index/backgroundLight.jpg'
 import imgBackgroundD from './assets/images/index/background.jpg'
 import imgApp from './assets/images/index/backApp.jpg'
+import imgCtrlAccesss from './assets/images/index/sessionBackground.jpg'
+
 import dataNavbar from './components/Navbar/dataNavbar.json'
 import Bienvenida from './components/Bienvenida/Bienvenida'
 import Corrector from './components/Corrector/Corrector'
@@ -20,6 +23,7 @@ import { TarjetasCredito } from './components/TarjetasCredito/TarjetasCredito.js
 import { Objecion } from './components/Objeciones/Objecion.jsx'
 import { CuotasManejo } from './components/CuotasManejo/CuotasManejo.jsx'
 import { CarteraYRediferido } from './components/Calculadoras/CarteraYRediferido/CarteraYRediferido.jsx'
+import { SimuladorTDC } from './components/Calculadoras/SimuladorTDC/SimuladorTDC.jsx'
 
 const App = () => {
 	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
@@ -39,6 +43,13 @@ const App = () => {
 				showApp(false)
 			}
 		})
+		if (sessionStorage.getItem('session') != 'true') {
+			const sessionRec = document.querySelector('.sessionRec')
+			sessionRec.style.backgroundImage = `url(${imgCtrlAccesss})`
+			sessionRec.style.backgroundSize = 'cover'
+			sessionRec.style.backgroundRepeat = 'no-repeat'
+			sessionRec.style.backgroundPosition = 'center'
+		}
 	})
 	return (
 		<div className="app h" style={style.app}>
@@ -66,6 +77,7 @@ const App = () => {
 					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
 					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
 					<Route path="/carteraYrediferido" element={<CarteraYRediferido />} />
+					<Route path="/SimuladorTDC" element={<SimuladorTDC />} />
 				</Routes>
 			</section>
 		</div>

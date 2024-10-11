@@ -81,6 +81,14 @@
 			]	
 		},
 		{
+			"title": "Simulador tarjeta de credito",
+			"route": "/SimuladorTDC",
+			"icon": "calc",
+			"segments": [
+				"Tarjeta de Crédito"
+			]
+		},
+		{
 			"title": "Activacion Digital",
 			"route": "/minichecklist",
 			"icon": "IconArrowLeftRight",

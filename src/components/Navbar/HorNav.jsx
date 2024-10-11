@@ -1,5 +1,6 @@
 import './hornav.scss'
 import 'animate.css'
+import './styles.scss'
 import DATANAV from './dataNavbar.json'
 import { useContext, useEffect, useRef, useState } from 'react'
 import IconHome from '../../icons/IconHome'
@@ -17,6 +18,7 @@ import IconLibrary from '../../icons/IconLibrary'
 import IconCommets from '../../icons/IconCommets'
 import IconWeb from '../../icons/IconWeb'
 import imgLogo from '../../assets/images/index/logoSIn.png'
+import imgLogoTwo from '../../assets/images/index/logoMain.png'
 import IconArrowDown from '../../icons/IconArrowDown'
 import { IconCreditCard } from '../../icons/IconCreditCard'
 import { IconCovered } from '../../icons/IconCovered'
@@ -67,8 +69,7 @@ const HorNav = () => {
 		IconArrowLeftRight: <IconArrowLeftRight />,
 
 	})
-	const { readExcelFile, templatesDDBB, setScheme, showApp, admin, setAdmin } =
-		useContext(GlobalContext)
+	const { readExcelFile, templatesDDBB, setScheme, showApp, admin, setAdmin, scheme } = useContext(GlobalContext)
 	const search = valueSearch => {
 		const lowerCase = valueSearch.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 		const allCards = document.querySelectorAll('.dato-buscado')
@@ -89,7 +90,6 @@ const HorNav = () => {
 
 	const handleScroll = event => {
 		if (scrollContainerRef.current) {
-			event.preventDefault()
 			scrollContainerRef.current.scrollLeft += event.deltaY
 		}
 	}
@@ -97,8 +97,7 @@ const HorNav = () => {
 		setActiveLink(linkTitle)
 	}
 	const activeDropDown = button => {
-		const $dropDown =
-			button.type === 'button' ? button.nextElementSibling : button.parentNode.parentNode
+		const $dropDown = button.type === 'button' ? button.nextElementSibling : button.parentNode.parentNode
 		const $liItems =
 			button.type === 'button'
 				? [...button.parentNode.parentNode.children]
@@ -212,6 +211,19 @@ const HorNav = () => {
 		// 	},
 		// })
 	}
+
+	const scrollLeft = () => {
+		if (scrollContainerRef.current) {
+			scrollContainerRef.current.scrollLeft -= 100 // Ajusta el valor según la cantidad que desees desplazar
+		}
+	}
+
+	const scrollRight = () => {
+		if (scrollContainerRef.current) {
+			scrollContainerRef.current.scrollLeft += 100 // Ajusta el valor según la cantidad que desees desplazar
+		}
+	}
+
 	useEffect(() => {
 		document.body.addEventListener('keydown', e => {
 			if (e.key == 'Escape') {
@@ -235,8 +247,7 @@ const HorNav = () => {
 										}}
 										key={i}
 										className={
-											'hornav__segments--li admin__segment' +
-											(segment.segment === navSegment ? ' active' : '')
+											'hornav__segments--li admin__segment' + (segment.segment === navSegment ? ' active' : '')
 										}>
 										{selectIcon[segment.icon]}
 										{admin ? 'Cerrar Admin' : segment.segment}
@@ -250,16 +261,14 @@ const HorNav = () => {
 											navigate('/' + segment.segment.toLowerCase())
 										}}
 										key={i}
-										className={
-											'hornav__segments--li' + (segment.segment === navSegment ? ' active' : '')
-										}>
+										className={'hornav__segments--li' + (segment.segment === navSegment ? ' active' : '')}>
 										{selectIcon[segment.icon]} {segment.segment}
 									</li>
 								)
 							}
 						})}
 						<li className="settings">
-							<button className="settings__btn" name="upload" onClick={setsClick}>
+							<button className="settings__btn hide" name="upload" onClick={setsClick}>
 								<IconUpload />
 							</button>
 							<button
@@ -291,6 +300,9 @@ const HorNav = () => {
 			<nav className="hornav__links">
 				<div className="hornav__links--container">
 					<div className="hornav__links--boxul">
+						<div onClick={scrollLeft} className="btn-scroll__left">
+							<IconArrowDown />
+						</div>
 						<ul ref={scrollContainerRef} onWheel={handleScroll}>
 							{DATANAV.NAVBAR.map((link, i) => {
 								const isAdmin = navSegment === 'ADMIN'
@@ -304,8 +316,7 @@ const HorNav = () => {
 										ref={dropDownRef}
 										className="hornav-dropdown animate__animated"
 										name={link.title}
-										style={{backgroundImage: `url(${dropImg})`}}
-										>
+										style={{ backgroundImage: `url(${dropImg})` }}>
 										<li className="hornav-dropdown__li li-menu">
 											<div className="title-container">
 												<a href="#" className="buttonul type--C">
@@ -331,9 +342,7 @@ const HorNav = () => {
 								)
 
 								const renderLink = () => (
-									<li
-										key={i}
-										className={'hornav__links--li ' + (activeLink === link.title ? ' active' : '')}>
+									<li key={i} className={'hornav__links--li ' + (activeLink === link.title ? ' active' : '')}>
 										{link.dropDown ? (
 											<>
 												<button
@@ -357,14 +366,13 @@ const HorNav = () => {
 								return renderLink()
 							})}
 						</ul>
+						<div onClick={scrollRight} className="btn-scroll__right">
+							<IconArrowDown />
+						</div>
 					</div>
 					<div className="hornav__links--search">
 						<div className="search__container">
-							<input
-								className="search__container--input"
-								type="text"
-								onChange={e => search(e.target.value)}
-							/>
+							<input className="search__container--input" type="text" onChange={e => search(e.target.value)} />
 							<svg viewBox="0 0 24 24" className="search__container--icon">
 								<g>
 									<path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
@@ -375,10 +383,10 @@ const HorNav = () => {
 				</div>
 				<div className="hornav__logos">
 					<figure>
-						<img src={imgLogo} alt="logo" />
+						<img src={scheme == 'light'? imgLogo : imgLogoTwo } alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">V.2.2.3</span>
+					<span className="hornav__logos--version">V.2.2.4</span>
 				</div>
 			</nav>
 			{windowDB &&
@@ -387,10 +395,7 @@ const HorNav = () => {
 						<div className="templates-xls--left">
 							<form className="file-upload-form">
 								<label htmlFor="file" className="file-upload-label">
-									<div
-										className="file-upload-design"
-										onDragOver={handleDragOver}
-										onDrop={handleDrop}>
+									<div className="file-upload-design" onDragOver={handleDragOver} onDrop={handleDrop}>
 										<svg viewBox="0 0 640 512" height="1em">
 											<path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path>
 										</svg>
@@ -407,16 +412,8 @@ const HorNav = () => {
 							{templatesDDBB.length > 0 ? (
 								templatesDDBB.map((template, i) => {
 									return (
-										<a
-											className="container-btn-file"
-											href={`noTocar/plantillas/${template}.xlsx`}
-											key={i}>
-											<svg
-												fill="#fff"
-												xmlns="http://www.w3.org/2000/svg"
-												width="20"
-												height="20"
-												viewBox="0 0 50 50">
+										<a className="container-btn-file" href={`noTocar/plantillas/${template}.xlsx`} key={i}>
+											<svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
 												<path
 													d="M28.8125 .03125L.8125 5.34375C.339844 
     5.433594 0 5.863281 0 6.34375L0 43.65625C0 
@@ -442,9 +439,7 @@ const HorNav = () => {
 									)
 								})
 							) : (
-								<article className="templates">
-									No hay plantilas disponibles para la web training
-								</article>
+								<article className="templates">No hay plantilas disponibles para la web training</article>
 							)}
 						</div>
 					</section>,

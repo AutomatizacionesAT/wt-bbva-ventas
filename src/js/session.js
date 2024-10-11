@@ -33,9 +33,7 @@ const showModal = data => {
 	modalSession.children[1].innerHTML = data.title
 	modalSession.children[2].innerHTML = data.message
 	data.loader ? '' : modalSession.children[3].classList.add('hide')
-	data.loader
-		? modalSession.children[4].classList.add('hide')
-		: modalSession.children[4].classList.remove('hide')
+	data.loader ? modalSession.children[4].classList.add('hide') : modalSession.children[4].classList.remove('hide')
 	modalSession.children[4].children[0].addEventListener('click', () => {
 		modalSession.close()
 	})
@@ -47,7 +45,7 @@ sendForm.addEventListener('submit', e => {
 		usuario: e.target.elements[0].value,
 		campana: e.target.elements[1].value,
 		modulo: e.target.elements[2].value,
-		observaciones: 'v2.2.3',
+		observaciones: 'v2.2.4',
 	}
 	e.target.parentNode.parentNode.remove()
 	showModal({
@@ -79,8 +77,7 @@ sendForm.addEventListener('submit', e => {
 			showModal({
 				icon: 'error',
 				title: 'Error',
-				message:
-					'Los datos no se enviaron por un error a la conexión con la base del control de  accesos.',
+				message: 'Los datos no se enviaron por un error a la conexión con la base del control de  accesos.',
 			})
 			console.log(error)
 		})

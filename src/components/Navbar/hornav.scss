@@ -4,12 +4,10 @@
 	width: 100%;
 	height: 110px;
 	background: $w-color;
-	border-bottom: 2px solid $p-color;
-	box-shadow: 0 2px 0 0 $s-color;
-
+	border-bottom: 2px solid light-dark($t-color, $s-color);
+	box-shadow: 0 2px 0 0 light-dark($t-color, $s-color);
 	&__segments {
 		color: $w-color;
-
 		ul {
 			display: flex;
 			align-items: center;
@@ -18,16 +16,14 @@
 			font-size: 1.4rem;
 			list-style: none;
 			height: 3.5rem;
-			background: $p-color;
-
+			background: light-dark($p2-color, $p-color);
 			& .settings {
 				min-width: 200px;
-				background: $p2-color;
+				background: light-dark($p2-color, $p-color);
 				height: 100%;
 				border-left: 2px dashed $w-color;
 			}
 		}
-
 		&--li {
 			display: flex;
 			align-items: center;
@@ -38,65 +34,54 @@
 			height: 98%;
 			cursor: pointer;
 			border: 2px solid transparent;
-
 			&:hover {
-				color: $w-color;
+				color: light-dark($b-color, $p-color);
 				background: $w-color;
 				border-top: 2px solid $w-color;
 				border-left: 2px solid $w-color;
 				border-right: 2px solid $w-color;
 				box-shadow: 0px 5px 10px -8px #240046;
-				background: $p2-color;
-
+				background: $w-color;
 				& svg path {
 					fill: url('#gr-light');
 				}
 			}
-
 			&.active {
 				background: $w-color;
-				color: $p-color;
-				border-top: 2px solid $p2-color;
-				border-left: 2px solid $p2-color;
-				border-right: 2px solid $p2-color;
+				color: $p3-color;
+				font-weight: bold;
+				border-left: 5px solid $p3-color;
+				border-right: 5px solid $p3-color;
 				box-shadow: 0px 5px 10px -8px #240046;
-
 				& svg {
 					& path {
 						fill: url('#gr-light');
 					}
 				}
 			}
-
 			& button {
 				cursor: pointer;
 				width: 100%;
 				height: 100%;
 			}
-
 			& svg {
 				width: 1.4rem;
 				margin: 0 0.6rem;
-
 				& path {
 					fill: url('#gr-white');
 				}
 			}
 		}
-
 		& .settings {
 			display: flex;
 			justify-content: space-around;
-
 			&__btn {
 				cursor: pointer;
 				width: fit-content;
 				outline: none;
-
 				& svg {
 					pointer-events: none;
 					width: 1.6rem;
-
 					&:hover {
 						transform: translateY(-0.4rem);
 						-webkit-transform: translateY(-0.4rem);
@@ -108,21 +93,22 @@
 			}
 		}
 	}
-
 	&__links {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		height: 7.5rem;
 		width: 100%;
 		padding: 0 2rem;
-
+		background: light-dark($w-color, $b-color);
 		&--container {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			font-size: 1.4rem;
 			width: 70%;
-			background: $p-color;
+			max-width: 70%;
+			background: light-dark($p2-color, $p3-color);
 			color: $w-color;
 			height: 5.6rem;
 			position: relative;
@@ -131,11 +117,10 @@
 			-moz-border-radius: 6rem;
 			-ms-border-radius: 6rem;
 			-o-border-radius: 6rem;
-
 			& ul {
 				display: flex;
 				align-items: center;
-				justify-content: flex-start;
+				justify-content: space-around;
 				width: 100%;
 				height: 5.6rem;
 				gap: 2rem;
@@ -147,17 +132,13 @@
 
 				&::-webkit-scrollbar {
 					height: 4px;
-					background-color: $p-color;
-					/* or add it to the track */
+					background-color: light-dark($b-color, $p-color); /* or add it to the track */
 				}
-
 				&::-webkit-scrollbar-thumb {
-					background: $s-color;
+					background: light-dark($t-color, $s-color);
 				}
 			}
-
 		}
-
 		&--li {
 			display: flex;
 			justify-content: center;
@@ -165,46 +146,38 @@
 			cursor: pointer;
 			height: 100%;
 			padding: 0 1rem;
-
 			&:hover {
 				color: $p-color;
 				background: $w-color;
-
 				& svg path {
 					fill: url('#gr-light');
 				}
 			}
-
 			&.active {
 				color: $p-color;
 				background: $w-color;
-
 				& svg path {
 					fill: url('#gr-light');
 				}
 			}
-
 			& svg {
 				margin: 0 0.6rem;
 				width: 1.6rem;
 				min-width: 1.6rem;
-
 				& path {
 					fill: url('#gr-white');
 				}
-
 				&:nth-child(2) {
 					width: 1.2rem;
 				}
 			}
-
 			& a {
 				width: max-content;
 				display: flex;
 				align-items: center;
 				height: 100%;
+				user-select: none;
 			}
-
 			& button {
 				cursor: pointer;
 				width: 100%;
@@ -212,7 +185,6 @@
 				align-items: center;
 				height: 100%;
 			}
-
 			& .hornav-dropdown {
 				display: flex;
 				position: absolute;
@@ -224,7 +196,6 @@
 				height: max-content;
 				min-height: 400px;
 				background: $s-color;
-				background-image: url('../../assets/images/index/DropDownBoard.png');
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover;
@@ -234,11 +205,9 @@
 				-webkit-box-shadow: 8px 8px 20px -9px rgba(27, 27, 27, 1);
 				-moz-box-shadow: 8px 8px 20px -9px rgba(27, 27, 27, 1);
 				box-shadow: 8px 8px 20px -9px rgba(27, 27, 27, 1);
-
 				&.active {
 					display: flex;
 				}
-
 				&__li {
 					display: flex;
 					width: 100%;
@@ -249,23 +218,9 @@
 						flex-direction: column;
 						justify-content: center;
 						align-items: center;
-
 						& svg {
 							width: 12rem;
 						}
-
-						// & span {
-						// 	font-size: 5.2rem;
-						// 	background: $p-color;
-						// 	color: $w-color;
-						// 	padding: 0 2rem;
-						// 	border: 1rem solid $s-color;
-						// 	border-radius: 4rem;
-						// 	-webkit-border-radius: 4rem;
-						// 	-moz-border-radius: 4rem;
-						// 	-ms-border-radius: 4rem;
-						// 	-o-border-radius: 4rem;
-						// }
 						.title-container {
 							width: 100%;
 							height: 300px;
@@ -274,17 +229,14 @@
 							justify-content: center;
 							align-items: center;
 							cursor: default;
-
 							.type--A {
 								--line_color: #555555;
 								--back_color: transparent;
 							}
-
 							.type--B {
 								--line_color: #1b1919;
 								--back_color: #e9ecff;
 							}
-
 							.type--C {
 								--line_color: #fff;
 								--back_color: #240046;
@@ -303,7 +255,6 @@
 								color: var(--line_color);
 								letter-spacing: 2px;
 								transition: all 0.3s ease;
-
 								&__text {
 									display: flex;
 									justify-content: center;
@@ -311,31 +262,26 @@
 									align-items: center;
 									width: 100%;
 									height: 100%;
-
 									&::before {
 										bottom: 0;
 										right: 54px;
 										width: calc(100% - 56px * 2 - 16px);
 									}
-
 									&::after {
 										bottom: 0;
 										left: 54px;
 										width: 8px;
 									}
 								}
-
 								&:hover {
 									letter-spacing: 6px;
 								}
-
 								&__drow1 {
 									top: -16px;
 									left: 40px;
 									width: 32px;
 									height: 0;
 									transform: rotate(30deg);
-
 									&::before {
 										bottom: 0;
 										left: 0;
@@ -346,7 +292,6 @@
 										transform: rotate(-60deg);
 									}
 								}
-
 								&__drow2 {
 									top: 44px;
 									left: 77px;
@@ -360,12 +305,10 @@
 							.buttonul:hover .buttonul__text::before {
 								width: 8px;
 							}
-
 							.buttonul:hover::after,
 							.buttonul:hover .buttonul__text::after {
 								width: calc(100% - 56px * 2 - 16px);
 							}
-
 							.buttonul__drow1,
 							.buttonul__drow2 {
 								position: absolute;
@@ -391,7 +334,6 @@
 								transform-origin: 16px 16px;
 								transform: rotate(69deg);
 							}
-
 							.buttonul__drow2::before {
 								bottom: 0;
 								left: 0;
@@ -401,7 +343,6 @@
 								transform-origin: 16px 16px;
 								transform: rotate(-146deg);
 							}
-
 							.buttonul__drow2::after {
 								bottom: 26px;
 								left: -40px;
@@ -411,7 +352,6 @@
 								transform-origin: 16px 16px;
 								transform: rotate(-262deg);
 							}
-
 							.buttonul__drow1,
 							.buttonul__drow1::before,
 							.buttonul__drow1::after,
@@ -420,106 +360,85 @@
 							.buttonul__drow2::after {
 								background: $p-color;
 							}
-
 							.buttonul:hover .buttonul__drow1 {
 								animation: drow1 ease-in 0.06s;
 								animation-fill-mode: forwards;
 							}
-
 							.buttonul:hover .buttonul__drow1::before {
 								animation: drow2 linear 0.08s 0.06s;
 								animation-fill-mode: forwards;
 							}
-
 							.buttonul:hover .buttonul__drow1::after {
 								animation: drow3 linear 0.03s 0.14s;
 								animation-fill-mode: forwards;
 							}
-
 							.buttonul:hover .buttonul__drow2 {
 								animation: drow4 linear 0.06s 0.2s;
 								animation-fill-mode: forwards;
 							}
-
 							.buttonul:hover .buttonul__drow2::before {
 								animation: drow3 linear 0.03s 0.26s;
 								animation-fill-mode: forwards;
 							}
-
 							.buttonul:hover .buttonul__drow2::after {
 								animation: drow5 linear 0.06s 0.32s;
 								animation-fill-mode: forwards;
 							}
-
 							@keyframes drow1 {
 								0% {
 									height: 0;
 								}
-
 								100% {
 									height: 100px;
 								}
 							}
-
 							@keyframes drow2 {
 								0% {
 									width: 0;
 									opacity: 0;
 								}
-
 								10% {
 									opacity: 0;
 								}
-
 								11% {
 									opacity: 1;
 								}
-
 								100% {
 									width: 120px;
 								}
 							}
-
 							@keyframes drow3 {
 								0% {
 									width: 0;
 								}
-
 								100% {
 									width: 80px;
 								}
 							}
-
 							@keyframes drow4 {
 								0% {
 									height: 0;
 								}
-
 								100% {
 									height: 120px;
 								}
 							}
-
 							@keyframes drow5 {
 								0% {
 									width: 0;
 								}
-
 								100% {
 									width: 124px;
 								}
 							}
-
 							.button:not(:last-child) {
 								margin-bottom: 64px;
 							}
 						}
-
 						& figure {
 							width: 200px;
 						}
 					}
-
 					&.li-submenu {
 						width: 70%;
 						font-size: 1.6rem;
@@ -528,7 +447,6 @@
 						flex-wrap: wrap;
 						gap: 1rem;
 					}
-
 					& a {
 						width: 45%;
 						height: 6rem;
@@ -537,7 +455,6 @@
 						background: $w-color;
 						color: $p-color;
 						padding: 1rem;
-
 						&:hover {
 							background: $p-color;
 							color: $w-color;
@@ -549,19 +466,69 @@
 				}
 			}
 		}
-
 		&--boxul {
+			display: flex;
+			align-items: center;
 			width: 75%;
+			margin-right: 1rem;
 			height: 5.6rem;
-			padding: 0 2.4rem;
-			background: $p2-color;
+			// padding: 0 2.4rem;
+			background: light-dark($p-color, $p-color);
+			overflow: hidden;
 			border-radius: 6rem;
 			-webkit-border-radius: 6rem;
 			-moz-border-radius: 6rem;
 			-ms-border-radius: 6rem;
 			-o-border-radius: 6rem;
-		}
+			& .btn-scroll {
 
+				&__left {
+					
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					cursor: pointer;
+					width: 60px;
+					height: 100%;
+					background: light-dark($s2-color, $s-color);
+					& svg {
+						width: 25px;
+						transform: rotate(90deg);
+						-webkit-transform: rotate(90deg);
+						-moz-transform: rotate(90deg);
+						-ms-transform: rotate(90deg);
+						-o-transform: rotate(90deg);
+					}
+
+					&:hover svg{
+						width: 30px;
+					}
+				}
+				&__right {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					cursor: pointer;
+					width: 60px;
+					height: 100%;
+					background: light-dark($s2-color, $s-color);
+					
+					svg {
+						width: 25px;
+						transform: rotate(270deg);
+						-webkit-transform: rotate(270deg);
+						-moz-transform: rotate(270deg);
+						-ms-transform: rotate(270deg);
+						-o-transform: rotate(270deg);
+						
+					}
+
+					&:hover svg{
+						width: 30px;
+					}
+				}
+			}
+		}
 		.hornav__links--search {
 			position: relative;
 			background: linear-gradient(135deg, $p-color 0%, $p-color 100%);
@@ -582,7 +549,6 @@
 			height: 3.6rem;
 			display: flex;
 			align-items: center;
-
 			&--input {
 				width: 100%;
 				background: linear-gradient(135deg, $p2-color 0%, $p-color 100%);
@@ -591,13 +557,11 @@
 				font-size: 1.6rem;
 				border-radius: 50px;
 				padding-left: 1rem;
-
 				&:focus {
 					outline: none;
 					background: linear-gradient(135deg, $p2-color 0%, $p-color 100%);
 				}
 			}
-
 			&--icon {
 				width: 50px;
 				aspect-ratio: 1;
@@ -607,12 +571,10 @@
 				border-radius: 50%;
 				padding-left: 12px;
 				margin-right: 10px;
-
 				&:hover {
 					border-left: 3px solid white;
 				}
 			}
-
 			& path {
 				fill: white;
 			}
@@ -642,31 +604,29 @@
 			z-index: -2;
 		}
 	}
-
 	&__logos {
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 		width: 30%;
 		height: 100%;
-
 		& figure {
 			width: 8rem;
 		}
-
 		&--title {
-			font-size: 4rem;
+			font-size: 3.4rem;
 			margin-left: 2rem;
+			color: light-dark(#ff7300, $w-color);
 		}
-
 		&--version {
 			color: $w-color;
 			font-weight: 800;
-			border: 4px solid $p-color;
-			background: $s-color;
-			font-size: 1.6rem;
-			padding: 0 1rem;
+			border: 4px solid light-dark($s-color, $w-color);
+			background: light-dark($p-color, $s-color);
+			font-size: 1.4rem;
+			padding: 0.2rem 1.2rem;
 			border-radius: 2rem;
+			text-shadow: 1px 1px 1px black;
 			-webkit-border-radius: 2rem;
 			-moz-border-radius: 2rem;
 			-ms-border-radius: 2rem;
@@ -683,12 +643,10 @@
 				font-size: 2rem;
 			}
 		}
-
 		&__links {
 			& .hornav__links--search {
 				width: 25%;
 			}
-
 			& .search__container {
 				min-width: 90%;
 			}

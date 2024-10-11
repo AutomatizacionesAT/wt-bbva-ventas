@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { addMonths, lastDayOfMonth, format, differenceInCalendarDays } from 'date-fns';
 
-import './styles/CarteraYRediferido.scss';
+import './styles/SimuladorTDC.scss';
 import Swal from 'sweetalert2';
 import { ca, tr } from 'date-fns/locale';
 
 import { IconSquareClose } from '../../../icons/IconSquareClose';
-export const CarteraYRediferido = () => {
+export const SimuladorTDC = () => {
+
     //obejeto en donde cargan los datos del fomulario, cargo la fecha actual por defecto
     const [datos, setDatos] = useState({
         fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
@@ -120,8 +121,12 @@ export const CarteraYRediferido = () => {
         });
     };
 
+
+    //click a calcular y hace los calculos
     const handleCalculate = (e) => {
+
         e? e.preventDefault() : '';
+        //si algun valor esta vacio da false pero negando dara true y dispara la alerta y no continua por el return
         if(!datos.monto || !datos.cuotas || !datos.tasa || !datos.gracia || !datos.tipo) {
             Swal.fire({
                 title: 'Error',
@@ -133,13 +138,17 @@ export const CarteraYRediferido = () => {
         }
 
 
-        const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas)); //mostrar
-        const diasDiferencia = calcularDiferenciaDias(fechas); //mostrar
+        const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas)); //llama una funcion para retornar un array con el ultimo dia de cada mes segun el numero de cuotas
 
-        const periodoALiquidar = calcularPeriodoALiquidar(Number(datos.cuotas)); //jersson esto puede servir para enumeras en la tabal al momento de mostrar en el portal
-        const baseDiasAno = calcularBaseDias(fechas, Number(datos.cuotas)); 
+        const diasDiferencia = calcularDiferenciaDias(fechas); // la funcion me retorna un array con la diferencia de dias entre mes y mes
+        console.log(diasDiferencia)
+        const periodoALiquidar = calcularPeriodoALiquidar(Number(datos.cuotas)); // este es para saber en que cuota estamos
+        
+        const baseDiasAno = calcularBaseDias(fechas, Number(datos.cuotas));
+        console.log(baseDiasAno)
         const diasFaltantes = calcularDiasFaltantes(diasDiferencia, datos.cuotas)
         const tasaDeInteresIpt = calcularTasaDeInteresIpt(datos.tasa, diasDiferencia, baseDiasAno, Number(datos.cuotas))
+        console.log(tasaDeInteresIpt)
         const relacion = calcularRelacion(diasFaltantes, diasDiferencia, Number(datos.cuotas)) 
         const periodosFaltantes = calcularPeriodosFaltantes(periodoALiquidar, Number(datos.cuotas))
         const factor = calcularFactor(tasaDeInteresIpt, datos.tasa, periodosFaltantes, relacion, Number(datos.cuotas))
@@ -205,6 +214,7 @@ export const CarteraYRediferido = () => {
     
         return fechas;
     };
+    
 
 
     //calcula la diferencia de dias entre fechas
@@ -288,13 +298,17 @@ export const CarteraYRediferido = () => {
     const calcularTasaDeInteresIpt = (porcentajetasa, diasperiodo, basediasanio, contador) => {
         const porcentajeFormated = Number(porcentajetasa.replace(',', '.'));
         
+        const valorDividido = (porcentajeFormated/100) + 1
+
+
         let ipt = [];
         for (let i = 0; i <= contador; i++) {
             if(i === 0) {
                 ipt.push(0);
             } else {
+                console.log(diasperiodo[i], basediasanio[i])
                 
-                ipt.push( Number(Math.pow((1 + porcentajeFormated / 100), (diasperiodo[i] / basediasanio[i])) - 1))
+                ipt.push( Number(Math.pow(valorDividido, (diasperiodo[i] / basediasanio[i])) - 1))
             }
             
         }
@@ -531,7 +545,7 @@ export const CarteraYRediferido = () => {
 
     return (
         <section className="carterarediferido">
-            <h1 className="carterarediferido__title">Cartera Y Rediferido</h1>
+            <h1 className="carterarediferido__title">Tarjeta de Crédito</h1>
 
             <div className="carterarediferido__container">
                 <div className='carterarediferido__animation'>

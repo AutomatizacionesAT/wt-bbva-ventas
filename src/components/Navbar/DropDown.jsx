@@ -8,7 +8,6 @@ import IconNote from '../../icons/IconNote'
 import IconCalculator from '../../icons/IconCalculator'
 import IconTextSlash from '../../icons/IconTextSlash'
 import IconTipify from '../../icons/IconTipify'
-
 import { Link } from 'react-router-dom'
 
 export default function DropDown({ link, pos, scroll }) {
@@ -22,7 +21,6 @@ export default function DropDown({ link, pos, scroll }) {
 		note: <IconNote />,
 		tipify: <IconTipify />,
 		calc: <IconCalculator />,
-		IconArrowLeftRight: <IconArrowLeftRight />,
 	})
 	const toggleDropDown = () => {
 		if (dropDownActive) return setDropDownActive(!dropDownActive)
