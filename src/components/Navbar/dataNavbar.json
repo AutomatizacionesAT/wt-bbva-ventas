@@ -89,6 +89,14 @@
 			]
 		},
 		{
+			"title": "Simulador Consumo",
+			"route": "/SimuladorConsumo",
+			"icon": "calc",
+			"segments": [
+				"Consumo"
+			]
+		},
+		{
 			"title": "Activacion Digital",
 			"route": "/minichecklist",
 			"icon": "IconArrowLeftRight",

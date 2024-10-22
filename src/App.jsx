@@ -24,6 +24,7 @@ import { Objecion } from './components/Objeciones/Objecion.jsx'
 import { CuotasManejo } from './components/CuotasManejo/CuotasManejo.jsx'
 import { CarteraYRediferido } from './components/Calculadoras/CarteraYRediferido/CarteraYRediferido.jsx'
 import { SimuladorTDC } from './components/Calculadoras/SimuladorTDC/SimuladorTDC.jsx'
+import { SimuladorConsumo } from './components/Calculadoras/SimuladorConsumo/SimuladorConsumo.jsx'
 
 const App = () => {
 	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
@@ -85,6 +86,7 @@ const App = () => {
 					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
 					<Route path="/carteraYrediferido" element={<CarteraYRediferido />} />
 					<Route path="/SimuladorTDC" element={<SimuladorTDC />} />
+					<Route path="/SimuladorConsumo" element={<SimuladorConsumo />} />
 				</Routes>
 			</section>
 		</div>
