@@ -11,12 +11,10 @@ export const SimuladorConsumo = () => {
 
     //obejeto en donde cargan los datos del fomulario
     const [datos, setDatos] = useState({
-        edad: "18",
-        edadFormated: "18",
+
         fecha: format(new Date(), 'yyyy-MM-dd'),
         fechaFormated: format(new Date(), 'yyyy-MM-dd'),
-        // seguro: "Si",
-        // seguroFormated: "Si"
+
     });
     console.log(datos)
 
@@ -503,7 +501,7 @@ export const SimuladorConsumo = () => {
         const tasaConFormato = Number(tasa.replace(',', '.'));
         const datoUno = (tasaConFormato + 100) / 100;
         const datoDos = ( 1 / 12);
-        console.log( (datoUno ** datoDos) -1 )
+
         return ( (datoUno ** datoDos) -1 )
        
     }
@@ -555,7 +553,7 @@ export const SimuladorConsumo = () => {
 
 
                 //seguros de vida
-                if (datos.seguro == "No" || !datos.seguro) {
+                if (datos.seguro == "No") {
                     segurosDeVida.push(0);
                 } else if ( datos.seguro == "Si") {
 
@@ -643,7 +641,7 @@ export const SimuladorConsumo = () => {
 
 
                 //seguros de vida
-                if (datos.seguro == "No" || !datos.seguro) {
+                if (datos.seguro == "No") {
                     segurosDeVida.push(0);
                 } else if ( datos.seguro == "Si") {
 
@@ -795,16 +793,16 @@ export const SimuladorConsumo = () => {
     const handleCalculate = (e) => {
 
         e? e.preventDefault() : '';
-        //si algun valor esta vacio da false pero negando dara true y dispara la alerta y no continua por el return
-        // if(!datos.monto || !datos.plazo || !datos.taza || !datos.cliente || !datos.seguro || !datos.seguroSegura || !datos.mdesempleo || !datos.mdesembolso ) {
-        //     Swal.fire({
-        //         title: 'Error',
-        //         text: 'Por favor completa todos los campos requeridos.',
-        //         icon: 'error',
-        //         confirmButtonText: 'Entendido'
-        //     });
-        //     return;
-        // }
+        // si algun valor esta vacio da false pero negando dara true y dispara la alerta y no continua por el return
+        if(!datos.monto || !datos.plazo || !datos.taza || !datos.cliente || !datos.seguro || !datos.seguroSegura || !datos.mdesempleo || !datos.mdesembolso ) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor completa todos los campos requeridos.',
+                icon: 'error',
+                confirmButtonText: 'Entendido'
+            });
+            return;
+        }
 
 
         
@@ -813,6 +811,13 @@ export const SimuladorConsumo = () => {
         const calculosVarios = calculateColumnas(Number(datos.plazo), Number(datos.monto))
 
         console.log(calculosVarios)
+
+        setDatos((prev) => {
+            return {
+                ...prev,
+                "datosTabla" : calculosVarios
+            }
+        })
 
         togglePortal();
     };
@@ -939,7 +944,7 @@ export const SimuladorConsumo = () => {
                         <label>Fecha de Nacimiento</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.edad > 0 ? 'active' : ''} ${datos.seguro == undefined || datos.seguro == '' || datos.seguro == 'No' ? 'hide' : ''}`}>
+                    {/* <div className={`carterarediferido__input ${datos.edad > 0 ? 'active' : ''} ${datos.seguro == undefined || datos.seguro == '' || datos.seguro == 'No' ? 'hide' : ''}`}>
                         <input
                             type="text"
                             onChange={(e) => handleInputFormat(e.target.value, 'number', 'edad', 'edadFormated')}
@@ -949,7 +954,7 @@ export const SimuladorConsumo = () => {
 
                         />
                         <label>Edad</label>
-                    </div>
+                    </div> */}
 
                     <div className={`carterarediferido__input ${datos.seguroSegura != undefined && datos.seguroSegura != '' ? 'active' : ''}`}>
                         <div className="carterarediferido__faq">
@@ -998,7 +1003,7 @@ export const SimuladorConsumo = () => {
                         <label>Modalidad de Desembolso</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.desembolsos > 0 ? 'active' : ''}`}>
+                    {/* <div className={`carterarediferido__input ${datos.desembolsos > 0 ? 'active' : ''}`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -1016,7 +1021,7 @@ export const SimuladorConsumo = () => {
 
                         />
                         <label>Comisión por Desembolsos</label>
-                    </div>
+                    </div> */}
 
                     <div className={`carterarediferido__input ${datos.credito > 0 ? 'active' : ''}`}>
                         <div className="carterarediferido__faq">
@@ -1071,6 +1076,43 @@ export const SimuladorConsumo = () => {
                     
                     <button className='carterarediferido__buttonclose' onClick={() => setIsPortalOpen(false)}><IconSquareClose/></button>
                    
+                    <div className='carterarediferido__table'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CUOTA</th>
+                                    <th>CUOTA INCLUIDO SEGURO DE VIDA </th>
+                                    <th>CUOTA TOTAL EN PESOS</th>
+                                    <th>INTERESES EN PESOS</th>
+                                    <th>ABONO CAPITAL</th>
+                                    <th>SEGUROS DE VIDA</th>
+                                    <th>SEGURO CUOTA SEGURA DESEMPLEO</th>
+                                    <th>SALDO EN PESOS</th>
+                                </tr>
+                            </thead>
+                            
+
+                            <tbody>
+                            {
+                                datos.datosTabla.cuota.map((ele, ind) => {
+                                    return (
+                                        <tr key={ind}>
+                                            <td>{ele}</td>
+                                            <td>$ {datos.datosTabla.cuotaSeguro[ele].toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}</td>
+                                            <td>$ {datos.datosTabla.cuotaPesos[ele].toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}</td>
+                                            <td>$ {datos.datosTabla.interesesEnPesos[ele].toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}</td>
+                                            <td>$ {datos.datosTabla.abonoCapital[ele].toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}</td>
+                                            <td>$ {datos.datosTabla.segurosDeVida[ele].toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}</td>
+                                            <td>$ {datos.datosTabla.seguroCuotaSegura[ele].toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}</td>
+                                            <td>$ {datos.datosTabla.saldoEnPesos[ele].toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}</td>
+                                            
+                                        </tr>
+                                    )
+                                })
+                            }
+                            </tbody>
+                        </table>
+                    </div>
                     
                     
                    
