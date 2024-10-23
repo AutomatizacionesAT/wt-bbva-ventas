@@ -31,7 +31,7 @@ export const SimuladorConsumo = () => {
 
   
     const cerrarPortal = (event) => {
-        if (event.target.classList.contains('carterarediferido__modal')) {
+        if (event.target.classList.contains('carterarediferido__modalTwo')) {
             setIsPortalOpen(false);
         }
     };
@@ -509,7 +509,42 @@ export const SimuladorConsumo = () => {
     const calCuotaMenSinSeguros = (tasa, nPeriodos, valorActual) => {
         const pago = (tasa * valorActual) / (1 - Math.pow(1 + tasa, -nPeriodos));
         return pago;
-      }
+    }
+
+    // funcion parecida a TIR de excel echo por chat gpt
+    const calcularTIR = (flujosCaja, guess = 0.1) => {
+        const precision = 1e-4; // Precisión deseada para el cálculo
+        const maxIter = 1000;   // Máximo número de iteraciones
+        let tasa = guess;
+    
+        const npv = (tasa) => {
+            return flujosCaja.reduce((sum, flujo, i) => sum + flujo / Math.pow(1 + tasa, i), 0);
+        };
+    
+        const npvPrime = (tasa) => {
+            return flujosCaja.reduce((sum, flujo, i) => sum - (i * flujo) / Math.pow(1 + tasa, i + 1), 0);
+        };
+    
+        for (let iter = 0; iter < maxIter; iter++) {
+            const npvValue = npv(tasa);
+            const npvDeriv = npvPrime(tasa);
+            const newTasa = tasa - npvValue / npvDeriv;
+    
+            if (Math.abs(newTasa - tasa) < precision) {
+                return newTasa;
+            }
+    
+            tasa = newTasa;
+        }
+    
+        return tasa; // Retorna la tasa si alcanza el máximo de iteraciones
+    };
+    
+
+    
+    
+   
+    
       
  
  
@@ -525,6 +560,9 @@ export const SimuladorConsumo = () => {
         let segurosDeVida = [];
         let seguroCuotaSegura = [];
         let saldoEnPesos = [];
+
+
+        let flujosCaja= [];
 
         //calculo de la tasa NAMV
         const tasaNAMV = calTasaNAMV(datos.taza);
@@ -545,6 +583,8 @@ export const SimuladorConsumo = () => {
                 segurosDeVida.push(0);
                 seguroCuotaSegura.push(0);
                 saldoEnPesos.push(monto);
+
+                flujosCaja.push(saldoEnPesos[i])
             } else if ( i == 1 ) {
                 cuota.push(i);
 
@@ -632,6 +672,8 @@ export const SimuladorConsumo = () => {
                 } else {
                     cuotaPesos.push(unaCuotaMensualSinSeguro + segurosDeVida[i] + seguroCuotaSegura[i] )
                 }
+
+                flujosCaja.push(-cuotaSeguro[i] - seguroCuotaSegura[i])
             
             } else {
                 cuota.push(i);
@@ -720,10 +762,27 @@ export const SimuladorConsumo = () => {
                 } else {
                     cuotaPesos.push(unaCuotaMensualSinSeguro + segurosDeVida[i] + seguroCuotaSegura[i] )
                 }
+
+
+                flujosCaja.push(-cuotaSeguro[i] - seguroCuotaSegura[i])
             }
 
 
         }
+
+        //otros datos que solo puedo sacar al final 
+        unaCuotaMensualSinSeguro + segurosDeVida[1] + seguroCuotaSegura[1]
+        const cuotaMensualVida = unaCuotaMensualSinSeguro + segurosDeVida[1];
+        const cuotaMensualSeguro = unaCuotaMensualSinSeguro + segurosDeVida[1] + seguroCuotaSegura[1];
+
+        const vtuPesos = abonoCapital.reduce((a, b) => a + b, 0);
+        const vtuIntereses = interesesEnPesos.reduce((a, b) => a + b, 0);
+        const vtuSegurosVida = segurosDeVida.reduce((a, b) => a + b, 0);
+        const vtuSeguroCuotaSegura = seguroCuotaSegura.reduce((a, b) => a + b, 0);
+        const tir = calcularTIR(flujosCaja);
+        const vtuPorcentual = ((1 + tir) ** 12 - 1)*100;
+        
+
         return {
             "cuota": cuota,
             "cuotaSeguro": cuotaSeguro,
@@ -733,6 +792,19 @@ export const SimuladorConsumo = () => {
             "segurosDeVida": segurosDeVida,
             "seguroCuotaSegura": seguroCuotaSegura,
             "saldoEnPesos": saldoEnPesos,
+            
+
+            "tasaNAMV": tasaNAMV,
+            "unaCuotaMensualSinSeguro": unaCuotaMensualSinSeguro,
+            "cuotaMensualVida": cuotaMensualVida,
+            "cuotaMensualSeguro": cuotaMensualSeguro,
+
+            "vtuPesos": vtuPesos,
+            "vtuIntereses": vtuIntereses,
+            "vtuSegurosVida": vtuSegurosVida,
+            "vtuSeguroCuotaSegura": vtuSeguroCuotaSegura,
+            "vtuPorcentual": vtuPorcentual,
+            
         };
 
     }
@@ -1072,11 +1144,11 @@ export const SimuladorConsumo = () => {
                 
             </div>
             {isPortalOpen && ReactDOM.createPortal(
-                <div className='carterarediferido__modal' onClick={(e) => cerrarPortal(e)}>
+                <div className='carterarediferido__modalTwo' onClick={(e) => cerrarPortal(e)}>
                     
                     <button className='carterarediferido__buttonclose' onClick={() => setIsPortalOpen(false)}><IconSquareClose/></button>
                    
-                    <div className='carterarediferido__table'>
+                    <div className='carterarediferido__tableTwo'>
                         <table>
                             <thead>
                                 <tr>
@@ -1114,7 +1186,33 @@ export const SimuladorConsumo = () => {
                         </table>
                     </div>
                     
-                    
+                    <div className='carterarediferido__resumeTwo'>
+                        <div>
+                            <h2>DETALLES DEL CRÉDITO</h2>
+
+                            <p><span>Monto a financiar:</span> $ {datos.datosTabla.saldoEnPesos[0].toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>Plazo en meses:</span> {datos.plazo}</p>
+                            <p><span>Taza de interés (E.A.):</span> % {datos.taza}</p>
+                            <p><span>Taza N.A.M.V.:</span> % {(datos.datosTabla.tasaNAMV * 100).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>1 Cuota mensual sin seguros:</span> $ {datos.datosTabla.unaCuotaMensualSinSeguro.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>1 Cuota mensual con seguro de vida:</span> $ {datos.datosTabla.cuotaMensualVida.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>1 Cuota mensual con seguro de vida y cuota segura:</span> $ {datos.datosTabla.cuotaMensualSeguro.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+
+                        </div>
+                        <div>
+                            <h2>INFORMACIÓN UVT</h2>
+
+                            <p><span>VTU pesos capital:</span> $ {datos.datosTabla.vtuPesos.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU pesos interéses</span> $ {datos.datosTabla.vtuIntereses.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU pesos seguros de vida</span> $ {datos.datosTabla.vtuSegurosVida.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU pesos seguros cuota segura</span> $ {datos.datosTabla.vtuSeguroCuotaSegura.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU porcentual </span>% {datos.datosTabla.vtuPorcentual.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 1 })}</p>
+
+                        </div>
+                        <div>
+                            <h2>DETALLES SEGUROS Y GASTOS</h2>
+                        </div>
+                    </div>
                    
                 </div>,
                 document.getElementById('portalGeneral')
