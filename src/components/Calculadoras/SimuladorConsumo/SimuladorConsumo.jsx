@@ -804,6 +804,8 @@ export const SimuladorConsumo = () => {
             "vtuSegurosVida": vtuSegurosVida,
             "vtuSeguroCuotaSegura": vtuSeguroCuotaSegura,
             "vtuPorcentual": vtuPorcentual,
+
+            "annios": annios,
             
         };
 
@@ -1148,6 +1150,47 @@ export const SimuladorConsumo = () => {
                     
                     <button className='carterarediferido__buttonclose' onClick={() => setIsPortalOpen(false)}><IconSquareClose/></button>
                    
+                    <div className='carterarediferido__resumeTwo'>
+                        <div>
+                            <h2>DETALLES DEL CRÉDITO</h2>
+
+                            <p><span>Monto a financiar:</span> $ {datos.datosTabla.saldoEnPesos[0].toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>Plazo en meses:</span> {datos.plazo}</p>
+                            <p><span>Taza de interés (E.A.):</span> % {datos.taza}</p>
+                            <p><span>Taza N.A.M.V.:</span> % {(datos.datosTabla.tasaNAMV * 100).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>1 Cuota mensual sin seguros:</span> $ {datos.datosTabla.unaCuotaMensualSinSeguro.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>1 Cuota mensual con seguro de vida:</span> $ {datos.datosTabla.cuotaMensualVida.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>1 Cuota mensual con seguro de vida y cuota segura:</span> $ {datos.datosTabla.cuotaMensualSeguro.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+
+                        </div>
+                        <div>
+                            <h2>INFORMACIÓN UVT</h2>
+
+                            <p><span>VTU pesos capital:</span> $ {datos.datosTabla.vtuPesos.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU pesos interéses</span> $ {datos.datosTabla.vtuIntereses.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU pesos seguros de vida</span> $ {datos.datosTabla.vtuSegurosVida.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU pesos seguros cuota segura</span> $ {datos.datosTabla.vtuSeguroCuotaSegura.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>VTU porcentual </span>% {datos.datosTabla.vtuPorcentual.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 1 })}</p>
+
+                        </div>
+                        <div>
+                            <h2>DETALLES SEGUROS Y GASTOS</h2>
+
+                            <p><span>Fecha de simulación:</span> {format(new Date(), 'yyyy-MM-dd')}</p>
+                            <p><span>Tipo de cliente:</span> {datos.cliente}</p>
+                            <p><span>Seguro de vida:</span> {datos.seguro}</p>
+                            <p><span>Fecha de nacimiento:</span> {datos.fecha}</p>
+                            <p><span>Edad:</span> {datos.datosTabla.annios} años</p>
+                            <p><span>Seguro de vida primera cuota:</span> $ {datos.datosTabla.segurosDeVida[1].toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
+                            <p><span>Seguro cuota segura, desempleo , opcional:</span> {datos.seguroSegura}</p>
+                            <p><span>Modalidad seguro de desempleo:</span> {datos.mdesempleo}</p>
+                            <p><span>Modalidad de desembolso:</span> {datos.mdesembolso}</p>
+                            <p><span>Estudio de crédito:</span> {datos.credito? `$ ${Number(datos.credito).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}` : 'No'}</p>
+                            <p><span>Costo cheque:</span> $ {datos.mdesembolso == "Abono a Cuenta" ? 0 : 29.643}</p>
+
+                        </div>
+                    </div>
+
                     <div className='carterarediferido__tableTwo'>
                         <table>
                             <thead>
@@ -1186,33 +1229,7 @@ export const SimuladorConsumo = () => {
                         </table>
                     </div>
                     
-                    <div className='carterarediferido__resumeTwo'>
-                        <div>
-                            <h2>DETALLES DEL CRÉDITO</h2>
-
-                            <p><span>Monto a financiar:</span> $ {datos.datosTabla.saldoEnPesos[0].toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>Plazo en meses:</span> {datos.plazo}</p>
-                            <p><span>Taza de interés (E.A.):</span> % {datos.taza}</p>
-                            <p><span>Taza N.A.M.V.:</span> % {(datos.datosTabla.tasaNAMV * 100).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>1 Cuota mensual sin seguros:</span> $ {datos.datosTabla.unaCuotaMensualSinSeguro.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>1 Cuota mensual con seguro de vida:</span> $ {datos.datosTabla.cuotaMensualVida.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>1 Cuota mensual con seguro de vida y cuota segura:</span> $ {datos.datosTabla.cuotaMensualSeguro.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-
-                        </div>
-                        <div>
-                            <h2>INFORMACIÓN UVT</h2>
-
-                            <p><span>VTU pesos capital:</span> $ {datos.datosTabla.vtuPesos.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>VTU pesos interéses</span> $ {datos.datosTabla.vtuIntereses.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>VTU pesos seguros de vida</span> $ {datos.datosTabla.vtuSegurosVida.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>VTU pesos seguros cuota segura</span> $ {datos.datosTabla.vtuSeguroCuotaSegura.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</p>
-                            <p><span>VTU porcentual </span>% {datos.datosTabla.vtuPorcentual.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 1 })}</p>
-
-                        </div>
-                        <div>
-                            <h2>DETALLES SEGUROS Y GASTOS</h2>
-                        </div>
-                    </div>
+                    
                    
                 </div>,
                 document.getElementById('portalGeneral')
