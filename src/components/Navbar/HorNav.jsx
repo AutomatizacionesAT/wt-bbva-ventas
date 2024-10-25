@@ -386,7 +386,7 @@ const HorNav = () => {
 						<img src={scheme == 'light'? imgLogo : imgLogoTwo } alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">V.2.2.4</span>
+					<span className="hornav__logos--version">V.2.2.5</span>
 				</div>
 			</nav>
 			{windowDB &&

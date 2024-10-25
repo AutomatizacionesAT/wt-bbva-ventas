@@ -39,6 +39,23 @@ export const SimuladorConsumo = () => {
     const togglePortal = () => setIsPortalOpen(!isPortalOpen);
 
 
+    useEffect(() => {
+        // Función que detecta la tecla presionada
+        const handleKeyDown = (event) => {
+          if (event.key === 'Escape') {
+            setIsPortalOpen(false);
+          }
+        };
+    
+        // Agregar el evento de escucha al montar el componente
+        window.addEventListener('keydown', handleKeyDown);
+    
+        // Limpieza del evento al desmontar el componente
+        return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
     /////funciones para los datos que se mostraran
 
     // datos importantes para iterar

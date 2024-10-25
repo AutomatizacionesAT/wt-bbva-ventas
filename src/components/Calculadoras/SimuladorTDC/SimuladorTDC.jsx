@@ -35,6 +35,23 @@ export const SimuladorTDC = () => {
             portalElement.classList.remove('portalGeneral--enable');
         }
     }, [isPortalOpen]);
+    
+    useEffect(() => {
+        // Función que detecta la tecla presionada
+        const handleKeyDown = (event) => {
+          if (event.key === 'Escape') {
+            setIsPortalOpen(false);
+          }
+        };
+    
+        // Agregar el evento de escucha al montar el componente
+        window.addEventListener('keydown', handleKeyDown);
+    
+        // Limpieza del evento al desmontar el componente
+        return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
 
     const fechasDiferentes = [
         { fecha: "2011-04-30", dia: 1 },
