@@ -4,6 +4,7 @@ import OBJETC from './BASES/OBJETC.json';
 import OBJEAM from './BASES/OBJEAM.json';
 import OBJECON from './BASES/OBJECON.json';
 import OBJECOMCAR from './BASES/OBJECOMCAR.json';
+import OBJERED from './BASES/OBJERED.json';
 import './Objecion.scss';
 import img1 from '../../assets/images/objecion/objecionclaro.jpg';
 import img2 from '../../assets/images/objecion/objecionoscuro.jpg';
@@ -12,30 +13,40 @@ let BD = {
     OBJETC: OBJETC,
     OBJEAM: OBJEAM,
     OBJECON: OBJECON,
-    OBJECOMCAR: OBJECOMCAR
+    OBJECOMCAR: OBJECOMCAR,
+    OBJERED: OBJERED
 };
 
 function removeDuplicates(array) {
     return [...new Set(array)];
 }
 
+
+
 export const Objecion = ({ NBD }) => {
+    const data = BD[NBD];
+
     const [activeObjectionIndex, setActiveObjectionIndex] = useState(null);
     const [activeManejoIndex, setActiveManejoIndex] = useState({});
+    const [recomendaciones, setRecomendaciones] = useState([data[0].Recomendación]);
+ 
     const { scheme } = useContext(GlobalContext);
 
-    const data = BD[NBD];
+    
 
     const sacarDatos = (arra, nombre) => {
         return removeDuplicates(arra.map(ele => ele[nombre]));
     };
 
+
     const producto = sacarDatos(data, "Producto");
-    const recomendaciones = sacarDatos(data, "Recomendación");
+    // const recomendaciones = sacarDatos(data, "Recomendación"); 
+   
 
     const toggleObjection = (index) => {
         setActiveObjectionIndex(index === activeObjectionIndex ? null : index);
         setActiveManejoIndex({ ...activeManejoIndex, [index]: 0 });
+        setRecomendaciones([[data[index].Recomendación]])
     };
 
     const handleManejoClick = (objectionIndex, manejoIndex) => {

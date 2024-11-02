@@ -1,8 +1,6 @@
 import './hornav.scss'
 import 'animate.css'
-import './styles.scss'
 import DATANAV from './dataNavbar.json'
-import { useContext, useEffect, useRef, useState } from 'react'
 import IconHome from '../../icons/IconHome'
 import IconCircleQuestion from '../../icons/IconCircleQuestion'
 import IconCheckList from '../../icons/IconCheckList'
@@ -10,7 +8,6 @@ import IconTextSlash from '../../icons/IconTextSlash'
 import IconNote from '../../icons/IconNote'
 import IconTipify from '../../icons/IconTipify'
 import IconCalculator from '../../icons/IconCalculator'
-import { Link, useNavigate } from 'react-router-dom'
 import IconTimeLine from '../../icons/IconTimeLine'
 import IconCatalog from '../../icons/IconCatalog'
 import IconInfo from '../../icons/IconInfo'
@@ -18,14 +15,9 @@ import IconLibrary from '../../icons/IconLibrary'
 import IconCommets from '../../icons/IconCommets'
 import IconWeb from '../../icons/IconWeb'
 import imgLogo from '../../assets/images/index/logoSIn.png'
-import imgLogoTwo from '../../assets/images/index/logoMain.png'
 import IconArrowDown from '../../icons/IconArrowDown'
-import { IconCreditCard } from '../../icons/IconCreditCard'
-import { IconCovered } from '../../icons/IconCovered'
-import { IconCookieBite } from '../../icons/IconCookieBite'
-import { IconWallet } from '../../icons/IconWallet'
-import { IconPersonShelter } from '../../icons/IconPersonShelter'
-import { IconDollarTicked } from '../../icons/IconDollarTicked'
+import { useContext, useEffect, useRef, useState, useReducer } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import realIconCheck from '../../assets/images/index/realIconCheck.png'
 import IconNotes from '../../icons/IconNotes'
@@ -34,18 +26,31 @@ import GlobalContext from '../../context/GlobalContext'
 import IconUpload from '../../icons/IconUpload'
 import InconSpell from '../../icons/InconSpell'
 import IconGuide from '../../icons/IconGuide'
+import {IconCreditCard} from '../../icons/IconCreditCard'
+import { IconDollarTicked } from '../../icons/IconDollarTicked'
 import { IconArrowLeftRight } from '../../icons/IconArrowLeftRight'
+import { IconCovered } from '../../icons/IconCovered'
+import { IconCookieBite } from '../../icons/IconCookieBite'
+import { IconWallet } from '../../icons/IconWallet'
+import { IconPersonShelter } from '../../icons/IconPersonShelter'
 import { createPortal } from 'react-dom'
+import { driver } from 'driver.js'
+import 'driver.js/dist/driver.css'
+import IconUserTea from '../../icons/IconUserTea'
 import dropImg from '../../assets/images/index/DropDownBoard.png'
+
+import SpotlightSearch from './components/SpotlightSearch'
+import Swal from 'sweetalert2'
+
 const HorNav = () => {
 	const navigate = useNavigate()
 	const scrollContainerRef = useRef(null)
 	const dropDownRef = useRef(null)
 	const [dropDown, setDropDown] = useState(false)
 	const [windowDB, setWindowDB] = useState(false)
+	const [activeLink, setActiveLink] = useState('Inicio')
 	const [hidden, setHidden] = useState(true)
 	const [navSegment, SetNavSegment] = useState(DATANAV.SEGMENTS[0].segment)
-	const [activeLink, setActiveLink] = useState('Inicio');
 	const [selectIcon, setSelectIcon] = useState({
 		home: <IconHome />,
 		question: <IconCircleQuestion />,
@@ -60,32 +65,57 @@ const HorNav = () => {
 		info: <IconInfo />,
 		catalogue: <IconCatalog />,
 		timeLine: <IconTimeLine />,
-		IconCreditCard: <IconCreditCard />,
+		admin: <IconUserTea />,
+		IconCreditCard:  <IconCreditCard />,
+		IconDollarTicked: <IconDollarTicked />,
+		IconArrowLeftRight: <IconArrowLeftRight />,
 		IconCovered: <IconCovered />,
 		IconCookieBite: <IconCookieBite />,
 		IconWallet: <IconWallet />,
 		IconPersonShelter: <IconPersonShelter />,
-		IconDollarTicked: <IconDollarTicked />,
-		IconArrowLeftRight: <IconArrowLeftRight />,
-
 	})
-	const { readExcelFile, templatesDDBB, setScheme, showApp, admin, setAdmin, scheme } = useContext(GlobalContext)
-	const search = valueSearch => {
-		const lowerCase = valueSearch.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-		const allCards = document.querySelectorAll('.dato-buscado')
-		const mobileCards = Array.from(allCards).filter(card =>
-			card.textContent
-				.toLowerCase()
-				.normalize('NFD')
-				.replace(/[\u0300-\u036f]/g, '')
-				.includes(lowerCase.toLowerCase())
-		)
-		Array.from(allCards).forEach(card => {
-			card.classList.add('hide')
-		})
-		mobileCards.forEach(card => {
-			card.classList.remove('hide')
-		})
+	const { readExcelFile, templatesDDBB, setScheme, showApp, admin, setAdmin } = useContext(GlobalContext)
+	const [showAdminModal, setShowAdminModal] = useState(false) // Estado para abrir el portal
+	const [portalKey, setPortalKey] = useState('') // Estado para la clave del portal
+	const [pendingAdminAccess, setPendingAdminAccess] = useState(false) // Estado que indica si se solicitó acceso a ADMIN
+
+	// Función para alternar la visibilidad del portal
+	const toggleAdminModal = segment => {
+		setShowAdminModal(!showAdminModal)
+	}
+	// Función que maneja el envío del formulario del portal
+	const handlePortalSubmit = e => {
+		e.preventDefault()
+
+		// Verificación de la clave
+		if (portalKey === 'AtentoWebTraining*') {
+			Swal.fire({
+				title: 'Clave correcta, Bienvenido!',
+				icon: 'success',
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timer: 2000,
+				timerProgressBar: true,
+			})
+
+			// Si se estaba solicitando acceso a la sección ADMIN
+			if (pendingAdminAccess) {
+				setAdmin(true) // Establecer el estado de admin en true
+				SetNavSegment('ADMIN') // Cambiar el segmento de navegación a 'ADMIN'
+				navigate('/admin') // Navegar a la sección de 'ADMIN'
+				setPendingAdminAccess(false) // Resetear el estado de solicitud de acceso
+			}
+
+			toggleAdminModal() // Cerrar el modal
+		} else {
+			Swal.fire({
+				title: 'Error!',
+				text: 'Acceso denegado: La clave es incorrecta',
+				icon: 'error',
+				confirmButtonText: 'Reintentar',
+			})
+		}
 	}
 
 	const handleScroll = event => {
@@ -154,62 +184,176 @@ const HorNav = () => {
 			readExcelFile(fileEvent)
 		}
 	}
+
 	const startDrive = () => {
+		const defaultSteps = [
+			{
+				element: '.hornav',
+				popover: {
+					title: 'Barra de navegación',
+					description:
+						'En la barra de navegación encontrarás todos los tipos de procesos que gestionan en la operación, adicional del buscador, cambio de tema, corrector, entre otros.',
+				},
+			},
+			{
+				element: '.hornav__segments',
+				popover: {
+					title: 'Segmentos',
+					description:
+						'Al dar click se abrirá el buscador de la web training para traer o filtrar el dato que necesites por medio de una palabra clave.',
+				},
+			},
+			{
+				element: '.admin__segment',
+				popover: {
+					title: 'Admin',
+					description:
+						'Al dar click se abrirá el buscador de la web training para traer o filtrar el dato que necesites por medio de una palabra clave.',
+				},
+			},
+			{
+				element: '.settings',
+				popover: {
+					title: 'Configuraciones',
+					description:
+						'En este segundo menú podrás encontrar diferentes configuraciones de la web training y otros apartados como corrector ortográfico, cambio de tema, carga de bases de datos y la guía de uso de la web y desarrollos.',
+				},
+			},
+			{
+				element: '.settings_btnA',
+				popover: {
+					title: 'Configuraciones 1',
+					description:
+						'En este segundo menú podrás encontrar diferentes configuraciones de la web training y otros apartados como corrector ortográfico, cambio de tema, carga de bases de datos y la guía de uso de la web y desarrollos.',
+				},
+			},
+			{
+				element: '.settings_btnB',
+				popover: {
+					title: 'Configuraciones 2',
+					description:
+						'En este segundo menú podrás encontrar diferentes configuraciones de la web training y otros apartados como corrector ortográfico, cambio de tema, carga de bases de datos y la guía de uso de la web y desarrollos.',
+				},
+			},
+			{
+				element: '.settings_btnC',
+				popover: {
+					title: 'Configuraciones 3',
+					description:
+						'En este segundo menú podrás encontrar diferentes configuraciones de la web training y otros apartados como corrector ortográfico, cambio de tema, carga de bases de datos y la guía de uso de la web y desarrollos.',
+				},
+			},
+			{
+				element: '.settings_btnD',
+				popover: {
+					title: 'Configuraciones 4',
+					description:
+						'En este segundo menú podrás encontrar diferentes configuraciones de la web training y otros apartados como corrector ortográfico, cambio de tema, carga de bases de datos y la guía de uso de la web y desarrollos.',
+				},
+			},
+			{
+				element: '.settings_btnE',
+				popover: {
+					title: 'Configuraciones 5',
+					description:
+						'En este segundo menú podrás encontrar diferentes configuraciones de la web training y otros apartados como corrector ortográfico, cambio de tema, carga de bases de datos y la guía de uso de la web y desarrollos.',
+				},
+			},
+
+			{
+				element: '.hornav__links--boxul',
+				popover: {
+					title: 'Procesos',
+					description:
+						'En este apartado encontrarás todos los desarrollos de procesos identificados hasta la fecha, en ellos pueden haber: checklist, gestores de notas, tipificadores, versus, matrices, consultas de documentación entre otras.',
+				},
+			},
+
+			{
+				element: '.hornav__links--search',
+				popover: {
+					title: 'Buscador',
+					description:
+						'Al dar click se abrirá el buscador de la web training para traer o filtrar el dato que necesites por medio de una palabra clave.',
+				},
+			},
+
+			{
+				element: '.hornav__logos',
+				popover: {
+					title: 'Versionado',
+					description:
+						'En el último apartado de la barra de navegación encontrarás la versión actual en la que se encuentra la web training. Confirma con tu formador en qué versión se encuentra actualmente para evitar procesos desactualizados.',
+				},
+			},
+		]
+
+		const currentHash = window.location.hash
+		let steps
+
+		if (currentHash.includes('#/checklist')) {
+			steps = [
+				{
+					element: '.checklist__item1',
+					popover: {
+						title: 'Checklist Item 1',
+						description: 'Descripción para el primer elemento del checklist.',
+					},
+				},
+				{
+					element: '.checklist__item2',
+					popover: {
+						title: 'Checklist Item 2',
+						description: 'Descripción para el segundo elemento del checklist.',
+					},
+				},
+			]
+		} else if (currentHash.includes('#configuracion')) {
+			steps = [
+				{
+					element: '.Checklist',
+					popover: {
+						title: 'Configuración 1',
+						description: 'Detalles sobre la primera configuración.',
+					},
+				},
+				{
+					element: '.settings__item2',
+					popover: {
+						title: 'Configuración 2',
+						description: 'Detalles sobre la segunda configuración.',
+					},
+				},
+			]
+		} else if (currentHash.includes('#procesos')) {
+			steps = [
+				{
+					element: '.procesos__item1',
+					popover: {
+						title: 'Proceso 1',
+						description: 'Descripción para el primer proceso.',
+					},
+				},
+				{
+					element: '.procesos__item2',
+					popover: {
+						title: 'Proceso 2',
+						description: 'Descripción para el segundo proceso.',
+					},
+				},
+			]
+		} else {
+			steps = defaultSteps
+		}
+
 		const driverObj = driver({
 			showProgress: true,
 			showButtons: ['next', 'previous', 'close'],
 			popoverClass: 'driverjs-theme',
-			steps: [
-				{
-					element: '.hornav',
-					popover: {
-						title: 'Barra de navegación',
-						description:
-							'En la barra de navegación encontrarás todos los tipos de procesos que gestionan en la operación, adicional del buscador, cambio de tema, corrector, entre otros.',
-					},
-				},
-				{
-					element: '.hornav__links--search',
-					popover: {
-						title: 'Buscador',
-						description:
-							'Al dar click se abrirá el buscador de la web training para traer o filtrar el dato que necesites por medio de una palabra clave.',
-					},
-				},
-				{
-					element: '.hornav__links',
-					popover: {
-						title: 'Procesos',
-						description:
-							'En este apartado encontrarás todos los desarrollos de procesos identificados hasta la fecha, en ellos pueden haber: checklist, gestores de notas, tipificadores, versus, matrices, consultas de documentación entre otras.',
-					},
-				},
-				{
-					element: '.settings',
-					popover: {
-						title: 'Configuraciones',
-						description:
-							'En este segundo menú podráz encontrar diferentes configuraciones de la web training y otros apartados como, corrector ortográfico, cambio de tema, carga de bases de datos y la guia de uso de la web y desarrollos.',
-					},
-				},
-				{
-					element: '.hornav__logos',
-					popover: {
-						title: 'Versionado',
-						description:
-							'En el ultimo apartado de la barra de navegacion encontrarás la versión actual en la que se encuentra la web training, debes confirmar con tu formador en que versión se encuentra actualmente la web training para evitar procesos desactualizados.',
-					},
-				},
-			],
+			steps: steps,
 		})
+
 		driverObj.drive()
-		// driverObj.highlight({
-		// 	element: '#sideVersion',
-		// 	popover: {
-		// 		title: 'Title',
-		// 		description: 'Description',
-		// 	},
-		// })
 	}
 
 	const scrollLeft = () => {
@@ -223,6 +367,17 @@ const HorNav = () => {
 			scrollContainerRef.current.scrollLeft += 100 // Ajusta el valor según la cantidad que desees desplazar
 		}
 	}
+
+	const [task, dispatch] = useReducer((state = [], action) => {
+		switch (action.type) {
+			case 'nav_route':
+				return [...state, action.payload]
+			case 'remove':
+				return state.filter(item => item !== action.payload)
+			default:
+				return state
+		}
+	})
 
 	useEffect(() => {
 		document.body.addEventListener('keydown', e => {
@@ -241,9 +396,16 @@ const HorNav = () => {
 								return (
 									<li
 										onClick={() => {
-											SetNavSegment(segment.segment)
-											navigate('/' + segment.segment.toLowerCase())
-											setAdmin(!admin)
+											if (admin) {
+												// Si ya es admin, al hacer clic "cierra" el modo admin
+												setAdmin(false) // Cerrar el modo admin
+												SetNavSegment('') // Cambiar el segmento de navegación al que no sea admin
+												navigate('/#/') // Cambiar la ruta a una por defecto
+											} else {
+												// Si no es admin, mostrar el modal para ingresar la clave
+												setPendingAdminAccess(true) // Marcar que estamos solicitando acceso a ADMIN
+												toggleAdminModal() // Abrir el modal
+											}
 										}}
 										key={i}
 										className={
@@ -268,35 +430,36 @@ const HorNav = () => {
 							}
 						})}
 						<li className="settings">
-							<button className="settings__btn hide" name="upload" onClick={setsClick}>
+							<button className="settings__btn settings_btnA" name="upload" onClick={setsClick}>
 								<IconUpload />
 							</button>
 							<button
-								className="settings__btn"
+								className="settings__btn settings_btnB"
 								name="spellcheck"
 								onClick={() => {
 									navigate('/corrector')
 								}}>
 								<InconSpell />
 							</button>
-							<button className="settings__btn" name="theme" onClick={setsClick}>
+							<button className="settings__btn settings_btnC" name="theme" onClick={setsClick}>
 								<IconTheme />
 							</button>
 							<button
-								className="settings__btn"
+								className="settings__btn settings_btnD"
 								name="note"
 								onClick={() => {
 									showApp()
 								}}>
 								<IconNotes />
 							</button>
-							<button className="settings__btn" name="theme" onClick={() => startDrive()}>
+							<button className="settings__btn settings_btnE" name="theme" onClick={() => startDrive()}>
 								<IconGuide />
 							</button>
 						</li>
 					</ul>
 				</nav>
 			)}
+
 			<nav className="hornav__links">
 				<div className="hornav__links--container">
 					<div className="hornav__links--boxul">
@@ -370,25 +533,17 @@ const HorNav = () => {
 							<IconArrowDown />
 						</div>
 					</div>
-					<div className="hornav__links--search">
-						<div className="search__container">
-							<input className="search__container--input" type="text" onChange={e => search(e.target.value)} />
-							<svg viewBox="0 0 24 24" className="search__container--icon">
-								<g>
-									<path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-								</g>
-							</svg>
-						</div>
-					</div>
+					<SpotlightSearch />
 				</div>
 				<div className="hornav__logos">
 					<figure>
-						<img src={scheme == 'light'? imgLogo : imgLogoTwo } alt="logo" />
+						<img src={imgLogo} alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">V.2.2.5</span>
+					<span className="hornav__logos--version">V.2.2.6</span>
 				</div>
 			</nav>
+
 			{windowDB &&
 				createPortal(
 					<section className="templates-xls">
@@ -443,6 +598,34 @@ const HorNav = () => {
 							)}
 						</div>
 					</section>,
+					document.getElementById('portal')
+				)}
+			{showAdminModal &&
+				createPortal(
+					<div className="admin-modal">
+						<div className="sessionRec__form">
+							<form className="form" id="sendForm" onSubmit={handlePortalSubmit}>
+								<h1 className="title-top">Iniciar Sesión</h1>
+								<p className="title">Ingrese la contraseña de "Administrador"</p>
+								<label>
+									<input
+										className="input cc"
+										type="text"
+										onChange={e => setPortalKey(e.target.value)}
+										placeholder=""
+										required=""
+									/>
+									<span>Administrador</span>
+								</label>
+								<button className="submit" type="submit">
+									Enviar
+								</button>
+								<button className="submit" type="button" onClick={toggleAdminModal}>
+									Cerrar
+								</button>
+							</form>
+						</div>
+					</div>,
 					document.getElementById('portal')
 				)}
 		</header>

@@ -4,10 +4,42 @@
         {
           "NOMBRE": "CLASICA",
           "BENEFICIOS": [
-            "Proteccion de precios hasta 200 dolares",
+            "Seguro de proteccion de precios hasta 200 dolares",
             "Tasa de interés preferente 1,53% NMV 20% E.A para compras en supermercados, almacenes de ropa y calzado, estaciones de gasolina, centros medicos, centros educativos, servicios publicos e impuestos",
             "Skybox 12 meses gratis",
             "40% de descuento en assicard"
+          ]
+        },
+        {
+          "NOMBRE": "ARA",
+          "BENEFICIOS": [
+            "Seguro de proteccion de compras Visa",
+            "0$ de cuota de manejo",
+            "Cashback del 5% en compras iguales o superiores a $50,000 realizadas en Tiendas Ara",
+            "Ofertas y descuentos especiales en tiendas Ara",
+            "Acumulacion de puntos BBVA"
+          ]
+        },
+        {
+          "NOMBRE": "AQUA",
+          "BENEFICIOS": [
+            "Aqua Clásica: Puedes hacer avances a partir de los 6 meses de usos",
+            "Aqua Gold: Puedes hacer avances a partir de los 6 meses de usos",
+            "Aqua Platinum: Puedes hacer avances a partir de los 3 meses de usos. ",
+            "Aqua Clásica: $0 cuota de manejo por siempre",
+            "Aqua Gold: $0 cuota de manejo los primeros 12 meses.",
+            "Aqua Platinum: $0 cuota de manejo los primeros 12 meses",
+            "Asistencia de viajes internacionales hasta por 15000 dolares o 15000 euros hasta 30 dias por viaje, (servicios y traslados medicos, asistencia jurídica y asistencia de equipaje)"
+          ]
+        },
+        {
+          "NOMBRE": "CONGELADA",
+          "BENEFICIOS": [
+            "Seguro de proteccion de precios",
+            "Paga siempre la misma cuota sin importar las compras que realices ",
+            "cupo desde 600.000 hasta 2.999.999",
+            "Acumulacion de puntos BBVA (1 punto x dolara facturado)",
+            "Dispone del 50% de cupo para avances"
           ]
         },
         {
@@ -26,41 +58,42 @@
           "BENEFICIOS": [
             "Exoneracion de intereses para las compras realizadas durante los 3 primeros meses",
             "Ingreso a salas VIP en aeropuertos internacionales 4 por año",
-            "Proteccion de precios hasta 2000 dolares",
-            "Proteccion de compras hasta 10000 dolares",
-            "Garantia extendida hasta 10000 dolares",
+            "proteccion de precios hasta 2000 dolares",
+            "proteccion de compras hasta 10000 dolares",
+            "garantia extendida hasta 10000 dolares",
             "servicios de emerjencia medica internacional hasta por 170000 dolares(visa medico online)",
-            "Visa concierge",
+            "visa concierge",
             "asistencia de viajes internacionales hasta por 60000 dolares  hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años ",
             "asistencia de viajes nacionales hasta por 5000 dolares , (servicios medicos, traslados medicos, , asistencia de equipaje,) incluye conyugue e hijos menores de 21 años ",
-            "Skybox 36 meses gratis",
-            "Bloomberg 3 meses gratis",
-            "Rappi prime 3 meses gratis",
-            "Whitu training 6 meses gratis"
+            "skybox 36 meses gratis",
+            "bloomberg 3 meses gratis",
+            "rappi prime 3 meses gratis",
+            "whitu traning 6 meses gratis"
           ]
         },
         {
-          "NOMBRE": "INFINITE",
+          "NOMBRE": "INFINITIVE",
           "BENEFICIOS": [
             "Exoneracion de intereses para las compras realizadas durante los 3 primeros meses",
             "Ingreso a salas VIP en aeropuertos nacionales e internacionales 10 por año",
             "proteccion de precios hasta 4000 dolares",
-            "Proteccion de compras hasta 20000 dolares",
+            "proteccion de compras hasta 20000 dolares",
             "garantia extendida hasta 25000 dolares",
             "demora de equipaje 600 dolares",
-            "Perdida de equipaje 3000",
-            "Perdida de conexiones 300",
-            "Demora de viaje 300",
-            "Cancelacion de viaje 3000",
-            "Seguro de alquiler de autos",
+            "perdida de equipaje 3000",
+            "perdida de conexiones 300",
+            "demora de viaje 300",
+            "cancelacion de viaje 3000",
+            "seguro de alquiler de autos",
             "servicios de emerjencia medica internacional hasta por 170000 dolares(visa medico online)",
-            "Visa concierge",
+            "visa concierge",
             "asistencia de viajes internacionales hasta por 70000 dolares  hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años ",
             "asistencia de viajes nacionales hasta por 5000 dolares , (servicios medicos, traslados medicos, , asistencia de equipaje,) incluye conyugue e hijos menores de 21 años ",
-            "Skybox 36 meses gratis",
-            "Bloomberg 4 meses gratis",
-            "Rappi prime 6 meses gratis",
-            "Whitu training 6 meses gratis"
+            "skybox 36 meses gratis",
+            "bloomberg 4 meses gratis",
+            "rappi prime 6 meses gratis",
+            "whitu traning 6 meses gratis"
+
           ]
         }
       ]
@@ -75,6 +108,25 @@
             "Descuentos en Éxito, Carulla, Cabify, Farmatodo y Mercado libre",
             "40% de descuento en assicard",
             "tasa de interes preferente 1,53% NMV 20% E.A para compras en supermercados, almacenes de ropa y calzado, estaciones de gasolina, centros medicos, centros educativos, servicios publicos e impuestos"
+          ]
+        },
+        {
+          "NOMBRE": "HEROES",
+          "BENEFICIOS": [
+            "Seguro de proteccion de precios Mastercard",
+            "Aporta un  porcentaje de la facturación de las tarjetas a programas sociales de la corporación Matamoros.",
+            "Acceso a priceless.com ",
+            "Diferido automático 36 meses"
+            
+          ]
+        },
+        {
+          "NOMBRE": "CORAL",
+          "BENEFICIOS": [
+            "Tarjeta hecha en plástico reciclado del mar.",
+            "BBVA aporta el 0,66% de tu facturación mensual para la restauración de corales, ayudando al hogar vital de pez loro en el Caribe colombiano.",
+            "Puedes realizar avances hasta del 50% de tu cupo asignado.  ",
+            "Seguro de proteccion de compras Mastercard"
           ]
         },
         {

@@ -76,7 +76,14 @@
 			"route": "/carteraYrediferido",
 			"icon": "calc",
 			"segments": [
-				"Compra Cartera",
+				"Compra Cartera"
+			]	
+		},
+		{
+			"title": "Simulador Cartera y Rediferido",
+			"route": "/carteraYrediferidodos",
+			"icon": "calc",
+			"segments": [
 				"Rediferido"
 			]	
 		},
@@ -141,8 +148,16 @@
 			]
 		},
 		{
+			"title": "Manual de Objeciones",
+			"route": "/rediferido/manualobjeciones",
+			"icon": "tipify",
+			"segments": [
+				"Rediferido"
+			]
+		},
+		{
 			"title": "Beneficios de Tarjetas",
-			"route": "/beneficiosdetarjeta",
+			"route": "/beneficiosdetarjetaamparada",
 			"icon": "IconCreditCard",
 			"segments": [
 				"Amparada"

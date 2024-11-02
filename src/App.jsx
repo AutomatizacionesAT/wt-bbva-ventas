@@ -19,12 +19,14 @@ import { useContext, useEffect } from 'react'
 import { NoteApp } from './components/NoteApp/NoteApp.jsx'
 import HorNav from './components/Navbar/HorNav.jsx'
 import { TarjetasCredito } from './components/TarjetasCredito/TarjetasCredito.jsx'
+import { TarjetasCreditoAmparada } from './components/TarjetasCredito/TarjetasCreditoAmparada.jsx'
 
 import { Objecion } from './components/Objeciones/Objecion.jsx'
 import { CuotasManejo } from './components/CuotasManejo/CuotasManejo.jsx'
 import { CarteraYRediferido } from './components/Calculadoras/CarteraYRediferido/CarteraYRediferido.jsx'
 import { SimuladorTDC } from './components/Calculadoras/SimuladorTDC/SimuladorTDC.jsx'
 import { SimuladorConsumo } from './components/Calculadoras/SimuladorConsumo/SimuladorConsumo.jsx'
+import { CarteraYRediferidodos } from './components/Calculadoras/CarteraYRediferidodos/CarteraYRediferidodos.jsx'
 
 const App = () => {
 	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
@@ -66,6 +68,7 @@ const App = () => {
 			{activeAppNote && <NoteApp />}
 			<section className="app__body" style={style.body}>
 				<Routes>
+					{/* aca cada bienvenida tendria su nombre de segmento */}
 					{dataNavbar.SEGMENTS.map((segment, i) => {
 						return <Route key={i} path={'/' + segment.segment} element={<Bienvenida nombre={segment.segment}/>} />
 					})}
@@ -77,14 +80,17 @@ const App = () => {
 					<Route path="/consumo/manualobjeciones" element={<Objecion NBD="OBJECON" />} />
 					<Route path="/amparada/manualobjeciones" element={<Objecion NBD="OBJEAM" />} />
 					<Route path='/compracartera/manualobjeciones' element={<Objecion NBD='OBJECOMCAR' />} />
+					<Route path='/rediferido/manualobjeciones' element={<Objecion NBD='OBJERED' />} />
 					<Route path="/minichecklist/cambiodireccion" element={<CambioDireccion />} />
 					<Route path="/minichecklist/activaciontoken" element={<ActivacionToken />} />
 					<Route path="/minichecklist/aceptacionpreaprobado" element={<AceptacionPreApro />} />
 					<Route path="/minichecklist/activaciontarjetacredito" element={<ActivacionTD />} />
 					<Route path="/minichecklist/aceptacionconsumo" element={<AceptacionCreditoConsumo />} />
 					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
+					<Route path="/beneficiosdetarjetaamparada" element={<TarjetasCreditoAmparada />} />
 					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
 					<Route path="/carteraYrediferido" element={<CarteraYRediferido />} />
+					<Route path="/carteraYrediferidodos" element={<CarteraYRediferidodos />} />
 					<Route path="/SimuladorTDC" element={<SimuladorTDC />} />
 					<Route path="/SimuladorConsumo" element={<SimuladorConsumo />} />
 				</Routes>

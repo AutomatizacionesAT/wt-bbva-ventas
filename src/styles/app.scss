@@ -74,6 +74,13 @@
 			align-items: center;
 			justify-content: center;
 			padding-left: 2rem;
+			&.news {
+				position: static;
+				bottom: 0;
+				width: 45%;
+				background: transparent;
+				height: auto;
+			}
 		}
 	}
 

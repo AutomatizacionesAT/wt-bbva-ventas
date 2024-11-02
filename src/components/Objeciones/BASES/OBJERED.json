@@ -1,0 +1,40 @@
+[
+    {
+        "Producto": "Rediferidos",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción destacando la preparación, flexibilidad y beneficios a largo plazo del crédito de consumo o libre inversión del BBVA. Adaptar el enfoque según las preocupaciones y el estilo de vida del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "No quiero pagar intereses adicionales por diferir mis compras.",
+        "Manejos": [
+            {
+                "texto": "Comprendo que el costo sea un factor importante para usted. Sin embargo, el diferido le permite distribuir el pago en cuotas más manejables, lo que puede ser ideal para compras grandes. Además, puede elegir un plazo que se ajuste a su presupuesto para minimizar los intereses.",
+                "nota": null
+            },
+            {
+                "texto": "Lo entiendo. Una ventaja de nuestros diferidos es que puede adelantar pagos sin penalidad, lo cual disminuye el interés total. Esto le da flexibilidad para pagar cuando le sea conveniente, sin costos adicionales, y al mismo tiempo le permite organizar mejor su presupuesto.",
+                "nota": null
+            },
+            {
+                "texto": "Es comprensible que quiera evitar intereses. Sin embargo, los intereses del diferido son competitivos en comparación con otros tipos de crédito, y le permiten mantener su línea de crédito disponible. Además, los diferidos pueden resultar menos costosos que otros préstamos al consumidor, y no afectan negativamente su historial de crédito.",
+                "nota": null
+            }
+        ]
+    },
+    {
+        "Producto": "Rediferidos",
+        "Recomendación": "Estas respuestas están diseñadas para abordar la objeción destacando la preparación, flexibilidad y beneficios a largo plazo del crédito de consumo o libre inversión del BBVA. Adaptar el enfoque según las preocupaciones y el estilo de vida del cliente puede ayudar a superar esta objeción.",
+        "Objeciones": "No lo necesito",
+        "Manejos": [
+            {
+                "texto": "Entiendo que ahora no lo necesite. Sin embargo, tener esta opción le brinda flexibilidad para cuando surjan compras importantes o gastos inesperados. Esto le permite tener un respaldo sin afectar su flujo de efectivo de inmediato.",
+                "nota": null
+            },
+            {
+                "texto": "Comprendo que en este momento no sea necesario. No obstante, en caso de que necesite mejorar su liquidez por un tiempo, esta es una excelente opción que le permite distribuir los pagos según su conveniencia sin afectar su línea de crédito principal",
+                "nota": null
+            },
+            {
+                "texto": "Al rediferir, puede distribuir los pagos de manera que mantenga un mayor control sobre sus gastos sin afectar su flujo de caja mensual. Esto le da mayor tranquilidad para afrontar cualquier situación sin comprometer su liquidez",
+                "nota": null
+            }
+        ]
+    }
+]

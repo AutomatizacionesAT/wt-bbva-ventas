@@ -1,0 +1,13 @@
+[
+	{
+		"id": 1,
+		"type": "corrector",
+		"segment": "Global",
+		"title": "Corrector Ortográfico",
+		"name": "Corrector Ortografico",
+		"content": "Digita tu texto para corregir ortograficamente o redactar para transcribir a texto",
+		"keywords": ["transcribir", "corregir", "ortografia", "redactor"],
+		"icon": "textSlash",
+		"path": "/corrector"
+	}
+]

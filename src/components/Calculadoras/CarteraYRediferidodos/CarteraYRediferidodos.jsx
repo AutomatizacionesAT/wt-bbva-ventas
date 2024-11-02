@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { addMonths, lastDayOfMonth, format, differenceInCalendarDays } from 'date-fns';
 
-import './styles/SimuladorTDC.scss';
+import './styles/CarteraYRediferido.scss';
 import Swal from 'sweetalert2';
 import { ca, tr } from 'date-fns/locale';
 
 import { IconSquareClose } from '../../../icons/IconSquareClose';
-export const SimuladorTDC = () => {
-
+export const CarteraYRediferidodos = () => {
     //obejeto en donde cargan los datos del fomulario, cargo la fecha actual por defecto
     const [datos, setDatos] = useState({
         fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
         fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
+        tasa: '28,14', 
+        tasaFormated: '% 28,14',
     });
     console.log(datos)
 
@@ -35,7 +36,7 @@ export const SimuladorTDC = () => {
             portalElement.classList.remove('portalGeneral--enable');
         }
     }, [isPortalOpen]);
-    
+
     useEffect(() => {
         // Función que detecta la tecla presionada
         const handleKeyDown = (event) => {
@@ -138,12 +139,8 @@ export const SimuladorTDC = () => {
         });
     };
 
-
-    //click a calcular y hace los calculos
     const handleCalculate = (e) => {
-
         e? e.preventDefault() : '';
-        //si algun valor esta vacio da false pero negando dara true y dispara la alerta y no continua por el return
         if(!datos.monto || !datos.cuotas || !datos.tasa || !datos.gracia || !datos.tipo) {
             Swal.fire({
                 title: 'Error',
@@ -155,17 +152,13 @@ export const SimuladorTDC = () => {
         }
 
 
-        const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas)); //llama una funcion para retornar un array con el ultimo dia de cada mes segun el numero de cuotas
+        const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas)); //mostrar
+        const diasDiferencia = calcularDiferenciaDias(fechas); //mostrar
 
-        const diasDiferencia = calcularDiferenciaDias(fechas); // la funcion me retorna un array con la diferencia de dias entre mes y mes
-        console.log(diasDiferencia)
-        const periodoALiquidar = calcularPeriodoALiquidar(Number(datos.cuotas)); // este es para saber en que cuota estamos
-        
-        const baseDiasAno = calcularBaseDias(fechas, Number(datos.cuotas));
-        console.log(baseDiasAno)
+        const periodoALiquidar = calcularPeriodoALiquidar(Number(datos.cuotas)); //jersson esto puede servir para enumeras en la tabal al momento de mostrar en el portal
+        const baseDiasAno = calcularBaseDias(fechas, Number(datos.cuotas)); 
         const diasFaltantes = calcularDiasFaltantes(diasDiferencia, datos.cuotas)
         const tasaDeInteresIpt = calcularTasaDeInteresIpt(datos.tasa, diasDiferencia, baseDiasAno, Number(datos.cuotas))
-        console.log(tasaDeInteresIpt)
         const relacion = calcularRelacion(diasFaltantes, diasDiferencia, Number(datos.cuotas)) 
         const periodosFaltantes = calcularPeriodosFaltantes(periodoALiquidar, Number(datos.cuotas))
         const factor = calcularFactor(tasaDeInteresIpt, datos.tasa, periodosFaltantes, relacion, Number(datos.cuotas))
@@ -231,7 +224,6 @@ export const SimuladorTDC = () => {
     
         return fechas;
     };
-    
 
 
     //calcula la diferencia de dias entre fechas
@@ -315,17 +307,13 @@ export const SimuladorTDC = () => {
     const calcularTasaDeInteresIpt = (porcentajetasa, diasperiodo, basediasanio, contador) => {
         const porcentajeFormated = Number(porcentajetasa.replace(',', '.'));
         
-        const valorDividido = (porcentajeFormated/100) + 1
-
-
         let ipt = [];
         for (let i = 0; i <= contador; i++) {
             if(i === 0) {
                 ipt.push(0);
             } else {
-                console.log(diasperiodo[i], basediasanio[i])
                 
-                ipt.push( Number(Math.pow(valorDividido, (diasperiodo[i] / basediasanio[i])) - 1))
+                ipt.push( Number(Math.pow((1 + porcentajeFormated / 100), (diasperiodo[i] / basediasanio[i])) - 1))
             }
             
         }
@@ -562,7 +550,7 @@ export const SimuladorTDC = () => {
 
     return (
         <section className="carterarediferido">
-            <h1 className="carterarediferido__title">Tarjeta de Crédito</h1>
+            <h1 className="carterarediferido__title">Cartera Y Rediferido</h1>
 
             <div className="carterarediferido__container">
                 <div className='carterarediferido__animation'>
@@ -671,15 +659,13 @@ export const SimuladorTDC = () => {
                     </div>
 
                     <div className={`carterarediferido__input ${datos.tasa > 0 ? 'active' : ''}`}>
-                        <select
-                            onChange={(e) => handleInputFormat(e.target.value, 'select', 'tasa', 'tasaFormated')}
+                        <input
+                            type="text"
+                            onChange={(e) => handleInputFormat(e.target.value, 'porcentaje', 'tasa', 'tasaFormated')}
                             value={datos.tasaFormated || ""}
+                            placeholder="Ingrese tasa"
                             required
-                        >
-                            <option value="">Seleccione...</option>
-                            <option value="28,14">% 28,14 VARIABLE MES A MES</option>
-                            <option value="20">% 20 FIJA PERMANENTE</option>
-                        </select>
+                        />
                         <label>Tasa E.A:</label>
                     </div>
 
