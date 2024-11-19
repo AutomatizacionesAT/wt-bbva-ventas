@@ -12,6 +12,10 @@ export const CarteraYRediferido = () => {
     const [datos, setDatos] = useState({
         fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
         fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
+        gracia: "0",
+        graciaFormated: "0",
+        tipo: "Compra de Cartera",
+        tipoFormated: "Compra de Cartera"
     });
     console.log(datos)
 
@@ -134,6 +138,10 @@ export const CarteraYRediferido = () => {
         setDatos({
             fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
             fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
+            gracia: "0",
+            graciaFormated: "0",
+            tipo: "Compra de Cartera",
+            tipoFormated: "Compra de Cartera"
         });
     };
 
@@ -589,7 +597,7 @@ export const CarteraYRediferido = () => {
                         <label>Monto:</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.fechaoperacion != undefined? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.fechaoperacion != undefined? 'active' : ''} hide`}>
                         
                         <input
                             type="date"
@@ -611,9 +619,7 @@ export const CarteraYRediferido = () => {
                         <label>Cuotas Diferidas:</label>
                     </div>
 
-                    
-
-                    <div className={`carterarediferido__input ${datos.gracia != undefined? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.gracia != undefined? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -635,7 +641,7 @@ export const CarteraYRediferido = () => {
                         <label>Periodo de Gracia:</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.tipo != undefined? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.tipo != undefined? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -667,17 +673,6 @@ export const CarteraYRediferido = () => {
                         <label>Tasa E.A:</label>
                     </div>
 
-                    <div className='carterarediferido__button carterarediferido__button--calculate'>
-                        <button
-
-                            type="button"
-                            onClick={(e) => handleCalculate(e)}
-                        >
-                            <span>Calcular</span>
-  
-                        </button>
-                    </div>
-
                     <div className='carterarediferido__button carterarediferido__button--reset'>
                         <button
 
@@ -686,6 +681,17 @@ export const CarteraYRediferido = () => {
                         >
                             <span>Reiniciar</span>
  
+                        </button>
+                    </div>
+
+                    <div className='carterarediferido__button carterarediferido__button--calculate'>
+                        <button
+
+                            type="button"
+                            onClick={(e) => handleCalculate(e)}
+                        >
+                            <span>Calcular</span>
+  
                         </button>
                     </div>
 

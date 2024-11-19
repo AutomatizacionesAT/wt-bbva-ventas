@@ -540,7 +540,7 @@ const HorNav = () => {
 						<img src={imgLogo} alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">V.2.2.6</span>
+					<span className="hornav__logos--version">V.2.2.7</span>
 				</div>
 			</nav>
 

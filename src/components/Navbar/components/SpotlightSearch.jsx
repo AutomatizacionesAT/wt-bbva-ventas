@@ -21,6 +21,10 @@ import IconTimeLine from '../../../icons/IconTimeLine'
 import IconTimeLineC from '../../../icons/Color/IconTimeLineC'
 import IconDeleteOt from '../../../icons/IconDeleteOt'
 
+import { IconManual } from '../../../icons/Color/IconManual'
+import { IconCookieBite } from '../../../icons/IconCookieBite'
+
+
 const SpotlightSearch = () => {
 	const icons = {
 		segments: {
@@ -31,6 +35,7 @@ const SpotlightSearch = () => {
 			textSlash: <IconTextBubleC />,
 			note: <IconWindowFormC />,
 			timeLine: <IconTimeLineC />,
+			IconManual: <IconManual />,
 		},
 		develops: {
 			// home: <IconHome />,
@@ -46,6 +51,7 @@ const SpotlightSearch = () => {
 			// info: <IconInfo />,
 			// catalogue: <IconCatalog />,
 			timeLine: <IconTimeLine />,
+			IconManual: <IconCookieBite />,
 		},
 	}
 	const { search } = useSearch()

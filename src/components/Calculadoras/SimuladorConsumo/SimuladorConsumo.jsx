@@ -14,6 +14,18 @@ export const SimuladorConsumo = () => {
 
         fecha: format(new Date(), 'yyyy-MM-dd'),
         fechaFormated: format(new Date(), 'yyyy-MM-dd'),
+        cliente: "Digital",
+        clienteFormated: "Digital",
+        credito: "0",
+        creditoFormated: "$ 0",
+        mdesembolso: "Abono a Cuenta",
+        mdesembolsoFormated: "Abono a Cuenta",
+        mdesempleo: "Trabajadores Dependientes",
+        mdesempleoFormated: "Trabajadores Dependientes",
+        seguro: "No",
+        seguroFormated: "No",
+        seguroSegura: "No",
+        seguroSeguraFormated: "No",
 
     });
     console.log(datos)
@@ -875,7 +887,20 @@ export const SimuladorConsumo = () => {
       
         e? e.preventDefault() : '';
         setDatos({
-            
+            fecha: format(new Date(), 'yyyy-MM-dd'),
+            fechaFormated: format(new Date(), 'yyyy-MM-dd'),
+            cliente: "Digital",
+            clienteFormated: "Digital",
+            credito: "0",
+            creditoFormated: "$ 0",
+            mdesembolso: "Abono a Cuenta",
+            mdesembolsoFormated: "Abono a Cuenta",
+            mdesempleo: "Trabajadores Dependientes",
+            mdesempleoFormated: "Trabajadores Dependientes",
+            seguro: "No",
+            seguroFormated: "No",
+            seguroSegura: "No",
+            seguroSeguraFormated: "No",
         });
     };
 
@@ -989,7 +1014,7 @@ export const SimuladorConsumo = () => {
                         <label>Tasa de Interés(E.A.)</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.cliente != undefined && datos.cliente != ''? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.cliente != undefined && datos.cliente != ''? 'active' : ''} hide`}>
                     <select
                             onChange={(e) => handleInputFormat(e.target.value, 'select', 'cliente', 'clienteFormated')}
                             value={datos.clienteFormated || ""}
@@ -1003,7 +1028,7 @@ export const SimuladorConsumo = () => {
                         <label>Tipo de Cliente</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.seguro != undefined && datos.seguro != '' ? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.seguro != undefined && datos.seguro != '' ? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -1047,7 +1072,7 @@ export const SimuladorConsumo = () => {
                         <label>Edad</label>
                     </div> */}
 
-                    <div className={`carterarediferido__input ${datos.seguroSegura != undefined && datos.seguroSegura != '' ? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.seguroSegura != undefined && datos.seguroSegura != '' ? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -1068,7 +1093,7 @@ export const SimuladorConsumo = () => {
                         <label>Seguro Cuota Segura</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.mdesempleo != undefined && datos.mdesempleo != '' ? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.mdesempleo != undefined && datos.mdesempleo != '' ? 'active' : ''} hide`}>
                         <select
                             onChange={(e) => handleInputFormat(e.target.value, 'select', 'mdesempleo', 'mdesempleoFormated')}
                             value={datos.mdesempleoFormated || ""}
@@ -1081,7 +1106,7 @@ export const SimuladorConsumo = () => {
                         <label>Modalidad Seguro Desempleo</label>
                     </div>
                     
-                    <div className={`carterarediferido__input ${datos.mdesembolso != undefined && datos.mdesembolso != '' ? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.mdesembolso != undefined && datos.mdesembolso != '' ? 'active' : ''} hide`}>
                         <select
                             onChange={(e) => handleInputFormat(e.target.value, 'select', 'mdesembolso', 'mdesembolsoFormated')}
                             value={datos.mdesembolsoFormated || ""}
@@ -1114,7 +1139,7 @@ export const SimuladorConsumo = () => {
                         <label>Comisión por Desembolsos</label>
                     </div> */}
 
-                    <div className={`carterarediferido__input ${datos.credito > 0 ? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.credito > 0 ? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -1134,18 +1159,6 @@ export const SimuladorConsumo = () => {
                         <label>Estudio de Crédito</label>
                     </div>
 
-
-                    <div className='carterarediferido__button carterarediferido__button--calculate'>
-                        <button
-
-                            type="button"
-                            onClick={(e) => handleCalculate(e)}
-                        >
-                            <span>Calcular</span>
-  
-                        </button>
-                    </div>
-
                     <div className='carterarediferido__button carterarediferido__button--reset'>
                         <button
 
@@ -1157,7 +1170,16 @@ export const SimuladorConsumo = () => {
                         </button>
                     </div>
 
-                    
+                    <div className='carterarediferido__button carterarediferido__button--calculate'>
+                        <button
+
+                            type="button"
+                            onClick={(e) => handleCalculate(e)}
+                        >
+                            <span>Calcular</span>
+  
+                        </button>
+                    </div>
 
                 </form>
                 

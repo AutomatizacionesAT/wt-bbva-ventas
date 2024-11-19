@@ -1,13 +1,189 @@
 [
 	{
-		"id": 1,
-		"type": "corrector",
-		"segment": "Global",
-		"title": "Corrector Ortográfico",
-		"name": "Corrector Ortografico",
-		"content": "Digita tu texto para corregir ortograficamente o redactar para transcribir a texto",
-		"keywords": ["transcribir", "corregir", "ortografia", "redactor"],
-		"icon": "textSlash",
-		"path": "/corrector"
+		"id": 12,
+		"type": "manual 5",
+		"segment": "tarjeta de credito",
+		"title": "Manual de objeciones",
+		"name": "Manual de objeciones tarjeta de credito",
+		"content": "Manual de objeciones",
+		"keywords": ["objeciones", "manual"],
+		"icon": "IconManual",
+		"path": "/tarjetacredito/manualobjeciones"
+	},
+	{
+		"id": 13,
+		"type": "manual 4",
+		"segment": "amparada",
+		"title": "Manual de objeciones",
+		"name": "Manual de objeciones amparada",
+		"content": "Manual de objeciones",
+		"keywords": ["objeciones", "manual"],
+		"icon": "IconManual",
+		"path": "/amparada/manualobjeciones"
+	},
+	{
+		"id": 14,
+		"type": "manual 3",
+		"segment": "consumo",
+		"title": "Manual de objeciones",
+		"name": "Manual de objeciones consumo",
+		"content": "Manual de objeciones",
+		"keywords": ["objeciones", "manual"],
+		"icon": "IconManual",
+		"path": "/consumo/manualobjeciones"
+	},
+	{
+		"id": 15,
+		"type": "manual 2",
+		"segment": "compra de cartera",
+		"title": "Manual de objeciones",
+		"name": "Manual de objeciones compra cartera",
+		"content": "Manual de objeciones",
+		"keywords": ["objeciones", "manual"],
+		"icon": "IconManual",
+		"path": "/compracartera/manualobjeciones"
+	},
+	{
+		"id": 16,
+		"type": "manual 1",
+		"segment": "rediferido",
+		"title": "Manual de objeciones",
+		"name": "Manual de objeciones rediferido",
+		"content": "Manual de objeciones",
+		"keywords": ["objeciones", "manual"],
+		"icon": "IconManual",
+		"path": "/rediferido/manualobjeciones"
+	},
+	{
+		"id": 17,
+		"type": "beneficios",
+		"segment": "tarjeta de credito",
+		"title": "beneficios de tarjeta",
+		"name": "beneficios de tarjeta  de credito",
+		"content": "beneficios de tarjeta",
+		"keywords": ["beneficios"],
+		"icon": "note",
+		"path": "/beneficiosdetarjeta"
+	},
+	{
+		"id": 18,
+		"type": "beneficios",
+		"segment": "amparada",
+		"title": "beneficios de tarjeta",
+		"name": "beneficios de tarjeta amparada",
+		"content": "beneficios de tarjeta",
+		"keywords": ["beneficios"],
+		"icon": "note",
+		"path": "/beneficiosdetarjetaamparada"
+	},
+	{
+		"id": 19,
+		"type": "calculadora",
+		"segment": "global",
+		"title": "Calculadoras",
+		"name": "Calculadora tarjeta de credigo",
+		"content": "Calculadora tarjeta de credigo",
+		"keywords": ["calculadora", "cálculo"],
+		"icon": "calc",
+		"path": "/SimuladorTDC"
+	},
+	{
+		"id": 20,
+		"type": "calculadora",
+		"segment": "global",
+		"title": "Calculadoras",
+		"name": "Calculadora consumo",
+		"content": "Calculadora consumo",
+		"keywords": ["calculadora", "cálculo"],
+		"icon": "calc",
+		"path": "/SimuladorConsumo"
+	},
+	{
+		"id": 21,
+		"type": "calculadora",
+		"segment": "global",
+		"title": "Calculadoras",
+		"name": "Calculadora compra cartera",
+		"content": "Calculadora compra cartera",
+		"keywords": ["calculadora", "cálculo"],
+		"icon": "calc",
+		"path": "/carteraYrediferido"
+	},
+	{
+		"id": 22,
+		"type": "calculadora",
+		"segment": "global",
+		"title": "Calculadoras",
+		"name": "Calculadora rediferido",
+		"content": "Calculadora rediferido",
+		"keywords": ["calculadora", "cálculo"],
+		"icon": "calc",
+		"path": "/carteraYrediferidodos"
+	},
+	{
+		"id": 23,
+		"type": "tipificacion",
+		"segment": "global",
+		"title": "mini checklist",
+		"name": "aceptacion td preaprobado",
+		"content": "tipificacion",
+		"keywords": ["tipificador", "tipificacion"],
+		"icon": "checklist",
+		"path": "/minichecklist/aceptacionpreaprobado"
+	},
+	{
+		"id": 24,
+		"type": "tipificacion",
+		"segment": "global",
+		"title": "mini checklist",
+		"name": "activacion td",
+		"content": "tipificacion",
+		"keywords": ["tipificador", "tipificacion"],
+		"icon": "checklist",
+		"path": "/minichecklist/activaciontarjetacredito"
+	},
+	{
+		"id": 25,
+		"type": "tipificacion",
+		"segment": "global",
+		"title": "mini checklist",
+		"name": "cambio de direccion",
+		"content": "tipificacion",
+		"keywords": ["tipificador", "tipificacion"],
+		"icon": "checklist",
+		"path": "/minichecklist/cambiodireccion"
+	},
+	{
+		"id": 26,
+		"type": "tipificacion",
+		"segment": "global",
+		"title": "mini checklist",
+		"name": "activacion token",
+		"content": "tipificacion",
+		"keywords": ["tipificador", "tipificacion"],
+		"icon": "checklist",
+		"path": "/minichecklist/activaciontoken"
+	},
+	{
+		"id": 27,
+		"type": "tipificacion",
+		"segment": "global",
+		"title": "mini checklist",
+		"name": "aceptacion consumo",
+		"content": "tipificacion",
+		"keywords": ["tipificador", "tipificacion"],
+		"icon": "checklist",
+		"path": "/minichecklist/aceptacionconsumo"
+	},
+	{
+		"id": 28,
+		"type": "comparativo",
+		"segment": "global",
+		"title": "comparativo",
+		"name": "comparativo cuotas",
+		"content": "comparativo cuotas",
+		"keywords": ["cuotas", "comparativo"],
+		"icon": "tipify",
+		"path": "/cuotasmanejo"
 	}
 ]

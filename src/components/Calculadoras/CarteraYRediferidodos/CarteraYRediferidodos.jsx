@@ -14,6 +14,10 @@ export const CarteraYRediferidodos = () => {
         fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
         tasa: '28,14', 
         tasaFormated: '% 28,14',
+        gracia: "0",
+        graciaFormated: "0",
+        tipo: "Facturación",
+        tipoFormated: "Facturación"
     });
     console.log(datos)
 
@@ -136,6 +140,12 @@ export const CarteraYRediferidodos = () => {
         setDatos({
             fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
             fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
+            tasa: '28,14', 
+            tasaFormated: '% 28,14',
+            gracia: "0",
+            graciaFormated: "0",
+            tipo: "Facturación",
+            tipoFormated: "Facturación"
         });
     };
 
@@ -591,7 +601,7 @@ export const CarteraYRediferidodos = () => {
                         <label>Monto:</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.fechaoperacion != undefined? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.fechaoperacion != undefined? 'active' : ''} hide`}>
                         
                         <input
                             type="date"
@@ -613,9 +623,7 @@ export const CarteraYRediferidodos = () => {
                         <label>Cuotas Diferidas:</label>
                     </div>
 
-                    
-
-                    <div className={`carterarediferido__input ${datos.gracia != undefined? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.gracia != undefined? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -637,7 +645,7 @@ export const CarteraYRediferidodos = () => {
                         <label>Periodo de Gracia:</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.tipo != undefined? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.tipo != undefined? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
@@ -658,7 +666,7 @@ export const CarteraYRediferidodos = () => {
                         <label>Tipo:</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.tasa > 0 ? 'active' : ''}`}>
+                    <div className={`carterarediferido__input ${datos.tasa ? 'active' : ''}`}>
                         <input
                             type="text"
                             onChange={(e) => handleInputFormat(e.target.value, 'porcentaje', 'tasa', 'tasaFormated')}
@@ -669,17 +677,6 @@ export const CarteraYRediferidodos = () => {
                         <label>Tasa E.A:</label>
                     </div>
 
-                    <div className='carterarediferido__button carterarediferido__button--calculate'>
-                        <button
-
-                            type="button"
-                            onClick={(e) => handleCalculate(e)}
-                        >
-                            <span>Calcular</span>
-  
-                        </button>
-                    </div>
-
                     <div className='carterarediferido__button carterarediferido__button--reset'>
                         <button
 
@@ -688,6 +685,17 @@ export const CarteraYRediferidodos = () => {
                         >
                             <span>Reiniciar</span>
  
+                        </button>
+                    </div>
+
+                    <div className='carterarediferido__button carterarediferido__button--calculate'>
+                        <button
+
+                            type="button"
+                            onClick={(e) => handleCalculate(e)}
+                        >
+                            <span>Calcular</span>
+  
                         </button>
                     </div>
 
