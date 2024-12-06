@@ -12,8 +12,8 @@ export const CarteraYRediferidodos = () => {
     const [datos, setDatos] = useState({
         fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
         fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
-        tasa: '28,14', 
-        tasaFormated: '% 28,14',
+        tasa: '26,36', 
+        tasaFormated: '% 26,36',
         gracia: "0",
         graciaFormated: "0",
         tipo: "Facturación",

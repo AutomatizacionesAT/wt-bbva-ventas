@@ -685,7 +685,7 @@ export const SimuladorTDC = () => {
                             required
                         >
                             <option value="">Seleccione...</option>
-                            <option value="28,14">% 28,14 VARIABLE MES A MES</option>
+                            <option value="28,36">% 26,36 VARIABLE MES A MES</option>
                             <option value="20">% 20 FIJA PERMANENTE</option>
                         </select>
                         <label>Tasa E.A:</label>
