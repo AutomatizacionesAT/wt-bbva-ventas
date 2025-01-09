@@ -13,7 +13,7 @@ export const CarteraYRediferidodos = () => {
         fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
         fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
         tasa: '26,36', 
-        tasaFormated: '% 26,36',
+        tasaFormated: '% 24,86',
         gracia: "0",
         graciaFormated: "0",
         tipo: "Facturación",
