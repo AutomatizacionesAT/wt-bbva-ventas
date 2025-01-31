@@ -1,0 +1,170 @@
+@use 'variables' as *;
+
+.container-guiones {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: $s3-color;
+    }
+
+    &::-webkit-scrollbar {
+        border-radius: 10px;
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: $p4-color;
+    }
+
+    .guiones {
+        max-height: 1000%;
+        background-color: light-dark($p2-color, $s3-color); // Fondo dinámico
+        color: light-dark($w-color, $g3-color); // Texto dinámico
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        max-width: 850px;
+        margin: 2rem auto;
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+        box-shadow: 5px 5px 5px $b-color;
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+
+        &__titulo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            color: light-dark($w-color, $s2-color) !important; // Título dinámico
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid light-dark($s2-color, $t2-color);
+            padding-bottom: 0.7rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+
+            &:hover {
+                color: light-dark($t-color, $w-color);
+                transform: scale(1.05);
+            }
+        }
+
+        &__texto {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: light-dark($g3-color, $s2-color);
+            background: light-dark($p3-color, $b-color); // Fondo dinámico
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+
+            &:hover {
+                background: light-dark($p3-color, $b-color);
+            }
+
+            &.highlight {
+                background: light-dark($p3-color, $b-color);
+                font-weight: bold;
+            }
+        }
+
+        &__beneficios {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+
+            li {
+                background: light-dark($p-color, $s3-color); // Fondo de cada beneficio
+                padding: 12px 18px;
+                margin-bottom: 12px;
+                border-radius: 8px;
+                font-size: 1.8rem;
+                color: light-dark($w-color, $g3-color); // Color del texto
+                box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease, background-color 0.3s ease;
+                cursor: pointer;
+
+                &:hover {
+                    transform: translateX(10px);
+                    background: light-dark($s2-color, $p3-color);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                }
+
+                &.highlight {
+                    background: light-dark($t2-color, $p2-color);
+                    font-weight: bold;
+                }
+            }
+        }
+
+        &__cierre {
+            font-weight: 700;
+            color: light-dark($t-color, $g3-color);
+            border-left: 5px solid light-dark($t2-color, $b-color);
+            padding-left: 15px;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+
+            &:hover {
+                color: light-dark($s-color, $w-color);
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .guiones__detalles {
+        margin-bottom: 15px;
+        background-color: light-dark($p3-color, $b-color); // Fondo dinámico
+        border-radius: 8px;
+        padding: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .guiones__detalles[open] {
+        background-color: light-dark($p3-color, $b-color);
+    }
+
+    .guiones__titulo {
+        cursor: pointer;
+        font-weight: bold;
+        color: light-dark(#007bff, $s2-color);
+        transition: color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            color: light-dark(#0056b3, $t-color);
+            transform: scale(1.05);
+        }
+    }
+
+    .guiones__detalles[open] .guiones__titulo {
+        color: light-dark(#0056b3, $s2-color);
+    }
+
+    .guiones__beneficios {
+        padding-left: 20px;
+    }
+
+    .guiones__beneficio {
+        list-style-type: disc;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease, background 0.3s ease;
+
+        &:hover {
+            transform: translateX(10px);
+            background-color: light-dark(#0056b3, $p3-color);
+            color: light-dark($w-color, $g3-color);
+        }
+    }
+}

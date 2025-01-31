@@ -27,6 +27,13 @@ import { CarteraYRediferido } from './components/Calculadoras/CarteraYRediferido
 import { SimuladorTDC } from './components/Calculadoras/SimuladorTDC/SimuladorTDC.jsx'
 import { SimuladorConsumo } from './components/Calculadoras/SimuladorConsumo/SimuladorConsumo.jsx'
 import { CarteraYRediferidodos } from './components/Calculadoras/CarteraYRediferidodos/CarteraYRediferidodos.jsx'
+import Galeria from './components/Galeria/Galeria.jsx'
+import Protocolo from './components/Guiones/GuionesTC/Protocolo.jsx'
+import Preaprobados from './components/Guiones/GuionesTC/Preaprobados.jsx'
+import Amparada from './components/Guiones/GuionesAmparada/ProtocoloAmprada.jsx'
+import CompraCartera from './components/Guiones/GuionesCC/ProtocoloCC.jsx'
+import AutoGestion from './components/Guiones/GuionesConsumo/ProtocoloAutogestion.jsx'
+import Rediferidos from './components/Guiones/GuionesRediferido/ProtocoloRediferidos.jsx'
 
 const App = () => {
 	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
@@ -47,32 +54,33 @@ const App = () => {
 			}
 		})
 		const sessionRec = document.querySelector('.sessionRec')
-		if(sessionRec){
+		if (sessionRec) {
 
 			if (sessionStorage.getItem('session') != 'true') {
-			
+
 				sessionRec.style.backgroundImage = `url(${imgCtrlAccesss})`
 				sessionRec.style.backgroundSize = 'cover'
 				sessionRec.style.backgroundRepeat = 'no-repeat'
 				sessionRec.style.backgroundPosition = 'center'
-				
+
 			}
 
 		}
-		
+
 	})
 	return (
 		<div className="app h" style={style.app}>
 			{/* <Navbar /> */}
 			<HorNav />
+			<Galeria />
 			{activeAppNote && <NoteApp />}
 			<section className="app__body" style={style.body}>
 				<Routes>
 					{/* aca cada bienvenida tendria su nombre de segmento */}
 					{dataNavbar.SEGMENTS.map((segment, i) => {
-						return <Route key={i} path={'/' + segment.segment} element={<Bienvenida nombre={segment.segment}/>} />
+						return <Route key={i} path={'/' + segment.segment} element={<Bienvenida nombre={segment.segment} />} />
 					})}
-					<Route path="/" element={<Bienvenida  nombre={"no"}/>} />
+					<Route path="/" element={<Bienvenida nombre={"no"} />} />
 
 					<Route path="/" element={<Bienvenida />} />
 					<Route path="/corrector" element={<Corrector />} />
@@ -93,6 +101,13 @@ const App = () => {
 					<Route path="/carteraYrediferidodos" element={<CarteraYRediferidodos />} />
 					<Route path="/SimuladorTDC" element={<SimuladorTDC />} />
 					<Route path="/SimuladorConsumo" element={<SimuladorConsumo />} />
+					<Route path="/tarjetacredito/protocolo" element={<Protocolo />} />
+					<Route path="/tarjetacredito/preaprobados" element={<Preaprobados />} />
+					<Route path="/amparada/amparada" element={<Amparada />} />
+					<Route path="/compracartera/compracartera" element={<CompraCartera />} />
+					<Route path="/consumo/consumo" element={<AutoGestion />} />
+					<Route path="/rediferidos/rediferidos" element={<Rediferidos />} />
+
 				</Routes>
 			</section>
 		</div>

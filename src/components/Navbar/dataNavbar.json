@@ -19,6 +19,10 @@
 		{
 			"segment": "Rediferido",
 			"icon": "IconPersonShelter"
+		},
+		{
+			"segment": "Tmk",
+			"icon": "IconPersonShelter"
 		}
 	],
 	"NAVBAR": [
@@ -44,18 +48,34 @@
 			]
 		},
 		{
-			"title": "Manual de Objeciones",
-			"route": "/amparada/manualobjeciones",
-			"icon": "tipify",
+			"title": "Guiones",
+			"route": "/tarjetacredito",
+			"icon": "IconArrowLeftRight",
 			"segments": [
-				"Amparada"
+				"Tarjeta de Crédito"
+			],
+			"dropDown": [
+				{
+					"title": "PROTOCOLO TDC",
+					"route": "/tarjetacredito/protocolo"
+				},
+				{
+					"title": "PROTOCOLO TDC PREAPROBADOS STOCK",
+					"route": "/tarjetacredito/preaprobados"
+				}
 			]
 		},
 		{
 			"title": "Activacion Digital",
 			"route": "/minichecklist",
 			"icon": "IconArrowLeftRight",
-			"segments": ["Amparada", "Consumo", "Compra Cartera", "Rediferido"],
+			"segments": [
+				"Amparada",
+				"Consumo",
+				"Compra Cartera",
+				"Rediferido",
+				"Tmk"
+			],
 			"dropDown": [
 				{
 					"title": "Cambio de Dirección",
@@ -77,7 +97,7 @@
 			"icon": "calc",
 			"segments": [
 				"Compra Cartera"
-			]	
+			]
 		},
 		{
 			"title": "Simulador Cartera y Rediferido",
@@ -85,7 +105,7 @@
 			"icon": "calc",
 			"segments": [
 				"Rediferido"
-			]	
+			]
 		},
 		{
 			"title": "Simulador tarjeta de credito",
@@ -107,7 +127,9 @@
 			"title": "Activacion Digital",
 			"route": "/minichecklist",
 			"icon": "IconArrowLeftRight",
-			"segments": ["Tarjeta de Crédito"],
+			"segments": [
+				"Tarjeta de Crédito"
+			],
 			"dropDown": [
 				{
 					"title": "Aceptación TD Preaprobado",
@@ -148,6 +170,14 @@
 			]
 		},
 		{
+			"title": "Guiones",
+			"route": "compracartera/compracartera",
+			"icon": "IconArrowLeftRight",
+			"segments": [
+				"Compra Cartera"
+			]
+		},
+		{
 			"title": "Manual de Objeciones",
 			"route": "/rediferido/manualobjeciones",
 			"icon": "tipify",
@@ -161,6 +191,30 @@
 			"icon": "IconCreditCard",
 			"segments": [
 				"Amparada"
+			]
+		},
+		{
+			"title": "Guiones",
+			"route": "amparada/amparada",
+			"icon": "IconArrowLeftRight",
+			"segments": [
+				"Amparada"
+			]
+		},
+		{
+			"title": "Guiones",
+			"route": "consumo/consumo",
+			"icon": "IconArrowLeftRight",
+			"segments": [
+				"Consumo"
+			]
+		},
+		{
+			"title": "Guiones",
+			"route": "rediferidos/rediferidos",
+			"icon": "IconArrowLeftRight",
+			"segments": [
+				"Rediferido"
 			]
 		},
 		{

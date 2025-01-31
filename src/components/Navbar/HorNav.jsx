@@ -26,7 +26,7 @@ import GlobalContext from '../../context/GlobalContext'
 import IconUpload from '../../icons/IconUpload'
 import InconSpell from '../../icons/InconSpell'
 import IconGuide from '../../icons/IconGuide'
-import {IconCreditCard} from '../../icons/IconCreditCard'
+import { IconCreditCard } from '../../icons/IconCreditCard'
 import { IconDollarTicked } from '../../icons/IconDollarTicked'
 import { IconArrowLeftRight } from '../../icons/IconArrowLeftRight'
 import { IconCovered } from '../../icons/IconCovered'
@@ -43,6 +43,8 @@ import SpotlightSearch from './components/SpotlightSearch'
 import Swal from 'sweetalert2'
 
 const HorNav = () => {
+
+
 	const navigate = useNavigate()
 	const scrollContainerRef = useRef(null)
 	const dropDownRef = useRef(null)
@@ -66,7 +68,7 @@ const HorNav = () => {
 		catalogue: <IconCatalog />,
 		timeLine: <IconTimeLine />,
 		admin: <IconUserTea />,
-		IconCreditCard:  <IconCreditCard />,
+		IconCreditCard: <IconCreditCard />,
 		IconDollarTicked: <IconDollarTicked />,
 		IconArrowLeftRight: <IconArrowLeftRight />,
 		IconCovered: <IconCovered />,
@@ -540,7 +542,7 @@ const HorNav = () => {
 						<img src={imgLogo} alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">V.2.2.7</span>
+					<span className="hornav__logos--version">V.2.2.8</span>
 				</div>
 			</nav>
 

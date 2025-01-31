@@ -42,14 +42,17 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
+
 		& span {
 			display: block;
 			font-size: 6rem;
 			color: $p-color;
+
 			& strong {
 				font-size: 8rem;
 				color: $s2-color;
 			}
+
 			&:nth-child(2) {
 				margin-bottom: 2rem;
 			}
@@ -74,6 +77,7 @@
 			align-items: center;
 			justify-content: center;
 			padding-left: 2rem;
+
 			&.news {
 				position: static;
 				bottom: 0;

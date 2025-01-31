@@ -1,0 +1,121 @@
+// Variables de color
+$background-color: #292c35;
+$grey-color: #74767b;
+$grey2-color: #b0b0b4;
+$grey3-color: #efeff1;
+$white-color: #fff;
+
+$primary-color: #004082;
+$primary2-color: #003161;
+$primary3-color: #001b36;
+$primary4-color: #001b36;
+
+$secondary-color: #65CAFE;
+$secondary2-color: #53a5ce;
+$secondary3-color: #376f8b;
+$secondary4-color: #264c5f;
+
+$tertiary-color: #1cf200;
+$tertiary2-color: #169c04;
+
+$alert-color: #ff4c4c;
+$alert2-color: #bd0000;
+
+// Bloques y elementos BEM
+.galeria {
+    &__container {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 500;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__button {
+        width: 80%;
+        min-width: 130px;
+        background-color: $primary-color;
+        color: $white-color;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 10px 0;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        text-transform: uppercase;
+        text-align: center;
+        border: 2px solid $secondary2-color;
+
+        &:hover {
+            background-color: $primary2-color;
+        }
+    }
+
+    &__submenu {
+        width: 245px;
+        background-color: $grey3-color;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__image-button {
+        background-color: $secondary-color;
+        color: $background-color;
+        border: none;
+        width: 90%;
+        padding: 8px 16px;
+        margin: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        text-transform: uppercase;
+        box-shadow: 5px 5px 5px #001b36;
+
+        &:hover {
+            background-color: $secondary2-color;
+            transform: scale(1.1);
+        }
+    }
+
+    &__modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        cursor: pointer;
+    }
+
+    &__modal-content {
+        background-color: $white-color;
+
+        border-radius: 10px;
+        cursor: default;
+    }
+
+    &__modal-image {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+    }
+}
+
+.galeria__image-button.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
