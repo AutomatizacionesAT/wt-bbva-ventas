@@ -73,8 +73,7 @@
 				"Amparada",
 				"Consumo",
 				"Compra Cartera",
-				"Rediferido",
-				"Tmk"
+				"Rediferido"
 			],
 			"dropDown": [
 				{
@@ -88,6 +87,14 @@
 				{
 					"title": "Aceptación Consumo",
 					"route": "minichecklist/aceptacionconsumo"
+				},
+				{
+					"title": "Pago con Puntos BBVA",
+					"route": "minichecklist/pagoconpuntosbbva"
+				},
+				{
+					"title": "Cashback BBVA NET",
+					"route": "minichecklist/cashbackbbvanet"
 				}
 			]
 		},
@@ -150,6 +157,22 @@
 				{
 					"title": "Aceptación Consumo",
 					"route": "minichecklist/aceptacionconsumo"
+				},
+				{
+					"title": "Registro BBVA NET",
+					"route": "minichecklist/registrobbvanet"
+				},
+				{
+					"title": "Aceptacion Retanqueo BBVA NET",
+					"route": "minichecklist/aceptacionretanqueo"
+				},
+				{
+					"title": "Pago con Puntos BBVA",
+					"route": "minichecklist/pagoconpuntosbbva"
+				},
+				{
+					"title": "Cashback BBVA NET",
+					"route": "minichecklist/cashbackbbvanet"
 				}
 			]
 		},
@@ -223,6 +246,53 @@
 			"icon": "IconDollarTicked",
 			"segments": [
 				"Tarjeta de Crédito"
+			]
+		},
+		{
+			"title": "Activacion Digital",
+			"route": "/minichecklist",
+			"icon": "IconArrowLeftRight",
+			"segments": [
+				"Tmk"
+			],
+			"dropDown": [
+				{
+					"title": "Adelanto de Nomina",
+					"route": "minichecklist/adelantonomina"
+				},
+				{
+					"title": "Cambio de Dirección",
+					"route": "minichecklist/cambiodireccion"
+				},
+				{
+					"title": "Activación Token",
+					"route": "minichecklist/activaciontoken"
+				},
+				{
+					"title": "Aceptación Consumo",
+					"route": "minichecklist/aceptacionconsumo"
+				},
+				{
+					"title": "Pago con Puntos BBVA",
+					"route": "minichecklist/pagoconpuntosbbva"
+				},
+				{
+					"title": "Cashback BBVA NET",
+					"route": "minichecklist/cashbackbbvanet"
+				}
+			]
+		},
+		{
+			"title": "Aplicativos Web",
+			"route": "/aplicativos",
+			"icon": "web",
+			"segments": [
+				"Tarjeta de Crédito",
+				"Amparada",
+				"Consumo",
+				"Compra Cartera",
+				"Rediferido",
+				"Tmk"
 			]
 		}
 	]

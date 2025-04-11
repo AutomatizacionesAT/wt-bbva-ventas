@@ -75,8 +75,8 @@ const CambioDireccion = () => {
     const formatText = (text) => {
         const parts = text.split(/&bold(.*?)&bold/); // Dividir el texto en partes según el patrón
         return parts.map((part, index) => {
-          // Aplicar negrita a las partes que estaban entre &bold
-          return index % 2 === 1 ? <strong key={index}>{part}</strong> : part;
+            // Aplicar negrita a las partes que estaban entre &bold
+            return index % 2 === 1 ? <strong key={index}>{part}</strong> : part;
         });
     };
 
@@ -86,7 +86,7 @@ const CambioDireccion = () => {
             <div className='left'>
                 <h2>Paso <span>{currentStep + 1}</span> </h2>
                 <div className="stepper">
-                <p>{formatText(steps[currentStep].title)}</p>
+                    <p>{formatText(steps[currentStep].title)}</p>
                 </div>
                 <div className="stepper-controls">
                     <button onClick={handlePrevious} disabled={currentStep === 0}>&lt;</button>

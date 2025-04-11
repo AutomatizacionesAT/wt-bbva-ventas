@@ -1,0 +1,89 @@
+{
+    "aplicativos": [
+        {
+            "titulo": "FIVE 9",
+            "imagen": "five9.png",
+            "link": "https://login.five9.com/"
+        },
+        {
+            "titulo": "G.A.P",
+            "imagen": "gap.png",
+            "link": "http://172.16.183.76/ControlAsistencia/login.php"
+        },
+        {
+            "titulo": "KACKTUS-DESPRENDIBLES, CARTA LABORAL",
+            "imagen": "kacktus.png",
+            "link": "https://cajerokactus.atento.com.co:8443/WebKactus/frmLogin.aspx"
+        },
+        {
+            "titulo": "ECCUS-NOTA CALIDAD",
+            "imagen": "eccus.png",
+            "link": "http://172.16.183.59/tm_eccus/"
+        },
+        {
+            "titulo": "EN DIRECTO- VARIABLES",
+            "imagen": "endirecto.png",
+            "link": "http://172.16.183.76/endirecto/web/index.php/main/login"
+        },
+        {
+            "titulo": "CAFE OPERA",
+            "imagen": "cafeopera.png",
+            "link": "https://cafesite4.atento.com.co:11004/cafe_BBVA"
+        },
+        {
+            "titulo": "Google maps",
+            "imagen": "googlemaps.png",
+            "link": "https://www.google.com/maps/@4.8316067,-75.7255405,12z?entry=ttu"
+        },
+        {
+            "titulo": "MATERIAL DE APOYO TDC",
+            "imagen": "materialtdc.png",
+            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/1.%20TDC/Material%20TDC%20Actualizado%2012-03-2025.pdf"
+        },
+        {
+            "titulo": "MATERIAL DE APOYO TDC AMPARADA",
+            "imagen": "materialtdcamparada.png",
+            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/2.%20Amparada/Material%20TDC%20AMPARADA%20Actualizado%2012-03-2025.pdf"
+        },
+        {
+            "titulo": "MATERIAL DE APOYO CONSUMO",
+            "imagen": "materialconsumo.png",
+            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/3.%20Credito%20de%20Consumo/Material%20Consumo%20BBVA%20Ventas%202024%20Original.pdf"
+        },
+        {
+            "titulo": "MATERIAL DE APOYO REDIFERIDOS",
+            "imagen": "materialrediferidos.png",
+            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/5.%20Rediferidos/Material%20Rediferidos%20BBVA%20Ventas%202024%20Original.pdf"
+        },
+        {
+            "titulo": "MATERIAL DE APOYO COMPRA DE CARTERA",
+            "imagen": "materialcompracartera.png",
+            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/4.%20Compra%20de%20Cartera/Material%20CC%20BBVA%20Ventas%202024%20Original.pdf"
+        },
+        {
+            "titulo": "ACADEMIA ATENTO",
+            "imagen": "academiaatento.png",
+            "link": "https://academia.atento.com.co/academia/login/index.php"
+        },
+        {
+            "titulo": "BANCO BBVA",
+            "imagen": "bancoBBVA.png",
+            "link": "https://www.bbva.com.co/personas/productos/tarjetas/beneficios.html"
+        },
+        {
+            "titulo": "3270",
+            "imagen": "3270.png",
+            "link": "\\\\Colbogfile40\\bbva$\\Agentes\\Aplicativos\\BBVA 3270.ws"
+        },
+        {
+            "titulo": "CALCULADORA",
+            "imagen": "calculadora.png",
+            "link": "\\\\Colbogfile40\\bbva$\\Agentes\\Aplicativos\\Calculadora.lnk"
+        },
+        {
+            "titulo": "LOGGER",
+            "imagen": "logger.png",
+            "link": "\\\\127.0.0.1\\c$\\Atento\\Menulnicio\\Logger.lnk"
+        }
+    ]
+}

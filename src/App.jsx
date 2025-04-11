@@ -14,6 +14,11 @@ import ActivacionToken from './components/MiniChecklist/ActivacionToken/Activaci
 import AceptacionPreApro from './components/MiniChecklist/AceptacionPreApro/AceptacionPreApro.jsx'
 import ActivacionTD from './components/MiniChecklist/ActivacionTD/ActivacionTD.jsx'
 import AceptacionCreditoConsumo from './components/MiniChecklist/AceptacionCreditoConsumo/AceptacionCreditoConsumo.jsx'
+import RegistroBBVANet from './components/MiniChecklist/RegistroBBVANet/RegistroBBVANet.jsx'
+import AceptacionRetanqueo from './components/MiniChecklist/AceptacionRetanqueo/AceptacionRetanqueo.jsx'
+import AdelantoNomina from './components/MiniChecklist/AdelantoNomina/AdelantoNomina.jsx'
+import PagoConPuntosBBVA from './components/MiniChecklist/PagoConPuntosBBVA/PagoConPuntosBBVA.jsx'
+import CashbackBBVANET from './components/MiniChecklist/CashbackBBVANET/CashbackBBVANET.jsx'
 import GlobalContext, { GlobalProvider } from './context/GlobalContext'
 import { useContext, useEffect } from 'react'
 import { NoteApp } from './components/NoteApp/NoteApp.jsx'
@@ -34,6 +39,7 @@ import Amparada from './components/Guiones/GuionesAmparada/ProtocoloAmprada.jsx'
 import CompraCartera from './components/Guiones/GuionesCC/ProtocoloCC.jsx'
 import AutoGestion from './components/Guiones/GuionesConsumo/ProtocoloAutogestion.jsx'
 import Rediferidos from './components/Guiones/GuionesRediferido/ProtocoloRediferidos.jsx'
+import Aplicativos from './components/aplicativos-web/AplicativosGrid.jsx'
 
 const App = () => {
 	const { scheme, activeAppNote, showApp } = useContext(GlobalContext)
@@ -94,6 +100,8 @@ const App = () => {
 					<Route path="/minichecklist/aceptacionpreaprobado" element={<AceptacionPreApro />} />
 					<Route path="/minichecklist/activaciontarjetacredito" element={<ActivacionTD />} />
 					<Route path="/minichecklist/aceptacionconsumo" element={<AceptacionCreditoConsumo />} />
+					<Route path="/minichecklist/registrobbvanet" element={<RegistroBBVANet />} />
+					<Route path="/minichecklist/aceptacionretanqueo" element={<AceptacionRetanqueo />} />
 					<Route path="/beneficiosdetarjeta" element={<TarjetasCredito />} />
 					<Route path="/beneficiosdetarjetaamparada" element={<TarjetasCreditoAmparada />} />
 					<Route path="/cuotasmanejo" element={<CuotasManejo />} />
@@ -107,7 +115,10 @@ const App = () => {
 					<Route path="/compracartera/compracartera" element={<CompraCartera />} />
 					<Route path="/consumo/consumo" element={<AutoGestion />} />
 					<Route path="/rediferidos/rediferidos" element={<Rediferidos />} />
-
+					<Route path="/aplicativos" element={<Aplicativos />} />
+					<Route path="/minichecklist/adelantonomina" element={<AdelantoNomina />} />
+					<Route path="/minichecklist/pagoconpuntosbbva" element={<PagoConPuntosBBVA />} />
+					<Route path="/minichecklist/cashbackbbvanet" element={<CashbackBBVANET />} />
 				</Routes>
 			</section>
 		</div>
