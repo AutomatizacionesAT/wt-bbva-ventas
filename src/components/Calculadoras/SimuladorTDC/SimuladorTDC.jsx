@@ -16,7 +16,13 @@ export const SimuladorTDC = () => {
         gracia: "0",
         graciaFormated: "0",
         tipo: "Facturación",
-        tipoFormated: "Facturación"
+        tipoFormated: "Facturación",
+        monto: "",
+        montoFormated: "",
+        cuotas: "",
+        cuotasFormated: "",
+        tasa: "",
+        tasaFormated: ""
     });
     console.log(datos)
 
@@ -39,21 +45,21 @@ export const SimuladorTDC = () => {
             portalElement.classList.remove('portalGeneral--enable');
         }
     }, [isPortalOpen]);
-    
+
     useEffect(() => {
         // Función que detecta la tecla presionada
         const handleKeyDown = (event) => {
-          if (event.key === 'Escape') {
-            setIsPortalOpen(false);
-          }
+            if (event.key === 'Escape') {
+                setIsPortalOpen(false);
+            }
         };
-    
+
         // Agregar el evento de escucha al montar el componente
         window.addEventListener('keydown', handleKeyDown);
-    
+
         // Limpieza del evento al desmontar el componente
         return () => {
-          window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
 
@@ -99,60 +105,71 @@ export const SimuladorTDC = () => {
 
     // sa formato y guarda el valor de los inputs
     const handleInputFormat = (value, formato, dato, datoformated) => {
+        let newDatos = { ...datos };
 
         switch (formato) {
             case 'pesos':
                 const valorPuroPesos = value.replace(/\D/g, '').trim();
-                
-                const valueFormatedPesos = valorPuroPesos.length > 0 ? `$ `+ valorPuroPesos.replace(/\B(?=(\d{3})+(?!\d))/g, '.') : "";
-               
-                setDatos({ ...datos, [dato]: valorPuroPesos, [datoformated]: valueFormatedPesos });
+                const valueFormatedPesos = valorPuroPesos.length > 0 ? `$ ` + valorPuroPesos.replace(/\B(?=(\d{3})+(?!\d))/g, '.') : "";
+                newDatos[dato] = valorPuroPesos;
+                newDatos[datoformated] = valueFormatedPesos;
                 break;
 
             case 'fecha':
-                setDatos({ ...datos, [dato]: value , [datoformated]: value });
+                newDatos[dato] = value;
+                newDatos[datoformated] = value;
                 break;
 
             case 'number':
                 const valorPuroNumero = value.replace(/\D/g, '').trim();
                 const valueFormatedNumero = valorPuroNumero.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-                setDatos({ ...datos, [dato]: valorPuroNumero, [datoformated]: valueFormatedNumero });
+                newDatos[dato] = valorPuroNumero;
+                newDatos[datoformated] = valueFormatedNumero;
                 break;
-            
+
             case 'porcentaje':
                 const valorPuroPorcentaje = value.replace(/[^\d,]/g, '').trim();
                 const valorFormatedPorcentaje = valorPuroPorcentaje.length > 0 ? `% ${valorPuroPorcentaje}` : "";
-                setDatos({ ...datos, [dato]: valorPuroPorcentaje, [datoformated]: valorFormatedPorcentaje });
+                newDatos[dato] = valorPuroPorcentaje.replace(',', '.');
+                newDatos[datoformated] = valorFormatedPorcentaje;
                 break;
-                
+
             default:
-                setDatos({ ...datos, [dato]: value, [datoformated]: value });
-                break
+                newDatos[dato] = value;
+                newDatos[datoformated] = value;
+                break;
         }
 
+        setDatos(newDatos);
     };
 
     //limpia el formulario
     const handleReset = (e) => {
-      
-        e? e.preventDefault() : '';
+
+        e ? e.preventDefault() : '';
         setDatos({
             fechaoperacion: format(new Date(), 'yyyy-MM-dd'),
             fechaoperacionFormated: format(new Date(), 'yyyy-MM-dd'),
             gracia: "0",
             graciaFormated: "0",
             tipo: "Facturación",
-            tipoFormated: "Facturación"
+            tipoFormated: "Facturación",
+            monto: "",
+            montoFormated: "",
+            cuotas: "",
+            cuotasFormated: "",
+            tasa: "",
+            tasaFormated: ""
         });
     };
 
 
     //click a calcular y hace los calculos
     const handleCalculate = (e) => {
+        e.preventDefault();
 
-        e? e.preventDefault() : '';
-        //si algun valor esta vacio da false pero negando dara true y dispara la alerta y no continua por el return
-        if(!datos.monto || !datos.cuotas || !datos.tasa || !datos.gracia || !datos.tipo) {
+        // Validación de campos requeridos
+        if (!datos.monto || !datos.cuotas || !datos.tasa || !datos.gracia || !datos.tipo) {
             Swal.fire({
                 title: 'Error',
                 text: 'Por favor completa todos los campos requeridos.',
@@ -162,44 +179,53 @@ export const SimuladorTDC = () => {
             return;
         }
 
+        try {
+            const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas));
+            const diasDiferencia = calcularDiferenciaDias(fechas);
+            const periodoALiquidar = calcularPeriodoALiquidar(Number(datos.cuotas));
+            const baseDiasAno = calcularBaseDias(fechas, Number(datos.cuotas));
+            const diasFaltantes = calcularDiasFaltantes(diasDiferencia, datos.cuotas);
+            const tasaDeInteresIpt = calcularTasaDeInteresIpt(datos.tasa, diasDiferencia, baseDiasAno, Number(datos.cuotas));
+            const relacion = calcularRelacion(diasFaltantes, diasDiferencia, Number(datos.cuotas));
+            const periodosFaltantes = calcularPeriodosFaltantes(periodoALiquidar, Number(datos.cuotas));
+            const factor = calcularFactor(tasaDeInteresIpt, datos.tasa, periodosFaltantes, relacion, Number(datos.cuotas));
 
-        const fechas = calcularFechasCuotas(datos.fechaoperacion, Number(datos.cuotas)); //llama una funcion para retornar un array con el ultimo dia de cada mes segun el numero de cuotas
+            const calculos = calcularCalculos(
+                Number(datos.cuotas),
+                Number(datos.monto),
+                factor,
+                tasaDeInteresIpt,
+                Number(datos.gracia),
+                periodoALiquidar,
+                datos.tipo
+            );
 
-        const diasDiferencia = calcularDiferenciaDias(fechas); // la funcion me retorna un array con la diferencia de dias entre mes y mes
-        console.log(diasDiferencia)
-        const periodoALiquidar = calcularPeriodoALiquidar(Number(datos.cuotas)); // este es para saber en que cuota estamos
-        
-        const baseDiasAno = calcularBaseDias(fechas, Number(datos.cuotas));
-        console.log(baseDiasAno)
-        const diasFaltantes = calcularDiasFaltantes(diasDiferencia, datos.cuotas)
-        const tasaDeInteresIpt = calcularTasaDeInteresIpt(datos.tasa, diasDiferencia, baseDiasAno, Number(datos.cuotas))
-        console.log(tasaDeInteresIpt)
-        const relacion = calcularRelacion(diasFaltantes, diasDiferencia, Number(datos.cuotas)) 
-        const periodosFaltantes = calcularPeriodosFaltantes(periodoALiquidar, Number(datos.cuotas))
-        const factor = calcularFactor(tasaDeInteresIpt, datos.tasa, periodosFaltantes, relacion, Number(datos.cuotas))
+            setDatos(prevState => ({
+                ...prevState,
+                fechasCuotas: fechas,
+                diasDiferencia: diasDiferencia,
+                saldoInicial: calculos.saldoInicial,
+                valorCuota: calculos.valorCuota,
+                abonoCapital: calculos.valorAbono,
+                valorInteres: calculos.valorInteresPeriodo,
+                pagoMinimo: calculos.pagoMinimo,
+                saldoFinal: calculos.saldoFinal,
+                promedioCuota: calculos.promedioCuota,
+                interesTotal: calculos.interesTotal,
+                totalConIntereses: calculos.totalConInteres,
+                periodoALiquidar: periodoALiquidar,
+            }));
 
-
-        const calculos = calcularCalculos(Number(datos.cuotas), datos.monto, factor, tasaDeInteresIpt, Number(datos.gracia), periodoALiquidar, datos.tipo);
-
-
-        //datos para mostrar en el portal
-        setDatos(prevState => ({
-            ...prevState, 
-            fechasCuotas: fechas,
-            diasDiferencia: diasDiferencia,
-            saldoInicial: calculos.saldoInicial,
-            valorCuota: calculos.valorCuota,
-            abonoCapital: calculos.valorAbono,
-            valorInteres: calculos.valorInteresPeriodo,
-            pagoMinimo: calculos.pagoMinimo,
-            saldoFinal: calculos.saldoFinal,
-            promedioCuota: calculos.promedioCuota,
-            interesTotal: calculos.interesTotal,
-            totalConIntereses: calculos.totalConInteres,
-            periodoALiquidar: periodoALiquidar,
-        }));
-
-        togglePortal();
+            togglePortal();
+        } catch (error) {
+            console.error('Error en el cálculo:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Ha ocurrido un error en el cálculo. Por favor verifica los datos ingresados.',
+                icon: 'error',
+                confirmButtonText: 'Entendido'
+            });
+        }
     };
 
 
@@ -207,39 +233,39 @@ export const SimuladorTDC = () => {
     //calcula fechas segun las cuotas diferidas
     const calcularFechasCuotas = (fechaBase, numCuotas) => {
         console.log(fechaBase, numCuotas);
-    
+
         // El valor llega como 2024-01-20 pero para leerlo con la librería fns debe ser 2024/01/20
         const numeroCuotasFormatted = fechaBase.toString().replace(/-/g, '/');
-        
+
         // Inicializa el array de fechas con la fecha base formateada
-        let fechas = [format(new Date(numeroCuotasFormatted), 'yyyy-MM-dd')]; 
-    
+        let fechas = [format(new Date(numeroCuotasFormatted), 'yyyy-MM-dd')];
+
         console.log(fechas);
-    
+
         // Bucle para generar las fechas
         for (let i = 0; i < numCuotas; i++) {
             // Calcular la fecha del siguiente mes
             const fechaMesSiguiente = addMonths(new Date(fechaBase), i);
             const ultimoDiaMes = lastDayOfMonth(fechaMesSiguiente);
-    
+
             // Formatear la fecha para hacer la comparación
             const fechaFormateada = format(ultimoDiaMes, 'yyyy-MM-dd');
-    
+
             // Buscar si la fecha está en `fechasDiferentes`
             const fechaEncontrada = fechasDiferentes.find(ele => ele.fecha === fechaFormateada);
             const diasARestar = fechaEncontrada ? fechaEncontrada.dia : 0;
-    
+
             // Restar los días si es necesario
             const fechaFinal = new Date(ultimoDiaMes);
             fechaFinal.setDate(fechaFinal.getDate() - diasARestar);
-    
+
             // Agregar la fecha ajustada al array
             fechas.push(format(fechaFinal, 'yyyy-MM-dd'));
         }
-    
+
         return fechas;
     };
-    
+
 
 
     //calcula la diferencia de dias entre fechas
@@ -258,17 +284,17 @@ export const SimuladorTDC = () => {
     //esta funcion retorna 0 1 2 3 4 5 etc ... segun las cuotas
     const calcularPeriodoALiquidar = (num) => {
         let contador = [];
-        for (let i = 0; i <= num ; i++) {
-            
+        for (let i = 0; i <= num; i++) {
+
             contador.push(i);
         }
         return contador
     }
-     
-    
+
+
     // calcula si el año en donde se calcula la fecha es bisiesto y de ser asi retorna 366 dias o 365 si no lo es
     const calcularBaseDias = (fechas, base) => {
-        
+
         let arraydias = [];
 
         const fechaActualConBarras = fechas.map((ele, ind) => {
@@ -280,7 +306,7 @@ export const SimuladorTDC = () => {
 
             return new Date(elem);
 
-        }) 
+        })
 
         for (let i = 0; i <= base; i++) {
             let esBisiesto = (fechaObjetos[i].getFullYear() % 4 === 0 && (fechaObjetos[i].getFullYear() % 100 !== 0 || fechaObjetos[i].getFullYear() % 400 === 0));
@@ -297,22 +323,22 @@ export const SimuladorTDC = () => {
     const calcularDiasFaltantes = (arraDias, contador) => {
 
         let diasFaltantes = [];
-        
+
         const sumarDias = arraDias.reduce((a, b) => a + b, 0);
         let acomulador = sumarDias;
 
 
         for (let i = 0; i <= contador; i++) {
-            if(i === 0){
+            if (i === 0) {
                 diasFaltantes.push(0);
-            } else if(i === 1) {
+            } else if (i === 1) {
                 diasFaltantes.push(acomulador);
             } else {
                 acomulador = acomulador - arraDias[i - 1];
                 diasFaltantes.push(acomulador);
             }
 
-            
+
         }
 
         return diasFaltantes
@@ -322,20 +348,20 @@ export const SimuladorTDC = () => {
     //sacar tasa de interes IPT jersson pendiente para el valor sin tantos 0 o con este esta bien
     const calcularTasaDeInteresIpt = (porcentajetasa, diasperiodo, basediasanio, contador) => {
         const porcentajeFormated = Number(porcentajetasa.replace(',', '.'));
-        
-        const valorDividido = (porcentajeFormated/100) + 1
+
+        const valorDividido = (porcentajeFormated / 100) + 1
 
 
         let ipt = [];
         for (let i = 0; i <= contador; i++) {
-            if(i === 0) {
+            if (i === 0) {
                 ipt.push(0);
             } else {
                 console.log(diasperiodo[i], basediasanio[i])
-                
-                ipt.push( Number(Math.pow(valorDividido, (diasperiodo[i] / basediasanio[i])) - 1))
+
+                ipt.push(Number(Math.pow(valorDividido, (diasperiodo[i] / basediasanio[i])) - 1))
             }
-            
+
         }
         // console.log(ipt)
         return ipt;
@@ -352,14 +378,14 @@ export const SimuladorTDC = () => {
             } else {
                 relacion.push(diasrestados[i] / diferenciadias[i])
             }
-            
+
         }
         return relacion
     }
-        
+
     // devuelve el resultado opuesto de 
     const calcularPeriodosFaltantes = (periodoALiquidar, contador) => {
-        
+
         let periodosFaltantes = [];
         for (let i = 0; i <= contador; i++) {
             if (i === 0) {
@@ -367,7 +393,7 @@ export const SimuladorTDC = () => {
             } else {
                 periodosFaltantes.push(contador - periodoALiquidar[i - 1])
             }
-            
+
         }
         return periodosFaltantes
     }
@@ -380,13 +406,13 @@ export const SimuladorTDC = () => {
         for (let i = 0; i <= contador; i++) {
             if (i === 0) {
                 factor.push(0);
-            } else if (tasaipt === 0 ) {
+            } else if (tasaipt === 0) {
                 factor.push(0);
             } else if (tasa === 0) {
                 factor.push(periodosf[i]);
             } else {
 
-                factor.push((1 - Math.pow(1 + tasaipt[i], -rela[i])) /  tasaipt[i]);
+                factor.push((1 - Math.pow(1 + tasaipt[i], -rela[i])) / tasaipt[i]);
             }
 
 
@@ -401,7 +427,7 @@ export const SimuladorTDC = () => {
 
         let montoNum = Number(monto);
 
-        let interesPendiente = tipo == 'Facturación' && contador > 2 ? (Number(monto)*ipt[1]) : 0;
+        let interesPendiente = tipo == 'Facturación' && contador > 2 ? (Number(monto) * ipt[1]) : 0;
 
 
         let valorCuota = [];
@@ -439,7 +465,7 @@ export const SimuladorTDC = () => {
                     valorInteresPeriodo.push(montoNum * ipt[i])
                 }
 
-                abonoCapital.push( valorCuota[i] - valorInteresPeriodo[i])
+                abonoCapital.push(valorCuota[i] - valorInteresPeriodo[i])
 
                 if (gracia === 1 && perili[1] === 1) {
                     cuotasss.push(-(abonoCapital[i]));
@@ -453,7 +479,7 @@ export const SimuladorTDC = () => {
                 }
 
                 let valorTotalCuotas = cuotasss[1] + cuotasDos[1];
-                pagoMinimo.push( valorTotalCuotas +  valorCuota[1]);
+                pagoMinimo.push(valorTotalCuotas + valorCuota[1]);
 
 
                 saldoInicial.push(montoNum);
@@ -474,7 +500,7 @@ export const SimuladorTDC = () => {
                     valorInteresPeriodo.push((montoNum * ipt[i]) + interesPendiente)
                 }
 
-                abonoCapital.push( valorCuota[i] - valorInteresPeriodo[i])
+                abonoCapital.push(valorCuota[i] - valorInteresPeriodo[i])
 
                 if (gracia === 1 && perili[2] === 1) {
                     cuotasss.push(-(abonoCapital[i]));
@@ -483,25 +509,25 @@ export const SimuladorTDC = () => {
                     cuotasss.push(0);
                     cuotasDos.push(valorInteresPeriodo[1]);
                 } else {
-                    
+
                     cuotasss.push(0);
                     cuotasDos.push(0);
                 }
 
                 let valorTotalCuotas = cuotasss[2] + cuotasDos[2];
-                
-                pagoMinimo.push( valorTotalCuotas +  valorCuota[2]);
+
+                pagoMinimo.push(valorTotalCuotas + valorCuota[2]);
 
                 saldoInicial.push(montoNum);
                 saldoFinal.push(saldoInicial[i] - abonoCapital[i] - cuotasss[i]);
                 montoNum = montoNum - abonoCapital[i] - cuotasss[i];
-                
+
             } else {
 
                 if (fact[i] === 0) {
                     valorCuota.push(0);
                 } else {
-                    
+
                     valorCuota.push(montoNum / fact[i])
                 }
 
@@ -511,7 +537,7 @@ export const SimuladorTDC = () => {
                     valorInteresPeriodo.push(montoNum * ipt[i])
                 }
 
-                abonoCapital.push( valorCuota[i] - valorInteresPeriodo[i])
+                abonoCapital.push(valorCuota[i] - valorInteresPeriodo[i])
 
                 if (gracia === 1 && perili[i] === 1) {
                     cuotasss.push(-(abonoCapital[i]));
@@ -520,27 +546,27 @@ export const SimuladorTDC = () => {
                     cuotasss.push(0);
                     cuotasDos.push(0);
                 } else {
-                    
+
                     cuotasss.push(0);
                     cuotasDos.push(0);
                 }
 
                 let valorTotalCuotas = 0;
-                
-                pagoMinimo.push( valorTotalCuotas +  valorCuota[i]);
+
+                pagoMinimo.push(valorTotalCuotas + valorCuota[i]);
 
                 saldoInicial.push(montoNum);
-                saldoFinal.push((saldoInicial[i] - abonoCapital[i] - cuotasss[i])< 0 ? 0 : saldoInicial[i] - abonoCapital[i] - cuotasss[i]);
+                saldoFinal.push((saldoInicial[i] - abonoCapital[i] - cuotasss[i]) < 0 ? 0 : saldoInicial[i] - abonoCapital[i] - cuotasss[i]);
                 montoNum = montoNum - abonoCapital[i] - cuotasss[i];
 
-                
+
             }
         }
 
 
         let promedioCuota = (pagoMinimo.reduce((a, b) => a + b, 0) / (gracia + contador));
-        let interesTotal = (valorInteresPeriodo.reduce((a, b) => a + b, 0) ); 
-        let totalConInteres = ( pagoMinimo.reduce((a, b) => a + b, 0) )
+        let interesTotal = (valorInteresPeriodo.reduce((a, b) => a + b, 0));
+        let totalConInteres = (pagoMinimo.reduce((a, b) => a + b, 0))
 
         // console.log(`valor cuota ${valorCuota}`)
         // console.log(`valor interes  periodo${valorInteresPeriodo}`)
@@ -575,30 +601,30 @@ export const SimuladorTDC = () => {
             <div className="carterarediferido__container">
                 <div className='carterarediferido__animation'>
                     <div className="wrapper">
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                    <aside className="ring"></aside>
-                </div>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                        <aside className="ring"></aside>
+                    </div>
                 </div>
                 <form className="carterarediferido__form" action="">
-                    
+
                     <div className={`carterarediferido__input ${datos.monto > 0 ? 'active' : ''}`}>
                         <input
                             type="text"
@@ -611,8 +637,8 @@ export const SimuladorTDC = () => {
                         <label>Monto:</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.fechaoperacion != undefined? 'active' : ''} hide`}>
-                        
+                    <div className={`carterarediferido__input ${datos.fechaoperacion != undefined ? 'active' : ''} hide`}>
+
                         <input
                             type="date"
                             onChange={(e) => handleInputFormat(e.target.value, 'fecha', 'fechaoperacion', 'fechaoperacionFormated')}
@@ -633,16 +659,16 @@ export const SimuladorTDC = () => {
                         <label>Cuotas Diferidas:</label>
                     </div>
 
-                    
 
-                    <div className={`carterarediferido__input ${datos.gracia != undefined? 'active' : ''} hide`}>
+
+                    <div className={`carterarediferido__input ${datos.gracia != undefined ? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
-                                d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
+                                    d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
                                 ></path>
                             </svg>
-                            <span className="carterarediferido__tooltip">Se aplica así: <br /> <br/> 1) Compra con diferido a 1 ó 2 cuotas y Todos los Avances: se le debe poner (0) <br /> <br /> 2) Compra de Cartera, Rediferidos y Compra con un diferido igual o superior a 3  meses: se le debe poner (1)</span>
+                            <span className="carterarediferido__tooltip">Se aplica así: <br /> <br /> 1) Compra con diferido a 1 ó 2 cuotas y Todos los Avances: se le debe poner (0) <br /> <br /> 2) Compra de Cartera, Rediferidos y Compra con un diferido igual o superior a 3  meses: se le debe poner (1)</span>
                         </div>
                         <select
                             onChange={(e) => handleInputFormat(e.target.value, 'select', 'gracia', 'graciaFormated')}
@@ -657,14 +683,14 @@ export const SimuladorTDC = () => {
                         <label>Periodo de Gracia:</label>
                     </div>
 
-                    <div className={`carterarediferido__input ${datos.tipo != undefined? 'active' : ''} hide`}>
+                    <div className={`carterarediferido__input ${datos.tipo != undefined ? 'active' : ''} hide`}>
                         <div className="carterarediferido__faq">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path
-                                d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
+                                    d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
                                 ></path>
                             </svg>
-                            <span className="carterarediferido__tooltip"> - Facturación = Compras PO <br/> <br/> <br/> - Compras Cartera = Demás Transacciones</span>
+                            <span className="carterarediferido__tooltip"> - Facturación = Compras PO <br /> <br /> <br /> - Compras Cartera = Demás Transacciones</span>
                         </div>
                         <select
                             onChange={(e) => handleInputFormat(e.target.value, 'select', 'tipo', 'tipoFormated')}
@@ -679,15 +705,13 @@ export const SimuladorTDC = () => {
                     </div>
 
                     <div className={`carterarediferido__input ${datos.tasa > 0 ? 'active' : ''}`}>
-                        <select
-                            onChange={(e) => handleInputFormat(e.target.value, 'select', 'tasa', 'tasaFormated')}
+                        <input
+                            type="text"
+                            onChange={(e) => handleInputFormat(e.target.value, 'porcentaje', 'tasa', 'tasaFormated')}
                             value={datos.tasaFormated || ""}
+                            placeholder="Ingrese la tasa"
                             required
-                        >
-                            <option value="">Seleccione...</option>
-                            <option value="24,86">% 24,86 VARIABLE MES A MES</option>
-                            <option value="20">% 20 FIJA PERMANENTE</option>
-                        </select>
+                        />
                         <label>Tasa E.A:</label>
                     </div>
 
@@ -698,7 +722,7 @@ export const SimuladorTDC = () => {
                             onClick={(e) => handleReset(e)}
                         >
                             <span>Reiniciar</span>
- 
+
                         </button>
                     </div>
 
@@ -709,17 +733,17 @@ export const SimuladorTDC = () => {
                             onClick={(e) => handleCalculate(e)}
                         >
                             <span>Calcular</span>
-  
+
                         </button>
                     </div>
 
                 </form>
-                
+
             </div>
             {isPortalOpen && ReactDOM.createPortal(
                 <div className='carterarediferido__modal' onClick={(e) => cerrarPortal(e)}>
-                    
-                    <button className='carterarediferido__buttonclose' onClick={() => setIsPortalOpen(false)}><IconSquareClose/></button>
+
+                    <button className='carterarediferido__buttonclose' onClick={() => setIsPortalOpen(false)}><IconSquareClose /></button>
                     <div className='carterarediferido__table'>
                         <table>
                             <thead>
@@ -735,32 +759,32 @@ export const SimuladorTDC = () => {
                                     <th>Saldo Final</th>
                                 </tr>
                             </thead>
-                            
+
 
                             <tbody>
-                            {
-                                datos.periodoALiquidar.map((ele, ind) => {
-                                    return (
-                                        <tr key={ind}>
-                                            
-                                            <td>{ele}</td>
-                                            <td>{datos.fechasCuotas[ele]}</td>
-                                            <td>{datos.diasDiferencia[ele]}</td>
-                                            <td>$ {datos.saldoInicial[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
-                                            <td>$ {datos.valorCuota[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
-                                            <td>$ {datos.abonoCapital[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
-                                            <td>$ {datos.valorInteres[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
-                                            <td>$ {datos.pagoMinimo[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
-                                            <td>$ {datos.saldoFinal[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
-                                            
-                                        </tr>
-                                    )
-                                })
-                            }
+                                {
+                                    datos.periodoALiquidar.map((ele, ind) => {
+                                        return (
+                                            <tr key={ind}>
+
+                                                <td>{ele}</td>
+                                                <td>{datos.fechasCuotas[ele]}</td>
+                                                <td>{datos.diasDiferencia[ele]}</td>
+                                                <td>$ {datos.saldoInicial[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                                <td>$ {datos.valorCuota[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                                <td>$ {datos.abonoCapital[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                                <td>$ {datos.valorInteres[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                                <td>$ {datos.pagoMinimo[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+                                                <td>$ {datos.saldoFinal[ele].toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td>
+
+                                            </tr>
+                                        )
+                                    })
+                                }
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div className='carterarediferido__resume'>
                         <div className='carterarediferido__resume-promedio'>
                             <h2>Promedio cuota</h2>
@@ -772,13 +796,13 @@ export const SimuladorTDC = () => {
                         </div>
                         <div className='carterarediferido__resume-total'>
                             <h2>Total Con Intereses</h2>
-                           
+
                             <p>$ {datos.totalConIntereses.toLocaleString('es-ES', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</p>
                         </div>
                     </div>
-                    
-                    
-                   
+
+
+
                 </div>,
                 document.getElementById('portalGeneral')
             )}

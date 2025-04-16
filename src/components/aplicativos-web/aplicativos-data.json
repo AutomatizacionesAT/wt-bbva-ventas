@@ -1,89 +1,89 @@
 {
     "aplicativos": [
         {
-            "titulo": "FIVE 9",
+            "titulo": "FIVE9",
             "imagen": "five9.png",
-            "link": "https://login.five9.com/"
+            "link": "https://five9.com"
         },
         {
-            "titulo": "G.A.P",
+            "titulo": "GAP",
             "imagen": "gap.png",
-            "link": "http://172.16.183.76/ControlAsistencia/login.php"
+            "link": "https://gap.com"
         },
         {
-            "titulo": "KACKTUS-DESPRENDIBLES, CARTA LABORAL",
+            "titulo": "KACKTUS",
             "imagen": "kacktus.png",
-            "link": "https://cajerokactus.atento.com.co:8443/WebKactus/frmLogin.aspx"
+            "link": "https://kacktus.com"
         },
         {
-            "titulo": "ECCUS-NOTA CALIDAD",
+            "titulo": "ECUS",
             "imagen": "eccus.png",
-            "link": "http://172.16.183.59/tm_eccus/"
+            "link": "https://ecus.com"
         },
         {
-            "titulo": "EN DIRECTO- VARIABLES",
+            "titulo": "EN DIRECTO",
             "imagen": "endirecto.png",
-            "link": "http://172.16.183.76/endirecto/web/index.php/main/login"
+            "link": "https://endirecto.com"
         },
         {
             "titulo": "CAFE OPERA",
             "imagen": "cafeopera.png",
-            "link": "https://cafesite4.atento.com.co:11004/cafe_BBVA"
+            "link": "https://cafeopera.com"
         },
         {
-            "titulo": "Google maps",
+            "titulo": "GOOGLE MAPS",
             "imagen": "googlemaps.png",
-            "link": "https://www.google.com/maps/@4.8316067,-75.7255405,12z?entry=ttu"
+            "link": "https://maps.google.com"
         },
         {
             "titulo": "MATERIAL DE APOYO TDC",
             "imagen": "materialtdc.png",
-            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/1.%20TDC/Material%20TDC%20Actualizado%2012-03-2025.pdf"
+            "link": "MaterialTdc"
         },
         {
             "titulo": "MATERIAL DE APOYO TDC AMPARADA",
             "imagen": "materialtdcamparada.png",
-            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/2.%20Amparada/Material%20TDC%20AMPARADA%20Actualizado%2012-03-2025.pdf"
+            "link": "MaterialTdcAmparada"
         },
         {
             "titulo": "MATERIAL DE APOYO CONSUMO",
             "imagen": "materialconsumo.png",
-            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/3.%20Credito%20de%20Consumo/Material%20Consumo%20BBVA%20Ventas%202024%20Original.pdf"
+            "link": "MaterialConsumoBBVA"
         },
         {
             "titulo": "MATERIAL DE APOYO REDIFERIDOS",
             "imagen": "materialrediferidos.png",
-            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/5.%20Rediferidos/Material%20Rediferidos%20BBVA%20Ventas%202024%20Original.pdf"
+            "link": "MaterialRediferidosBBVA"
         },
         {
             "titulo": "MATERIAL DE APOYO COMPRA DE CARTERA",
             "imagen": "materialcompracartera.png",
-            "link": "file://colbogfile40/bbva$/Agentes/OUT%20BOUND/Formaci%C3%B3n/4.%20Compra%20de%20Cartera/Material%20CC%20BBVA%20Ventas%202024%20Original.pdf"
+            "link": "MaterialCXC"
         },
         {
             "titulo": "ACADEMIA ATENTO",
             "imagen": "academiaatento.png",
-            "link": "https://academia.atento.com.co/academia/login/index.php"
+            "link": "https://academiaatento.com"
         },
         {
             "titulo": "BANCO BBVA",
             "imagen": "bancoBBVA.png",
-            "link": "https://www.bbva.com.co/personas/productos/tarjetas/beneficios.html"
+            "link": "https://bbva.com"
         },
         {
             "titulo": "3270",
             "imagen": "3270.png",
-            "link": "\\\\Colbogfile40\\bbva$\\Agentes\\Aplicativos\\BBVA 3270.ws"
+            "link": "https://3270.com"
         },
         {
             "titulo": "CALCULADORA",
             "imagen": "calculadora.png",
-            "link": "\\\\Colbogfile40\\bbva$\\Agentes\\Aplicativos\\Calculadora.lnk"
+            "link": "https://calculadora.com"
         },
         {
             "titulo": "LOGGER",
             "imagen": "logger.png",
-            "link": "\\\\127.0.0.1\\c$\\Atento\\Menulnicio\\Logger.lnk"
+            "link": "https://logger.com"
         }
     ]
 }

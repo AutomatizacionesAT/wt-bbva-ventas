@@ -29,10 +29,10 @@ export const Objecion = ({ NBD }) => {
     const [activeObjectionIndex, setActiveObjectionIndex] = useState(null);
     const [activeManejoIndex, setActiveManejoIndex] = useState({});
     const [recomendaciones, setRecomendaciones] = useState([data[0].Recomendación]);
- 
+
     const { scheme } = useContext(GlobalContext);
 
-    
+
 
     const sacarDatos = (arra, nombre) => {
         return removeDuplicates(arra.map(ele => ele[nombre]));
@@ -41,7 +41,7 @@ export const Objecion = ({ NBD }) => {
 
     const producto = sacarDatos(data, "Producto");
     // const recomendaciones = sacarDatos(data, "Recomendación"); 
-   
+
 
     const toggleObjection = (index) => {
         setActiveObjectionIndex(index === activeObjectionIndex ? null : index);

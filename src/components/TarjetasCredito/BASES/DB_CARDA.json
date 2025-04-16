@@ -4,8 +4,8 @@
       {
         "NOMBRE": "CLASICA",
         "BENEFICIOS": [
+          "Cuota de manejo $31.300",
           "Seguro de proteccion de precios hasta 200 dolares",
-          "Tasa de interés preferente 1,53% NMV 20% E.A para compras en supermercados, almacenes de ropa y calzado, estaciones de gasolina, centros medicos, centros educativos, servicios publicos e impuestos",
           "Skybox 12 meses gratis",
           "40% de descuento en assicard"
         ]
@@ -13,6 +13,7 @@
       {
         "NOMBRE": "ARA",
         "BENEFICIOS": [
+          "Cuota de manejo $31.300",
           "Seguro de proteccion de compras Visa",
           "0$ de cuota de manejo",
           "Cashback del 5% en compras iguales o superiores a $50,000 realizadas en Tiendas Ara",
@@ -23,18 +24,27 @@
       {
         "NOMBRE": "AQUA",
         "BENEFICIOS": [
-          "Aqua Clásica: Puedes hacer avances a partir de los 6 meses de usos",
-          "Aqua Gold: Puedes hacer avances a partir de los 6 meses de usos",
-          "Aqua Platinum: Puedes hacer avances a partir de los 3 meses de usos. ",
-          "Aqua Clásica: $0 cuota de manejo por siempre",
-          "Aqua Gold: $0 cuota de manejo los primeros 12 meses.",
-          "Aqua Platinum: $0 cuota de manejo los primeros 12 meses",
-          "Asistencia de viajes internacionales hasta por 15000 dolares o 15000 euros hasta 30 dias por viaje, (servicios y traslados medicos, asistencia jurídica y asistencia de equipaje)"
+          "Seguro de proteccion de precios",
+          "Paga siempre la misma cuota sin importar las compras que realices",
+          "cupo desde 600.000 hasta 2.999.999",
+          "Acumulacion de puntos BBVA (1 punto x dolara facturado)",
+          "Dispone del 50% de cupo para avances"
+        ]
+      },
+      {
+        "NOMBRE": "CONGELADA",
+        "BENEFICIOS": [
+          "Seguro de proteccion de precios",
+          "Paga siempre la misma cuota sin importar las compras que realices",
+          "cupo desde 600.000 hasta 2.999.999",
+          "Acumulacion de puntos BBVA (1 punto x dolara facturado)",
+          "Dispone del 50% de cupo para avances"
         ]
       },
       {
         "NOMBRE": "ORO",
         "BENEFICIOS": [
+          "Cuota de manejo $36.900",
           "Proteccion de precios hasta 400 dolares",
           "Proteccion de compras hasta 1000 dolares",
           "Garantia extendida hasta 5000 dolares",
@@ -53,8 +63,8 @@
           "garantia extendida hasta 10000 dolares",
           "servicios de emerjencia medica internacional hasta por 170000 dolares(visa medico online)",
           "visa concierge",
-          "asistencia de viajes internacionales hasta por 60000 dolares  hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años ",
-          "asistencia de viajes nacionales hasta por 5000 dolares , (servicios medicos, traslados medicos, , asistencia de equipaje,) incluye conyugue e hijos menores de 21 años ",
+          "asistencia de viajes internacionales hasta por 60000 dolares  hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años",
+          "asistencia de viajes nacionales hasta por 5000 dolares , (servicios medicos, traslados medicos, asistencia de equipaje,) incluye conyugue e hijos menores de 21 años",
           "skybox 36 meses gratis",
           "bloomberg 3 meses gratis",
           "rappi prime 3 meses gratis",
@@ -62,9 +72,9 @@
         ]
       },
       {
-        "NOMBRE": "INFINITIVE",
+        "NOMBRE": "INFINITE",
         "BENEFICIOS": [
-          "Exoneracion de intereses para las compras realizadas durante los 3 primeros meses",
+          "Exoneracion de intereses para las compras realizadas durante los 2 primeros meses",
           "Ingreso a salas VIP en aeropuertos nacionales e internacionales 10 por año",
           "proteccion de precios hasta 4000 dolares",
           "proteccion de compras hasta 20000 dolares",
@@ -77,8 +87,8 @@
           "seguro de alquiler de autos",
           "servicios de emerjencia medica internacional hasta por 170000 dolares(visa medico online)",
           "visa concierge",
-          "asistencia de viajes internacionales hasta por 70000 dolares  hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años ",
-          "asistencia de viajes nacionales hasta por 5000 dolares , (servicios medicos, traslados medicos, , asistencia de equipaje,) incluye conyugue e hijos menores de 21 años ",
+          "asistencia de viajes internacionales hasta por 70000 dolares  hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años",
+          "asistencia de viajes nacionales hasta por 5000 dolares , (servicios medicos, traslados medicos, asistencia de equipaje,) incluye conyugue e hijos menores de 21 años",
           "skybox 36 meses gratis",
           "bloomberg 4 meses gratis",
           "rappi prime 6 meses gratis",
@@ -93,10 +103,11 @@
         "NOMBRE": "STANDARD",
         "BENEFICIOS": [
           "Acceso a priceless.com",
-          "Proteccion de compras desde 45 hasta 90 dias, desde 100 hasta 20000 dolares",
+          "proteccion de compras desde 45 hasta 90 dias, desde 100 hasta 20000 dolares",
           "Descuentos en Éxito, Carulla, Cabify, Farmatodo y Mercado libre",
           "40% de descuento en assicard",
-          "tasa de interes preferente 1,53% NMV 20% E.A para compras en supermercados, almacenes de ropa y calzado, estaciones de gasolina, centros medicos, centros educativos, servicios publicos e impuestos"
+          "tasa de interes preferente 1,",
+          "53% NMV 20% E.A para compras en supermercados, almacenes de ropa y calzado, estaciones de gasolina, centros medicos, centros educativos, servicios publicos e impuestos"
         ]
       },
       {
@@ -104,7 +115,7 @@
         "BENEFICIOS": [
           "Seguro de proteccion de precios Mastercard",
           "Aporta un  porcentaje de la facturación de las tarjetas a programas sociales de la corporación Matamoros.",
-          "Acceso a priceless.com ",
+          "Acceso a priceless.com",
           "Diferido automático 36 meses"
         ]
       },
@@ -112,17 +123,18 @@
         "NOMBRE": "CORAL",
         "BENEFICIOS": [
           "Tarjeta hecha en plástico reciclado del mar.",
-          "BBVA aporta el 0,66% de tu facturación mensual para la restauración de corales, ayudando al hogar vital de pez loro en el Caribe colombiano.",
-          "Puedes realizar avances hasta del 50% de tu cupo asignado.  ",
+          "BBVA aporta el 0,",
+          "66% de tu facturación mensual para la restauración de corales, ayudando al hogar vital de pez loro en el Caribe colombiano.",
+          "Puedes realizar avances hasta del 50% de tu cupo asignado.",
           "Seguro de proteccion de compras Mastercard"
         ]
       },
       {
         "NOMBRE": "GOLD",
         "BENEFICIOS": [
-          "Protección Precios E-commerce Hasta 60 días en almacenes o 7 días online y hasta USD$2.000",
+          "Protección Precios E-commerce Hasta 60 días en almacenes o 7 días online y hasta USD$2.000.",
           "Acceso a priceless.com",
-          "Proteccion de compras desde 45 hasta 90 dias, desde 100 hasta 20000 dolares",
+          "proteccion de compras desde 45 hasta 90 dias, desde 100 hasta 20000 dolares",
           "Garantía extendida desde 200 hasta 5.000 USD por año",
           "Descuentos en Éxito, Carulla, Cabify, Farmatodo y Mercado libre",
           "asistencia de viajes internacionales hasta por 25000 dolares o 20000 euros hasta 30 dias por viaje, (servicios medicos, traslados medicos, sistencia juridica, asistencia de equipaje)"
@@ -131,35 +143,31 @@
       {
         "NOMBRE": "PLATINUM",
         "BENEFICIOS": [
-          "Programa médico integral para viajes hasta 150000 dolares (Cubrimiento de gastos medicos, Convalecencia en hote, Cubrimiento por evacuación de  emergencia,Repatriación derestos mortales",
-          "Cobertura por viajes retrasados o cancelados Hasta USD$3.000 por cancelación y USD$200 por retraso.",
-          "Mastercard Travel Rewards: programa de ofertas internacionales que otorga descuentos en compras.",
-          "Acceso a priceless.com ",
-          "Cobertura por daños al vehículo alquilado causados por colisión contra otro objeto, volcamiento, robo, incendio accidental y daño físico por causas climáticas, Hasta USD$75.000 de 31 a 60 días consecutivos",
-          "Concierge Mastercard: Asistente personal y de viajes que te ayuda a organizar cada detalle.",
+          "Protección Precios E-commerce Hasta 60 días en almacenes o 7 días online y hasta USD$2.000.",
+          "Acceso a priceless.com",
           "proteccion de compras desde 45 hasta 90 dias, desde 100 hasta 20000 dolares",
+          "Garantía extendida desde 200 hasta 5.000 USD por año",
           "Descuentos en Éxito, Carulla, Cabify, Farmatodo y Mercado libre",
-          "asistencia de viajes internacionales hasta por 60000 dolares  hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años ",
-          "asistencia de viajes nacionales hasta por 5000 dolares , (servicios medicos, traslados medicos, , asistencia de equipaje,) incluye conyugue e hijos menores de 21 años "
+          "asistencia de viajes internacionales hasta por 25000 dolares o 20000 euros hasta 30 dias por viaje, (servicios medicos, traslados medicos, sistencia juridica, asistencia de equipaje)"
         ]
       },
       {
         "NOMBRE": "BLACK",
         "BENEFICIOS": [
-          "Proteccion de cajero automatico Asegura el dinero en efectivo si sufres un asalto en un cajero automático hasta 3.000 dolares por año y 10.000 dolares por muerte",
+          "Proteccion de cajero automatico Asegura el dinero en efectivo si sufres un asalto en un cajero automatico hasta 3.000 dolares por año y 10.000 dolares por muerte",
           "Proteccion de compras desde 45 hasta 90 dias, desde 100 hasta 20000 dolares",
           "Garantía extendida desde 200 hasta 5.000 USD por año",
           "Concierge Mastercard: Asistente personal y de viajes que te ayuda a organizar cada detalle.",
           "Cobertura por daños al vehículo alquilado causados por colisión contra otro objeto, volcamiento, robo, incendio accidental y daño físico por causas climáticas, Hasta USD$75.000 de 31 a 60 días consecutivos",
-          "Acceso a priceless.com ",
+          "Acceso a priceless.com",
           "Mastercard Travel Rewards: programa de ofertas internacionales que otorga descuentos en compras.",
           "Cobertura por viajes retrasados o cancelados Hasta USD$3.000 por cancelación y USD$200 por retraso.",
           "Proteccion de equipaje: Cobertura cuando el equipaje se retrasa o pierde en tránsito hasta 3.000 dolares por pérdida y 600 dolares por retraso.",
           "Programa médico integral para viajes hasta 150000 dolares (Cubrimiento de gastos medicos, Convalecencia en hote, Cubrimiento por evacuación de  emergencia,Repatriación derestos mortales",
           "Mastercard Airport Experiences",
           "Ingreso a salas VIP en aeropuertos nacionales e internacionales 10 por año",
-          "Asistencia de viajes internacionales hasta por 70000 dolares y hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años ",
-          "Asistencia de viajes nacionales hasta por 5000 dolares , (servicios y traslados médicos, asistencia de equipaje) incluye cónyugue e hijos menores de 21 años "
+          "Asistencia de viajes internacionales hasta por 70000 dolares y hasta 60 dias por viaje, (servicios medicos, traslados medicos, asistencia juridica, asistencia de equipaje, asistencia en caso de robo o perdida de documentos) incluye conyugue e hijos menores de 21 años",
+          "Asistencia de viajes nacionales hasta por 5000 dolares , (servicios y traslados médicos, asistencia de equipaje) incluye cónyugue e hijos menores de 21 años"
         ]
       }
     ]

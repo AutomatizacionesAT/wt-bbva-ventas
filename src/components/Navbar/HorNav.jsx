@@ -393,20 +393,27 @@ const HorNav = () => {
 			{DATANAV.SEGMENTS && (
 				<nav className="hornav__segments">
 					<ul>
+						<li className="hornav__segments--li aplicativos-web">
+							<button
+								onClick={() => navigate('/aplicativos')}
+								className="aplicativos-web__button"
+							>
+								<IconWeb />
+								APLICATIVOS WEB
+							</button>
+						</li>
 						{DATANAV.SEGMENTS.map((segment, i) => {
 							if (segment.segment === 'ADMIN') {
 								return (
 									<li
 										onClick={() => {
 											if (admin) {
-												// Si ya es admin, al hacer clic "cierra" el modo admin
-												setAdmin(false) // Cerrar el modo admin
-												SetNavSegment('') // Cambiar el segmento de navegación al que no sea admin
-												navigate('/#/') // Cambiar la ruta a una por defecto
+												setAdmin(false)
+												SetNavSegment('')
+												navigate('/#/')
 											} else {
-												// Si no es admin, mostrar el modal para ingresar la clave
-												setPendingAdminAccess(true) // Marcar que estamos solicitando acceso a ADMIN
-												toggleAdminModal() // Abrir el modal
+												setPendingAdminAccess(true)
+												toggleAdminModal()
 											}
 										}}
 										key={i}
@@ -431,6 +438,7 @@ const HorNav = () => {
 								)
 							}
 						})}
+
 						<li className="settings">
 							<button className="settings__btn settings_btnA" name="upload" onClick={setsClick}>
 								<IconUpload />
@@ -542,7 +550,7 @@ const HorNav = () => {
 						<img src={imgLogo} alt="logo" />
 					</figure>
 					<span className="hornav__logos--title">Web Training</span>
-					<span className="hornav__logos--version">v.2.8.9</span>
+					<span className="hornav__logos--version">v.2.9.0</span>
 				</div>
 			</nav>
 

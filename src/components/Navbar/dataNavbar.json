@@ -71,7 +71,6 @@
 			"icon": "IconArrowLeftRight",
 			"segments": [
 				"Amparada",
-				"Consumo",
 				"Compra Cartera",
 				"Rediferido"
 			],
@@ -173,6 +172,44 @@
 				{
 					"title": "Cashback BBVA NET",
 					"route": "minichecklist/cashbackbbvanet"
+				}
+			]
+		},
+		{
+			"title": "Activacion Digital",
+			"route": "/minichecklist",
+			"icon": "IconArrowLeftRight",
+			"segments": [
+				"Consumo"
+			],
+			"dropDown": [
+				{
+					"title": "Cambio de Dirección",
+					"route": "minichecklist/cambiodireccion"
+				},
+				{
+					"title": "Activación Token",
+					"route": "minichecklist/activaciontoken"
+				},
+				{
+					"title": "Aceptación Consumo",
+					"route": "minichecklist/aceptacionconsumo"
+				},
+				{
+					"title": "Pago con Puntos BBVA",
+					"route": "minichecklist/pagoconpuntosbbva"
+				},
+				{
+					"title": "Cashback BBVA NET",
+					"route": "minichecklist/cashbackbbvanet"
+				},
+				{
+					"title": "Aceptación Consumo",
+					"route": "minichecklist/aceptacionconsumo"
+				},
+				{
+					"title": "Registro BBVA NET",
+					"route": "minichecklist/registrobbvanet"
 				}
 			]
 		},
@@ -280,19 +317,6 @@
 					"title": "Cashback BBVA NET",
 					"route": "minichecklist/cashbackbbvanet"
 				}
-			]
-		},
-		{
-			"title": "Aplicativos Web",
-			"route": "/aplicativos",
-			"icon": "web",
-			"segments": [
-				"Tarjeta de Crédito",
-				"Amparada",
-				"Consumo",
-				"Compra Cartera",
-				"Rediferido",
-				"Tmk"
 			]
 		}
 	]

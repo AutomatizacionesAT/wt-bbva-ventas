@@ -1,5 +1,6 @@
 import '@styles/app.scss'
 import { Routes, Route } from 'react-router-dom'
+import ChatBot from './components/ChatBot/ChatBot'
 
 import imgBackground from './assets/images/index/backgroundLight.jpg'
 import imgBackgroundD from './assets/images/index/background.jpg'
@@ -80,6 +81,7 @@ const App = () => {
 			<HorNav />
 			<Galeria />
 			{activeAppNote && <NoteApp />}
+			<ChatBot />
 			<section className="app__body" style={style.body}>
 				<Routes>
 					{/* aca cada bienvenida tendria su nombre de segmento */}

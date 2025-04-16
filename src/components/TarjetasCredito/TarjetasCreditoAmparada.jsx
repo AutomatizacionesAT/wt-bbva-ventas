@@ -23,12 +23,12 @@ export const TarjetasCreditoAmparada = () => {
     return (
         <div className="tarjetas-credito-container">
             <div className="franchise-section">
-				<img src={visa} alt="imagen visa" />
+                <img src={visa} alt="imagen visa" />
                 <div className="categories-container">
                     {data.VISA.CATEGORIA.map((category, index) => (
-                        <div 
-                            key={index} 
-                            className={`category-card ${selectedVisaIndex === index ? 'selected' : ''}`} 
+                        <div
+                            key={index}
+                            className={`category-card ${selectedVisaIndex === index ? 'selected' : ''}`}
                             onClick={() => handleVisaCategorySelect(index, category.BENEFICIOS)}
                         >
                             <h3>{category.NOMBRE}</h3>
@@ -45,12 +45,12 @@ export const TarjetasCreditoAmparada = () => {
                 </div>
             </div>
             <div className="franchise-section">
-				<img src={mastercard} alt="imagen mastercard" />
+                <img src={mastercard} alt="imagen mastercard" />
                 <div className="categories-container">
                     {data.MASTERCARD.CATEGORIA.map((category, index) => (
-                        <div 
-                            key={index} 
-                            className={`category-card ${selectedMasterCardIndex === index ? 'selected' : ''}`} 
+                        <div
+                            key={index}
+                            className={`category-card ${selectedMasterCardIndex === index ? 'selected' : ''}`}
                             onClick={() => handleMasterCardCategorySelect(index, category.BENEFICIOS)}
                         >
                             <h3>{category.NOMBRE}</h3>

@@ -43,8 +43,13 @@ const imagenes = {
 };
 
 const AplicativosGrid = () => {
-    const handleClick = (link) => {
-        window.open(link, '_blank');
+    const handleClick = (app) => {
+        if (app.titulo.includes('MATERIAL DE APOYO')) {
+            const pdfUrl = `./pdfs/${app.link}.pdf`;
+            window.open(pdfUrl, '_blank');
+        } else {
+            window.open(app.link, '_blank');
+        }
     };
 
     return (
@@ -54,7 +59,7 @@ const AplicativosGrid = () => {
                     <div
                         key={index}
                         className="card dato-buscado"
-                        onClick={() => handleClick(app.link)}
+                        onClick={() => handleClick(app)}
                     >
                         <div className="card__image-container">
                             <img
@@ -63,15 +68,9 @@ const AplicativosGrid = () => {
                                 className="card__image"
                             />
                             <div className="card__overlay">
-                                <a
-                                    href={app.link}
-                                    className="card__link"
-                                    onClick={(e) => e.stopPropagation()}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Abrir Aplicativo
-                                </a>
+                                <span className="card__link">
+                                    {app.titulo.includes('MATERIAL DE APOYO') ? 'Ver PDF' : 'Abrir Aplicativo'}
+                                </span>
                             </div>
                         </div>
                         <div className="card__content">

@@ -13,7 +13,7 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, 'Web Tranining'),
 		filename: 'noTocar/bundle.js',
-		publicPath: './', //ALERTA configuracion de produccion (/)
+		publicPath: './', //ALERTA configuracion de produccion (./)
 		assetModuleFilename: 'noTocar/assets/[name][ext]', //*
 		sourceMapFilename: '[file].map', // crea archvo map que mapea el cod de produccion a development
 	},
@@ -45,7 +45,7 @@ module.exports = {
 				loader: 'html-loader',
 			},
 			{
-				test: /\.(png|jpg|jpeg|gif|svg|webp)$/i,
+				test: /\.(png|jpg|jpeg|gif|svg|webp|pdf)$/i,
 				type: 'asset/resource', // *
 			},
 			{
@@ -94,6 +94,14 @@ module.exports = {
 					to: 'noTocar/noTocar/assets',
 					noErrorOnMissing: true,
 				},
+				{
+					from: path.join(__dirname, '/public/pdfs'),
+					to: './pdfs',
+					noErrorOnMissing: true,
+					globOptions: {
+						ignore: ['**/.DS_Store', '**/Thumbs.db']
+					}
+				}
 			],
 		}),
 	],
