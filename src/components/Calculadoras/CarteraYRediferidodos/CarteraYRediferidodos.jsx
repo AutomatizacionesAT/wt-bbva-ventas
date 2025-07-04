@@ -19,7 +19,7 @@ export const CarteraYRediferidodos = () => {
         tipo: "Facturación",
         tipoFormated: "Facturación"
     });
-    console.log(datos)
+    // console.log(datos)
 
     const [isPortalOpen, setIsPortalOpen] = useState(false);
 
@@ -201,7 +201,7 @@ export const CarteraYRediferidodos = () => {
     /////funciones para los datos que se mostraran
     //calcula fechas segun las cuotas diferidas
     const calcularFechasCuotas = (fechaBase, numCuotas) => {
-        console.log(fechaBase, numCuotas);
+        // console.log(fechaBase, numCuotas);
     
         // El valor llega como 2024-01-20 pero para leerlo con la librería fns debe ser 2024/01/20
         const numeroCuotasFormatted = fechaBase.toString().replace(/-/g, '/');
@@ -209,7 +209,7 @@ export const CarteraYRediferidodos = () => {
         // Inicializa el array de fechas con la fecha base formateada
         let fechas = [format(new Date(numeroCuotasFormatted), 'yyyy-MM-dd')]; 
     
-        console.log(fechas);
+        // console.log(fechas);
     
         // Bucle para generar las fechas
         for (let i = 0; i < numCuotas; i++) {
