@@ -24,7 +24,7 @@ export const SimuladorTDC = () => {
         tasa: "",
         tasaFormated: ""
     });
-    console.log(datos)
+    // console.log(datos)
 
     const [isPortalOpen, setIsPortalOpen] = useState(false);
 
@@ -232,7 +232,7 @@ export const SimuladorTDC = () => {
     /////funciones para los datos que se mostraran
     //calcula fechas segun las cuotas diferidas
     const calcularFechasCuotas = (fechaBase, numCuotas) => {
-        console.log(fechaBase, numCuotas);
+        // console.log(fechaBase, numCuotas);
 
         // El valor llega como 2024-01-20 pero para leerlo con la librería fns debe ser 2024/01/20
         const numeroCuotasFormatted = fechaBase.toString().replace(/-/g, '/');
@@ -240,7 +240,7 @@ export const SimuladorTDC = () => {
         // Inicializa el array de fechas con la fecha base formateada
         let fechas = [format(new Date(numeroCuotasFormatted), 'yyyy-MM-dd')];
 
-        console.log(fechas);
+        // console.log(fechas);
 
         // Bucle para generar las fechas
         for (let i = 0; i < numCuotas; i++) {
@@ -357,7 +357,7 @@ export const SimuladorTDC = () => {
             if (i === 0) {
                 ipt.push(0);
             } else {
-                console.log(diasperiodo[i], basediasanio[i])
+                // console.log(diasperiodo[i], basediasanio[i])
 
                 ipt.push(Number(Math.pow(valorDividido, (diasperiodo[i] / basediasanio[i])) - 1))
             }

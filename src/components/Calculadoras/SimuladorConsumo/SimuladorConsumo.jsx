@@ -28,7 +28,7 @@ export const SimuladorConsumo = () => {
     seguroSeguraFormated: "No",
 
   });
-  console.log(datos)
+  // console.log(datos)
 
   const [isPortalOpen, setIsPortalOpen] = useState(false);
 
@@ -926,7 +926,7 @@ export const SimuladorConsumo = () => {
 
     const calculosVarios = calculateColumnas(Number(datos.plazo), Number(datos.monto))
 
-    console.log(calculosVarios)
+    // console.log(calculosVarios)
 
     setDatos((prev) => {
       return {
